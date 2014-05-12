@@ -455,11 +455,11 @@ insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DE
 --Publicaciones hechas por clientes. --FIXME
 insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DESCRIPCION, STOCK, FECHA_VENCIMIENTO,
 								FECHA_INICIO, PRECIO, ESTADO, TIPO, PREGUNTAS)
-	select distinct (Publicacion_Cod) Publicacion_Cod , U.ID_USUARIO, Publicacion_Visibilidad_Cod, Publicacion_Descripcion, Publicacion_Stock, 
+	select distinct (Publicacion_Cod) Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
 					Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, Publicacion_Estado, Publicacion_Tipo, 'SI' as PREGUNTAS
 	from gd_esquema.Maestra as M
-		join JJRD.USUARIOS as U
-		on U.NOMBRE = M.Cli_Mail
+		join JJRD.USUARIOS as U on U.NOMBRE = M.Cli_Mail
+		join jjrd.VISIBILIDAD as V on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
 	where M.Publ_Cli_Dni is not null AND M.Cli_Dni is null
 
 	
