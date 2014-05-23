@@ -425,9 +425,6 @@ substring(@alphabet, convert(int, rand()*52), 1);
 END
 GO
 
-select * from gd_esquema.Maestra
-
-
 /* MIGRACION TABLA USUARIOS (TIPO CLIENTE) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
 insert into JJRD.USUARIOS (NOMBRE, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, TELEFONO, FECHA_NACIMIENTO)
 	select distinct Cli_Mail, Cli_Nombre, 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'C' as TIPO_DE_USUARIO, -1 as TELEFONO, Cli_Fecha_Nac
@@ -468,22 +465,6 @@ INSERT INTO JJRD.EMPRESA (ID_USUARIO, CUIT, RAZON_SOCIAL, EMAIL)
 	WHERE Publ_Empresa_Razon_Social is not null
 GO
 
-
-
---/* MIGRACION VISIBILIDAD */ --TODO: VER LOS DIAS DE DURACION
---INSERT INTO JJRD.VISIBILIDAD (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, FECHA_FINALIZACION) --cambiaria FECHA_FINALIZACION por otro nombre, 
---	VALUES (10005, 'Bronce', 60.00, 0.30, 30) -- 1 mes													  --DIAS_DURACION por ej, ya que el campo es numeric, no date.
---INSERT INTO JJRD.VISIBILIDAD (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, FECHA_FINALIZACION) 
---	VALUES (10004, 'Plata', 100.00, 0.20, 60) --2 meses
---INSERT INTO JJRD.VISIBILIDAD (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, FECHA_FINALIZACION)
---	VALUES (10003, 'Oro', 140.00, 0.15, 120)-- 4 meses
-
-
-/*-- MIGRACION TABLA VISIBILIDAD------HECHO DESDE MIGRACION, LO COMENTADO ARRIBA SETEADO POR JONAS*/
-
-
-GO
-
 INSERT INTO JJRD.VISIBILIDAD (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, FECHA_FINALIZACION)
 
 	SELECT DISTINCT PUBLICACION_VISIBILIDAD_COD, PUBLICACION_VISIBILIDAD_DESC, PUBLICACION_VISIBILIDAD_PRECIO, PUBLICACION_VISIBILIDAD_PORCENTAJE, -1 AS FECHA_FINALIZACION
@@ -508,17 +489,16 @@ insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DE
 	
 
 GO	
-	
---Publicaciones hechas por clientes. --FIXME
+
+--Publicaciones hechas por clientes.
 insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DESCRIPCION, STOCK, FECHA_VENCIMIENTO,
 								FECHA_INICIO, PRECIO, ESTADO, TIPO, PREGUNTAS)
 	select distinct Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
 					Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, Publicacion_Estado, Publicacion_Tipo, 'SI' as PREGUNTAS
 	from gd_esquema.Maestra as M
-		join JJRD.USUARIOS as U on U.NOMBRE = M.Cli_Mail
+		join JJRD.USUARIOS as U on U.NOMBRE = M.Publ_Cli_Mail
 		join jjrd.VISIBILIDAD as V on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
-	where M.Publ_Cli_Dni is not null AND M.Cli_Dni is null
-
+	where M.Publ_Cli_Dni is not null 
 	
 GO
 
@@ -534,21 +514,24 @@ GO
 --from gd_esquema.Maestra
 --where Publicacion_Rubro_Descripcion is not null
 
+/* MIGRACION TABLA PUBLICACION_RUBRO */
+---
+---
 
 
 GO
 
 
 /*-- MIGRACION TABLA DOMICILIO---CLIENTE----*/
-
+-- CORREGIDO: LOCALIDAD ESTABA SETEADO COMO INT, Y DESPUES LO VAMOS A USAR COMO STRING. BORRE CONDICIONES QUE ESTABAN DE SOBRA
 INSERT INTO JJRD.DOMICILIO (ID_USUARIO, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL)
 	
 	
-SELECT DISTINCT U.ID_USUARIO, Cli_Dom_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Depto, -1 as LOCALIDAD, Cli_Cod_postal
+SELECT DISTINCT U.ID_USUARIO, Cli_Dom_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Depto, 's/d' as LOCALIDAD, Cli_Cod_postal
 	
 	FROM  JJRD.USUARIOS AS U, gd_esquema.Maestra AS M
 	
-	WHERE U.NOMBRE = M.Cli_Mail AND M.Cli_Mail IS NOT NULL AND M.Cli_Dom_Calle IS NOT NULL AND M.Cli_Nro_Calle IS NOT NULL
+	WHERE U.NOMBRE = M.Cli_Mail 
 
 
 GO
@@ -556,52 +539,54 @@ GO
 
 
 /*---MIGRAMOS TABLA DOMICILIO-------EMPRESAS-----*/
-
+-- CORREGIDO: LOCALIDAD ESTABA SETEADO COMO INT, Y DESPUES LO VAMOS A USAR COMO STRING. BORRE CONDICIONES QUE ESTABAN DE SOBRA
 INSERT INTO JJRD.DOMICILIO (ID_USUARIO, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL)
 
-	SELECT DISTINCT U.ID_USUARIO, PUBL_EMPRESA_DOM_CALLE, PUBL_EMPRESA_NRO_CALLE,PUBL_EMPRESA_PISO, PUBL_EMPRESA_DEPTO, -1 AS LOCALIDAD, PUBL_EMPRESA_COD_POSTAL 
+	SELECT DISTINCT U.ID_USUARIO, PUBL_EMPRESA_DOM_CALLE, PUBL_EMPRESA_NRO_CALLE,PUBL_EMPRESA_PISO, PUBL_EMPRESA_DEPTO, 's/d' AS LOCALIDAD, PUBL_EMPRESA_COD_POSTAL 
 
 	FROM JJRD.USUARIOS AS U, gd_esquema.Maestra AS M
 	
-	WHERE U.NOMBRE = M.Publ_Empresa_RAZON_SOCIAL AND M.Publ_Empresa_RAZON_SOCIAL IS NOT NULL 
+	WHERE U.NOMBRE = M.Publ_Empresa_RAZON_SOCIAL
 
 
 
 GO
 
+/*---MIGRACION TABLA OFERTAS-----*/ --REHICE HABIA ALGUNAS COSAS MAL.
+insert into JJRD.OFERTAS (P.COD_PUBLICACION, ID_CLIENTE, MONTO, FECHA)
 
-/*---MIGRACION TABLA OFERTAS-----*/ --
-
-
-INSERT INTO JJRD.OFERTAS (COD_PUBLICACION, ID_CLIENTE, MONTO, FECHA)
-
-	SELECT DISTINCT P.COD_PUBLICACION, C.ID_CLIENTE, Oferta_Monto, Oferta_Fecha
-	
-	FROM gd_esquema.Maestra as M, JJRD.PUBLICACION AS P, JJRD.CLIENTE AS C
-	
-	WHERE P.COD_PUBLICACION = M.Publicacion_Cod AND Oferta_Monto is NOT NULL
-	
+	select distinct Publicacion_Cod, C.ID_CLIENTE , Oferta_Monto, Oferta_Fecha
+	from gd_esquema.Maestra as M
+		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
+		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
+	where Oferta_Fecha is not null
 
 GO
 
+/*---MIGRACION TABLA COMPRAS -----*/--ARREGLADO
 
-/*---MIGRACION TABLA COMPRAS -----*/--VER BIEN SON DEMASIADAS FILAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+insert into JJRD.COMPRAS (COD_PUBLICACION, ID_CLIENTE, FECHA, CANTIDAD, COMPRA_CALIFICADA)
 
-
-
-INSERT INTO JJRD.COMPRAS  (COD_PUBLICACION, ID_CLIENTE, FECHA, CANTIDAD, COMPRA_CALIFICADA)
-
-	SELECT DISTINCT P.COD_PUBLICACION, C.ID_CLIENTE, COMPRA_FECHA,  COMPRA_CANTIDAD, 'NO' AS COMPRA_CALIFICADA
-	
-	FROM gd_esquema.Maestra AS M, JJRD.PUBLICACION AS P, JJRD.CLIENTE AS C
-	
-	WHERE P.COD_PUBLICACION = M.Publicacion_Cod AND Compra_Fecha IS NOT NULL
-	
-SELECT * FROM JJRD.COMPRAS	
+	select distinct Publicacion_Cod, C.ID_CLIENTE, Compra_Fecha, Compra_Cantidad, 'NO' as COMPRA_CALIFICADA
+	from gd_esquema.Maestra as M
+		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
+		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
+	where Compra_Fecha is not null
 
 
+
+
+--Actualiza el campo COMPRA_CALIFICADA
+/*En la migracion de compras estan todas seteadas como NO, pero hay muchos registros que tienen 
+calificaciones en la tabla Maestra. 
+Averiguar si este requerimiento es aplicable para datos migrados. */
+
+--HASTA ACA TODO MIGRADO.	
 GO
 
+/* MIGRACION TABLA CALIFICACIONES */
+
+--CREO que hay un problema en el diseño.
 
 
 /*---MIGRACION TABLA CALIFICACIONES-----*/-- NO SABEMOS SI ESTA BIEN, TARDA DEMASIADOOOOOOOOOO EN EJECUTAR LA CORTAMOSSSSSS--
@@ -636,28 +621,7 @@ GO
 	
 --	WHERE CO.COD_PUBLICACION = M.Publicacion_Cod AND M.Factura_Nro IS NOT NULL
 	
-/*
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------	
-COMENTARIOS: CHICOS ACA PUSHEO ESTO Q AVANZAMOS CON JUAN....
 
-*CHEKEAR BIEN LAS MIGRACIONES PARA CONTROLAR SI ESTAN BIEN O SI MANDAMOS FRUTA
-*SACAMOS ALGUNOS CONSTRAIN PORQUE NO DEJABA MIGRAR ALGUNOS DATOS EN CIERTAS TABLAS, TAN COMENTADOS
-*LAS MIGRACIONES QUE ESTAN COMENTADAS ES PORQUE HAY ALGO RARO (X EJ COMPRAS SON DEMASIADAS FILAS NO SE SI ESTA BIEN 
-HECHA SI FALTA PONER ALGUNA OTRA CONDICION DE FILTRO, RUBROS NO ERA NECESARIA HACERLA, CALIFICACIONES CUELGA 
-Y FACTURAS NO ANDA) DEJE EL CODIGO IGUAL PARA VER O TOCAR...
-*LA TABLA PREGUNTAS NO HAY DATOS EN LA MAESTRA ASI Q NO ES NECESARIO MIGRAR
-*ARREGLANDO ESO YA ESTARIA TODO MIGRADO
-*NO NOS OLVIDEMOS DE CREAR LA TABLA ITEMS Y MIGRARLA
-
-
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-	*/
 --ver objetos creados: select name from sysobjects
 
 
