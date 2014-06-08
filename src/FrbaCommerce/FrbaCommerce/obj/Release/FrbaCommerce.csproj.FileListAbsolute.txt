@@ -6,3 +6,17 @@ C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\Aplicacion\Aplicacion Des
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\Aplicacion\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnRoles_Mod.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\Aplicacion\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.Properties.Resources.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\Aplicacion\Aplicacion Desktop\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.csproj.GenerateResource.Cache
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnCliente.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnCliente_Alta.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnCliente_Baja.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnCliente_Consulta.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnCliente_Modificar.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnCliente_Selec.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnRoles.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnRoles_Alta.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnRoles_Baja.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnRoles_Consulta.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.FrmbnRoles_Mod.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.Properties.Resources.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Release\FrbaCommerce.csproj.GenerateResource.Cache

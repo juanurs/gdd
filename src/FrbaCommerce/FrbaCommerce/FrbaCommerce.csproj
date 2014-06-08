@@ -48,11 +48,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abm Cliente\Form1.cs">
+    <Compile Include="Abm Cliente\FrmbnCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Abm Cliente\FrmbnCliente.designer.cs">
+      <DependentUpon>FrmbnCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Alta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Alta.designer.cs">
+      <DependentUpon>FrmbnCliente_Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Baja.designer.cs">
+      <DependentUpon>FrmbnCliente_Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Consulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Consulta.designer.cs">
+      <DependentUpon>FrmbnCliente_Consulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Modificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Modificar.designer.cs">
+      <DependentUpon>FrmbnCliente_Modificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Selec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmbnCliente_Selec.designer.cs">
+      <DependentUpon>FrmbnCliente_Selec.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Empresa\Form1.cs">
       <SubType>Form</SubType>
@@ -164,6 +194,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Abm Cliente\FrmbnCliente.resx">
+      <DependentUpon>FrmbnCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Alta.resx">
+      <DependentUpon>FrmbnCliente_Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Baja.resx">
+      <DependentUpon>FrmbnCliente_Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Consulta.resx">
+      <DependentUpon>FrmbnCliente_Consulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Modificar.resx">
+      <DependentUpon>FrmbnCliente_Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Selec.resx">
+      <DependentUpon>FrmbnCliente_Selec.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM Rol\FrmbnRoles.resx">
       <DependentUpon>FrmbnRoles.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,17 +239,8 @@
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <Compile Include="Query.cs" />
     <Compile Include="Registro de Usuario\Form1.cs">
       <SubType>Form</SubType>
@@ -210,7 +249,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.Designer.cs" />
-    <Compile Include="Settings1.Designer.cs">
+    <Compile Include="Properties\Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
