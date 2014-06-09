@@ -42,7 +42,6 @@ BEGIN
 END
 GO
 
-
 CREATE PROCEDURE JJRD.CREAR_USUARIOS
 AS
 BEGIN
@@ -50,23 +49,37 @@ BEGIN
 --============================================================
 --TABLA USUARIOS
 --============================================================
-
-
 	CREATE TABLE JJRD.USUARIOS (
 		ID_USUARIO INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-		NOMBRE NVARCHAR(30) NOT NULL UNIQUE,
+		USERNAME NVARCHAR(30) NOT NULL UNIQUE,
 		CONTRASEÑA  NVARCHAR(30) NOT NULL,
 		HABILITADO BIT NOT NULL,
 		LOGIN_FALLIDOS NUMERIC (1,0) NOT NULL, 
 		TIPO_DE_USUARIO CHAR NOT NULL,
-		TELEFONO NUMERIC (18,0) , --VER: NOT NULL UNIQUE, SAQUE LOS CONSTRAINTS PORQUE LA TABLA MAESTRA NO TIENE ESTE DATO Y NO PUEDO INSERTAR NULL
+--		TELEFONO NUMERIC (18,0) , --VER: NOT NULL UNIQUE, SAQUE LOS CONSTRAINTS PORQUE LA TABLA MAESTRA NO TIENE ESTE DATO Y NO PUEDO INSERTAR NULL
 		FECHA_NACIMIENTO DATETIME,
 		NUMERO_VENTA INT,
 		PUBLICACIONES_GRATIS NUMERIC(1,0),
 		REPUTACION NUMERIC (1,0)
-	);
+	)
 
 	PRINT 'SE CREO TABLA USUARIOS CORRECTAMENTE'
+
+	/* MIGRACION TABLA USUARIOS (TIPO CLIENTE) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
+insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, TELEFONO, FECHA_NACIMIENTO)
+	select distinct Cli_Mail, Cli_Nombre, 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'C' as TIPO_DE_USUARIO, -1 as TELEFONO, Cli_Fecha_Nac
+	from gd_esquema.Maestra
+	where Cli_Mail is not null
+	
+	
+	
+/* MIGRACION TABLA USUARIOS (TIPO EMPRESA) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
+insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, TELEFONO, FECHA_NACIMIENTO)
+	select distinct Publ_Empresa_Razon_Social, Publ_Empresa_Cuit , 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'E' as TIPO_DE_USUARIO, -1 as TELEFONO, Publ_Empresa_Fecha_Creacion
+	from gd_esquema.Maestra
+	where Publ_Empresa_Razon_Social is not null
+				
+	
 
 --============================================================
 --TABLA ROL_USUARIO
@@ -77,30 +90,8 @@ BEGIN
 	)
 
 	PRINT 'SE CREO TABLA ROL_USUARIO CORRECTAMENTE'
-
-
---============================================================
---TABLA DOMICILIO
---============================================================
-	CREATE TABLE JJRD.DOMICILIO(
-		ID_DOMICILIO INT NOT NULL IDENTITY (1,1) PRIMARY KEY,
-		ID_USUARIO INT NOT NULL FOREIGN KEY REFERENCES JJRD.USUARIOS(ID_USUARIO),
-		CALLE NVARCHAR(255) NOT NULL,
-		NUM_CALLE NUMERIC(18,0) NOT NULL,
-		PISO NUMERIC(18,0),
-		DEPARTAMENTO NVARCHAR(50),
-		LOCALIDAD NVARCHAR(50),
-		COD_POSTAL NVARCHAR(50)
-	);
-	
-	
-	
-	PRINT 'SE CREO TABLA DOMICILIO CORRECTAMENTE'
-	
 END
 GO
-
-
 
 CREATE PROCEDURE JJRD.FUNCIONALIDADES
 AS 
@@ -166,10 +157,26 @@ BEGIN
 		RAZON_SOCIAL NVARCHAR(255) UNIQUE NOT NULL,
 		CIUDAD VARCHAR(60), --NOT NULL, SAQUE EL NOT NULL PORQUE EN LA TABLA MAESTRA NO EXISTE ESTE CAMPO Y NO PODIA MIGRAR
 		NOMBRE_CONTACTO VARCHAR(255),
-		EMAIL NVARCHAR(50) NOT NULL UNIQUE
+		EMAIL NVARCHAR(50) NOT NULL UNIQUE,
+		CALLE NVARCHAR(255) NOT NULL,
+		NUM_CALLE NUMERIC(18,0) NOT NULL,
+		PISO NUMERIC(18,0),
+		DEPARTAMENTO NVARCHAR(50),
+		LOCALIDAD NVARCHAR(50),
+		COD_POSTAL NVARCHAR(50),
+		TELEFONO NUMERIC (18,0)
 	)
 	
 	PRINT 'SE CREO TABLA EMPRESA CORRECTAMENTE'	
+	
+	/* MIGRACION TABLA EMPRESA */
+INSERT INTO JJRD.EMPRESA (ID_USUARIO, CUIT, RAZON_SOCIAL, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, COD_POSTAL)
+	SELECT DISTINCT U.ID_USUARIO, Publ_Empresa_Cuit, Publ_Empresa_Razon_Social, Publ_Empresa_Mail, Publ_Empresa_Dom_Calle, Publ_Empresa_Nro_Calle, Publ_Empresa_Piso, Publ_Empresa_Depto, Publ_Empresa_Cod_Postal
+	FROM gd_esquema.Maestra as M
+		join JJRD.USUARIOS as U
+		on U.USERNAME = M.Publ_Empresa_Razon_Social
+	WHERE Publ_Empresa_Razon_Social is not null
+	
 	
 END
 GO
@@ -189,14 +196,29 @@ BEGIN
 		APELLIDO NVARCHAR(255) NOT NULL,
 		TIPO_DOC CHAR(3) NOT NULL,
 		NUMERO_DOC NUMERIC(18,0) NOT NULL UNIQUE,
-		EMAIL NVARCHAR(255) NOT NULL UNIQUE
+		EMAIL NVARCHAR(255) NOT NULL UNIQUE,
+		CALLE NVARCHAR(255) NOT NULL,
+		NUM_CALLE NUMERIC(18,0) NOT NULL,
+		PISO NUMERIC(18,0),
+		DEPARTAMENTO NVARCHAR(50),
+		LOCALIDAD NVARCHAR(50),
+		COD_POSTAL NVARCHAR(50),
+		TELEFONO NUMERIC (18,0)
 	)
 	
 	PRINT 'SE CREO TABLA CLIENTE CORRECTAMENTE'
+		
+	
+	/* MIGRACION TABLA CLIENTES */
+	INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, COD_POSTAL)
+	SELECT DISTINCT U.ID_USUARIO, Cli_Nombre, Cli_Apeliido, 'DNI' as TIPO_DOC, Cli_Dni, Cli_Mail, Cli_Dom_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Depto, Cli_Cod_Postal
+	FROM gd_esquema.Maestra as M
+	JOIN	JJRD.USUARIOS as U
+		on	U.USERNAME = M.Cli_Mail
+	WHERE Cli_Dni is not null
+	
 END
 GO
-
-
 
 CREATE PROCEDURE JJRD.VISIBILIDADES
 AS
@@ -215,6 +237,12 @@ BEGIN
 	);
 	
 	PRINT 'SE CREO TABLA VISIBILIDAD CORRECTAMENTE'
+	
+	INSERT INTO JJRD.VISIBILIDAD (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, FECHA_FINALIZACION)
+
+	SELECT DISTINCT PUBLICACION_VISIBILIDAD_COD, PUBLICACION_VISIBILIDAD_DESC, PUBLICACION_VISIBILIDAD_PRECIO, PUBLICACION_VISIBILIDAD_PORCENTAJE, -1 AS FECHA_FINALIZACION
+		
+		FROM gd_esquema.Maestra AS M 
 	
 END	
 GO
@@ -243,6 +271,29 @@ BEGIN
 	PRINT 'SE CREO TABLA PUBLICACION CORRECTAMENTE'
 	
 	
+	/* MIGRACION TABLA PUBLICACIONES */
+--Publicaciones hechas por empresas
+insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DESCRIPCION, STOCK, FECHA_VENCIMIENTO,
+								FECHA_INICIO, PRECIO, ESTADO, TIPO, PREGUNTAS)
+	select distinct Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
+					Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, Publicacion_Estado, Publicacion_Tipo, 'SI' as PREGUNTAS
+	from gd_esquema.Maestra as M
+		join JJRD.USUARIOS as U on U.USERNAME= M.Publ_Empresa_Razon_Social
+		join jjrd.VISIBILIDAD as V on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
+	where M.Publ_Empresa_Razon_Social is not null
+	
+	
+	--Publicaciones hechas por clientes.
+insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DESCRIPCION, STOCK, FECHA_VENCIMIENTO,
+								FECHA_INICIO, PRECIO, ESTADO, TIPO, PREGUNTAS)
+	select distinct Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
+					Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, Publicacion_Estado, Publicacion_Tipo, 'SI' as PREGUNTAS
+	from gd_esquema.Maestra as M
+		join JJRD.USUARIOS as U on U.USERNAME= M.Publ_Cli_Mail
+		join jjrd.VISIBILIDAD as V on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
+	where M.Publ_Cli_Dni is not null 
+	
+	
 	
 END 
 GO
@@ -262,6 +313,18 @@ BEGIN
 	
 	PRINT 'SE CREO TABLA RUBRO CORRECTAMENTE'
 	
+	
+	
+/*--MIGRACION TABLA RUBRO---------->NO ES NECESARIA SON TODOS NULL*/
+
+--INSERT INTO JJRD.RUBRO (DESCRIPCION)
+--SELECT DISTINCT  (Publicacion_Rubro_Descripcion)
+--from gd_esquema.Maestra
+--where Publicacion_Rubro_Descripcion is not null
+
+
+---
+---
 --============================================================
 --TABLA PUBLICACION_RUBRO
 --============================================================		
@@ -293,6 +356,16 @@ BEGIN
 	)
 	
 	PRINT 'SE CREO TABLA OFERTAS CORRECTAMENTE'
+	
+	
+	/*---MIGRACION TABLA OFERTAS-----*/ --REHICE HABIA ALGUNAS COSAS MAL.
+insert into JJRD.OFERTAS (P.COD_PUBLICACION, ID_CLIENTE, MONTO, FECHA)
+
+	select distinct Publicacion_Cod, C.ID_CLIENTE , Oferta_Monto, Oferta_Fecha
+	from gd_esquema.Maestra as M
+		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
+		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
+	where Oferta_Fecha is not null
 
 END
 GO
@@ -313,12 +386,20 @@ BEGIN
 	DESCRIPCION NVARCHAR(255) NOT NULL
 	); 
 	
+
 	PRINT 'SE CREO TABLA CALIFICACIONES CORRECTAMENTE'
 	
---============================================================
---TABLA COMPRAS
---============================================================
+	/* MIGRACION TABLA CALIFICACIONES */
 
+	insert into JJRD.CALIFICACIONES (COD_CALIFICACION, CANTIDAD_ESTRELLAS, DESCRIPCION)
+	select distinct M.Calificacion_Codigo, M.Calificacion_Cant_Estrellas, M.Calificacion_Descripcion
+	from gd_esquema.Maestra as M
+	where Calificacion_Codigo is not null
+
+		
+	--============================================================
+	--TABLA COMPRAS
+	--============================================================
 	CREATE TABLE JJRD.COMPRAS(
 	ID_COMPRA NUMERIC(18,0) IDENTITY(1,1) PRIMARY KEY,
 	COD_PUBLICACION NUMERIC(18,0) FOREIGN KEY REFERENCES JJRD.PUBLICACION(COD_PUBLICACION),
@@ -326,11 +407,19 @@ BEGIN
 	COD_CALIFICACION NUMERIC (18,0) FOREIGN KEY REFERENCES JJRD.CALIFICACIONES (COD_CALIFICACION), --AGREGO FK A CALIFICACIONES
 	FECHA DATETIME NOT NULL,
 	CANTIDAD NUMERIC(18,2) NOT NULL,
+	ID_FACTURA NUMERIC(18,0) FOREIGN KEY REFERENCES JJRD.FACTURAS(ID_FACTURA)
 	--COMPRA_CALIFICADA CHAR (2) NOT NULL       SI EXISTE CAMPO FK A CALIFICACIONES (COD_CALIFICACION ) ENTONCES LA COMPRA ESTA CALIFICADA.
-	);
+	)
 	
 	PRINT 'SE CREO TABLA COMPRAS CORRECTAMENTE'
 
+	/*---MIGRACION TABLA COMPRAS -----*/
+	insert into JJRD.COMPRAS (COD_PUBLICACION, ID_CLIENTE, FECHA, CANTIDAD, COD_CALIFICACION)
+	select distinct Publicacion_Cod, C.ID_CLIENTE, Compra_Fecha, Compra_Cantidad, M.Calificacion_Codigo
+	from gd_esquema.Maestra as M
+		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
+		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
+	where Compra_Fecha is not null
 	
 END
 GO
@@ -365,14 +454,20 @@ BEGIN
 
 	CREATE TABLE JJRD.FACTURAS(
 	ID_FACTURA NUMERIC(18,0) PRIMARY KEY,--SACAMOS IDENTITY, ID_FACTURA VIENE DADO POR NUM_FACTURA DE TABLA MAESTRA
-	ID_COMPRA NUMERIC(18,0) FOREIGN KEY REFERENCES JJRD.COMPRAS(ID_COMPRA),
+	FECHA DATETIME,
 	FORMA_DE_PAGO NVARCHAR(255),
-	TOTAL NUMERIC (18,2),
-	FECHA DATETIME
-	
-	);
+	TOTAL NUMERIC (18,2)
+	)
 
 	PRINT 'SE CREO TABLA FACTURAS CORRECTAMENTE'	
+	
+	---MIGRACION TABLA FACTURAS-------------
+	INSERT INTO JJRD.FACTURAS (ID_FACTURA, FECHA, FORMA_DE_PAGO, TOTAL)
+	SELECT  distinct Factura_Nro, Factura_Fecha, Forma_Pago_Desc, Factura_Total
+	FROM gd_esquema.Maestra 
+	WHERE Factura_Nro IS NOT NULL
+	
+	--ver objetos creados: select name from sysobjects
 END
 GO
 
@@ -385,8 +480,8 @@ exec JJRD.FUNCIONALIDADES
 exec JJRD.VISIBILIDADES
 exec JJRD.PUBLICACIONES
 exec JJRD.RUBROS
-exec JJRD.COMPRASYCALIFICACIONES
 exec JJRD.FACTURACION
+exec JJRD.COMPRASYCALIFICACIONES
 exec JJRD.OFERTASPUBLICACIONES
 exec JJRD.PREGUNTASPUBLICACION
 GO
@@ -427,188 +522,16 @@ substring(@alphabet, convert(int, rand()*52), 1);
 END
 GO
 
-/* MIGRACION TABLA USUARIOS (TIPO CLIENTE) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
-insert into JJRD.USUARIOS (NOMBRE, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, TELEFONO, FECHA_NACIMIENTO)
-	select distinct Cli_Mail, Cli_Nombre, 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'C' as TIPO_DE_USUARIO, -1 as TELEFONO, Cli_Fecha_Nac
-	from gd_esquema.Maestra
-	where Cli_Mail is not null
+select * from JJRD.FACTURAS
 
+select distinct Factura_Nro, Publicacion_Precio, Item_Factura_Monto, Factura_Total
+from gd_esquema.Maestra
+where Item_Factura_Monto = 0
+and Publicacion_Precio <> 0
+order by Factura_Nro
 
-GO 
 
-
-/* MIGRACION TABLA CLIENTES */
-INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, TIPO_DOC, NUMERO_DOC, EMAIL)
-	SELECT DISTINCT U.ID_USUARIO, Cli_Nombre, Cli_Apeliido, 'DNI' as TIPO_DOC, Cli_Dni, Cli_Mail
-	FROM gd_esquema.Maestra as M
-		join JJRD.USUARIOS as U
-		on U.NOMBRE = M.Cli_Mail
-	WHERE Cli_Dni is not null
-GO
-
-
-
-
-/* MIGRACION TABLA USUARIOS (TIPO EMPRESA) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
-insert into JJRD.USUARIOS (NOMBRE, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, TELEFONO, FECHA_NACIMIENTO)
-	select distinct Publ_Empresa_Razon_Social, Publ_Empresa_Cuit , 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'E' as TIPO_DE_USUARIO, -1 as TELEFONO, Publ_Empresa_Fecha_Creacion
-	from gd_esquema.Maestra
-	where Publ_Empresa_Razon_Social is not null
-				
-GO
-
-
-/* MIGRACION TABLA EMPRESA */
-INSERT INTO JJRD.EMPRESA (ID_USUARIO, CUIT, RAZON_SOCIAL, EMAIL)
-	SELECT DISTINCT U.ID_USUARIO, Publ_Empresa_Cuit, Publ_Empresa_Razon_Social, Publ_Empresa_Mail
-	FROM gd_esquema.Maestra as M
-		join JJRD.USUARIOS as U
-		on U.NOMBRE = M.Publ_Empresa_Razon_Social
-	WHERE Publ_Empresa_Razon_Social is not null
-GO
-
-INSERT INTO JJRD.VISIBILIDAD (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, FECHA_FINALIZACION)
-
-	SELECT DISTINCT PUBLICACION_VISIBILIDAD_COD, PUBLICACION_VISIBILIDAD_DESC, PUBLICACION_VISIBILIDAD_PRECIO, PUBLICACION_VISIBILIDAD_PORCENTAJE, -1 AS FECHA_FINALIZACION
-		
-		FROM gd_esquema.Maestra AS M 
-
-
-GO
-
-
-
-/* MIGRACION TABLA PUBLICACIONES */
---Publicaciones hechas por empresas
-insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DESCRIPCION, STOCK, FECHA_VENCIMIENTO,
-								FECHA_INICIO, PRECIO, ESTADO, TIPO, PREGUNTAS)
-	select distinct Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
-					Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, Publicacion_Estado, Publicacion_Tipo, 'SI' as PREGUNTAS
-	from gd_esquema.Maestra as M
-		join JJRD.USUARIOS as U on U.NOMBRE = M.Publ_Empresa_Razon_Social
-		join jjrd.VISIBILIDAD as V on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
-	where M.Publ_Empresa_Razon_Social is not null
-	
-
-GO	
-
---Publicaciones hechas por clientes.
-insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DESCRIPCION, STOCK, FECHA_VENCIMIENTO,
-								FECHA_INICIO, PRECIO, ESTADO, TIPO, PREGUNTAS)
-	select distinct Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
-					Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, Publicacion_Estado, Publicacion_Tipo, 'SI' as PREGUNTAS
-	from gd_esquema.Maestra as M
-		join JJRD.USUARIOS as U on U.NOMBRE = M.Publ_Cli_Mail
-		join jjrd.VISIBILIDAD as V on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
-	where M.Publ_Cli_Dni is not null 
-	
-GO
-
-
-
-
-
-
-/*--MIGRACION TABLA RUBRO---------->NO ES NECESARIA SON TODOS NULL*/
-
---INSERT INTO JJRD.RUBRO (DESCRIPCION)
---SELECT DISTINCT  (Publicacion_Rubro_Descripcion)
---from gd_esquema.Maestra
---where Publicacion_Rubro_Descripcion is not null
-
-/* MIGRACION TABLA PUBLICACION_RUBRO */
----
----
-
-
-GO
-
-
-/*-- MIGRACION TABLA DOMICILIO---CLIENTE----*/
--- CORREGIDO: LOCALIDAD ESTABA SETEADO COMO INT, Y DESPUES LO VAMOS A USAR COMO STRING. BORRE CONDICIONES QUE ESTABAN DE SOBRA
-INSERT INTO JJRD.DOMICILIO (ID_USUARIO, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL)
-	
-	
-SELECT DISTINCT U.ID_USUARIO, Cli_Dom_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Depto, 's/d' as LOCALIDAD, Cli_Cod_postal
-	
-	FROM  JJRD.USUARIOS AS U, gd_esquema.Maestra AS M
-	
-	WHERE U.NOMBRE = M.Cli_Mail 
-
-
-GO
-
-
-
-/*---MIGRAMOS TABLA DOMICILIO-------EMPRESAS-----*/
--- CORREGIDO: LOCALIDAD ESTABA SETEADO COMO INT, Y DESPUES LO VAMOS A USAR COMO STRING. BORRE CONDICIONES QUE ESTABAN DE SOBRA
-INSERT INTO JJRD.DOMICILIO (ID_USUARIO, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL)
-
-	SELECT DISTINCT U.ID_USUARIO, PUBL_EMPRESA_DOM_CALLE, PUBL_EMPRESA_NRO_CALLE,PUBL_EMPRESA_PISO, PUBL_EMPRESA_DEPTO, 's/d' AS LOCALIDAD, PUBL_EMPRESA_COD_POSTAL 
-
-	FROM JJRD.USUARIOS AS U, gd_esquema.Maestra AS M
-	
-	WHERE U.NOMBRE = M.Publ_Empresa_RAZON_SOCIAL
-
-
-
-GO
-
-/*---MIGRACION TABLA OFERTAS-----*/ --REHICE HABIA ALGUNAS COSAS MAL.
-insert into JJRD.OFERTAS (P.COD_PUBLICACION, ID_CLIENTE, MONTO, FECHA)
-
-	select distinct Publicacion_Cod, C.ID_CLIENTE , Oferta_Monto, Oferta_Fecha
-	from gd_esquema.Maestra as M
-		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
-		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
-	where Oferta_Fecha is not null
-
-GO
-
-/* MIGRACION TABLA CALIFICACIONES */
-
-insert into JJRD.CALIFICACIONES (COD_CALIFICACION, CANTIDAD_ESTRELLAS, DESCRIPCION)
-	select distinct M.Calificacion_Codigo, M.Calificacion_Cant_Estrellas, M.Calificacion_Descripcion
-	from gd_esquema.Maestra as M
-	where Calificacion_Codigo is not null
-
-
-
-/*---MIGRACION TABLA COMPRAS -----*/--ARREGLADO
-
-insert into JJRD.COMPRAS (COD_PUBLICACION, ID_CLIENTE, FECHA, CANTIDAD, COD_CALIFICACION)
-
-	select distinct Publicacion_Cod, C.ID_CLIENTE, Compra_Fecha, Compra_Cantidad, M.Calificacion_Codigo
-	from gd_esquema.Maestra as M
-		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
-		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
-	where Compra_Fecha is not null
-
-
---HASTA ACA TODO MIGRADO.	
-GO
-
-
-
----MIGRACION TABLA FACTURAS------------->NO ANDA TIRA ERROR DE PK
- 
-
-
-
-
---INSERT INTO JJRD.FACTURAS (ID_FACTURA, ID_COMPRA, FORMA_DE_PAGO, TOTAL, FECHA)
-
---	SELECT DISTINCT Factura_Nro, CO.ID_COMPRA, Forma_Pago_Desc, Factura_Total, Factura_Fecha
-
---	FROM gd_esquema.Maestra AS M, JJRD.COMPRAS AS CO
-	
---	WHERE CO.COD_PUBLICACION = M.Publicacion_Cod AND M.Factura_Nro IS NOT NULL
-	
-
---ver objetos creados: select name from sysobjects
-
-
-create procedure JJRD.BORRAR_TODO --BORRA TODO DENTRO DEL ESQUEMA JJRD
+CREATE PROCEDURE JJRD.BORRAR_TODO --BORRA TODO DENTRO DEL ESQUEMA JJRD
 as
 begin
 DECLARE @spSQL AS NVARCHAR(MAX)
