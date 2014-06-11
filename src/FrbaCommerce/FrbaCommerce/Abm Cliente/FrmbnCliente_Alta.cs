@@ -29,13 +29,17 @@ namespace FrbaCommerce
         {
             conexion.ConnectionString = Settings.Default.CadenaDeConexion;
 
-            if ((bnNombre.Text.Trim() != "") &&
-                (bnApellido.Text.Trim() != "") &&
+            if ((txtNombre.Text.Trim() != "") &&
+                (txtApellido.Text.Trim() != "") &&
                 // (cmbTipoDoc.Text.Trim() != "") &&
                 (txtDocumento.Text.Trim() != "") &&
-                (txtTelefono.Text.Trim() != "")) 
+                (txtTelefono.Text.Trim() != ""))
+
+
+
+
             {
-                string telefono = "SELECT COUNT(1) FROM JJRD.USUARIOS where TELEFONO = " + txtTelefono.Text;
+                string telefono = "SELECT COUNT(1) FROM JJRD.CLIENTE where TELEFONO = " + txtTelefono.Text;
                 Query qry = new Query(telefono);
                 int existeTelefono = (int)qry.ObtenerUnicoCampo();
 
@@ -59,13 +63,13 @@ namespace FrbaCommerce
 
                         /* primero dar de alta usuario */
 
-                        string sql = "INSERT INTO JJRD.USUARIOS (NOMBRE, CONTRASEÑA, HABILITADO, TIPO_DE_USUARIO) values ('', '', 1, )";
+                        string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('', '', 1, 0, 'C' )";
                         qry.pComando = sql;
                         qry.Ejecutar();
 
 
-                        string sql = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, TIPO_DOC, NUMERO_DOC, EMAIL) values (1, '" + txtNombre.Text + "', '" + txtApellido.Text + "', falta tipo Doc,' + txt.Docu   )";
-                        qry.pComando = sql;
+                        string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO,NOMBRE, APELLIDO, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL, TELEFONO) values (SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME = '"+ bnMail.Text +"', '" + txtNombre.Text + "', '" + txtApellido.Text + "','" + txtDocumento.Text +"' , '" + bnMail.Text + "', '" + txtDireccion.Text + "', ' + txtNro_Calle +', ' + txtPiso.Text + ', '" + txtDpto.Text + "', '" + txtLocalidad.Text+"', ' + txtCod_Postal.Text + ', ' + txtTelefono.Text +')";
+                        qry.pComando = sql2;
                         qry.Ejecutar();
                         
                     
@@ -89,12 +93,18 @@ namespace FrbaCommerce
 
         private void bnLimpiar_Click(object sender, EventArgs e)
         {
-            bnNombre.Text = "";
+            txtNombre.Text = "";
             txtApellido.Text = "";
             cmbTipoDoc.Text = "";
             txtDocumento.Text = "";
             txtTelefono.Text = "";
             bnMail.Text = "";
+            txtDireccion.Text= "";
+            txtNro_Calle.Text = "";
+            txtPiso.Text ="";
+            txtDepto.Text = "";
+            txtLocalidad.Text = "";
+            txtCod_Postal.Text = "";
             bnFecha.Text = null;
         }
 

@@ -18,35 +18,35 @@ namespace FrbaCommerce
 
         private void bnEliminar_Click(object sender, EventArgs e)
         {
-            string idPaciente = txtNroCliente.Text.ToString(); ;
+            string idCliente = txtNroCliente.Text.ToString(); ;
 
-            if ((int)new Query("SELECT COUNT(1) FROM PIER.PACIENTES WHERE HABILITADO = 1 AND Paciente_Cod = "
-                                + idPaciente).ObtenerUnicoCampo() == 1)
+            if ((int)new Query("SELECT COUNT(1) FROM PIER.ClienteS WHERE HABILITADO = 1 AND Cliente_Cod = "
+                                + idCliente).ObtenerUnicoCampo() == 1)
             {
                 try
                 {
-                    string qry = "update PIER.PACIENTES SET HABILITADO = 0  WHERE Paciente_Cod = " + idPaciente;
+                    string qry = "update PIER.ClienteS SET HABILITADO = 0  WHERE Cliente_Cod = " + idCliente;
                     new Query(qry).Ejecutar();
                 }
                 catch
                 {
-                    MessageBox.Show("Error al updetear tabla PIER.PACIENTES.", "Error", MessageBoxButtons.OK,
+                    MessageBox.Show("Error al updetear tabla PIER.ClienteS.", "Error", MessageBoxButtons.OK,
                                        MessageBoxIcon.Warning);
                 }
 
                 try
                 {
-                    string qry = "DELETE FROM PIER.TURNOS WHERE Paciente_Cod = " + idPaciente;
+                    string qry = "DELETE FROM PIER.TURNOS WHERE Cliente_Cod = " + idCliente;
                     new Query(qry).Ejecutar();
 
-                    MessageBox.Show("Paciente eliminado correctamente", "Información", MessageBoxButtons.OK,
+                    MessageBox.Show("Cliente eliminado correctamente", "Información", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                     this.Visible = false;
 
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Paciente eliminado correctamente", "Información", MessageBoxButtons.OK,
+                    MessageBox.Show("Cliente eliminado correctamente", "Información", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                     this.Visible = false;
                 }
