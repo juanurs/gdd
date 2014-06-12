@@ -59,11 +59,11 @@ namespace FrbaCommerce
 
         private class DatosCliente
         {
-            public int Paciente_Cod { get; set; }
-            public string Paciente_Nombre { get; set; }
-            public string Paciente_Apellido { get; set; }
-            public string Paciente_tipoDoc { get; set; }
-            public int Paciente_doc { get; set; }
+            public int Cliente_Cod { get; set; }
+            public string Cliente_Nombre { get; set; }
+            public string Cliente_Apellido { get; set; }
+            public string Cliente_tipoDoc { get; set; }
+            public int Cliente_doc { get; set; }
         }
 
         private void CargarConsultaEnCheckList(string sql)
@@ -73,11 +73,11 @@ namespace FrbaCommerce
             List<DatosCliente> datos = (from x in qry.ObtenerDataTable().AsEnumerable()
                                           select new DatosCliente
                                           {
-                                              Paciente_Cod = Convert.ToInt32(x["Paciente_Cod"]),
-                                              Paciente_Nombre = x["Paciente_Nombre"].ToString(),
-                                              Paciente_Apellido = x["Paciente_Apellido"].ToString(),
-                                              Paciente_tipoDoc = x["Paciente_tipoDoc"].ToString(),
-                                              Paciente_doc = Convert.ToInt32(x["Paciente_doc"]),
+                                              Cliente_Cod = Convert.ToInt32(x["Cliente_Cod"]),
+                                              Cliente_Nombre = x["Cliente_Nombre"].ToString(),
+                                              Cliente_Apellido = x["Cliente_Apellido"].ToString(),
+                                              Cliente_tipoDoc = x["Cliente_tipoDoc"].ToString(),
+                                              Cliente_doc = Convert.ToInt32(x["Cliente_doc"]),
                                           }).ToList();
 
             if (datos.Count() != 0)
@@ -93,21 +93,21 @@ namespace FrbaCommerce
 
         private void bnBuscar_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT Paciente_Cod, Paciente_Nombre, Paciente_Apellido, Paciente_tipoDoc, Paciente_doc FROM PIER.PACIENTES WHERE 1=1 ";
+            string sql = "SELECT Cliente_Cod, Cliente_Nombre, Cliente_Apellido, Cliente_tipoDoc, Cliente_doc FROM PIER.ClienteS WHERE 1=1 ";
 
             if (filtroNombre.Text != "")
             {
-                sql = sql + "AND Paciente_Nombre LIKE '%" + filtroNombre.Text + "%' ";
+                sql = sql + "AND Cliente_Nombre LIKE '%" + filtroNombre.Text + "%' ";
             }
 
             if (filtroApellido.Text != "")
             {
-                sql = sql + "AND Paciente_Apellido LIKE '%" + filtroApellido.Text + "%' ";
+                sql = sql + "AND Cliente_Apellido LIKE '%" + filtroApellido.Text + "%' ";
             }
 
             if (filtroDocumento.Text != "")
             {
-                sql = sql + "AND Paciente_doc = '" + filtroDocumento.Text + "'";
+                sql = sql + "AND Cliente_doc = '" + filtroDocumento.Text + "'";
             }
 
                 CargarConsultaEnCheckList(sql);

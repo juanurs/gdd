@@ -14,11 +14,11 @@ namespace FrbaCommerce
     {
         public string codigo;
 
-        public FrmbnCliente_Selec(string Paciente_Cod, string Paciente_Nombre, string Paciente_Apellido)
+        public FrmbnCliente_Selec(string Cliente_Cod, string Cliente_Nombre, string Cliente_Apellido)
         {
             InitializeComponent();
-            label1.Text = Paciente_Nombre + " " + Paciente_Apellido;
-            cargarDatosPaciente(Paciente_Cod);
+            label1.Text = Cliente_Nombre + " " + Cliente_Apellido;
+            cargarDatosCliente(Cliente_Cod);
         }
 
         private void FrmbnCliente_Selec_Load(object sender, EventArgs e)
@@ -31,23 +31,23 @@ namespace FrbaCommerce
 
         }
 
-        private void cargarDatosPaciente(string codigo)
+        private void cargarDatosCliente(string codigo)
         {
             tId.Text = codigo;
 
-            string Paciente_Direccion = "select Paciente_Direccion from PIER.PACIENTES where Paciente_Cod =" + codigo;
-            Query qry = new Query(Paciente_Direccion);
-            qry.pComando = Paciente_Direccion;
+            string Cliente_Direccion = "select Cliente_Direccion from PIER.ClienteS where Cliente_Cod =" + codigo;
+            Query qry = new Query(Cliente_Direccion);
+            qry.pComando = Cliente_Direccion;
             tDireccion.Text = qry.ObtenerUnicoCampo().ToString();
 
-            string Paciente_Telefono = "select Paciente_Telefono from PIER.PACIENTES where Paciente_Cod =" + codigo;
-            Query qry2 = new Query(Paciente_Telefono);
-            qry2.pComando = Paciente_Telefono;
+            string Cliente_Telefono = "select Cliente_Telefono from PIER.ClienteS where Cliente_Cod =" + codigo;
+            Query qry2 = new Query(Cliente_Telefono);
+            qry2.pComando = Cliente_Telefono;
             txtTelefono.Text = qry2.ObtenerUnicoCampo().ToString();
 
-            string Paciente_Mail = "select Paciente_Mail from PIER.PACIENTES where Paciente_Cod =" + codigo;
-            Query qry3 = new Query(Paciente_Mail);
-            qry3.pComando = Paciente_Mail;
+            string Cliente_Mail = "select Cliente_Mail from PIER.ClienteS where Cliente_Cod =" + codigo;
+            Query qry3 = new Query(Cliente_Mail);
+            qry3.pComando = Cliente_Mail;
             tMail.Text = qry3.ObtenerUnicoCampo().ToString();
 
             LlenarComboPlan(codigo);
@@ -65,16 +65,16 @@ namespace FrbaCommerce
             cPlan.DataSource = ds.Tables[0].DefaultView;
             cPlan.ValueMember = "Plan_Med_Descripcion";
 
-            string Paciente_Plan = "select Plan_Med_Codigo from PIER.PACIENTES where Paciente_Cod =" + codigo;
-            Query qry = new Query(Paciente_Plan);
-            qry.pComando = Paciente_Plan;
+            string Cliente_Plan = "select Plan_Med_Codigo from PIER.ClienteS where Cliente_Cod =" + codigo;
+            Query qry = new Query(Cliente_Plan);
+            qry.pComando = Cliente_Plan;
             int plan = Convert.ToInt32(qry.ObtenerUnicoCampo());
             cPlan.SelectedIndex = plan - 555555;
         }
 
         private void bnGuardar_Click(object sender, EventArgs e)
         {
-            string UpdPac = "PIER.UpdatePaciente";
+            string UpdPac = "PIER.UpdateCliente";
 
             int IdPlan = (int)new Query("select Plan_Med_Codigo from PIER.PLANES where Plan_Med_Descripcion = '" + cPlan.Text + "'").ObtenerUnicoCampo();
 

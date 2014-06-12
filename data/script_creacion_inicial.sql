@@ -56,7 +56,6 @@ BEGIN
 		HABILITADO BIT NOT NULL,
 		LOGIN_FALLIDOS NUMERIC (1,0) NOT NULL, 
 		TIPO_DE_USUARIO CHAR NOT NULL,
---		TELEFONO NUMERIC (18,0) , --VER: NOT NULL UNIQUE, SAQUE LOS CONSTRAINTS PORQUE LA TABLA MAESTRA NO TIENE ESTE DATO Y NO PUEDO INSERTAR NULL
 		FECHA_NACIMIENTO DATETIME,
 		NUMERO_VENTA INT,
 		PUBLICACIONES_GRATIS NUMERIC(1,0),
@@ -66,16 +65,16 @@ BEGIN
 	PRINT 'SE CREO TABLA USUARIOS CORRECTAMENTE'
 
 	/* MIGRACION TABLA USUARIOS (TIPO CLIENTE) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
-insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, TELEFONO, FECHA_NACIMIENTO)
-	select distinct Cli_Mail, Cli_Nombre, 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'C' as TIPO_DE_USUARIO, -1 as TELEFONO, Cli_Fecha_Nac
+insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, FECHA_NACIMIENTO)
+	select distinct Cli_Mail, Cli_Nombre, 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'C' as TIPO_DE_USUARIO, Cli_Fecha_Nac
 	from gd_esquema.Maestra
 	where Cli_Mail is not null
 	
 	
 	
 /* MIGRACION TABLA USUARIOS (TIPO EMPRESA) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
-insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, TELEFONO, FECHA_NACIMIENTO)
-	select distinct Publ_Empresa_Razon_Social, Publ_Empresa_Cuit , 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'E' as TIPO_DE_USUARIO, -1 as TELEFONO, Publ_Empresa_Fecha_Creacion
+insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, FECHA_NACIMIENTO)
+	select distinct Publ_Empresa_Razon_Social, Publ_Empresa_Cuit , 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'E' as TIPO_DE_USUARIO,  Publ_Empresa_Fecha_Creacion
 	from gd_esquema.Maestra
 	where Publ_Empresa_Razon_Social is not null
 				
@@ -205,7 +204,7 @@ BEGIN
 		COD_POSTAL NVARCHAR(50),
 		TELEFONO NUMERIC (18,0)
 	)
-	
+
 	PRINT 'SE CREO TABLA CLIENTE CORRECTAMENTE'
 		
 	
@@ -522,13 +521,6 @@ substring(@alphabet, convert(int, rand()*52), 1);
 END
 GO
 
-select * from JJRD.FACTURAS
-
-select distinct Factura_Nro, Publicacion_Precio, Item_Factura_Monto, Factura_Total
-from gd_esquema.Maestra
-where Item_Factura_Monto = 0
-and Publicacion_Precio <> 0
-order by Factura_Nro
 
 
 CREATE PROCEDURE JJRD.BORRAR_TODO --BORRA TODO DENTRO DEL ESQUEMA JJRD
@@ -586,6 +578,7 @@ EXEC (@tblSQL)
 end
 GO
 
+<<<<<<< HEAD
 select * from JJRD.USUARIOS 
 
 select * from JJRD.ROLES
@@ -626,3 +619,7 @@ SELECT ID_ROL FROM JJRD.ROLES   WHERE ROL_NOMBRE = 'EMPRESA'
 
 jalif_Benítez@gmail.com
 urbano_Tapia@gmail.com
+=======
+
+
+>>>>>>> a9cf03ffc6c1de1ea4ef96ccc2b66fc3f73ff24a

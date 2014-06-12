@@ -60,7 +60,7 @@
             this.filtroDocumento.Name = "filtroDocumento";
             this.filtroDocumento.Size = new System.Drawing.Size(117, 20);
             this.filtroDocumento.TabIndex = 6;
-            this.filtroDocumento.TextChanged += new System.EventHandler(this.docPaciente_TextChanged);
+            this.filtroDocumento.TextChanged += new System.EventHandler(this.docCliente_TextChanged);
             this.filtroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filtroDocumento_KeyPress);
             // 
             // label2
