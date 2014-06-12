@@ -586,3 +586,43 @@ EXEC (@tblSQL)
 end
 GO
 
+select * from JJRD.USUARIOS 
+
+select * from JJRD.ROLES
+
+select * from JJRD.ROL_USUARIO
+//PARA PROBAR
+insert JJRD.ROL_USUARIO values (1,1)
+insert JJRD.ROL_USUARIO values (2,2)
+insert JJRD.ROL_USUARIO values (3,3)
+insert JJRD.ROL_USUARIO values (2,1)
+insert JJRD.ROL_USUARIO values (3,1)
+insert JJRD.ROL_USUARIO values (3,2)
+insert JJRD.ROL_USUARIO values (1,5)
+insert JJRD.ROL_USUARIO values (1,7)
+
+
+
+SELECT distinct(Nombre) from JJRD.USUARIOS U, JJRD.ROL_USUARIO ur
+                                                   INNER JOIN JJRD.ROLES R ON R.ID_ROL = ur.ID_ROL 
+                                                   WHERE U.HABILITADO = '1' and U.ID_USUARIO = 1
+                                                   AND R.ROL_ESTADO = '1'
+                                                   
+                                                   
+SELECT ID_ROL FROM JJRD.ROL_USUARIO  WHERE ID_USUARIO = 1
+
+select COUNT(*) from JJRD.USUARIOS where NOMBRE = 'fantino_Paz@gmail.com'
+
+select COUNT(*) from JJRD.ROL_USUARIO where ID_USUARIO = 1
+
+update JJRD.USUARIOS set LOGIN_FALLIDOS = 0 where id_Usuario = 3
+update JJRD.USUARIOS set LOGIN_FALLIDOS = 0 where id_Usuario = 3
+update JJRD.USUARIOS set HABILITADO = 1 where id_Usuario = 3
+
+SELECT r.ROL_NOMBRE rol,  r.ID_ROL rol from JJRD.ROLES r, JJRD.ROL_USUARIO ur where ur.ID_ROL = r.ID_ROL and ur.ID_USUARIO = 1
+
+
+SELECT ID_ROL FROM JJRD.ROLES   WHERE ROL_NOMBRE = 'EMPRESA'
+
+jalif_Benítez@gmail.com
+urbano_Tapia@gmail.com

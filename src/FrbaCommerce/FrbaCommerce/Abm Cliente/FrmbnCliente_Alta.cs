@@ -30,7 +30,7 @@ namespace FrbaCommerce
             conexion.ConnectionString = Settings.Default.CadenaDeConexion;
 
             if ((bnNombre.Text.Trim() != "") &&
-                (bnApellido.Text.Trim() != "") &&
+                (txtApellido.Text.Trim() != "") &&
                 // (cmbTipoDoc.Text.Trim() != "") &&
                 (txtDocumento.Text.Trim() != "") &&
                 (txtTelefono.Text.Trim() != "")) 
@@ -63,10 +63,10 @@ namespace FrbaCommerce
                         qry.pComando = sql;
                         qry.Ejecutar();
 
-
-                        string sql = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, TIPO_DOC, NUMERO_DOC, EMAIL) values (1, '" + txtNombre.Text + "', '" + txtApellido.Text + "', falta tipo Doc,' + txt.Docu   )";
-                        qry.pComando = sql;
-                        qry.Ejecutar();
+                     // PONGO COMENTARIO PARA PODER COMPILAR SOLAMENTE   
+                     //   string sql = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, TIPO_DOC, NUMERO_DOC, EMAIL) values (1, '" + txtNombre.Text + "', '" + txtApellido.Text + "', falta tipo Doc,' + txt.Docu   )";
+                     //   qry.pComando = sql;
+                     //   qry.Ejecutar();
                         
                     
                     }
