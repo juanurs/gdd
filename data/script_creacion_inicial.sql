@@ -619,7 +619,4 @@ SELECT ID_ROL FROM JJRD.ROLES   WHERE ROL_NOMBRE = 'EMPRESA'
 
 jalif_Benítez@gmail.com
 urbano_Tapia@gmail.com
-=======
 
-
->>>>>>> a9cf03ffc6c1de1ea4ef96ccc2b66fc3f73ff24a

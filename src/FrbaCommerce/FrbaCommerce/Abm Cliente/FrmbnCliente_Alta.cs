@@ -29,11 +29,9 @@ namespace FrbaCommerce
         {
             conexion.ConnectionString = Settings.Default.CadenaDeConexion;
 
-<<<<<<< HEAD
-            if ((bnNombre.Text.Trim() != "") &&
-=======
+
             if ((txtNombre.Text.Trim() != "") &&
->>>>>>> a9cf03ffc6c1de1ea4ef96ccc2b66fc3f73ff24a
+
                 (txtApellido.Text.Trim() != "") &&
                 // (cmbTipoDoc.Text.Trim() != "") &&
                 (txtDocumento.Text.Trim() != "") &&
@@ -71,17 +69,17 @@ namespace FrbaCommerce
                         qry.pComando = sql;
                         qry.Ejecutar();
 
-<<<<<<< HEAD
+
                      // PONGO COMENTARIO PARA PODER COMPILAR SOLAMENTE   
                      //   string sql = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, TIPO_DOC, NUMERO_DOC, EMAIL) values (1, '" + txtNombre.Text + "', '" + txtApellido.Text + "', falta tipo Doc,' + txt.Docu   )";
                      //   qry.pComando = sql;
                      //   qry.Ejecutar();
-=======
+
 
                         string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO,NOMBRE, APELLIDO, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL, TELEFONO) values (SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME = '"+ bnMail.Text +"', '" + txtNombre.Text + "', '" + txtApellido.Text + "','" + txtDocumento.Text +"' , '" + bnMail.Text + "', '" + txtDireccion.Text + "', ' + txtNro_Calle +', ' + txtPiso.Text + ', '" + txtDpto.Text + "', '" + txtLocalidad.Text+"', ' + txtCod_Postal.Text + ', ' + txtTelefono.Text +')";
                         qry.pComando = sql2;
                         qry.Ejecutar();
->>>>>>> a9cf03ffc6c1de1ea4ef96ccc2b66fc3f73ff24a
+
                         
                     
                     }
