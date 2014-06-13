@@ -188,14 +188,6 @@ namespace FrbaCommerce.Login
         public void recibirUsuario(string nombreUsuario, int idRol, int idUsuario)
         {
 
-        /*    Query qr = new Query("SELECT distinct(Nombre) from JJRD.USUARIOS U, JJRD.ROL_USUARIO ur " +
-                                            " INNER JOIN JJRD.ROLES R ON R.ID_ROL = ur.ID_ROL " +
-                                            " WHERE U.HABILITADO = '1' and U.ID_USUARIO = " + idUsuario +
-                                            " AND R.ROL_ESTADO = '1'");
-
-            qr.pTipoComando = CommandType.Text;
-            nombreUsuario = qr.ObtenerUnicoCampo().ToString();
-        */
             MessageBox.Show("Bienvenido a Commerce" + Environment.NewLine +
             "Usted se ha registrado como usuario: " + nombreUsuario.ToUpper(), "Bienvenido!",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -203,10 +195,15 @@ namespace FrbaCommerce.Login
             frmPrincipal frmPrincipal = new frmPrincipal();
             frmPrincipal.cargarFrmPrincipal(nombreUsuario, idRol, idUsuario);
             frmPrincipal.ShowDialog();
-
-            
-            
                            
+        }
+
+        private void lnkRegistrarse_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmRegistrarUsuario registrarUsr = new FrmRegistrarUsuario();
+            this.Hide();
+            registrarUsr.ShowDialog();
+            registrarUsr = (FrmRegistrarUsuario)this.ActiveMdiChild;
         }
     }
 }

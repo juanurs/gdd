@@ -34,23 +34,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblUsuarioLogueado = new System.Windows.Forms.Label();
             this.lblPerfil = new System.Windows.Forms.Label();
+            this.btnClientes = new System.Windows.Forms.Button();
+            this.btnEmpresa = new System.Windows.Forms.Button();
+            this.btnRubro = new System.Windows.Forms.Button();
+            this.btnVisibilidad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRoles
             // 
-            this.btnRoles.Location = new System.Drawing.Point(140, 262);
+            this.btnRoles.Location = new System.Drawing.Point(12, 194);
             this.btnRoles.Name = "btnRoles";
-            this.btnRoles.Size = new System.Drawing.Size(80, 25);
+            this.btnRoles.Size = new System.Drawing.Size(91, 25);
             this.btnRoles.TabIndex = 0;
-            this.btnRoles.Text = "Roles";
+            this.btnRoles.Text = "ABM Rol";
             this.btnRoles.UseVisualStyleBackColor = true;
             this.btnRoles.Click += new System.EventHandler(this.btnRoles_Click);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(140, 138);
+            this.btnLogin.Location = new System.Drawing.Point(133, 181);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(80, 22);
+            this.btnLogin.Size = new System.Drawing.Size(91, 22);
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Iniciar Sesión";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -58,9 +62,9 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(140, 293);
+            this.btnSalir.Location = new System.Drawing.Point(133, 317);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(80, 25);
+            this.btnSalir.Size = new System.Drawing.Size(91, 25);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -95,11 +99,51 @@
             this.lblPerfil.TabIndex = 5;
             this.lblPerfil.Text = "Perfil :";
             // 
+            // btnClientes
+            // 
+            this.btnClientes.Location = new System.Drawing.Point(12, 132);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(91, 25);
+            this.btnClientes.TabIndex = 6;
+            this.btnClientes.Text = "ABM Clientes";
+            this.btnClientes.UseVisualStyleBackColor = true;
+            // 
+            // btnEmpresa
+            // 
+            this.btnEmpresa.Location = new System.Drawing.Point(12, 163);
+            this.btnEmpresa.Name = "btnEmpresa";
+            this.btnEmpresa.Size = new System.Drawing.Size(91, 25);
+            this.btnEmpresa.TabIndex = 7;
+            this.btnEmpresa.Text = "ABM Empresa";
+            this.btnEmpresa.UseVisualStyleBackColor = true;
+            // 
+            // btnRubro
+            // 
+            this.btnRubro.Location = new System.Drawing.Point(12, 225);
+            this.btnRubro.Name = "btnRubro";
+            this.btnRubro.Size = new System.Drawing.Size(91, 23);
+            this.btnRubro.TabIndex = 8;
+            this.btnRubro.Text = "ABM Rubro";
+            this.btnRubro.UseVisualStyleBackColor = true;
+            // 
+            // btnVisibilidad
+            // 
+            this.btnVisibilidad.Location = new System.Drawing.Point(12, 254);
+            this.btnVisibilidad.Name = "btnVisibilidad";
+            this.btnVisibilidad.Size = new System.Drawing.Size(91, 23);
+            this.btnVisibilidad.TabIndex = 9;
+            this.btnVisibilidad.Text = "ABM Visibilidad";
+            this.btnVisibilidad.UseVisualStyleBackColor = true;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(346, 354);
+            this.Controls.Add(this.btnVisibilidad);
+            this.Controls.Add(this.btnRubro);
+            this.Controls.Add(this.btnEmpresa);
+            this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.lblUsuarioLogueado);
             this.Controls.Add(this.label1);
@@ -121,6 +165,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblUsuarioLogueado;
         private System.Windows.Forms.Label lblPerfil;
+        private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.Button btnEmpresa;
+        private System.Windows.Forms.Button btnRubro;
+        private System.Windows.Forms.Button btnVisibilidad;
     }
 }
 

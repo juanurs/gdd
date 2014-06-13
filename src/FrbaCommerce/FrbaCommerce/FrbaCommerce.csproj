@@ -186,6 +186,12 @@
     <Compile Include="Listado Estadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\FrmRegistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FrmRegistrarUsuario.Designer.cs">
+      <DependentUpon>FrmRegistrarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\FrmRolesLogin.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxUsuario = new System.Windows.Forms.TextBox();
             this.txtBoxPasswd = new System.Windows.Forms.TextBox();
+            this.lnkRegistrarse = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btnIngresar
@@ -89,11 +90,23 @@
             this.txtBoxPasswd.Size = new System.Drawing.Size(100, 20);
             this.txtBoxPasswd.TabIndex = 5;
             // 
+            // lnkRegistrarse
+            // 
+            this.lnkRegistrarse.AutoSize = true;
+            this.lnkRegistrarse.Location = new System.Drawing.Point(193, 85);
+            this.lnkRegistrarse.Name = "lnkRegistrarse";
+            this.lnkRegistrarse.Size = new System.Drawing.Size(60, 13);
+            this.lnkRegistrarse.TabIndex = 6;
+            this.lnkRegistrarse.TabStop = true;
+            this.lnkRegistrarse.Text = "Registrarse";
+            this.lnkRegistrarse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRegistrarse_LinkClicked);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(282, 174);
+            this.Controls.Add(this.lnkRegistrarse);
             this.Controls.Add(this.txtBoxPasswd);
             this.Controls.Add(this.txtBoxUsuario);
             this.Controls.Add(this.label2);
@@ -116,5 +129,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxUsuario;
         private System.Windows.Forms.TextBox txtBoxPasswd;
+        private System.Windows.Forms.LinkLabel lnkRegistrarse;
     }
 }

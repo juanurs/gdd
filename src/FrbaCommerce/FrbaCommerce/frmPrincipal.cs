@@ -19,6 +19,14 @@ namespace FrbaCommerce
 
             lblUsuarioLogueado.Visible = false;
             lblPerfil.Visible = false;
+          
+           /* DESPUES TERMINO ESTA PARTE
+            btnRoles.Visible = false;
+            btnClientes.Visible = false;
+            btnEmpresa.Visible = false;
+            btnRubro.Visible = false;
+            btnVisibilidad.Visible = false;
+           */
 
         }
 
@@ -46,10 +54,6 @@ namespace FrbaCommerce
         public void cargarFrmPrincipal(string nombreUsuario, int idRol, int idUsuario)
         {
             //ACA ADENTRO CARGAR TODO PARA EL FRMPRINCIPAL
-            //Query qr = new Query("SELECT distinct(Nombre) from JJRD.USUARIOS U WHERE ID_USUARIO = " + idUsuario);
-
-            //qr.pTipoComando = CommandType.Text;
-            //string nombreUsuario = qr.ObtenerUnicoCampo().ToString();
 
             Query qr = new Query(" SELECT ROL_NOMBRE FROM JJRD.ROLES WHERE ID_ROL = " + idRol);
             qr.pTipoComando = CommandType.Text;
@@ -61,6 +65,8 @@ namespace FrbaCommerce
             lblUsuarioLogueado.Visible = true;
             lblUsuarioLogueado.ForeColor = System.Drawing.Color.Green;
             lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
+
+            btnLogin.Visible = false;
 
         }
 
