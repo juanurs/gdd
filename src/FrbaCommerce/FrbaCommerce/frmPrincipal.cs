@@ -15,6 +15,11 @@ namespace FrbaCommerce
         public frmPrincipal()
         {
             InitializeComponent();
+
+
+            lblUsuarioLogueado.Visible = false;
+            lblPerfil.Visible = false;
+
         }
 
         private void btnRoles_Click(object sender, EventArgs e)
@@ -50,11 +55,16 @@ namespace FrbaCommerce
             qr.pTipoComando = CommandType.Text;
             string nombreRol = qr.ObtenerUnicoCampo().ToString();
 
+            
+            lblPerfil.Visible = true;
             lblUsuarioLogueado.Text = " Usuario Conectado : " + nombreUsuario.ToUpper();
+            lblUsuarioLogueado.Visible = true;
             lblUsuarioLogueado.ForeColor = System.Drawing.Color.Green;
             lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
 
         }
+
+       
 
     }
 }

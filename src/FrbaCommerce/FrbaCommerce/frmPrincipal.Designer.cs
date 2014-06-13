@@ -38,7 +38,7 @@
             // 
             // btnRoles
             // 
-            this.btnRoles.Location = new System.Drawing.Point(91, 262);
+            this.btnRoles.Location = new System.Drawing.Point(140, 262);
             this.btnRoles.Name = "btnRoles";
             this.btnRoles.Size = new System.Drawing.Size(80, 25);
             this.btnRoles.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(91, 139);
+            this.btnLogin.Location = new System.Drawing.Point(140, 138);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(80, 22);
             this.btnLogin.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(91, 293);
+            this.btnSalir.Location = new System.Drawing.Point(140, 293);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(80, 25);
             this.btnSalir.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Mistral", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Location = new System.Drawing.Point(48, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(252, 65);
             this.label1.TabIndex = 3;
@@ -99,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(277, 333);
+            this.ClientSize = new System.Drawing.Size(346, 354);
             this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.lblUsuarioLogueado);
             this.Controls.Add(this.label1);
