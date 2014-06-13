@@ -62,15 +62,18 @@ namespace FrbaCommerce
         {
             //SETEO IDROL POR LAS DUDAS, VER SI SE NECESITA PARA DESPUES
             int idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROLES  " +
-                                   " WHERE ROL_NOMBRE = '" + comboBox.SelectedItem.ToString() + "'").ObtenerUnicoCampo();                        
+                                   " WHERE ROL_NOMBRE = '" + comboBox.SelectedItem.ToString() + "'").ObtenerUnicoCampo();
+            Query qr = new Query("SELECT distinct(Nombre) from JJRD.USUARIOS U WHERE ID_USUARIO = " + idUsuario);
 
-            
-            FrmLogin login = new FrmLogin();
-            login.recibirUsuario(idUsuario);
+            qr.pTipoComando = CommandType.Text;
+            string nombreUsuario = qr.ObtenerUnicoCampo().ToString();
 
             this.Visible = false;
-            frmPrincipal frmPrincipal = new frmPrincipal();
-            frmPrincipal.ShowDialog();
+            FrmLogin login = new FrmLogin();
+            login.recibirUsuario(nombreUsuario, idRol, idUsuario);
+
+            
+           
 
         }
 

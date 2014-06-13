@@ -103,12 +103,10 @@ namespace FrbaCommerce.Login
                     case 1: //SETEO IDROL POR LAS DUDAS, VER SI SE NECESITA PARA DESPUES
                             idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO  " +
                                           " WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
-                        
-                            recibirUsuario(idUsuario);
-                           
+
                             this.Visible = false;
-                            frmPrincipal frmPrincipal = new frmPrincipal();
-                            frmPrincipal.ShowDialog();
+                            recibirUsuario(txtBoxUsuario.Text, idRol, idUsuario);
+                           
 
                             break;
 
@@ -156,7 +154,7 @@ namespace FrbaCommerce.Login
         private void inhabilitarUsuario()
         {
             new Query("UPDATE JJRD.USUARIOS SET HABILITADO = '0' WHERE ID_USUARIO = " + idUsuario).Ejecutar();
-            //cuando se vuelve a habilitar el usuario se resetea el campo FAIL_LOGIN a 0
+            //TODO - cuando se vuelve a habilitar el usuario se resetea el campo FAIL_LOGIN a 0
             MessageBox.Show("Se ha inhabilitado el usuario.", "Advertencia",
                          MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -187,20 +185,24 @@ namespace FrbaCommerce.Login
             return false;
         }
 
-        public void recibirUsuario(int idUsuario)
+        public void recibirUsuario(string nombreUsuario, int idRol, int idUsuario)
         {
 
-            Query qr = new Query("SELECT distinct(Nombre) from JJRD.USUARIOS U, JJRD.ROL_USUARIO ur " +
+        /*    Query qr = new Query("SELECT distinct(Nombre) from JJRD.USUARIOS U, JJRD.ROL_USUARIO ur " +
                                             " INNER JOIN JJRD.ROLES R ON R.ID_ROL = ur.ID_ROL " +
                                             " WHERE U.HABILITADO = '1' and U.ID_USUARIO = " + idUsuario +
                                             " AND R.ROL_ESTADO = '1'");
 
             qr.pTipoComando = CommandType.Text;
             nombreUsuario = qr.ObtenerUnicoCampo().ToString();
-
+        */
             MessageBox.Show("Bienvenido a Commerce" + Environment.NewLine +
             "Usted se ha registrado como usuario: " + nombreUsuario.ToUpper(), "Bienvenido!",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            frmPrincipal frmPrincipal = new frmPrincipal();
+            frmPrincipal.cargarFrmPrincipal(nombreUsuario, idRol, idUsuario);
+            frmPrincipal.ShowDialog();
 
             
             

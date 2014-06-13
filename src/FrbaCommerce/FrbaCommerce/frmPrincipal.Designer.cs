@@ -31,11 +31,14 @@
             this.btnRoles = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblUsuarioLogueado = new System.Windows.Forms.Label();
+            this.lblPerfil = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRoles
             // 
-            this.btnRoles.Location = new System.Drawing.Point(112, 31);
+            this.btnRoles.Location = new System.Drawing.Point(91, 262);
             this.btnRoles.Name = "btnRoles";
             this.btnRoles.Size = new System.Drawing.Size(80, 25);
             this.btnRoles.TabIndex = 0;
@@ -45,7 +48,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(112, 119);
+            this.btnLogin.Location = new System.Drawing.Point(91, 139);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(80, 22);
             this.btnLogin.TabIndex = 1;
@@ -55,7 +58,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(112, 188);
+            this.btnSalir.Location = new System.Drawing.Point(91, 293);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(80, 25);
             this.btnSalir.TabIndex = 2;
@@ -63,17 +66,50 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Mistral", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(252, 65);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "COMMERCE";
+            // 
+            // lblUsuarioLogueado
+            // 
+            this.lblUsuarioLogueado.AutoSize = true;
+            this.lblUsuarioLogueado.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblUsuarioLogueado.Location = new System.Drawing.Point(21, 74);
+            this.lblUsuarioLogueado.Name = "lblUsuarioLogueado";
+            this.lblUsuarioLogueado.Size = new System.Drawing.Size(100, 13);
+            this.lblUsuarioLogueado.TabIndex = 4;
+            this.lblUsuarioLogueado.Text = "Usuario Logueado :";
+            // 
+            // lblPerfil
+            // 
+            this.lblPerfil.AutoSize = true;
+            this.lblPerfil.Location = new System.Drawing.Point(21, 87);
+            this.lblPerfil.Name = "lblPerfil";
+            this.lblPerfil.Size = new System.Drawing.Size(36, 13);
+            this.lblPerfil.TabIndex = 5;
+            this.lblPerfil.Text = "Perfil :";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(277, 333);
+            this.Controls.Add(this.lblPerfil);
+            this.Controls.Add(this.lblUsuarioLogueado);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnRoles);
             this.Name = "frmPrincipal";
-            this.Text = "Form1";
+            this.Text = "Commerce";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,6 +118,9 @@
         private System.Windows.Forms.Button btnRoles;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblUsuarioLogueado;
+        private System.Windows.Forms.Label lblPerfil;
     }
 }
 
