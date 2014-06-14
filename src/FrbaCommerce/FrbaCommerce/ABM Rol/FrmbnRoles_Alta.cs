@@ -92,8 +92,7 @@ namespace FrbaCommerce
                         qry2.Ejecutar();
                     }
 
-                    MessageBox.Show("Rol dado de alta exitosamente!"
-                 , "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Rol dado de alta exitosamente!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Visible = false;
                 }
             }

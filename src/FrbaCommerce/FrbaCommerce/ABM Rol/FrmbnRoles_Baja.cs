@@ -32,8 +32,13 @@ namespace FrbaCommerce
                             " where ROL_NOMBRE = '" + detalle + "'";
             new Query(qry).Ejecutar();
 
-            // se dispara el trigger para sacar el rol a los usuarios
-            // JJRD.
+            // se deshabilita el rol de los usuarios que tenian asignado el mismo
+            string bajaRol = "   update ru " +
+                             "   set ru.Habilitado = 0" +
+                             "   from JJRD.ROL_USUARIO ru, JJRD.ROLES r" +
+                             "   where r.ID_ROL = ru.ID_ROL" +
+                             "   and r.ROL_NOMBRE = '" + detalle + "'";
+            new Query(bajaRol).Ejecutar();
 
             MessageBox.Show("Rol inhabilitado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Visible = false;
