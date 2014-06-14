@@ -1,20 +1,4 @@
---=============================================================
---CREACION DEL ESQUEMA CON EL NOMBRE DEL GRUPO--
---=============================================================
-USE [GD1C2014]
-GO
-	
---CREATE SCHEMA [JJRD] AUTHORIZATION [GD]
---GO
-
---PRINT 'SE CREO EL ESQUEMA CORRECTAMENTE'
-
---============================================================
--- ===========================================================
---============================================================
---                EMPEZAMOS A CREAR LAS TABLAS
--- =========================================================== 
--- ===========================================================
+--- ===========================================================
 -- ===========================================================
 
 CREATE PROCEDURE JJRD.CREAR_ROLES
@@ -37,8 +21,7 @@ BEGIN
 	INSERT INTO JJRD.ROLES VALUES ('ADMINISTRADOR',1)	
 	INSERT INTO JJRD.ROLES VALUES ('EMPRESA',1)	
 	INSERT INTO JJRD.ROLES VALUES ('CLIENTE',1)	
-	
-	
+
 END
 GO
 
@@ -65,7 +48,7 @@ BEGIN
 	PRINT 'SE CREO TABLA USUARIOS CORRECTAMENTE'
 
 	/* MIGRACION TABLA USUARIOS (TIPO CLIENTE) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
-insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, FECHA_NACIMIENTO)
+	insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO, FECHA_NACIMIENTO)
 	select distinct Cli_Mail, Cli_Nombre, 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'C' as TIPO_DE_USUARIO, Cli_Fecha_Nac
 	from gd_esquema.Maestra
 	where Cli_Mail is not null
@@ -85,7 +68,8 @@ insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIP
 --============================================================
 	CREATE TABLE JJRD.ROL_USUARIO(
 		ID_ROL INT FOREIGN KEY REFERENCES JJRD.ROLES (ID_ROL),
-		ID_USUARIO INT FOREIGN KEY REFERENCES JJRD.USUARIOS (ID_USUARIO)
+		ID_USUARIO INT FOREIGN KEY REFERENCES JJRD.USUARIOS (ID_USUARIO),
+		HABILITADO BIT NOT NULL
 	)
 
 	PRINT 'SE CREO TABLA ROL_USUARIO CORRECTAMENTE'
@@ -109,12 +93,9 @@ BEGIN
 	
 	/*--Se insertan funcionalidades disponibles--*/
 	
-	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('LOGIN Y SEGURIDAD')
 	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('ABM ROL')
-	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('REGISTRO USUARIO')
 	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('ABM CLIENTE')
 	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('ABM EMPRESA')
-	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('ABM RUBRO')
 	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('ABM VISIBILIDAD')
 	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('GENERAR PUBLICACION')
 	INSERT INTO JJRD.FUNCIONALIDAD VALUES ('EDITAR PUBLICACION')
@@ -135,6 +116,30 @@ BEGIN
 		ID_FUNCIONALIDAD INT NOT NULL FOREIGN KEY REFERENCES JJRD.FUNCIONALIDAD(ID_FUNCIONALIDAD),
 		HABILITADO BIT
 	)
+
+	/* el administrador tiene acceso a todos las funcionalidades */
+	insert into JJRD.ROL_FUNCIONALIDAD (ID_ROL, ID_FUNCIONALIDAD, HABILITADO)
+	select r.ID_ROL , f.ID_FUNCIONALIDAD, 1
+	from JJRD.ROLES r
+	cross join JJRD.FUNCIONALIDAD f
+	where r.ROL_NOMBRE = 'ADMINISTRADOR'
+
+	/* funcionalidades de empresa*/
+	insert into JJRD.ROL_FUNCIONALIDAD (ID_ROL, ID_FUNCIONALIDAD, HABILITADO)
+	select r.ID_ROL , f.ID_FUNCIONALIDAD, 1
+	from JJRD.ROLES r
+	cross join JJRD.FUNCIONALIDAD f
+	where r.ROL_NOMBRE = 'EMPRESA'
+	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Historial de Cliente','Facurar Publicaciones')
+PRINT 'LLEGO'
+	
+	/* funcionalidades de empresa*/
+	insert into JJRD.ROL_FUNCIONALIDAD (ID_ROL, ID_FUNCIONALIDAD, HABILITADO)
+	select r.ID_ROL , f.ID_FUNCIONALIDAD, 1
+	from JJRD.ROLES r
+	cross join JJRD.FUNCIONALIDAD f
+	where r.ROL_NOMBRE = 'CLIENTE'
+	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Calificar al Vendedor')
 	
 	PRINT 'SE CREO TABLA ROL_FUNCIONALIDAD CORRECTAMENTE'
 END
@@ -175,7 +180,7 @@ INSERT INTO JJRD.EMPRESA (ID_USUARIO, CUIT, RAZON_SOCIAL, EMAIL, CALLE, NUM_CALL
 		join JJRD.USUARIOS as U
 		on U.USERNAME = M.Publ_Empresa_Razon_Social
 	WHERE Publ_Empresa_Razon_Social is not null
-	
+		
 	
 END
 GO
@@ -187,14 +192,23 @@ BEGIN
 --============================================================
 --TABLA CLIENTE
 --============================================================
+	create table JJRD.TIPO_DOCUMENTO (
+	id int primary key identity(1, 1),
+	descripcion varchar(15) not null
+	)
+
+	insert into JJRD.TIPO_DOCUMENTO (descripcion) values ('DNI')
+	insert into JJRD.TIPO_DOCUMENTO (descripcion) values ('LC')
+	insert into JJRD.TIPO_DOCUMENTO (descripcion) values ('LE')
+
 
 	CREATE TABLE JJRD.CLIENTE(
 		ID_CLIENTE INT PRIMARY KEY IDENTITY(1,1),
-		ID_USUARIO INT FOREIGN KEY REFERENCES JJRD.USUARIOS (ID_USUARIO),
+		ID_USUARIO INT FOREIGN KEY REFERENCES JJRD.USUARIOS (ID_USUARIO) NOT NULL,
 		NOMBRE NVARCHAR(255) NOT NULL,
 		APELLIDO NVARCHAR(255) NOT NULL,
-		TIPO_DOC CHAR(3) NOT NULL,
-		NUMERO_DOC NUMERIC(18,0) NOT NULL UNIQUE,
+		ID_TIPO_DOC INT FOREIGN KEY REFERENCES JJRD.TIPO_DOCUMENTO (ID) NOT NULL,
+		NUMERO_DOC NUMERIC(18,0) NOT NULL,
 		EMAIL NVARCHAR(255) NOT NULL UNIQUE,
 		CALLE NVARCHAR(255) NOT NULL,
 		NUM_CALLE NUMERIC(18,0) NOT NULL,
@@ -204,17 +218,28 @@ BEGIN
 		COD_POSTAL NVARCHAR(50),
 		TELEFONO NUMERIC (18,0)
 	)
+	
+	ALTER TABLE JJRD.CLIENTE 
+	ADD CONSTRAINT UNIQUE_DOC
+	UNIQUE (NUMERO_DOC, ID_TIPO_DOC)
 
 	PRINT 'SE CREO TABLA CLIENTE CORRECTAMENTE'
 		
 	
 	/* MIGRACION TABLA CLIENTES */
-	INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, COD_POSTAL)
-	SELECT DISTINCT U.ID_USUARIO, Cli_Nombre, Cli_Apeliido, 'DNI' as TIPO_DOC, Cli_Dni, Cli_Mail, Cli_Dom_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Depto, Cli_Cod_Postal
+	INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, COD_POSTAL)
+	SELECT DISTINCT U.ID_USUARIO, Cli_Nombre, Cli_Apeliido, 1, Cli_Dni, Cli_Mail, Cli_Dom_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Depto, Cli_Cod_Postal
 	FROM gd_esquema.Maestra as M
 	JOIN	JJRD.USUARIOS as U
 		on	U.USERNAME = M.Cli_Mail
 	WHERE Cli_Dni is not null
+	
+	/* migracion rol_usuario */
+	insert into JJRD.ROL_USUARIO (ID_ROL, ID_USUARIO, HABILITADO) 
+	select 3 as rolCliente, ID_USUARIO, 1 from JJRD.USUARIOS where TIPO_DE_USUARIO = 'C'
+	
+	insert into JJRD.ROL_USUARIO (ID_ROL, ID_USUARIO, HABILITADO) 
+	select 2 as rolEmpresa, ID_USUARIO, 1 from JJRD.USUARIOS where TIPO_DE_USUARIO = 'E'
 	
 END
 GO
@@ -577,7 +602,7 @@ EXEC (@tblSQL)
 
 end
 GO
-
+/*
 <<<<<<< HEAD
 select * from JJRD.USUARIOS 
 
@@ -616,7 +641,15 @@ SELECT r.ROL_NOMBRE rol,  r.ID_ROL rol from JJRD.ROLES r, JJRD.ROL_USUARIO ur wh
 
 
 SELECT ID_ROL FROM JJRD.ROLES   WHERE ROL_NOMBRE = 'EMPRESA'
+*/
 
-jalif_Benítez@gmail.com
-urbano_Tapia@gmail.com
 
+
+
+SELECT COUNT(1) FROM JJRD.CLIENTE where DNI = 35412121 AND ID_TIPO_DOC = 3
+
+
+SELECT * FROM JJRD.CLIENTE order by 1 desc
+
+
+SELECT COUNT(1) FROM JJRD.CLIENTE where NUMERO_DOC = 35412121 AND ID_TIPO_DOC = 1
