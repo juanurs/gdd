@@ -30,14 +30,14 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bnLimpiar = new System.Windows.Forms.Button();
             this.filtroNombre = new System.Windows.Forms.TextBox();
             this.filtroApellido = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bnBuscar = new System.Windows.Forms.Button();
             this.filtroDocumento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.bnLimpiar = new System.Windows.Forms.Button();
+            this.bnBuscar = new System.Windows.Forms.Button();
             this.dgvModificar = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModificar)).BeginInit();
@@ -67,16 +67,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de búsqueda";
             // 
-            // bnLimpiar
-            // 
-            this.bnLimpiar.Location = new System.Drawing.Point(12, 389);
-            this.bnLimpiar.Name = "bnLimpiar";
-            this.bnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.bnLimpiar.TabIndex = 16;
-            this.bnLimpiar.Text = "Limpiar";
-            this.bnLimpiar.UseVisualStyleBackColor = true;
-            this.bnLimpiar.Click += new System.EventHandler(this.bnLimpiar_Click);
-            // 
             // filtroNombre
             // 
             this.filtroNombre.Location = new System.Drawing.Point(142, 19);
@@ -98,19 +88,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Documento Cliente:";
-            // 
-            // bnBuscar
-            // 
-            this.bnBuscar.Location = new System.Drawing.Point(367, 120);
-            this.bnBuscar.Name = "bnBuscar";
-            this.bnBuscar.Size = new System.Drawing.Size(87, 29);
-            this.bnBuscar.TabIndex = 2;
-            this.bnBuscar.Text = "Buscar";
-            this.bnBuscar.UseVisualStyleBackColor = true;
-            this.bnBuscar.Click += new System.EventHandler(this.bnBuscar_Click);
             // 
             // filtroDocumento
             // 
@@ -125,7 +105,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "Nombre Cliente:";
             // 
@@ -134,9 +114,29 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 11;
             this.label4.Text = "Apellido Cliente:";
+            // 
+            // bnLimpiar
+            // 
+            this.bnLimpiar.Location = new System.Drawing.Point(12, 389);
+            this.bnLimpiar.Name = "bnLimpiar";
+            this.bnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.bnLimpiar.TabIndex = 16;
+            this.bnLimpiar.Text = "Limpiar";
+            this.bnLimpiar.UseVisualStyleBackColor = true;
+            this.bnLimpiar.Click += new System.EventHandler(this.bnLimpiar_Click);
+            // 
+            // bnBuscar
+            // 
+            this.bnBuscar.Location = new System.Drawing.Point(367, 120);
+            this.bnBuscar.Name = "bnBuscar";
+            this.bnBuscar.Size = new System.Drawing.Size(87, 29);
+            this.bnBuscar.TabIndex = 2;
+            this.bnBuscar.Text = "Buscar";
+            this.bnBuscar.UseVisualStyleBackColor = true;
+            this.bnBuscar.Click += new System.EventHandler(this.bnBuscar_Click);
             // 
             // dgvModificar
             // 
@@ -150,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(465, 424);
             this.Controls.Add(this.bnLimpiar);
             this.Controls.Add(this.dgvModificar);

@@ -140,6 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(346, 354);
             this.Controls.Add(this.btnVisibilidad);
             this.Controls.Add(this.btnRubro);
@@ -152,6 +153,7 @@
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnRoles);
             this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Commerce";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -132,9 +132,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(273, 166);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtBoxPasswdConf);
+=======
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(278, 161);
+>>>>>>> dbee06ba38048b40a705d8f9872bf5620105beb4
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.comboBox);
@@ -144,6 +149,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmRegistrarUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de usuario";
             this.ResumeLayout(false);
             this.PerformLayout();

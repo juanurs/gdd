@@ -153,7 +153,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(16, 52);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 18);
+            this.label5.Size = new System.Drawing.Size(94, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "N° de Cliente";
             // 
@@ -169,6 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(453, 286);
             this.Controls.Add(this.tId);
             this.Controls.Add(this.label5);
