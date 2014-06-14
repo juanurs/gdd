@@ -65,11 +65,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(276, 140);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.comboBox);
             this.Controls.Add(this.label1);
             this.Name = "FrmRolesLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmRolesLogin_Load);
             this.ResumeLayout(false);

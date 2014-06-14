@@ -96,6 +96,7 @@
             // FrmbnRoles_Alta
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(364, 254);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.bnGuardar);
