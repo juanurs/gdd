@@ -31,11 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxUsuario = new System.Windows.Forms.TextBox();
+            this.txtBoxPasswd = new System.Windows.Forms.TextBox();
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.txtBoxPasswdConf = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -59,30 +61,31 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 73);
+            this.label3.Location = new System.Drawing.Point(12, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Tipo de usuario :";
             // 
-            // textBox1
+            // txtBoxUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(124, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtBoxUsuario.Location = new System.Drawing.Point(124, 9);
+            this.txtBoxUsuario.Name = "txtBoxUsuario";
+            this.txtBoxUsuario.Size = new System.Drawing.Size(121, 20);
+            this.txtBoxUsuario.TabIndex = 3;
             // 
-            // textBox2
+            // txtBoxPasswd
             // 
-            this.textBox2.Location = new System.Drawing.Point(124, 37);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtBoxPasswd.Location = new System.Drawing.Point(124, 37);
+            this.txtBoxPasswd.Name = "txtBoxPasswd";
+            this.txtBoxPasswd.PasswordChar = '*';
+            this.txtBoxPasswd.Size = new System.Drawing.Size(121, 20);
+            this.txtBoxPasswd.TabIndex = 4;
             // 
             // comboBox
             // 
             this.comboBox.FormattingEnabled = true;
-            this.comboBox.Location = new System.Drawing.Point(124, 70);
+            this.comboBox.Location = new System.Drawing.Point(124, 89);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(121, 21);
             this.comboBox.TabIndex = 5;
@@ -90,7 +93,7 @@
             // 
             // btnSiguiente
             // 
-            this.btnSiguiente.Location = new System.Drawing.Point(170, 112);
+            this.btnSiguiente.Location = new System.Drawing.Point(170, 130);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
             this.btnSiguiente.TabIndex = 6;
@@ -100,7 +103,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(23, 112);
+            this.btnVolver.Location = new System.Drawing.Point(23, 130);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
             this.btnVolver.TabIndex = 7;
@@ -108,16 +111,35 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
+            // txtBoxPasswdConf
+            // 
+            this.txtBoxPasswdConf.Location = new System.Drawing.Point(124, 63);
+            this.txtBoxPasswdConf.Name = "txtBoxPasswdConf";
+            this.txtBoxPasswdConf.PasswordChar = '*';
+            this.txtBoxPasswdConf.Size = new System.Drawing.Size(121, 20);
+            this.txtBoxPasswdConf.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 66);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(113, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Confirmar contraseña :";
+            // 
             // FrmRegistrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 161);
+            this.ClientSize = new System.Drawing.Size(273, 166);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtBoxPasswdConf);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.comboBox);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxPasswd);
+            this.Controls.Add(this.txtBoxUsuario);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -133,10 +155,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBoxUsuario;
+        private System.Windows.Forms.TextBox txtBoxPasswd;
         private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.TextBox txtBoxPasswdConf;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -18,9 +18,11 @@ namespace FrbaCommerce.Login
 
             comboBox.Items.Add("Cliente");
             comboBox.Items.Add("Empresa");
+
+            
         }
 
-
+        FrmLogin funcionesLogin = new FrmLogin(); //para poder usar funciones ya definidas en FrmLogin
 
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -33,19 +35,71 @@ namespace FrbaCommerce.Login
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (comboBox.SelectedItem.ToString() == "Empresa")
+
+            if (!FaltanDatos())
             {
-                FrmbnCliente_Alta cliente = new FrmbnCliente_Alta();
-                this.Hide();
-                cliente.ShowDialog();
-                cliente = (FrmbnCliente_Alta)this.ActiveMdiChild;
+                if (funcionesLogin.ExisteUsuario(txtBoxUsuario.Text) && ContraseñasValidas()) //SI EL USUARIO NO EXISTE DEVUELVE TRUE
+                {
+                    MessageBox.Show("El usuario ingresado ya existe", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtBoxUsuario.Focus();
+
+                }
+                else
+                {
+                    
+                    if (comboBox.SelectedItem.ToString() == "Cliente")
+                    {
+                        FrmbnCliente_Alta cliente = new FrmbnCliente_Alta();
+                        this.Hide();
+                        cliente.ShowDialog();
+                        cliente = (FrmbnCliente_Alta)this.ActiveMdiChild;
+                    }
+                    else
+                    {
+                        //Alta de empresa
+                    }
+                }
+            }
+
+        }
+
+        private bool FaltanDatos()
+        {
+            if (txtBoxUsuario.Text.Length == 0)
+            {
+                MessageBox.Show("Ingrese el Usuario.", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtBoxUsuario.Focus();
+                return true;
+            }
+            if (txtBoxPasswd.Text.Length == 0)
+            {
+                MessageBox.Show("Ingrese la contraseña.", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtBoxPasswd.Focus();
+                return true;
+            }
+
+            if (txtBoxPasswdConf.Text.Length == 0)
+            {
+                MessageBox.Show("Confirme la contraseña.", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtBoxPasswdConf.Focus();
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool ContraseñasValidas()
+        {
+            if (txtBoxPasswd == txtBoxPasswdConf)
+            {
+                return true;
             }
             else
             {
-                //Alta de empresa
+                MessageBox.Show("Las contraseñas ingresadas no coinciden", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtBoxPasswd.Focus();
+                return false;
             }
-            
-
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

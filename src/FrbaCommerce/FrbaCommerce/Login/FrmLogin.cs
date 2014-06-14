@@ -42,7 +42,7 @@ namespace FrbaCommerce.Login
             if (!FaltanDatos())
             {
 
-                if (ExisteUsuario())
+                if (ExisteUsuario(txtBoxUsuario.Text))
                 {
                     idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
                     Query qr = new Query("SELECT LOGIN_FALLIDOS FROM JJRD.USUARIOS WHERE ID_USUARIO=" + idUsuario);
@@ -73,9 +73,9 @@ namespace FrbaCommerce.Login
         el usuario debe ser inhabilitado. Al realizar un Login satisfactorio, el sistema deberá
         limpiar la cantidad de intentos fallidos. */
 
-        private bool ExisteUsuario()
+        public bool ExisteUsuario(string usuario)
         {
-            return ((int)new Query("SELECT COUNT(1) FROM JJRD.USUARIOS WHERE USERNAME ='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo() != 0);
+            return ((int)new Query("SELECT COUNT(1) FROM JJRD.USUARIOS WHERE USERNAME ='" + usuario + "'").ObtenerUnicoCampo() == 1);
         }
 
         private bool puedeIngresarAlSistema()
