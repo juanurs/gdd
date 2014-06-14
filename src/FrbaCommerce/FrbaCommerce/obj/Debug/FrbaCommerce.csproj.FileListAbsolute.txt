@@ -52,3 +52,4 @@ C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\Fr
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.pdb
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmRolesLogin.resources
+C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Login.FrmRegistrarUsuario.resources
