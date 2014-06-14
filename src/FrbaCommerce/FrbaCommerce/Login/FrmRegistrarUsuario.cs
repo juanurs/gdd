@@ -38,7 +38,7 @@ namespace FrbaCommerce.Login
 
             if (!FaltanDatos())
             {
-                if (funcionesLogin.ExisteUsuario(txtBoxUsuario.Text) && ContraseñasValidas()) //SI EL USUARIO NO EXISTE DEVUELVE TRUE
+                if (funcionesLogin.ExisteUsuario(txtBoxUsuario.Text))
                 {
                     MessageBox.Show("El usuario ingresado ya existe", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtBoxUsuario.Focus();
@@ -46,17 +46,26 @@ namespace FrbaCommerce.Login
                 }
                 else
                 {
-                    
-                    if (comboBox.SelectedItem.ToString() == "Cliente")
+                    if (ContraseñasValidas())
                     {
-                        FrmbnCliente_Alta cliente = new FrmbnCliente_Alta();
-                        this.Hide();
-                        cliente.ShowDialog();
-                        cliente = (FrmbnCliente_Alta)this.ActiveMdiChild;
+                        if (comboBox.SelectedItem.ToString() == "Cliente")
+                        {
+                            //FALTAN INSERTS
+
+                            FrmbnCliente_Alta cliente = new FrmbnCliente_Alta();
+                            this.Hide();
+                            cliente.ShowDialog();
+                            cliente = (FrmbnCliente_Alta)this.ActiveMdiChild;
+                        }
+                        else
+                        {
+                            //Alta de empresa
+                        }
                     }
                     else
                     {
-                        //Alta de empresa
+                        MessageBox.Show("Las contraseñas ingresadas no coinciden", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtBoxPasswd.Focus();
                     }
                 }
             }
@@ -90,16 +99,7 @@ namespace FrbaCommerce.Login
 
         private bool ContraseñasValidas()
         {
-            if (txtBoxPasswd == txtBoxPasswdConf)
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("Las contraseñas ingresadas no coinciden", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtBoxPasswd.Focus();
-                return false;
-            }
+            return (txtBoxPasswd.Text == txtBoxPasswdConf.Text);
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
