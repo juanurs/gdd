@@ -14,10 +14,25 @@ namespace FrbaCommerce
     {
 
         SqlConnection conexion = new SqlConnection();
-
+        
         public FrmbnCliente_Alta()
         {
             InitializeComponent();
+
+            txtApellido.Text = "Antonioli";
+            txtNombre.Text = "Rodrigo";
+            txtDpto.Text = "8";
+            txtDireccion.Text = "alklad";
+            txtLocalidad.Text = "caba";
+            txtMail.Text = "lala@ala4";
+            txtCod_Postal.Text = "1234";
+            txtNro_Calle.Text = "44";
+            txtNumPiso.Text = "12";
+            txtTelefono.Text = "49021382";
+            txtDocumento.Text = "35412121";
+
+            conexion.ConnectionString = Settings.Default.CadenaDeConexion;
+
         }
 
         private void FrmbnCliente_Alta_Load(object sender, EventArgs e)
@@ -27,19 +42,14 @@ namespace FrbaCommerce
 
         private void bnGuardar_Click(object sender, EventArgs e)
         {
-            conexion.ConnectionString = Settings.Default.CadenaDeConexion;
-
+            //Chequea que los datos no sean nulos
 
             if ((txtNombre.Text.Trim() != "") &&
-
                 (txtApellido.Text.Trim() != "") &&
-                // (cmbTipoDoc.Text.Trim() != "") &&
+                (cmbTipoDoc.Text != "") &&
                 (txtDocumento.Text.Trim() != "") &&
-                (txtTelefono.Text.Trim() != ""))
-
-
-
-
+                (txtTelefono.Text.Trim() != "") &&
+                (txtMail.Text.Trim() != ""))
             {
                 string telefono = "SELECT COUNT(1) FROM JJRD.CLIENTE where TELEFONO = " + txtTelefono.Text;
                 Query qry = new Query(telefono);
@@ -49,54 +59,73 @@ namespace FrbaCommerce
                 {
                     txtTelefono.Text = null;
                     MessageBox.Show("Telefono existente. Ingrese otro número", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } else {
-                    // preguntar por DNI y TIpo
-                    string DNI = "SELECT COUNT(1) FROM JJRD.CLIENTE where DNI = " + txtDocumento.Text; // AGREGAR TIPO DNI
+                }
+                else
+                {
+                    // preguntar por DNI y TIPO
+                    string DNI = "SELECT COUNT(1) FROM JJRD.CLIENTE where NUMERO_DOC = " + txtDocumento.Text + " AND ID_TIPO_DOC = " + Convert.ToInt32(cmbTipoDoc.SelectedValue); // AGREGAR TIPO DNI
                     Query qry2 = new Query(DNI);
-                    int existeDNI = (int)qry.ObtenerUnicoCampo();
+                    int existeDNI = (int)qry2.ObtenerUnicoCampo();
 
                     if (existeDNI == 1)
                     {
                         txtDocumento.Text = null;
                         MessageBox.Show("DNI existente. Ingrese otro DNI", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        //preguntar por mail
+                        string EMAIL = "SELECT COUNT(1) FROM JJRD.CLIENTE WHERE EMAIL = " + txtMail.Text;
+                        Query qry3 = new Query(EMAIL);
+                        int existeEMAIL = (int)qry.ObtenerUnicoCampo();
 
-                    } else {
+                        if (existeEMAIL == 1)
+                        {
+                            txtMail.Text = null;
+                            MessageBox.Show("EMAIL existente. Ingrese otro Email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            /* primero dar de alta usuario */
 
+                            string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtMail.Text + "', '" + txtDocumento.Text + "' , 1, 0, 'C' )";
+                            qry.pComando = sql;
+                            qry.Ejecutar();
 
-                        /* primero dar de alta usuario */
+                            string consulta = "select id_usuario FROM JJRD.USUARIOS where USERNAME= '" + txtMail.Text + "'";
+                            Query qr = new Query(consulta);
+                            qr.pComando = consulta;
+                            int idUsuario= (int)qr.ObtenerUnicoCampo();
 
-                        string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('', '', 1, 0, 'C' )";
-                        qry.pComando = sql;
-                        qry.Ejecutar();
+                            string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL, TELEFONO) " +
+                                          "  values (" + idUsuario + ",'" + txtNombre.Text + "', '" + txtApellido.Text + "'," + Convert.ToInt32(cmbTipoDoc.SelectedValue) + "," + txtDocumento.Text + ", '" + txtMail.Text + "', '" + txtDireccion.Text + "'," + txtNro_Calle.Text + ", " + txtNumPiso.Text + ", '" + txtDpto.Text + "', '" + txtLocalidad.Text + "', '" + txtCod_Postal.Text + "', " + txtTelefono.Text + ")";
+                            qry.pComando = sql2;
+                            qry.Ejecutar();
 
+                            MessageBox.Show("Cliente dado de alta exitosamente!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                     // PONGO COMENTARIO PARA PODER COMPILAR SOLAMENTE   
-                     //   string sql = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, TIPO_DOC, NUMERO_DOC, EMAIL) values (1, '" + txtNombre.Text + "', '" + txtApellido.Text + "', falta tipo Doc,' + txt.Docu   )";
-                     //   qry.pComando = sql;
-                     //   qry.Ejecutar();
-
-
-                        string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO,NOMBRE, APELLIDO, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL, TELEFONO) values (SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME = '"+ bnMail.Text +"', '" + txtNombre.Text + "', '" + txtApellido.Text + "','" + txtDocumento.Text +"' , '" + bnMail.Text + "', '" + txtDireccion.Text + "', ' + txtNro_Calle +', ' + txtPiso.Text + ', '" + txtDpto.Text + "', '" + txtLocalidad.Text+"', ' + txtCod_Postal.Text + ', ' + txtTelefono.Text +')";
-                        qry.pComando = sql2;
-                        qry.Ejecutar();
-
-                        
-                    
+                            this.Visible = false;
+                        }
                     }
                 }
-                
-
-                // insertar todos los campos
-            }
+            }            
+            // Insertar todos los campos
             else
             {
                 MessageBox.Show("Nombre, apellido, tipo documento, número y telefóno no pueden ser blancos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
         public void LlenarComboTipoDoc()
         {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter("select id, descripcion from JJRD.Tipo_Documento", conexion);
+            da.Fill(ds, "JJRD.Tipo_Documento");
+
+            cmbTipoDoc.DataSource = ds.Tables[0].DefaultView;
+            cmbTipoDoc.DisplayMember = "descripcion";
+            cmbTipoDoc.ValueMember = "id";
+            cmbTipoDoc.SelectedItem = null;
 
         }
 
@@ -107,11 +136,11 @@ namespace FrbaCommerce
             cmbTipoDoc.Text = "";
             txtDocumento.Text = "";
             txtTelefono.Text = "";
-            bnMail.Text = "";
-            txtDireccion.Text= "";
+            txtMail.Text = "";
+            txtDireccion.Text = "";
             txtNro_Calle.Text = "";
-            txtPiso.Text ="";
-            txtDepto.Text = "";
+            lblpiso.Text = "";
+            lblDepto.Text = "";
             txtLocalidad.Text = "";
             txtCod_Postal.Text = "";
             bnFecha.Text = null;

@@ -20,6 +20,7 @@
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -29,7 +30,7 @@
         private void InitializeComponent()
         {
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.bnMail = new System.Windows.Forms.TextBox();
+            this.txtMail = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.bnGuardar = new System.Windows.Forms.Button();
             this.lebel1 = new System.Windows.Forms.Label();
@@ -49,9 +50,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtLocalidad = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtDepto = new System.Windows.Forms.Label();
+            this.lblDepto = new System.Windows.Forms.Label();
             this.txtDpto = new System.Windows.Forms.TextBox();
-            this.txtPiso = new System.Windows.Forms.Label();
+            this.lblpiso = new System.Windows.Forms.Label();
             this.txtNumPiso = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtDocumento = new System.Windows.Forms.TextBox();
@@ -66,14 +67,13 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(303, 20);
             this.txtNombre.TabIndex = 0;
-            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bnNombre_KeyPress);
             // 
-            // bnMail
+            // txtMail
             // 
-            this.bnMail.Location = new System.Drawing.Point(108, 105);
-            this.bnMail.Name = "bnMail";
-            this.bnMail.Size = new System.Drawing.Size(303, 20);
-            this.bnMail.TabIndex = 6;
+            this.txtMail.Location = new System.Drawing.Point(108, 105);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(303, 20);
+            this.txtMail.TabIndex = 6;
             // 
             // txtApellido
             // 
@@ -81,7 +81,6 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(303, 20);
             this.txtApellido.TabIndex = 10;
-            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bnApellido_KeyPress);
             // 
             // bnGuardar
             // 
@@ -189,9 +188,9 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtLocalidad);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtDepto);
+            this.groupBox1.Controls.Add(this.lblDepto);
             this.groupBox1.Controls.Add(this.txtDpto);
-            this.groupBox1.Controls.Add(this.txtPiso);
+            this.groupBox1.Controls.Add(this.lblpiso);
             this.groupBox1.Controls.Add(this.txtNumPiso);
             this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.txtDocumento);
@@ -208,7 +207,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.bnMail);
+            this.groupBox1.Controls.Add(this.txtMail);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(417, 245);
@@ -264,14 +263,14 @@
             this.label5.TabIndex = 52;
             this.label5.Text = "Localidad:";
             // 
-            // txtDepto
+            // lblDepto
             // 
-            this.txtDepto.AutoSize = true;
-            this.txtDepto.Location = new System.Drawing.Point(340, 187);
-            this.txtDepto.Name = "txtDepto";
-            this.txtDepto.Size = new System.Drawing.Size(39, 13);
-            this.txtDepto.TabIndex = 51;
-            this.txtDepto.Text = "Depto:";
+            this.lblDepto.AutoSize = true;
+            this.lblDepto.Location = new System.Drawing.Point(340, 187);
+            this.lblDepto.Name = "lblDepto";
+            this.lblDepto.Size = new System.Drawing.Size(39, 13);
+            this.lblDepto.TabIndex = 51;
+            this.lblDepto.Text = "Depto:";
             // 
             // txtDpto
             // 
@@ -280,14 +279,14 @@
             this.txtDpto.Size = new System.Drawing.Size(27, 20);
             this.txtDpto.TabIndex = 50;
             // 
-            // txtPiso
+            // lblpiso
             // 
-            this.txtPiso.AutoSize = true;
-            this.txtPiso.Location = new System.Drawing.Point(282, 187);
-            this.txtPiso.Name = "txtPiso";
-            this.txtPiso.Size = new System.Drawing.Size(30, 13);
-            this.txtPiso.TabIndex = 49;
-            this.txtPiso.Text = "Piso:";
+            this.lblpiso.AutoSize = true;
+            this.lblpiso.Location = new System.Drawing.Point(282, 187);
+            this.lblpiso.Name = "lblpiso";
+            this.lblpiso.Size = new System.Drawing.Size(30, 13);
+            this.lblpiso.TabIndex = 49;
+            this.lblpiso.Text = "Piso:";
             // 
             // txtNumPiso
             // 
@@ -337,7 +336,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "FrmbnCliente_Alta";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Cliente";
             this.Load += new System.EventHandler(this.FrmbnCliente_Alta_Load);
             this.groupBox1.ResumeLayout(false);
@@ -349,7 +348,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox bnMail;
+        private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Button bnGuardar;
         private System.Windows.Forms.Label lebel1;
@@ -368,8 +367,8 @@
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.TextBox txtNumPiso;
-        private System.Windows.Forms.Label txtPiso;
-        private System.Windows.Forms.Label txtDepto;
+        private System.Windows.Forms.Label lblpiso;
+        private System.Windows.Forms.Label lblDepto;
         private System.Windows.Forms.TextBox txtDpto;
         private System.Windows.Forms.TextBox txtLocalidad;
         private System.Windows.Forms.Label label5;

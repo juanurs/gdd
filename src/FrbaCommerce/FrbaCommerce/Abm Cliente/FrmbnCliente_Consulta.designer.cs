@@ -83,7 +83,6 @@
             this.filtroNombre.Name = "filtroNombre";
             this.filtroNombre.Size = new System.Drawing.Size(117, 20);
             this.filtroNombre.TabIndex = 9;
-            this.filtroNombre.TextChanged += new System.EventHandler(this.filtroNombre_TextChanged);
             this.filtroNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filtroNombre_KeyPress);
             // 
             // filtroApellido
@@ -119,7 +118,6 @@
             this.filtroDocumento.Name = "filtroDocumento";
             this.filtroDocumento.Size = new System.Drawing.Size(117, 20);
             this.filtroDocumento.TabIndex = 6;
-            this.filtroDocumento.TextChanged += new System.EventHandler(this.filtroDocumento_TextChanged);
             this.filtroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filtroDocumento_KeyPress);
             // 
             // label3

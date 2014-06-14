@@ -17,42 +17,12 @@ namespace FrbaCommerce
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void bnAnterior_Click(object sender, EventArgs e)
         {
             this.Visible = false;
         }
 
         private void FrmbnCliente_Consulta_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void textDNI_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filtroNombre_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -110,11 +80,8 @@ namespace FrbaCommerce
                 sql = sql + "AND Cliente_doc = '" + filtroDocumento.Text + "'";
             }
 
-                CargarConsultaEnCheckList(sql);
-        
+                CargarConsultaEnCheckList(sql);        
         }
-
-           
 
         private void bnLimpiar_Click(object sender, EventArgs e)
         {
@@ -136,11 +103,6 @@ namespace FrbaCommerce
         private void filtroDocumento_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space);
-        }
-
-        private void filtroDocumento_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

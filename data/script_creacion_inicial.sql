@@ -1,5 +1,21 @@
---- ===========================================================
--- ===========================================================
+--=============================================================
+ --CREACION DEL ESQUEMA CON EL NOMBRE DEL GRUPO--
+ --=============================================================
+ USE [GD1C2014]
+ GO
+	
+ --CREATE SCHEMA [JJRD] AUTHORIZATION [GD]
+ --GO
+ 
+ --PRINT 'SE CREO EL ESQUEMA CORRECTAMENTE'
+ 
+ --============================================================
+ -- ===========================================================
+ --============================================================
+ --                EMPEZAMOS A CREAR LAS TABLAS
+ -- =========================================================== 
+ -- ===========================================================
+ -- ===========================================================
 
 CREATE PROCEDURE JJRD.CREAR_ROLES
 AS
@@ -133,7 +149,7 @@ BEGIN
 	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Historial de Cliente','Facurar Publicaciones')
 PRINT 'LLEGO'
 	
-	/* funcionalidades de empresa*/
+	/* funcionalidades de cliente*/
 	insert into JJRD.ROL_FUNCIONALIDAD (ID_ROL, ID_FUNCIONALIDAD, HABILITADO)
 	select r.ID_ROL , f.ID_FUNCIONALIDAD, 1
 	from JJRD.ROLES r
