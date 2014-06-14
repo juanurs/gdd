@@ -70,6 +70,14 @@ namespace FrbaCommerce
 
         }
 
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            FrmbnCliente cliente = new FrmbnCliente();
+            this.Hide();
+            cliente.ShowDialog();
+            cliente = (FrmbnCliente)this.ActiveMdiChild;
+        }
+
        
 
     }

@@ -44,7 +44,7 @@ namespace FrbaCommerce.Login
 
                 if (ExisteUsuario())
                 {
-                    idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE NOMBRE='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
+                    idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
                     Query qr = new Query("SELECT LOGIN_FALLIDOS FROM JJRD.USUARIOS WHERE ID_USUARIO=" + idUsuario);
                     failLogin = Convert.ToInt32(qr.ObtenerUnicoCampo());
 
@@ -75,7 +75,7 @@ namespace FrbaCommerce.Login
 
         private bool ExisteUsuario()
         {
-            return ((int)new Query("SELECT COUNT(1) FROM JJRD.USUARIOS WHERE NOMBRE ='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo() != 0);
+            return ((int)new Query("SELECT COUNT(1) FROM JJRD.USUARIOS WHERE USERNAME ='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo() != 0);
         }
 
         private bool puedeIngresarAlSistema()
