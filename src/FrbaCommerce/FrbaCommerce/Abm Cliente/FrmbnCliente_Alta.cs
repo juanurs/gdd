@@ -19,17 +19,17 @@ namespace FrbaCommerce
         {
             InitializeComponent();
 
-            txtApellido.Text = "Antonioli";
-            txtNombre.Text = "Rodrigo";
-            txtDpto.Text = "8";
-            txtDireccion.Text = "alklad";
-            txtLocalidad.Text = "caba";
-            txtMail.Text = "lala@ala4";
-            txtCod_Postal.Text = "1234";
-            txtNro_Calle.Text = "44";
-            txtNumPiso.Text = "12";
-            txtTelefono.Text = "49021382";
-            txtDocumento.Text = "35412121";
+            txtApellido.Text = "";
+            txtNombre.Text = "";
+            txtDpto.Text = "";
+            txtDireccion.Text = "";
+            txtLocalidad.Text = "";
+            txtMail.Text = "";
+            txtCod_Postal.Text = "";
+            txtNro_Calle.Text = "";
+            txtNumPiso.Text = "";
+            txtTelefono.Text = "";
+            txtDocumento.Text = "";
 
             conexion.ConnectionString = Settings.Default.CadenaDeConexion;
 
@@ -63,7 +63,7 @@ namespace FrbaCommerce
                 else
                 {
                     // preguntar por DNI y TIPO
-                    string DNI = "SELECT COUNT(1) FROM JJRD.CLIENTE where NUMERO_DOC = " + txtDocumento.Text + " AND ID_TIPO_DOC = " + Convert.ToInt32(cmbTipoDoc.SelectedValue); // AGREGAR TIPO DNI
+                    string DNI = "SELECT COUNT(1) FROM JJRD.CLIENTE where NUMERO_DOC = " + txtDocumento.Text + " AND ID_TIPO_DOC = " + Convert.ToInt32(cmbTipoDoc.SelectedValue); 
                     Query qry2 = new Query(DNI);
                     int existeDNI = (int)qry2.ObtenerUnicoCampo();
 
@@ -97,8 +97,8 @@ namespace FrbaCommerce
                             qr.pComando = consulta;
                             int idUsuario= (int)qr.ObtenerUnicoCampo();
 
-                            string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL, TELEFONO) " +
-                                          "  values (" + idUsuario + ",'" + txtNombre.Text + "', '" + txtApellido.Text + "'," + Convert.ToInt32(cmbTipoDoc.SelectedValue) + "," + txtDocumento.Text + ", '" + txtMail.Text + "', '" + txtDireccion.Text + "'," + txtNro_Calle.Text + ", " + txtNumPiso.Text + ", '" + txtDpto.Text + "', '" + txtLocalidad.Text + "', '" + txtCod_Postal.Text + "', " + txtTelefono.Text + ")";
+                            string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL,FECHA_NACIMIENTO, TELEFONO) " +
+                                          "  values ("+idUsuario+",'"+txtNombre.Text+"','"+txtApellido.Text+"',"+Convert.ToInt32(cmbTipoDoc.SelectedValue)+","+txtDocumento.Text+",'"+txtMail.Text+"','"+txtDireccion.Text+"',"+txtNro_Calle.Text+","+txtNumPiso.Text+",'"+txtDpto.Text+"','"+txtLocalidad.Text+"','"+txtCod_Postal.Text+"','"+DateTime.Now+"',"+txtTelefono.Text+")";
                             qry.pComando = sql2;
                             qry.Ejecutar();
 

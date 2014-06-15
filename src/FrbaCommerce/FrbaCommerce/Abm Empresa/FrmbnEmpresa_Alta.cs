@@ -15,16 +15,18 @@ namespace FrbaCommerce
         public FrmbnEmpresa_Alta()
         {
             InitializeComponent();
+            conexion.ConnectionString = Settings.Default.CadenaDeConexion;
         }
   
         private void bnGuardar_Click(object sender, EventArgs e)
         {
-            conexion.ConnectionString = Settings.Default.CadenaDeConexion;
+           
 
-            if((txtRazonSocial.Text.Trim() != "") && (txtEmail.Text.Trim() != "")  && (txtCuit.Text.Trim() != ""))
+            if((txtRazonSocial.Text.Trim() != "") && (txtCuit.Text.Trim() != "") && (txtEmail.Text.Trim()!= ""))
 
             {
                 //controla que cuit no este repetido= '" + txtEmail.Text + "')";
+                
                 string cuit = "SELECT COUNT(1) FROM JJRD.EMPRESA where CUIT = '" + txtCuit.Text + "'";
                 Query qry = new Query(cuit);
                 int existeCuit = (int)qry.ObtenerUnicoCampo();
@@ -38,32 +40,43 @@ namespace FrbaCommerce
                     else
                     { 
                         //controla que razon_social no este repetido
-                        string razon_social = "SELECT COUNT(1) FROM JJRD.EMPRESA where RAZON_SOCIAL = " + txtRazonSocial.Text;
+                        string razon_social = "SELECT COUNT(1) FROM JJRD.EMPRESA where RAZON_SOCIAL = '" + txtRazonSocial.Text+"'";
                         Query qry2 = new Query(razon_social);
-                        int existeRazonSocial = (int)qry.ObtenerUnicoCampo();
+                        int existeRazonSocial = (int)qry2.ObtenerUnicoCampo();
+
+
 
                             if (existeRazonSocial == 1)
                             {    
-                                txtCuit.Text = null;
+                                txtRazonSocial.Text = null;
                                 MessageBox.Show("Razon Social existente", "Advertencia",MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
                             /* Primero da alta a Usuario */
 
-                                string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ("+txtEmail.Text+", "+txtCuit.Text+", 1, 0, 'E' )";
+                                string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('"+txtEmail.Text+"', '"+txtCuit.Text+"', 1, 0, 'E' )";
                                 qry.pComando = sql;
                                 qry.Ejecutar();
                             
                             /* Da de alta empresa*/
-                                string id_usuario = "(SELECT ID_USUARIO from jjrd.usuarios where USERNAME = '" + txtEmail.Text + "')";
-                                string sql2 = "INSERT INTO JJRD.EMPRESA (USERNAME, CUIT, RAZON_SOCIAL, CIUDAD, NOMBRE_CONTACTO, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL, TELEFONO ) values (" +  id_usuario + ","+txtCuit.Text+" , "+txtRazonSocial.Text+", '', "+txtNomContacto.Text+" , "+txtEmail.Text+", "+txtDireccion.Text+", "+txtNumCalle.Text+", "+txtPiso.Text+",  "+txtDepto.Text+", "+txtLocalidad.Text+", "+txtCodPost.Text+", "+txtTel.Text+")";
-                                qry.pComando = sql2;
+
+
+                                string consulta = "select id_usuario FROM JJRD.USUARIOS where USERNAME=  '" + txtEmail.Text + "'";
+                                Query qr = new Query(consulta);
+                                qr.pComando = consulta;
+                                int idUsuario = (int)qr.ObtenerUnicoCampo();
+                                
+                                string sql2 = "INSERT INTO JJRD.EMPRESA (ID_USUARIO,CUIT,RAZON_SOCIAL,CIUDAD,NOMBRE_CONTACTO,EMAIL,CALLE,NUM_CALLE,PISO,DEPARTAMENTO,LOCALIDAD,COD_POSTAL,FECHA_CREACION,TELEFONO)"+
+                                " values ("+idUsuario+",'"+txtCuit.Text+"','"+txtRazonSocial.Text+"','"+txtCiudad.Text+"','"+txtNomContacto.Text+"','"+txtEmail.Text+"','"+txtDireccion.Text+"',"+txtNumCalle.Text+","+txtPiso.Text+",'"+txtDepto.Text+"','"+txtLocalidad.Text+"','"+txtCodPost.Text+"','"+DateTime.Now+"',"+txtTel.Text+")";
+                                qry.pComando = sql2;                                                                                                                                                             
                                 qry.Ejecutar();
 
-                                MessageBox.Show("Se dio de alta la Empresa correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                                MessageBox.Show("Se dio de alta la Empresa correctamente!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                               
                                 this.Visible = false;
+
+                               
                             
                             }
 
@@ -72,7 +85,7 @@ namespace FrbaCommerce
             }
             else
                 {
-                    MessageBox.Show("Cuit y Razon Social no pueden estar vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cuit, Razon Social y Email no pueden ser campos vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             
              
@@ -92,9 +105,10 @@ namespace FrbaCommerce
             txtCiudad.Text = "";
             txtCuit.Text = "";
             txtNomContacto.Text = "";
-            txtFecCreacion.Text = "";
+            bnFecha.Text = "";
         }
 
+    
     }
 
 }
