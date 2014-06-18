@@ -47,7 +47,7 @@ namespace FrbaCommerce
         private void bnAltaCliente_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            FrmbnCliente_Alta frm = new FrmbnCliente_Alta();
+            FrmbnCliente_Alta frm = new FrmbnCliente_Alta(0);
             frm.ShowDialog();
             this.Visible = true;
         }

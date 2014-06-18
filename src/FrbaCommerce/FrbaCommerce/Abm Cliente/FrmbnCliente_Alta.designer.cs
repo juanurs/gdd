@@ -41,7 +41,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbTipoDoc = new System.Windows.Forms.ComboBox();
-            this.bnFecha = new System.Windows.Forms.DateTimePicker();
             this.bnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCod_Postal = new System.Windows.Forms.TextBox();
@@ -58,6 +57,7 @@
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtFecha = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -163,13 +163,6 @@
             this.cmbTipoDoc.Size = new System.Drawing.Size(63, 21);
             this.cmbTipoDoc.TabIndex = 34;
             // 
-            // bnFecha
-            // 
-            this.bnFecha.Location = new System.Drawing.Point(108, 210);
-            this.bnFecha.Name = "bnFecha";
-            this.bnFecha.Size = new System.Drawing.Size(299, 20);
-            this.bnFecha.TabIndex = 37;
-            // 
             // bnLimpiar
             // 
             this.bnLimpiar.Location = new System.Drawing.Point(12, 263);
@@ -201,7 +194,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.cmbTipoDoc);
-            this.groupBox1.Controls.Add(this.bnFecha);
+            this.groupBox1.Controls.Add(this.txtFecha);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label4);
@@ -325,6 +318,14 @@
             this.label1.TabIndex = 44;
             this.label1.Text = "Dirección:";
             // 
+            // txtFecha
+            // 
+            this.txtFecha.Location = new System.Drawing.Point(108, 210);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(299, 20);
+            this.txtFecha.TabIndex = 37;
+            this.txtFecha.Value = new System.DateTime(2014, 6, 16, 16, 49, 9, 0);
+            // 
             // FrmbnCliente_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,7 +361,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbTipoDoc;
-        private System.Windows.Forms.DateTimePicker bnFecha;
         private System.Windows.Forms.Button bnLimpiar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
@@ -377,5 +377,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCod_Postal;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker txtFecha;
     }
 }

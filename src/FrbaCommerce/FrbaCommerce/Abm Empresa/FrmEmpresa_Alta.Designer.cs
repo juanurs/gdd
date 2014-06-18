@@ -1,6 +1,6 @@
 ﻿namespace FrbaCommerce
 {
-    partial class FrmbnEmpresa_Alta
+    partial class FrmEmpresa_Alta
     {
         /// <summary>
         /// Required designer variable.
@@ -44,20 +44,19 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtPiso = new System.Windows.Forms.TextBox();
             this.txtNumCalle = new System.Windows.Forms.TextBox();
             this.txtCodPost = new System.Windows.Forms.TextBox();
-            this.txtCiudad = new System.Windows.Forms.TextBox();
             this.txtCuit = new System.Windows.Forms.TextBox();
             this.txtNomContacto = new System.Windows.Forms.TextBox();
             this.txtLocalidad = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDepto = new System.Windows.Forms.TextBox();
-            this.bnFecha = new System.Windows.Forms.DateTimePicker();
+            this.dataFecha = new System.Windows.Forms.DateTimePicker();
+            this.bnVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtRazonSocial
@@ -88,7 +87,7 @@
             // 
             // bnGuardar
             // 
-            this.bnGuardar.Location = new System.Drawing.Point(371, 193);
+            this.bnGuardar.Location = new System.Drawing.Point(391, 193);
             this.bnGuardar.Name = "bnGuardar";
             this.bnGuardar.Size = new System.Drawing.Size(75, 23);
             this.bnGuardar.TabIndex = 5;
@@ -200,21 +199,11 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(388, 144);
+            this.label11.Location = new System.Drawing.Point(380, 142);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 15);
             this.label11.TabIndex = 19;
             this.label11.Text = "Código Postal:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(231, 143);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 15);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "Ciudad:";
             // 
             // label13
             // 
@@ -257,13 +246,6 @@
             this.txtCodPost.Size = new System.Drawing.Size(111, 20);
             this.txtCodPost.TabIndex = 25;
             // 
-            // txtCiudad
-            // 
-            this.txtCiudad.Location = new System.Drawing.Point(286, 142);
-            this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(96, 20);
-            this.txtCiudad.TabIndex = 26;
-            // 
             // txtCuit
             // 
             this.txtCuit.Location = new System.Drawing.Point(402, 48);
@@ -282,7 +264,7 @@
             // 
             this.txtLocalidad.Location = new System.Drawing.Point(106, 138);
             this.txtLocalidad.Name = "txtLocalidad";
-            this.txtLocalidad.Size = new System.Drawing.Size(115, 20);
+            this.txtLocalidad.Size = new System.Drawing.Size(159, 20);
             this.txtLocalidad.TabIndex = 29;
             // 
             // label15
@@ -312,32 +294,40 @@
             this.txtDepto.Size = new System.Drawing.Size(63, 20);
             this.txtDepto.TabIndex = 33;
             // 
-            // bnFecha
+            // dataFecha
             // 
-            this.bnFecha.Location = new System.Drawing.Point(401, 77);
-            this.bnFecha.Name = "bnFecha";
-            this.bnFecha.Size = new System.Drawing.Size(190, 20);
-            this.bnFecha.TabIndex = 34;
+            this.dataFecha.Location = new System.Drawing.Point(401, 77);
+            this.dataFecha.Name = "dataFecha";
+            this.dataFecha.Size = new System.Drawing.Size(190, 20);
+            this.dataFecha.TabIndex = 34;
             // 
-            // FrmbnEmpresa_Alta
+            // bnVolver
+            // 
+            this.bnVolver.Location = new System.Drawing.Point(250, 193);
+            this.bnVolver.Name = "bnVolver";
+            this.bnVolver.Size = new System.Drawing.Size(119, 23);
+            this.bnVolver.TabIndex = 35;
+            this.bnVolver.Text = "Ir a Menu Principal";
+            this.bnVolver.UseVisualStyleBackColor = true;
+            // 
+            // FrmEmpresa_Alta
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(615, 254);
-            this.Controls.Add(this.bnFecha);
+            this.Controls.Add(this.bnVolver);
+            this.Controls.Add(this.dataFecha);
             this.Controls.Add(this.txtDepto);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtLocalidad);
             this.Controls.Add(this.txtNomContacto);
             this.Controls.Add(this.txtCuit);
-            this.Controls.Add(this.txtCiudad);
             this.Controls.Add(this.txtCodPost);
             this.Controls.Add(this.txtNumCalle);
             this.Controls.Add(this.txtPiso);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -356,7 +346,7 @@
             this.Controls.Add(this.txtRazonSocial);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "FrmbnEmpresa_Alta";
+            this.Name = "FrmEmpresa_Alta";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta de empresa";
@@ -383,19 +373,18 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtPiso;
         private System.Windows.Forms.TextBox txtNumCalle;
         private System.Windows.Forms.TextBox txtCodPost;
-        private System.Windows.Forms.TextBox txtCiudad;
         private System.Windows.Forms.TextBox txtCuit;
         private System.Windows.Forms.TextBox txtNomContacto;
         private System.Windows.Forms.TextBox txtLocalidad;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDepto;
-        private System.Windows.Forms.DateTimePicker bnFecha;
+        private System.Windows.Forms.DateTimePicker dataFecha;
+        private System.Windows.Forms.Button bnVolver;
     }
 }

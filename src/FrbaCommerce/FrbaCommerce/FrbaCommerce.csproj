@@ -84,11 +84,29 @@
     <Compile Include="Abm Cliente\FrmbnCliente_Selec.designer.cs">
       <DependentUpon>FrmbnCliente_Selec.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Empresa\Form1.cs">
+    <Compile Include="Abm Empresa\FrmEmpresa_Baja_Confirmacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Empresa\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Abm Empresa\FrmEmpresa_Baja_Confirmacion.Designer.cs">
+      <DependentUpon>FrmEmpresa_Baja_Confirmacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Empresa\FrmEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa\FrmEmpresa.Designer.cs">
+      <DependentUpon>FrmEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Empresa\FrmEmpresa_Alta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa\FrmEmpresa_Alta.Designer.cs">
+      <DependentUpon>FrmEmpresa_Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Empresa\FrmEmpresa_Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa\FrmEmpresa_Baja.Designer.cs">
+      <DependentUpon>FrmEmpresa_Baja.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM Rol\FrmbnRoles.cs">
       <SubType>Form</SubType>
@@ -223,6 +241,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Selec.resx">
       <DependentUpon>FrmbnCliente_Selec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\FrmEmpresa.resx">
+      <DependentUpon>FrmEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\FrmEmpresa_Alta.resx">
+      <DependentUpon>FrmEmpresa_Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\FrmEmpresa_Baja.resx">
+      <DependentUpon>FrmEmpresa_Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa\FrmEmpresa_Baja_Confirmacion.resx">
+      <DependentUpon>FrmEmpresa_Baja_Confirmacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Rol\FrmbnRoles.resx">
       <DependentUpon>FrmbnRoles.cs</DependentUpon>

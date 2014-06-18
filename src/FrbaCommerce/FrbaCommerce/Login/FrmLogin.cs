@@ -48,7 +48,7 @@ namespace FrbaCommerce.Login
                     Query qr = new Query("SELECT LOGIN_FALLIDOS FROM JJRD.USUARIOS WHERE ID_USUARIO=" + idUsuario);
                     failLogin = Convert.ToInt32(qr.ObtenerUnicoCampo());
 
-                    if (puedeIngresarAlSistema())
+                    if (puedeIngresarAlSistema(idUsuario))
                     {
                         validar();
                     }
@@ -78,7 +78,7 @@ namespace FrbaCommerce.Login
             return ((int)new Query("SELECT COUNT(1) FROM JJRD.USUARIOS WHERE USERNAME ='" + usuario + "'").ObtenerUnicoCampo() == 1);
         }
 
-        private bool puedeIngresarAlSistema()
+        public bool puedeIngresarAlSistema(int idUsuario) //MOVER A FUNCIONES GENERALES
         {
             return ((int)new Query("SELECT count(1) FROM JJRD.USUARIOS WHERE ID_USUARIO ='" + idUsuario + "' AND HABILITADO = 1").ObtenerUnicoCampo() != 0);
         }
@@ -143,7 +143,7 @@ namespace FrbaCommerce.Login
         {
             if (failLogin == 3)
             {
-                inhabilitarUsuario();
+                inhabilitarUsuario(idUsuario);
             }
             else
             {
@@ -151,8 +151,8 @@ namespace FrbaCommerce.Login
             }
         }
 
-        private void inhabilitarUsuario()
-        {
+        public void inhabilitarUsuario(int idUsuario) //MOVER A FUNCIONES GENERALES
+        { 
             new Query("UPDATE JJRD.USUARIOS SET HABILITADO = '0' WHERE ID_USUARIO = " + idUsuario).Ejecutar();
             //TODO - cuando se vuelve a habilitar el usuario se resetea el campo FAIL_LOGIN a 0
             MessageBox.Show("Se ha inhabilitado el usuario.", "Advertencia",

@@ -50,16 +50,28 @@ namespace FrbaCommerce.Login
                     {
                         if (comboBox.SelectedItem.ToString() == "Cliente")
                         {
-                            //FALTAN INSERTS
+                            Query qr = new Query("INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('"+txtBoxUsuario.Text+ "', '" + txtBoxPasswd.Text + "' , 1, 0, 'C')");
+                            qr.Ejecutar();
 
-                            FrmbnCliente_Alta cliente = new FrmbnCliente_Alta();
+                            int idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
+
+                            FrmbnCliente_Alta cliente = new FrmbnCliente_Alta(idUsuario);
                             this.Hide();
                             cliente.ShowDialog();
                             cliente = (FrmbnCliente_Alta)this.ActiveMdiChild;
                         }
                         else
                         {
-                            //Alta de empresa
+                            Query qr = new Query("INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtBoxUsuario.Text + "', '" + txtBoxPasswd.Text + "' , 1, 0, 'E')");
+                            qr.Ejecutar();
+
+                            int idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
+
+                            FrmEmpresa_Alta empresa = new FrmEmpresa_Alta(idUsuario);
+                            this.Hide();
+                            empresa.ShowDialog();
+                            empresa = (FrmEmpresa_Alta)this.ActiveMdiChild;
+
                         }
                     }
                     else

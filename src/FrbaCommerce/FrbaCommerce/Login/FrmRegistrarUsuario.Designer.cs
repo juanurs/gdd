@@ -69,14 +69,14 @@
             // 
             // txtBoxUsuario
             // 
-            this.txtBoxUsuario.Location = new System.Drawing.Point(124, 9);
+            this.txtBoxUsuario.Location = new System.Drawing.Point(134, 9);
             this.txtBoxUsuario.Name = "txtBoxUsuario";
             this.txtBoxUsuario.Size = new System.Drawing.Size(121, 20);
             this.txtBoxUsuario.TabIndex = 3;
             // 
             // txtBoxPasswd
             // 
-            this.txtBoxPasswd.Location = new System.Drawing.Point(124, 37);
+            this.txtBoxPasswd.Location = new System.Drawing.Point(134, 37);
             this.txtBoxPasswd.Name = "txtBoxPasswd";
             this.txtBoxPasswd.PasswordChar = '*';
             this.txtBoxPasswd.Size = new System.Drawing.Size(121, 20);
@@ -85,7 +85,7 @@
             // comboBox
             // 
             this.comboBox.FormattingEnabled = true;
-            this.comboBox.Location = new System.Drawing.Point(124, 89);
+            this.comboBox.Location = new System.Drawing.Point(134, 89);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(121, 21);
             this.comboBox.TabIndex = 5;
@@ -113,7 +113,7 @@
             // 
             // txtBoxPasswdConf
             // 
-            this.txtBoxPasswdConf.Location = new System.Drawing.Point(124, 63);
+            this.txtBoxPasswdConf.Location = new System.Drawing.Point(134, 63);
             this.txtBoxPasswdConf.Name = "txtBoxPasswdConf";
             this.txtBoxPasswdConf.PasswordChar = '*';
             this.txtBoxPasswdConf.Size = new System.Drawing.Size(121, 20);
@@ -132,14 +132,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-            this.ClientSize = new System.Drawing.Size(273, 166);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtBoxPasswdConf);
-
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(278, 161);
-
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtBoxPasswdConf);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.comboBox);

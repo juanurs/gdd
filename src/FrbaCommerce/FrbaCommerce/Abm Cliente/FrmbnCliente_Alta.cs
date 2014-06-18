@@ -14,10 +14,15 @@ namespace FrbaCommerce
     {
 
         SqlConnection conexion = new SqlConnection();
+        private int idUsuario;
         
-        public FrmbnCliente_Alta()
+        
+        public FrmbnCliente_Alta(int id_Usr) // si el cliente se esta registrando, se pasa por parametro el idUsuario,
+                                             // si el administrador esta dando de alta un cliente, el parametro idUsuario es 0.
         {
             InitializeComponent();
+
+            idUsuario = id_Usr;
 
             txtApellido.Text = "";
             txtNombre.Text = "";
@@ -49,7 +54,9 @@ namespace FrbaCommerce
                 (cmbTipoDoc.Text != "") &&
                 (txtDocumento.Text.Trim() != "") &&
                 (txtTelefono.Text.Trim() != "") &&
-                (txtMail.Text.Trim() != ""))
+                (txtMail.Text.Trim() != "") &&
+                (txtLocalidad.Text.Trim() != "") &&
+                (txtDireccion.Text.Trim() != ""))
             {
                 string telefono = "SELECT COUNT(1) FROM JJRD.CLIENTE where TELEFONO = " + txtTelefono.Text;
                 Query qry = new Query(telefono);
@@ -88,20 +95,35 @@ namespace FrbaCommerce
                         {
                             /* primero dar de alta usuario */
 
-                            string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtMail.Text + "', '" + txtDocumento.Text + "' , 1, 0, 'C' )";
-                            qry.pComando = sql;
-                            qry.Ejecutar();
+                            if (idUsuario == 0) // si es igual a 0, se crea el username y la contraseña por default.
+                            {
+                                string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtMail.Text + "', '" + txtDocumento.Text + "' , 1, 0, 'C' )";
+                                qry.pComando = sql;
+                                qry.Ejecutar();
 
-                            string consulta = "select id_usuario FROM JJRD.USUARIOS where USERNAME= '" + txtMail.Text + "'";
-                            Query qr = new Query(consulta);
-                            qr.pComando = consulta;
-                            int idUsuario= (int)qr.ObtenerUnicoCampo();
+                                string consulta = "select id_usuario FROM JJRD.USUARIOS where USERNAME= '" + txtMail.Text + "'";
+                                Query qr = new Query(consulta);
+                                qr.pComando = consulta;
+                                idUsuario = (int)qr.ObtenerUnicoCampo();
+                            }
 
-                            string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL,FECHA_NACIMIENTO, TELEFONO) " +
-                                          "  values ("+idUsuario+",'"+txtNombre.Text+"','"+txtApellido.Text+"',"+Convert.ToInt32(cmbTipoDoc.SelectedValue)+","+txtDocumento.Text+",'"+txtMail.Text+"','"+txtDireccion.Text+"',"+txtNro_Calle.Text+","+txtNumPiso.Text+",'"+txtDpto.Text+"','"+txtLocalidad.Text+"','"+txtCod_Postal.Text+"','"+DateTime.Now+"',"+txtTelefono.Text+")";
-                            qry.pComando = sql2;
-                            qry.Ejecutar();
+                            if (txtNumPiso.Text == "" && txtDpto.Text == "")
+                            {
+                                string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, LOCALIDAD, COD_POSTAL,FECHA_NACIMIENTO, TELEFONO) " +
+                                          "  values (" + idUsuario + ",'" + txtNombre.Text + "','" + txtApellido.Text + "'," + Convert.ToInt32(cmbTipoDoc.SelectedValue) + "," + txtDocumento.Text + ",'" + txtMail.Text + "','" + txtDireccion.Text + "'," + txtNro_Calle.Text + ",'" + txtLocalidad.Text + "','" + txtCod_Postal.Text + "','" + txtFecha.Value + "'," + txtTelefono.Text + ")";
 
+                                qry.pComando = sql2;
+                                qry.Ejecutar();
+
+                            }
+                            else
+                            {
+                                string sql2 = "INSERT INTO JJRD.CLIENTE (ID_USUARIO, NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL, CALLE, NUM_CALLE, PISO, DEPARTAMENTO, LOCALIDAD, COD_POSTAL,FECHA_NACIMIENTO, TELEFONO) " +
+                                              "  values (" + idUsuario + ",'" + txtNombre.Text + "','" + txtApellido.Text + "'," + Convert.ToInt32(cmbTipoDoc.SelectedValue) + "," + txtDocumento.Text + ",'" + txtMail.Text + "','" + txtDireccion.Text + "'," + txtNro_Calle.Text + "," + txtNumPiso.Text + ",'" + txtDpto.Text + "','" + txtLocalidad.Text + "','" + txtCod_Postal.Text + "','" + txtFecha.Value + "'," + txtTelefono.Text + ")";
+
+                                qry.pComando = sql2;
+                                qry.Ejecutar();
+                            }
                             MessageBox.Show("Cliente dado de alta exitosamente!", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             this.Visible = false;
@@ -143,7 +165,7 @@ namespace FrbaCommerce
             lblDepto.Text = "";
             txtLocalidad.Text = "";
             txtCod_Postal.Text = "";
-            bnFecha.Text = null;
+            txtFecha.Text = null;
         }
 
         private void txtTelefono_Click(object sender, EventArgs e)

@@ -7,14 +7,30 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce
 {
-    public partial class FrmbnEmpresa_Alta : Form
+    public partial class FrmEmpresa_Alta : Form
     {
        
         SqlConnection conexion = new SqlConnection();
 
-        public FrmbnEmpresa_Alta()
+        private int idUsuario;
+
+        public FrmEmpresa_Alta(int id_Usr)
         {
             InitializeComponent();
+
+            txtTel.Text = "";
+            txtDireccion.Text = "";
+            txtLocalidad.Text = "";
+            txtCodPost.Text = "";
+            txtNomContacto.Text = "";
+            dataFecha.Text = "";
+            txtNumCalle.Text = "";
+            txtPiso.Text = String.Empty;
+            txtDepto.Text = String.Empty;
+
+
+            idUsuario = id_Usr;
+
             conexion.ConnectionString = Settings.Default.CadenaDeConexion;
         }
   
@@ -55,20 +71,25 @@ namespace FrbaCommerce
                             {
                             /* Primero da alta a Usuario */
 
-                                string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('"+txtEmail.Text+"', '"+txtCuit.Text+"', 1, 0, 'E' )";
-                                qry.pComando = sql;
-                                qry.Ejecutar();
-                            
-                            /* Da de alta empresa*/
+                                if (idUsuario == 0)
+                                {
 
 
-                                string consulta = "select id_usuario FROM JJRD.USUARIOS where USERNAME=  '" + txtEmail.Text + "'";
-                                Query qr = new Query(consulta);
-                                qr.pComando = consulta;
-                                int idUsuario = (int)qr.ObtenerUnicoCampo();
+                                    string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtEmail.Text + "', '" + txtCuit.Text + "', 1, 0, 'E' )";
+                                    qry.pComando = sql;
+                                    qry.Ejecutar();
+
+                                    /* Da de alta empresa*/
+
+
+                                    string consulta = "select id_usuario FROM JJRD.USUARIOS where USERNAME=  '" + txtEmail.Text + "'";
+                                    Query qr = new Query(consulta);
+                                    qr.pComando = consulta;
+                                    idUsuario = (int)qr.ObtenerUnicoCampo();
+                                }
                                 
                                 string sql2 = "INSERT INTO JJRD.EMPRESA (ID_USUARIO,CUIT,RAZON_SOCIAL,CIUDAD,NOMBRE_CONTACTO,EMAIL,CALLE,NUM_CALLE,PISO,DEPARTAMENTO,LOCALIDAD,COD_POSTAL,FECHA_CREACION,TELEFONO)"+
-                                " values ("+idUsuario+",'"+txtCuit.Text+"','"+txtRazonSocial.Text+"','"+txtCiudad.Text+"','"+txtNomContacto.Text+"','"+txtEmail.Text+"','"+txtDireccion.Text+"',"+txtNumCalle.Text+","+txtPiso.Text+",'"+txtDepto.Text+"','"+txtLocalidad.Text+"','"+txtCodPost.Text+"','"+DateTime.Now+"',"+txtTel.Text+")";
+                                " values ("+idUsuario+",'"+txtCuit.Text+"','"+txtRazonSocial.Text+"','"+txtLocalidad.Text+"','"+txtNomContacto.Text+"','"+txtEmail.Text+"','"+txtDireccion.Text+"',"+txtNumCalle.Text+","+txtPiso.Text+",'"+txtDepto.Text+"','"+txtLocalidad.Text+"','"+txtCodPost.Text+"','"+dataFecha.Value+"',"+txtTel.Text+")";
                                 qry.pComando = sql2;                                                                                                                                                             
                                 qry.Ejecutar();
 
@@ -102,10 +123,10 @@ namespace FrbaCommerce
             txtDepto.Text = "";
             txtLocalidad.Text = "";
             txtCodPost.Text = "";
-            txtCiudad.Text = "";
+            txtLocalidad.Text = "";
             txtCuit.Text = "";
             txtNomContacto.Text = "";
-            bnFecha.Text = "";
+            dataFecha.Text = "";
         }
 
     

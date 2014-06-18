@@ -117,6 +117,7 @@
             this.btnEmpresa.TabIndex = 7;
             this.btnEmpresa.Text = "ABM Empresa";
             this.btnEmpresa.UseVisualStyleBackColor = true;
+            this.btnEmpresa.Click += new System.EventHandler(this.btnEmpresa_Click);
             // 
             // btnRubro
             // 

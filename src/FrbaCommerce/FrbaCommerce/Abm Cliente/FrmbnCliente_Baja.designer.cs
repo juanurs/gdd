@@ -39,18 +39,21 @@
             this.txtNumeroDoc = new System.Windows.Forms.TextBox();
             this.labellll = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
+            this.dataResultado = new System.Windows.Forms.DataGridView();
+            this.bnBuscar = new System.Windows.Forms.Button();
+            this.bnMenuPrincipal = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).BeginInit();
             this.SuspendLayout();
             // 
             // bnEliminar
             // 
-            this.bnEliminar.Location = new System.Drawing.Point(261, 214);
+            this.bnEliminar.Location = new System.Drawing.Point(331, 348);
             this.bnEliminar.Name = "bnEliminar";
             this.bnEliminar.Size = new System.Drawing.Size(75, 23);
             this.bnEliminar.TabIndex = 3;
             this.bnEliminar.TabStop = false;
             this.bnEliminar.Text = "Eliminar";
             this.bnEliminar.UseVisualStyleBackColor = true;
-            this.bnEliminar.Click += new System.EventHandler(this.bnEliminar_Click);
             // 
             // label2
             // 
@@ -92,14 +95,14 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(86, 9);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(250, 20);
+            this.txtNombre.Size = new System.Drawing.Size(306, 20);
             this.txtNombre.TabIndex = 11;
             // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(86, 34);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(250, 20);
+            this.txtApellido.Size = new System.Drawing.Size(306, 20);
             this.txtApellido.TabIndex = 12;
             // 
             // comboBoxTipoDoc
@@ -114,7 +117,7 @@
             // 
             this.txtNumeroDoc.Location = new System.Drawing.Point(203, 60);
             this.txtNumeroDoc.Name = "txtNumeroDoc";
-            this.txtNumeroDoc.Size = new System.Drawing.Size(133, 20);
+            this.txtNumeroDoc.Size = new System.Drawing.Size(189, 20);
             this.txtNumeroDoc.TabIndex = 14;
             // 
             // labellll
@@ -130,15 +133,45 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(86, 87);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(250, 20);
+            this.txtEmail.Size = new System.Drawing.Size(306, 20);
             this.txtEmail.TabIndex = 17;
+            // 
+            // dataResultado
+            // 
+            this.dataResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataResultado.Location = new System.Drawing.Point(12, 133);
+            this.dataResultado.Name = "dataResultado";
+            this.dataResultado.Size = new System.Drawing.Size(543, 150);
+            this.dataResultado.TabIndex = 18;
+            // 
+            // bnBuscar
+            // 
+            this.bnBuscar.Location = new System.Drawing.Point(228, 348);
+            this.bnBuscar.Name = "bnBuscar";
+            this.bnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.bnBuscar.TabIndex = 19;
+            this.bnBuscar.Text = "Buscar";
+            this.bnBuscar.UseVisualStyleBackColor = true;
+            this.bnBuscar.Click += new System.EventHandler(this.bnBuscar_Click);
+            // 
+            // bnMenuPrincipal
+            // 
+            this.bnMenuPrincipal.Location = new System.Drawing.Point(109, 348);
+            this.bnMenuPrincipal.Name = "bnMenuPrincipal";
+            this.bnMenuPrincipal.Size = new System.Drawing.Size(88, 23);
+            this.bnMenuPrincipal.TabIndex = 20;
+            this.bnMenuPrincipal.Text = "Menu Principal";
+            this.bnMenuPrincipal.UseVisualStyleBackColor = true;
             // 
             // FrmbnCliente_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(346, 248);
+            this.ClientSize = new System.Drawing.Size(568, 423);
+            this.Controls.Add(this.bnMenuPrincipal);
+            this.Controls.Add(this.bnBuscar);
+            this.Controls.Add(this.dataResultado);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.labellll);
             this.Controls.Add(this.txtNumeroDoc);
@@ -155,6 +188,7 @@
             this.Name = "FrmbnCliente_Baja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja de Cliente";
+            ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +207,8 @@
         private System.Windows.Forms.TextBox txtNumeroDoc;
         private System.Windows.Forms.Label labellll;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.DataGridView dataResultado;
+        private System.Windows.Forms.Button bnBuscar;
+        private System.Windows.Forms.Button bnMenuPrincipal;
     }
 }
