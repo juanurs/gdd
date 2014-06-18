@@ -52,16 +52,11 @@
             this.bnBuscar.TabIndex = 2;
             this.bnBuscar.Text = "Buscar";
             this.bnBuscar.UseVisualStyleBackColor = true;
-            this.bnBuscar.Click += new System.EventHandler(this.bnBuscar_Click);
+
             // 
             // filtroDocumento
-            // 
-            this.filtroDocumento.Location = new System.Drawing.Point(142, 71);
-            this.filtroDocumento.Name = "filtroDocumento";
-            this.filtroDocumento.Size = new System.Drawing.Size(117, 20);
-            this.filtroDocumento.TabIndex = 6;
-            this.filtroDocumento.TextChanged += new System.EventHandler(this.docCliente_TextChanged);
-            this.filtroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filtroDocumento_KeyPress);
+        
+            
             // 
             // label2
             // 
@@ -72,22 +67,8 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Documento Cliente:";
             // 
-            // filtroApellido
-            // 
-            this.filtroApellido.Location = new System.Drawing.Point(142, 45);
-            this.filtroApellido.Name = "filtroApellido";
-            this.filtroApellido.Size = new System.Drawing.Size(117, 20);
-            this.filtroApellido.TabIndex = 8;
-            this.filtroApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filtroApellido_KeyPress);
-            // 
-            // filtroNombre
-            // 
-            this.filtroNombre.Location = new System.Drawing.Point(142, 19);
-            this.filtroNombre.Name = "filtroNombre";
-            this.filtroNombre.Size = new System.Drawing.Size(117, 20);
-            this.filtroNombre.TabIndex = 9;
-            this.filtroNombre.TextChanged += new System.EventHandler(this.filtroNombre_TextChanged);
-            this.filtroNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.filtroNombre_KeyPress);
+         
+ 
             // 
             // label3
             // 
@@ -133,26 +114,9 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de búsqueda";
             // 
-            // bnLimpiar
+   
             // 
-            this.bnLimpiar.Location = new System.Drawing.Point(6, 104);
-            this.bnLimpiar.Name = "bnLimpiar";
-            this.bnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.bnLimpiar.TabIndex = 16;
-            this.bnLimpiar.Text = "Limpiar";
-            this.bnLimpiar.UseVisualStyleBackColor = true;
-            this.bnLimpiar.Click += new System.EventHandler(this.bnLimpiar_Click);
-            // 
-            // dgvModificar
-            // 
-            this.dgvModificar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvModificar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.bnSeleccionar});
-            this.dgvModificar.Location = new System.Drawing.Point(15, 188);
-            this.dgvModificar.Name = "dgvModificar";
-            this.dgvModificar.Size = new System.Drawing.Size(439, 194);
-            this.dgvModificar.TabIndex = 17;
-            this.dgvModificar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+
             // 
             // bnSeleccionar
             // 
@@ -162,26 +126,7 @@
             this.bnSeleccionar.Text = "Modificar";
             this.bnSeleccionar.ToolTipText = "Modificar";
             // 
-            // FrmbnCliente_Modificar
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 394);
-            this.Controls.Add(this.dgvModificar);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label5);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.Name = "FrmbnCliente_Modificar";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Modificar Cliente";
-            this.Load += new System.EventHandler(this.FrmbnCliente_Modificar_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvModificar)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+         
         }
 
         #endregion

@@ -8,7 +8,7 @@ GO
 --============================================================
 --                EMPEZAMOS A CREAR LAS TABLAS
 -- =========================================================== 
-
+SELECT * FROM JJRD.CLIENTES
 CREATE PROCEDURE JJRD.CREAR_ROLES
 AS
 BEGIN
@@ -255,7 +255,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE JJRD.VISIBILIDAD
+CREATE PROCEDURE JJRD.VISIBILIDADES
 AS
 BEGIN
 
@@ -513,7 +513,7 @@ exec JJRD.CREAR_USUARIOS
 exec JJRD.CLIENTES
 exec JJRD.EMPRESAS
 exec JJRD.FUNCIONALIDADES
-exec JJRD.VISIBILIDAD
+exec JJRD.VISIBILIDADES
 exec JJRD.PUBLICACIONES
 exec JJRD.RUBROS
 exec JJRD.FACTURACION
@@ -522,37 +522,6 @@ exec JJRD.OFERTASPUBLICACIONES
 exec JJRD.PREGUNTASPUBLICACION
 GO
 
-CREATE PROCEDURE JJRD.PASSWD_RANDOM
-AS
-BEGIN
 
---SELECT SUBSTRING(CONVERT(varchar(255), NEWID()), 0, 9)
 
-	declare @alphabet varchar(62) = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz'
-	select 
-	substring(@alphabet, convert(int, rand()*62), 1) + 
-	substring(@alphabet, convert(int, rand()*62), 1) +
-	substring(@alphabet, convert(int, rand()*62), 1) +
-	substring(@alphabet, convert(int, rand()*62), 1) +
-	substring(@alphabet, convert(int, rand()*62), 1) +
-	substring(@alphabet, convert(int, rand()*62), 1) +
-	substring(@alphabet, convert(int, rand()*62), 1);
-END
-GO
 
-CREATE PROCEDURE JJRD.USR_RANDOM
-AS
-BEGIN
-
-	declare @alphabet varchar(52) = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-	select 
-	substring(@alphabet, convert(int, rand()*52), 1) + 
-	substring(@alphabet, convert(int, rand()*52), 1) +
-	substring(@alphabet, convert(int, rand()*52), 1) +
-	substring(@alphabet, convert(int, rand()*52), 1) +
-	substring(@alphabet, convert(int, rand()*52), 1) +
-	substring(@alphabet, convert(int, rand()*52), 1) +
-	substring(@alphabet, convert(int, rand()*52), 1);
-
-END
-GO

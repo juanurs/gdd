@@ -21,14 +21,7 @@ namespace FrbaCommerce
 
         }
 
-        private void bnConsCliente_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            FrmbnCliente_Consulta frm = new FrmbnCliente_Consulta();
-            frm.ShowDialog();
-            this.Visible = true;
-        }
-
+   
         private void bnModCliente_Click(object sender, EventArgs e)
         {
             FrmbnCliente_Modificar frm = new FrmbnCliente_Modificar();

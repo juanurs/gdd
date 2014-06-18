@@ -34,15 +34,7 @@
             this.bnAltaCliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // bnConsCliente
-            // 
-            this.bnConsCliente.Location = new System.Drawing.Point(12, 12);
-            this.bnConsCliente.Name = "bnConsCliente";
-            this.bnConsCliente.Size = new System.Drawing.Size(115, 56);
-            this.bnConsCliente.TabIndex = 0;
-            this.bnConsCliente.Text = "Listado";
-            this.bnConsCliente.UseVisualStyleBackColor = true;
-            this.bnConsCliente.Click += new System.EventHandler(this.bnConsCliente_Click);
+           
             // 
             // bnModCliente
             // 

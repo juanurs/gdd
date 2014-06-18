@@ -66,23 +66,11 @@
     <Compile Include="Abm Cliente\FrmbnCliente_Baja.designer.cs">
       <DependentUpon>FrmbnCliente_Baja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Cliente\FrmbnCliente_Consulta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Cliente\FrmbnCliente_Consulta.designer.cs">
-      <DependentUpon>FrmbnCliente_Consulta.cs</DependentUpon>
-    </Compile>
     <Compile Include="Abm Cliente\FrmbnCliente_Modificar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Abm Cliente\FrmbnCliente_Modificar.designer.cs">
       <DependentUpon>FrmbnCliente_Modificar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Abm Cliente\FrmbnCliente_Selec.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Cliente\FrmbnCliente_Selec.designer.cs">
-      <DependentUpon>FrmbnCliente_Selec.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Empresa\FrmEmpresa_Baja_Confirmacion.cs">
       <SubType>Form</SubType>
@@ -233,14 +221,8 @@
     <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Baja.resx">
       <DependentUpon>FrmbnCliente_Baja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Consulta.resx">
-      <DependentUpon>FrmbnCliente_Consulta.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Modificar.resx">
       <DependentUpon>FrmbnCliente_Modificar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Selec.resx">
-      <DependentUpon>FrmbnCliente_Selec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\FrmEmpresa.resx">
       <DependentUpon>FrmEmpresa.cs</DependentUpon>

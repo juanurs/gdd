@@ -58,7 +58,7 @@ namespace FrbaCommerce
                         if ((comboBoxTipoDoc.Text.Trim() != "") && (txtNumeroDoc.Text.Trim() != ""))
                         {
 
-                            Query qr = new Query("SELECT NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL FROM JJRD.CLIENTE WHERE NUMERO_DOC LIKE  '%+comboBoxTipoDoc.SelectedValue+%' AND NUMERO_DOC LIKE '%+txtNumeroDoc+%'");
+                            Query qr = new Query("SELECT NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL FROM JJRD.CLIENTE WHERE ID_TIPO_DOC LIKE  '%"+comboBoxTipoDoc.SelectedValue+"%' AND NUMERO_DOC LIKE '%+txtNumeroDoc+%'");
                             dataResultado.DataSource = qr.ObtenerDataTable();
                         }
                         else

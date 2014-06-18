@@ -18,9 +18,7 @@ C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\Frba
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Alta.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Baja.resources
-C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Consulta.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Modificar.resources
-C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Selec.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles_Alta.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles_Baja.resources

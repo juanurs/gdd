@@ -1,6 +1,6 @@
 Curso:
 
-K3113 && K3014
+K3013 (Curso del representante)
 
 GRUPO: 24
 
