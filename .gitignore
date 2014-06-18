@@ -1,0 +1,7 @@
+*.suo
+src/FrbaCommerce/FrbaCommerce/bin/Debug/*
+src/FrbaCommerce/FrbaCommerce/obj/Debug/*
+*.csproj
+*.exe
+
+
