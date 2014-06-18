@@ -1,21 +1,13 @@
---=============================================================
- --CREACION DEL ESQUEMA CON EL NOMBRE DEL GRUPO--
- --=============================================================
- USE [GD1C2014]
- GO
-	
- --CREATE SCHEMA [JJRD] AUTHORIZATION [GD]
- --GO
+USE [GD1C2014]
+GO
+
+--CREACION DEL ESQUEMA CON EL NOMBRE DEL GRUPO--
+CREATE SCHEMA [JJRD] AUTHORIZATION [GD]
+GO
  
- --PRINT 'SE CREO EL ESQUEMA CORRECTAMENTE'
- 
- --============================================================
- -- ===========================================================
- --============================================================
- --                EMPEZAMOS A CREAR LAS TABLAS
- -- =========================================================== 
- -- ===========================================================
- -- ===========================================================
+--============================================================
+--                EMPEZAMOS A CREAR LAS TABLAS
+-- =========================================================== 
 
 CREATE PROCEDURE JJRD.CREAR_ROLES
 AS
@@ -263,7 +255,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE JJRD.VISIBILIDADES
+CREATE PROCEDURE JJRD.VISIBILIDAD
 AS
 BEGIN
 
@@ -276,17 +268,20 @@ BEGIN
 		DESCRIPCION NVARCHAR(255) NOT NULL,
 		PRECIO NUMERIC(18,2) NOT NULL,
 		PORCENTAJE_VENTA NUMERIC(18,2) NOT NULL,
-		FECHA_FINALIZACION NUMERIC(18,0)
+		DURACION INT NOT NULL
 	);
 	
 	PRINT 'SE CREO TABLA VISIBILIDAD CORRECTAMENTE'
 	
-	INSERT INTO JJRD.VISIBILIDAD (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, FECHA_FINALIZACION)
-
-	SELECT DISTINCT PUBLICACION_VISIBILIDAD_COD, PUBLICACION_VISIBILIDAD_DESC, PUBLICACION_VISIBILIDAD_PRECIO, PUBLICACION_VISIBILIDAD_PORCENTAJE, -1 AS FECHA_FINALIZACION
+	INSERT INTO JJRD.VISIBILIDAD (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, DURACION)
+	SELECT DISTINCT	PUBLICACION_VISIBILIDAD_COD
+				,	PUBLICACION_VISIBILIDAD_DESC
+				,	PUBLICACION_VISIBILIDAD_PRECIO
+				,	PUBLICACION_VISIBILIDAD_PORCENTAJE
+				,	datediff(d, Publicacion_Fecha, Publicacion_Fecha_Venc) duracion
+	FROM gd_esquema.Maestra
+	ORDER BY 1
 		
-		FROM gd_esquema.Maestra AS M 
-	
 END	
 GO
 
@@ -510,17 +505,15 @@ BEGIN
 	FROM gd_esquema.Maestra 
 	WHERE Factura_Nro IS NOT NULL
 	
-	--ver objetos creados: select name from sysobjects
 END
 GO
-
 
 exec JJRD.CREAR_ROLES
 exec JJRD.CREAR_USUARIOS
 exec JJRD.CLIENTES
 exec JJRD.EMPRESAS
 exec JJRD.FUNCIONALIDADES
-exec JJRD.VISIBILIDADES
+exec JJRD.VISIBILIDAD
 exec JJRD.PUBLICACIONES
 exec JJRD.RUBROS
 exec JJRD.FACTURACION
@@ -535,16 +528,15 @@ BEGIN
 
 --SELECT SUBSTRING(CONVERT(varchar(255), NEWID()), 0, 9)
 
-declare @alphabet varchar(62) = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz'
-select 
-substring(@alphabet, convert(int, rand()*62), 1) + 
-substring(@alphabet, convert(int, rand()*62), 1) +
-substring(@alphabet, convert(int, rand()*62), 1) +
-substring(@alphabet, convert(int, rand()*62), 1) +
-substring(@alphabet, convert(int, rand()*62), 1) +
-substring(@alphabet, convert(int, rand()*62), 1) +
-substring(@alphabet, convert(int, rand()*62), 1);
-
+	declare @alphabet varchar(62) = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz'
+	select 
+	substring(@alphabet, convert(int, rand()*62), 1) + 
+	substring(@alphabet, convert(int, rand()*62), 1) +
+	substring(@alphabet, convert(int, rand()*62), 1) +
+	substring(@alphabet, convert(int, rand()*62), 1) +
+	substring(@alphabet, convert(int, rand()*62), 1) +
+	substring(@alphabet, convert(int, rand()*62), 1) +
+	substring(@alphabet, convert(int, rand()*62), 1);
 END
 GO
 
@@ -552,119 +544,15 @@ CREATE PROCEDURE JJRD.USR_RANDOM
 AS
 BEGIN
 
-declare @alphabet varchar(52) = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-select 
-substring(@alphabet, convert(int, rand()*52), 1) + 
-substring(@alphabet, convert(int, rand()*52), 1) +
-substring(@alphabet, convert(int, rand()*52), 1) +
-substring(@alphabet, convert(int, rand()*52), 1) +
-substring(@alphabet, convert(int, rand()*52), 1) +
-substring(@alphabet, convert(int, rand()*52), 1) +
-substring(@alphabet, convert(int, rand()*52), 1);
+	declare @alphabet varchar(52) = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+	select 
+	substring(@alphabet, convert(int, rand()*52), 1) + 
+	substring(@alphabet, convert(int, rand()*52), 1) +
+	substring(@alphabet, convert(int, rand()*52), 1) +
+	substring(@alphabet, convert(int, rand()*52), 1) +
+	substring(@alphabet, convert(int, rand()*52), 1) +
+	substring(@alphabet, convert(int, rand()*52), 1) +
+	substring(@alphabet, convert(int, rand()*52), 1);
 
 END
 GO
-
-
-
-CREATE PROCEDURE JJRD.BORRAR_TODO --BORRA TODO DENTRO DEL ESQUEMA JJRD
-as
-begin
-DECLARE @spSQL AS NVARCHAR(MAX)
-DECLARE @fnSQL AS NVARCHAR(MAX)
-DECLARE @vwSQL AS NVARCHAR(MAX)
-DECLARE @fkSQL AS NVARCHAR(MAX)
-DECLARE @tblSQL AS NVARCHAR(MAX)
-
-SET @spSQL = ''
-SET @fnSQL = ''
-SET @vwSQL = ''
-SET @fkSQL = ''
-SET @tblSQL = ''
-
--- Procedimientos almacenados
-SELECT @spSQL = @spSQL + 'DROP PROCEDURE JJRD.' + QUOTENAME(name)
-FROM sys.procedures
-WHERE is_ms_shipped = 0
-AND name NOT LIKE 'sp\_%' ESCAPE '\'
-
--- Funciones
-SELECT @fnSQL = @fnSQL + 'DROP FUNCTION JJRD.' + QUOTENAME(name)
-FROM sys.objects
-WHERE is_ms_shipped = 0
-AND name NOT LIKE 'fn\_%' ESCAPE '\'
-AND type = 'FN'
-
--- Vistas
-SELECT @vwSQL = @vwSQL + 'DROP VIEW JJRD.' + QUOTENAME(name)
-FROM sys.views
-WHERE is_ms_shipped = 0
-
--- Claves foráneas
-SELECT @fkSQL = @fkSQL + 'ALTER TABLE JJRD.' + QUOTENAME(OBJECT_NAME(parent_object_id)) + ' DROP CONSTRAINT ' + QUOTENAME(name)
-FROM sys.foreign_keys
-WHERE is_ms_shipped = 0
-
--- Tablas
-SELECT @tblSQL = @tblSQL + 'DROP TABLE JJRD.' + QUOTENAME(name)
-FROM sys.tables
-WHERE is_ms_shipped = 0
-AND name NOT LIKE 'sys%'
-
-EXEC (@spSQL)
-EXEC (@fnSQL)
-EXEC (@vwSQL)
-EXEC (@fkSQL)
-EXEC (@tblSQL)
-
--- + QUOTENAME(SCHEMA_NAME(schema_id)) + '.' + QUOTENAME(name), PARA BORRAR TODOS LOS ESQUEMAS
-
-end
-GO
-/*
-<<<<<<< HEAD
-select * from JJRD.USUARIOS 
-
-select * from JJRD.ROLES
-
-select * from JJRD.ROL_USUARIO
-//PARA PROBAR
-insert JJRD.ROL_USUARIO values (1,1)
-insert JJRD.ROL_USUARIO values (2,2)
-insert JJRD.ROL_USUARIO values (3,3)
-insert JJRD.ROL_USUARIO values (2,1)
-insert JJRD.ROL_USUARIO values (3,1)
-insert JJRD.ROL_USUARIO values (3,2)
-insert JJRD.ROL_USUARIO values (1,5)
-insert JJRD.ROL_USUARIO values (1,7)
-
-
-
-SELECT distinct(Nombre) from JJRD.USUARIOS U, JJRD.ROL_USUARIO ur
-                                                   INNER JOIN JJRD.ROLES R ON R.ID_ROL = ur.ID_ROL 
-                                                   WHERE U.HABILITADO = '1' and U.ID_USUARIO = 1
-                                                   AND R.ROL_ESTADO = '1'
-                                                   
-                                                   
-SELECT ID_ROL FROM JJRD.ROL_USUARIO  WHERE ID_USUARIO = 1
-
-select COUNT(*) from JJRD.USUARIOS where NOMBRE = 'fantino_Paz@gmail.com'
-
-select COUNT(*) from JJRD.ROL_USUARIO where ID_USUARIO = 1
-
-update JJRD.USUARIOS set LOGIN_FALLIDOS = 0 where id_Usuario = 3
-update JJRD.USUARIOS set LOGIN_FALLIDOS = 0 where id_Usuario = 3
-update JJRD.USUARIOS set HABILITADO = 1 where id_Usuario = 3
-
-SELECT r.ROL_NOMBRE rol,  r.ID_ROL rol from JJRD.ROLES r, JJRD.ROL_USUARIO ur where ur.ID_ROL = r.ID_ROL and ur.ID_USUARIO = 1
-
-
-SELECT ID_ROL FROM JJRD.ROLES   WHERE ROL_NOMBRE = 'EMPRESA'
-*/
-
-
-
-
-
-
-
