@@ -35,9 +35,7 @@ C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\Re
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Alta.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Baja.resources
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Consulta.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Modificar.resources
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Selec.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles_Alta.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles_Baja.resources
@@ -63,3 +61,4 @@ C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\Frba
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Alta.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Baja.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Baja_Confirmacion.resources
+C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmPrimerLogin.resources

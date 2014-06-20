@@ -192,6 +192,12 @@
     <Compile Include="Listado Estadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\FrmPrimerLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FrmPrimerLogin.Designer.cs">
+      <DependentUpon>FrmPrimerLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\FrmRegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\FrmPrimerLogin.resx">
+      <DependentUpon>FrmPrimerLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\FrmRegistrarUsuario.resx">
       <DependentUpon>FrmRegistrarUsuario.cs</DependentUpon>

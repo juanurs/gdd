@@ -525,3 +525,8 @@ GO
 
 
 
+select * from jjrd.usuarios
+select email from JJRD.CLIENTE where ID_USUARIO = 2
+select * from JJRD.CLIENTE
+
+UPDATE JJRD.USUARIOS SET USERNAME = 'probandoUpdate', CONTRASEÑA = 'contraseña' WHERE ID_USUARIO = 1

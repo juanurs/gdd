@@ -70,7 +70,7 @@ namespace FrbaCommerce
 
             this.Visible = false;
             FrmLogin login = new FrmLogin();
-            login.recibirUsuario(nombreUsuario, idRol, idUsuario);
+            login.recibirUsuario(idUsuario);
 
             
            

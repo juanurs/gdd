@@ -122,6 +122,5 @@ namespace FrbaCommerce.Login
             login = (FrmLogin)this.ActiveMdiChild;
         }
 
-
     }
 }

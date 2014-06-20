@@ -46,11 +46,12 @@ namespace FrbaCommerce.Login
                 {
                     idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
                     Query qr = new Query("SELECT LOGIN_FALLIDOS FROM JJRD.USUARIOS WHERE ID_USUARIO=" + idUsuario);
-                    failLogin = Convert.ToInt32(qr.ObtenerUnicoCampo());
+                    failLogin = Convert.ToInt32(qr.ObtenerUnicoCampo()); //MOVER DE ACA
 
                     if (puedeIngresarAlSistema(idUsuario))
                     {
                         validar();
+
                     }
                     else
                     {
@@ -94,6 +95,8 @@ namespace FrbaCommerce.Login
                 int IdRolCant = (int)new Query("SELECT count(*) FROM JJRD.ROL_USUARIO  " +
                                            " WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
 
+                primerLogin();
+
                 switch (IdRolCant)
                 {
                     case 0: MessageBox.Show("El usuario no posee ningun perfil.", "Advertencia",
@@ -105,7 +108,7 @@ namespace FrbaCommerce.Login
                                           " WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
 
                             this.Visible = false;
-                            recibirUsuario(txtBoxUsuario.Text, idRol, idUsuario);
+                            recibirUsuario(idUsuario);
                            
 
                             break;
@@ -185,8 +188,13 @@ namespace FrbaCommerce.Login
             return false;
         }
 
-        public void recibirUsuario(string nombreUsuario, int idRol, int idUsuario)
+        public void recibirUsuario(int idUsuario)
         {
+
+            nombreUsuario = new Query("SELECT USERNAME FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
+
+            idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO  " +
+                          " WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
 
             MessageBox.Show("Bienvenido a Commerce" + Environment.NewLine +
             "Usted se ha registrado como usuario: " + nombreUsuario.ToUpper(), "Bienvenido!",
@@ -196,6 +204,37 @@ namespace FrbaCommerce.Login
             frmPrincipal.cargarFrmPrincipal(nombreUsuario, idRol, idUsuario);
             frmPrincipal.ShowDialog();
                            
+        }
+
+        public void primerLogin()
+        {
+            if (primeraVezQueIngresaAlSistema())
+            {
+
+                FrmPrimerLogin primerlogin = new FrmPrimerLogin(idUsuario);
+                this.Hide();
+                primerlogin.ShowDialog();
+                primerlogin = (FrmPrimerLogin)this.ActiveMdiChild;
+
+            }
+        }
+
+        private bool primeraVezQueIngresaAlSistema() //MOVER A FUNCIONES GENERALES, REPITO CODIGO EN FRMPRIMERLOGIN
+        {
+            Query qr = new Query("SELECT TIPO_DE_USUARIO FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario);
+            string tipo = qr.ObtenerUnicoCampo().ToString();
+
+            if (tipo == "C")
+            {
+                Query email = new Query("SELECT EMAIL FROM JJRD.CLIENTE WHERE ID_USUARIO = " + idUsuario);
+                return (email.ObtenerUnicoCampo().ToString() == txtBoxUsuario.Text);
+            }
+            else
+            {   //TIPO ES "E"
+                Query email = new Query("SELECT EMAIL FROM JJRD.EMPRESA WHERE ID_USUARIO = " + idUsuario);
+                return (email.ObtenerUnicoCampo().ToString() == txtBoxUsuario.Text);
+            }
+
         }
 
         private void lnkRegistrarse_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
