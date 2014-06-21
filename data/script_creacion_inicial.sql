@@ -8,7 +8,6 @@ GO
 --============================================================
 --                EMPEZAMOS A CREAR LAS TABLAS
 -- =========================================================== 
-SELECT * FROM JJRD.CLIENTES
 CREATE PROCEDURE JJRD.CREAR_ROLES
 AS
 BEGIN
@@ -43,7 +42,7 @@ BEGIN
 	CREATE TABLE JJRD.USUARIOS (
 		ID_USUARIO INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 		USERNAME NVARCHAR(30) NOT NULL UNIQUE,
-		CONTRASEÑA  NVARCHAR(30) NOT NULL,
+		CONTRASEï¿½A  NVARCHAR(30) NOT NULL,
 		HABILITADO BIT NOT NULL,
 		LOGIN_FALLIDOS NUMERIC (1,0) NOT NULL, 
 		TIPO_DE_USUARIO CHAR NOT NULL,
@@ -55,7 +54,7 @@ BEGIN
 	PRINT 'SE CREO TABLA USUARIOS CORRECTAMENTE'
 
 	/* MIGRACION TABLA USUARIOS (TIPO CLIENTE) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
-	insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO)
+	insert into JJRD.USUARIOS (USERNAME, CONTRASEï¿½A, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO)
 	select distinct Cli_Mail, Cli_Nombre, 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'C' as TIPO_DE_USUARIO
 	from gd_esquema.Maestra
 	where Cli_Mail is not null
@@ -63,7 +62,7 @@ BEGIN
 	
 	
 /* MIGRACION TABLA USUARIOS (TIPO EMPRESA) */  --PUBLICACIONES_GRATIS (NO ES APLICABLE PARA DATOS MIGRADOS)
-insert into JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO)
+insert into JJRD.USUARIOS (USERNAME, CONTRASEï¿½A, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO)
 	select distinct Publ_Empresa_Razon_Social, Publ_Empresa_Cuit , 1 as HABILITADO, 0 as LOGIN_FALLIDOS, 'E' as TIPO_DE_USUARIO
 	from gd_esquema.Maestra
 	where Publ_Empresa_Razon_Social is not null
@@ -351,18 +350,6 @@ BEGIN
 	
 	PRINT 'SE CREO TABLA RUBRO CORRECTAMENTE'
 	
-	
-	
-/*--MIGRACION TABLA RUBRO---------->NO ES NECESARIA SON TODOS NULL*/
-
---INSERT INTO JJRD.RUBRO (DESCRIPCION)
---SELECT DISTINCT  (Publicacion_Rubro_Descripcion)
---from gd_esquema.Maestra
---where Publicacion_Rubro_Descripcion is not null
-
-
----
----
 --============================================================
 --TABLA PUBLICACION_RUBRO
 --============================================================		
@@ -529,4 +516,4 @@ select * from jjrd.usuarios
 select email from JJRD.CLIENTE where ID_USUARIO = 2
 select * from JJRD.CLIENTE
 
-UPDATE JJRD.USUARIOS SET USERNAME = 'probandoUpdate', CONTRASEÑA = 'contraseña' WHERE ID_USUARIO = 1
+UPDATE JJRD.USUARIOS SET USERNAME = 'probandoUpdate', CONTRASEï¿½A = 'contraseï¿½a' WHERE ID_USUARIO = 1
