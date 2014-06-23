@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaCommerce.Login;
+using FrbaCommerce.Generar_Publicacion;
+using FrbaCommerce.Editar_Publicacion;
 
 namespace FrbaCommerce
 {
@@ -19,6 +21,8 @@ namespace FrbaCommerce
 
             lblUsuarioLogueado.Visible = false;
             lblPerfil.Visible = false;
+            bnGenerarPublicacion.Visible = false;
+            bnEditarPublicacion.Visible = false;
           
            /* DESPUES TERMINO ESTA PARTE
             btnRoles.Visible = false;
@@ -67,6 +71,8 @@ namespace FrbaCommerce
             lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
 
             btnLogin.Visible = false;
+            bnGenerarPublicacion.Visible = true;
+            bnEditarPublicacion.Visible = true;
 
         }
 
@@ -86,6 +92,24 @@ namespace FrbaCommerce
             cliente = (FrmEmpresa)this.ActiveMdiChild;
         }
 
+        private void bnGenerarPublicacion_Click(object sender, EventArgs e)
+        {
+            FrmTipoDePublicacion publicacion = new FrmTipoDePublicacion();
+            this.Hide();
+            publicacion.ShowDialog();
+            publicacion = (FrmTipoDePublicacion)this.ActiveMdiChild;
+
+        }
+
+        private void bnEditarPublicacion_Click(object sender, EventArgs e)
+        {
+            FrmEditarPublicacion editar = new FrmEditarPublicacion();
+            this.Hide();
+            editar.ShowDialog();
+            editar = (FrmEditarPublicacion)this.ActiveMdiChild;
+        }
+
+     
        
 
     }
