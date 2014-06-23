@@ -36,12 +36,12 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.comboBoxTipoDoc = new System.Windows.Forms.ComboBox();
-            this.txtNumeroDoc = new System.Windows.Forms.TextBox();
             this.labellll = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.dataResultado = new System.Windows.Forms.DataGridView();
             this.bnBuscar = new System.Windows.Forms.Button();
             this.bnMenuPrincipal = new System.Windows.Forms.Button();
+            this.txtNumeroDoc = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,13 +113,6 @@
             this.comboBoxTipoDoc.Size = new System.Drawing.Size(50, 21);
             this.comboBoxTipoDoc.TabIndex = 13;
             // 
-            // txtNumeroDoc
-            // 
-            this.txtNumeroDoc.Location = new System.Drawing.Point(203, 60);
-            this.txtNumeroDoc.Name = "txtNumeroDoc";
-            this.txtNumeroDoc.Size = new System.Drawing.Size(189, 20);
-            this.txtNumeroDoc.TabIndex = 14;
-            // 
             // labellll
             // 
             this.labellll.AutoSize = true;
@@ -163,6 +156,13 @@
             this.bnMenuPrincipal.Text = "Menu Principal";
             this.bnMenuPrincipal.UseVisualStyleBackColor = true;
             // 
+            // txtNumeroDoc
+            // 
+            this.txtNumeroDoc.Location = new System.Drawing.Point(203, 60);
+            this.txtNumeroDoc.Name = "txtNumeroDoc";
+            this.txtNumeroDoc.Size = new System.Drawing.Size(189, 20);
+            this.txtNumeroDoc.TabIndex = 14;
+            // 
             // FrmbnCliente_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,11 +204,11 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.ComboBox comboBoxTipoDoc;
-        private System.Windows.Forms.TextBox txtNumeroDoc;
         private System.Windows.Forms.Label labellll;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.DataGridView dataResultado;
         private System.Windows.Forms.Button bnBuscar;
         private System.Windows.Forms.Button bnMenuPrincipal;
+        private System.Windows.Forms.TextBox txtNumeroDoc;
     }
 }

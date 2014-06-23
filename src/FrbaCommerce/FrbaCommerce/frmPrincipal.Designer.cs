@@ -138,6 +138,7 @@
             this.btnVisibilidad.TabIndex = 9;
             this.btnVisibilidad.Text = "ABM Visibilidad";
             this.btnVisibilidad.UseVisualStyleBackColor = true;
+            this.btnVisibilidad.Click += new System.EventHandler(this.btnVisibilidad_Click);
             // 
             // bnGenerarPublicacion
             // 

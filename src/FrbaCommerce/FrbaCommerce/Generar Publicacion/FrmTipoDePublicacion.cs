@@ -11,14 +11,17 @@ namespace FrbaCommerce.Generar_Publicacion
 {
     public partial class FrmTipoDePublicacion : Form
     {
-        public FrmTipoDePublicacion()
+        private int idUsuario;
+
+        public FrmTipoDePublicacion(int id_Usr)
         {
+            idUsuario = id_Usr;
             InitializeComponent();
         }
 
         private void bnCompraInmediata_Click(object sender, EventArgs e)
         {
-            FrmPublicacionCompraInmediata publicacion = new FrmPublicacionCompraInmediata();
+            FrmPublicacionCompraInmediata publicacion = new FrmPublicacionCompraInmediata(idUsuario);
             this.Hide();
             publicacion.ShowDialog();
             publicacion = (FrmPublicacionCompraInmediata)this.ActiveMdiChild;
@@ -26,7 +29,7 @@ namespace FrbaCommerce.Generar_Publicacion
 
         private void bnSubasta_Click(object sender, EventArgs e)
         {
-            FrmPublicacionSubasta publicacionSub = new FrmPublicacionSubasta();
+            FrmPublicacionSubasta publicacionSub = new FrmPublicacionSubasta(idUsuario);
             this.Hide();
             publicacionSub.ShowDialog();
             publicacionSub = (FrmPublicacionSubasta)this.ActiveMdiChild;

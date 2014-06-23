@@ -15,13 +15,13 @@ namespace FrbaCommerce.Generar_Publicacion
 
         SqlConnection conexion = new SqlConnection();
 
-        public int idUsuario;
+    private int idUsuario;
 
 
-        public FrmPublicacionSubasta()
+        public FrmPublicacionSubasta(int id_Usr)
         {
             
-            
+            idUsuario = id_Usr;
             InitializeComponent();
 
 

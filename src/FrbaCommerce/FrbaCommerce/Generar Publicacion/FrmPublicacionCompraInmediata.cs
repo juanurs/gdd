@@ -17,10 +17,13 @@ namespace FrbaCommerce
     {
         SqlConnection conexion = new SqlConnection();
 
-        public int idUsuario;
+        private int idUsuario;
 
-          public FrmPublicacionCompraInmediata()
+          public FrmPublicacionCompraInmediata(int id_Usr)
              {
+
+                 idUsuario = id_Usr;
+                 
             
 
             InitializeComponent();
@@ -47,15 +50,6 @@ namespace FrbaCommerce
        
         }
 
-
-          public void recibirIdUsuario(int idUsuarioPublicacion)
-          {
-              comboBoxUsuario.Items.Add(idUsuarioPublicacion);
-
-            
-
-          }
-
           
      
 
@@ -68,8 +62,8 @@ namespace FrbaCommerce
 
             decimal idPublicacion = (decimal)qry.ObtenerUnicoCampo();
 
-       
 
+            comboBoxUsuario.Items.Add(idUsuario);
             comboBoxCodPublicacion.Items.Add(idPublicacion);
             comboBoxCodPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEstadoPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -77,6 +71,7 @@ namespace FrbaCommerce
             comboBoxTipoPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxVisibilidad.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             this.txtFechaInicio.Enabled = false;
         }
 

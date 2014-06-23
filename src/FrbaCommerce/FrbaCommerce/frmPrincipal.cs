@@ -14,6 +14,8 @@ namespace FrbaCommerce
 {
     public partial class frmPrincipal : Form
     {
+
+        private int idUsuario;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -55,9 +57,11 @@ namespace FrbaCommerce
             Application.Exit();
         }
 
-        public void cargarFrmPrincipal(string nombreUsuario, int idRol, int idUsuario)
+        public void cargarFrmPrincipal(string nombreUsuario, int idRol, int id_Usr)
         {
             //ACA ADENTRO CARGAR TODO PARA EL FRMPRINCIPAL
+            idUsuario = id_Usr;
+
 
             Query qr = new Query(" SELECT ROL_NOMBRE FROM JJRD.ROLES WHERE ID_ROL = " + idRol);
             qr.pTipoComando = CommandType.Text;
@@ -94,7 +98,7 @@ namespace FrbaCommerce
 
         private void bnGenerarPublicacion_Click(object sender, EventArgs e)
         {
-            FrmTipoDePublicacion publicacion = new FrmTipoDePublicacion();
+            FrmTipoDePublicacion publicacion = new FrmTipoDePublicacion(idUsuario);
             this.Hide();
             publicacion.ShowDialog();
             publicacion = (FrmTipoDePublicacion)this.ActiveMdiChild;
@@ -103,10 +107,19 @@ namespace FrbaCommerce
 
         private void bnEditarPublicacion_Click(object sender, EventArgs e)
         {
-            FrmEditarPublicacion editar = new FrmEditarPublicacion();
+            FrmEditarPublicacion editar = new FrmEditarPublicacion(idUsuario);
             this.Hide();
             editar.ShowDialog();
             editar = (FrmEditarPublicacion)this.ActiveMdiChild;
+        }
+
+        private void btnVisibilidad_Click(object sender, EventArgs e)
+        {
+            FrmVisibilidad visibilidad = new FrmVisibilidad();
+            this.Hide();
+            visibilidad.ShowDialog();
+            visibilidad = (FrmVisibilidad)this.ActiveMdiChild;
+
         }
 
      

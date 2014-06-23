@@ -38,15 +38,7 @@ namespace FrbaCommerce.Login
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            //Pasa id_usuario a generar publicacion compra inmediata (no esta andando)
-            int idUsuarioPublicacion;
-
-
-            idUsuarioPublicacion = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
-            FrmPublicacionCompraInmediata FrmPublicacionCompraInmediata = new FrmPublicacionCompraInmediata();
-            FrmPublicacionCompraInmediata.recibirIdUsuario(idUsuarioPublicacion);
-
-
+          
 
             //VER SI FALTAN DATOS -TODO
             if (!FaltanDatos())
