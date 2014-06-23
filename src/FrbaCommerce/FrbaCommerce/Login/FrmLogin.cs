@@ -227,12 +227,12 @@ namespace FrbaCommerce.Login
             if (tipo == "C")
             {
                 Query email = new Query("SELECT EMAIL FROM JJRD.CLIENTE WHERE ID_USUARIO = " + idUsuario);
-                return (email.ObtenerUnicoCampo().ToString() == txtBoxUsuario.Text);
+                return (email.ObtenerUnicoCampo().ToString().ToUpper() == txtBoxUsuario.Text.ToUpper());
             }
             else
             {   //TIPO ES "E"
                 Query email = new Query("SELECT EMAIL FROM JJRD.EMPRESA WHERE ID_USUARIO = " + idUsuario);
-                return (email.ObtenerUnicoCampo().ToString() == txtBoxUsuario.Text);
+                return (email.ObtenerUnicoCampo().ToString().ToUpper() == txtBoxUsuario.Text.ToUpper());
             }
 
         }

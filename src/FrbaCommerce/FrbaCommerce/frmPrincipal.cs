@@ -86,6 +86,14 @@ namespace FrbaCommerce
             cliente = (FrmEmpresa)this.ActiveMdiChild;
         }
 
+        private void btnVisibilidad_Click(object sender, EventArgs e)
+        {
+            FrmVisibilidad visibilidad = new FrmVisibilidad();
+            this.Hide();
+            visibilidad.ShowDialog();
+            visibilidad = (FrmVisibilidad)this.ActiveMdiChild;
+        }
+
        
 
     }
