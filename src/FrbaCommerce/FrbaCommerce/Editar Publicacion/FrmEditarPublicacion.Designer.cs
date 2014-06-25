@@ -28,60 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCodPublicacion = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxEstadoPublicacion = new System.Windows.Forms.ComboBox();
             this.dataResultado = new System.Windows.Forms.DataGridView();
             this.bnBuscar = new System.Windows.Forms.Button();
             this.bnVolver = new System.Windows.Forms.Button();
+            this.bnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Codigo de Publicacion";
-            // 
-            // txtCodPublicacion
-            // 
-            this.txtCodPublicacion.Location = new System.Drawing.Point(161, 25);
-            this.txtCodPublicacion.Name = "txtCodPublicacion";
-            this.txtCodPublicacion.Size = new System.Drawing.Size(122, 20);
-            this.txtCodPublicacion.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(316, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Estado de Publicacion";
-            // 
-            // comboBoxEstadoPublicacion
-            // 
-            this.comboBoxEstadoPublicacion.FormattingEnabled = true;
-            this.comboBoxEstadoPublicacion.Location = new System.Drawing.Point(449, 24);
-            this.comboBoxEstadoPublicacion.Name = "comboBoxEstadoPublicacion";
-            this.comboBoxEstadoPublicacion.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxEstadoPublicacion.TabIndex = 3;
             // 
             // dataResultado
             // 
             this.dataResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataResultado.Location = new System.Drawing.Point(12, 71);
+            this.dataResultado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bnEditar});
+            this.dataResultado.Location = new System.Drawing.Point(12, 53);
             this.dataResultado.Name = "dataResultado";
-            this.dataResultado.Size = new System.Drawing.Size(609, 150);
+            this.dataResultado.Size = new System.Drawing.Size(654, 233);
             this.dataResultado.TabIndex = 4;
+            this.dataResultado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataResultado_CellContentClick);
             // 
             // bnBuscar
             // 
-            this.bnBuscar.Location = new System.Drawing.Point(368, 251);
+            this.bnBuscar.Location = new System.Drawing.Point(432, 325);
             this.bnBuscar.Name = "bnBuscar";
             this.bnBuscar.Size = new System.Drawing.Size(75, 23);
             this.bnBuscar.TabIndex = 5;
@@ -91,12 +59,27 @@
             // 
             // bnVolver
             // 
-            this.bnVolver.Location = new System.Drawing.Point(161, 251);
+            this.bnVolver.Location = new System.Drawing.Point(96, 325);
             this.bnVolver.Name = "bnVolver";
             this.bnVolver.Size = new System.Drawing.Size(75, 23);
             this.bnVolver.TabIndex = 6;
             this.bnVolver.Text = "Volver";
             this.bnVolver.UseVisualStyleBackColor = true;
+            // 
+            // bnEditar
+            // 
+            this.bnEditar.HeaderText = "Editar";
+            this.bnEditar.Name = "bnEditar";
+            this.bnEditar.Text = "Editar Publicacion";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(222, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(232, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Seleccione Buscar para Editar una Publicacion ";
             // 
             // FrmEditarPublicacion
             // 
@@ -104,13 +87,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(678, 374);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.bnBuscar);
             this.Controls.Add(this.dataResultado);
-            this.Controls.Add(this.comboBoxEstadoPublicacion);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtCodPublicacion);
-            this.Controls.Add(this.label1);
             this.Name = "FrmEditarPublicacion";
             this.Text = "Editar Publicacion";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -122,12 +102,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCodPublicacion;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBoxEstadoPublicacion;
         private System.Windows.Forms.DataGridView dataResultado;
         private System.Windows.Forms.Button bnBuscar;
         private System.Windows.Forms.Button bnVolver;
+        private System.Windows.Forms.DataGridViewButtonColumn bnEditar;
+        private System.Windows.Forms.Label label1;
     }
 }

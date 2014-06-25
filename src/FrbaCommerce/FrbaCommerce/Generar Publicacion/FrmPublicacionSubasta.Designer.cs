@@ -53,8 +53,6 @@
             this.comboBoxStock = new System.Windows.Forms.ComboBox();
             this.bnLimpiar = new System.Windows.Forms.Button();
             this.comboBoxCodPublicacion = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBoxUsuario = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -271,31 +269,12 @@
             this.comboBoxCodPublicacion.Size = new System.Drawing.Size(171, 21);
             this.comboBoxCodPublicacion.TabIndex = 47;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(370, 193);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 48;
-            this.label9.Text = "ID Usuario";
-            // 
-            // comboBoxUsuario
-            // 
-            this.comboBoxUsuario.FormattingEnabled = true;
-            this.comboBoxUsuario.Location = new System.Drawing.Point(477, 188);
-            this.comboBoxUsuario.Name = "comboBoxUsuario";
-            this.comboBoxUsuario.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxUsuario.TabIndex = 49;
-            // 
             // FrmPublicacionSubasta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(662, 462);
-            this.Controls.Add(this.comboBoxUsuario);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.comboBoxCodPublicacion);
             this.Controls.Add(this.bnLimpiar);
             this.Controls.Add(this.comboBoxStock);
@@ -356,7 +335,5 @@
         private System.Windows.Forms.ComboBox comboBoxStock;
         private System.Windows.Forms.Button bnLimpiar;
         private System.Windows.Forms.ComboBox comboBoxCodPublicacion;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBoxUsuario;
     }
 }

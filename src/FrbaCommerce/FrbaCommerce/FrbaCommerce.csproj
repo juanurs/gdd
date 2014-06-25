@@ -126,12 +126,6 @@
     <Compile Include="ABM Rol\FrmbnRoles_Mod.Designer.cs">
       <DependentUpon>FrmbnRoles_Mod.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rubro\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Rubro\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Abm Visibilidad\FrmVisibilidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,17 +162,23 @@
     <Compile Include="Comprar-Ofertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editar Publicacion\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Editar Publicacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Editar Publicacion\FrmEditarPublicacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Editar Publicacion\FrmEditarPublicacion.Designer.cs">
       <DependentUpon>FrmEditarPublicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Publicacion\FrmModificacionActiva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\FrmModificacionActiva.Designer.cs">
+      <DependentUpon>FrmModificacionActiva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Publicacion\FrmModificacionTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\FrmModificacionTotal.Designer.cs">
+      <DependentUpon>FrmModificacionTotal.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturar Publicaciones\Form1.cs">
       <SubType>Form</SubType>
@@ -321,6 +321,12 @@
     <EmbeddedResource Include="Editar Publicacion\FrmEditarPublicacion.resx">
       <DependentUpon>FrmEditarPublicacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\FrmModificacionActiva.resx">
+      <DependentUpon>FrmModificacionActiva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\FrmModificacionTotal.resx">
+      <DependentUpon>FrmModificacionTotal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +384,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abm Rubro\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -22,35 +22,102 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            comboBoxEstadoPublicacion.Items.Add("Borrada");
-            comboBoxEstadoPublicacion.Items.Add("Activa");
-            comboBoxEstadoPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
-        
+           
 
         }
 
         private void bnBuscar_Click(object sender, EventArgs e)
         {
-            if (comboBoxEstadoPublicacion.Text != "")
-            { 
-                //Buscar 
+            
 
-                Query qr = new Query( "SELECT DESCRIPCION,STOCK,FECHA_VENCIMIENTO,FECHA_INICIO,PRECIO,ESTADO,TIPO,PREGUNTAS FROM JJRD.PUBLICACION  WHERE ID_USUARIO = '"+idUsuario+"'  AND ESTADO = '" + comboBoxEstadoPublicacion.Text + "'");
+                Query qr = new Query( "SELECT COD_PUBLICACION, DESCRIPCION,ID_USUARIO, STOCK,FECHA_VENCIMIENTO,FECHA_INICIO,PRECIO,ESTADO,TIPO,PREGUNTAS FROM JJRD.PUBLICACION  WHERE ID_USUARIO = '"+idUsuario+"'");
                 dataResultado.DataSource = qr.ObtenerDataTable();
-                dataResultado.Visible = true;
+                dataResultado.Columns[3].Visible = false;
+              //  dataResultado.Columns[1].Visible = false; 
+
+           
+
+            
+        }
+
+        private void dataResultado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
 
-            }
+           dataResultado.Rows[e.RowIndex].Cells["Cod_Publicacion"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Id_Usuario"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Stock"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Fecha_Vencimiento"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Fecha_Inicio"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Tipo"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Fecha_Vencimiento"].Value.ToString();
 
-               // if(comboBoxEstadoPublicacion.SelectedValue() == "")
-
-            else 
-            {
-                //No se pueden insertar campos vacios
 
 
-                MessageBox.Show("No se pueden Ingresar Campos Vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           this.Visible = true;
+           string estadoPublicacion;
+           string tipoDePublicacion;
+           string usuario;
+           string idPublicacion;
+           string stock;
+          
+           estadoPublicacion = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[8].Value.ToString());
+           tipoDePublicacion = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[9].Value.ToString());
+           usuario = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[3].Value.ToString());
+           idPublicacion = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[1].Value.ToString());
+           stock = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[4].Value.ToString());
+            
+            
+
+
+             switch (estadoPublicacion)
+             {
+                 case "Borrador"://modificar forma total
+
+                     this.Hide();
+                     FrmModificacionTotal frmModificacionTotal = new FrmModificacionTotal(usuario, idPublicacion, stock);
+                     frmModificacionTotal.ShowDialog();
+                         
+                         break;
+
+                 case "Publicada":  //solo permite incrementar el stock y descripcion de producto
+
+                         this.Hide();
+                         FrmModificacionActiva frmModificacionActiva = new FrmModificacionActiva(usuario, idPublicacion, stock,estadoPublicacion,tipoDePublicacion);
+                         frmModificacionActiva.ShowDialog();
+
+
+
+                     break;
+
+              
+
+
+                 case "Finalizada":  //No se puede modificar
+
+                      MessageBox.Show("No se puede modificar una Publicacion Finalizada", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
+
+
+                     break;
+
+                 case "Pausada":  //No se puede modificar
+
+                     MessageBox.Show("No se puede modificar una Publicacion Pausada", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+                     break;
+                 
+                 default:
+                     break;
+
+             }
+           
+
         }
     }
 }
