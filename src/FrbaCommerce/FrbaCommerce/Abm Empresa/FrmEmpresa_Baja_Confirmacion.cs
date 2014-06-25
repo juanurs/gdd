@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FrbaCommerce.Login;
+using FrbaCommerce.FuncionesGenerales;
 
 namespace FrbaCommerce
 {
@@ -14,7 +14,7 @@ namespace FrbaCommerce
     {
         private string r_social;
         public int id_usuario; 
-        FrmLogin fn = new FrmLogin(); // ESTO CAMBIARLO A UNA CLASE DE FUNCIONES GENERALES
+        Funciones fn = new Funciones();
 
 
         public FrmEmpresa_Baja_Confirmacion(string razon_social, string cuit, string email)

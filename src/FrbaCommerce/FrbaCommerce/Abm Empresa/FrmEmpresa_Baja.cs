@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FrbaCommerce.Login; //ELIMINAR DESPUES DE MOVER A FUNC GENERALES
+//using FrbaCommerce.Login; //ELIMINAR DESPUES DE MOVER A FUNC GENERALES
 
 namespace FrbaCommerce
 {
@@ -121,6 +121,7 @@ namespace FrbaCommerce
         {
             Query resultado = new Query(qr);
             dataResultado.DataSource = resultado.ObtenerDataTable();
+            dataResultado.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private void dataResultado_CellContentClick(object sender, DataGridViewCellEventArgs e)

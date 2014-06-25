@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FrbaCommerce.Login; //FUNCIONES GENERALES
+using FrbaCommerce.FuncionesGenerales;
 
 namespace FrbaCommerce
 {
@@ -21,7 +21,7 @@ namespace FrbaCommerce
             idUsuario = idUsr;
         }
 
-        FrmLogin fn = new FrmLogin(); //FUNCIONES GENERALES
+        Funciones fn = new Funciones(); //FUNCIONES GENERALES
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -33,7 +33,7 @@ namespace FrbaCommerce
                     if (!fn.ExisteUsuario(txtUsuario.Text))
                     {
 
-                        Query qr = new Query("UPDATE JJRD.USUARIOS SET USERNAME = '" + txtUsuario.Text + "', CONTRASEÑA = '" + txtPasswd.Text + "' WHERE ID_USUARIO =  " + idUsuario);
+                        Query qr = new Query("UPDATE JJRD.USUARIOS SET USERNAME = '" + txtUsuario.Text + "', CONTRASENIA = '" + txtPasswd.Text + "' WHERE ID_USUARIO =  " + idUsuario);
                         qr.Ejecutar();
 
                         this.Visible = false;
@@ -87,7 +87,7 @@ namespace FrbaCommerce
 
         }
 
-        private bool UsuarioIgualAlEmail() //TODO - CODIGO COPIADO DE FRMLOGIN.
+        private bool UsuarioIgualAlEmail()
         {
             Query qr = new Query("SELECT TIPO_DE_USUARIO FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario);
             string tipo = qr.ObtenerUnicoCampo().ToString();
@@ -95,12 +95,12 @@ namespace FrbaCommerce
             if (tipo == "C")
             {
                 Query email = new Query("SELECT EMAIL FROM JJRD.CLIENTE WHERE ID_USUARIO = " + idUsuario);
-                return (email.ObtenerUnicoCampo().ToString() == txtUsuario.Text);
+                return (email.ObtenerUnicoCampo().ToString().ToUpper() == txtUsuario.Text.ToUpper());
             }
             else
             {   //TIPO ES "E"
                 Query email = new Query("SELECT EMAIL FROM JJRD.EMPRESA WHERE ID_USUARIO = " + idUsuario);
-                return (email.ObtenerUnicoCampo().ToString() == txtUsuario.Text);
+                return (email.ObtenerUnicoCampo().ToString().ToUpper() == txtUsuario.Text.ToUpper());
             }
         }
     }

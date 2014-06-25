@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaCommerce.FuncionesGenerales;
 
 
 
@@ -20,14 +21,8 @@ namespace FrbaCommerce.Login
 
         public int idUsuario;
         public int failLogin;
-        public int idRol;
         public string nombreUsuario;
-       
-
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
+        Funciones fn = new Funciones();
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
@@ -38,17 +33,19 @@ namespace FrbaCommerce.Login
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+          
+
             //VER SI FALTAN DATOS -TODO
             if (!FaltanDatos())
             {
 
-                if (ExisteUsuario(txtBoxUsuario.Text))
+                if (fn.ExisteUsuario(txtBoxUsuario.Text))
                 {
                     idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
                     Query qr = new Query("SELECT LOGIN_FALLIDOS FROM JJRD.USUARIOS WHERE ID_USUARIO=" + idUsuario);
                     failLogin = Convert.ToInt32(qr.ObtenerUnicoCampo()); //MOVER DE ACA
 
-                    if (puedeIngresarAlSistema(idUsuario))
+                    if (fn.puedeIngresarAlSistema(idUsuario))
                     {
                         validar();
 
@@ -68,25 +65,10 @@ namespace FrbaCommerce.Login
             }
 
         }
-        /*Si el Login es incorrecto el usuario no podrá acceder al sistema. Se debe volver a
-        mostrar el Login para que intente nuevamente. El sistema debe llevar un registro de
-        cantidad intentos fallidos de login. Luego de 3 intentos fallidos en cualquier momento,
-        el usuario debe ser inhabilitado. Al realizar un Login satisfactorio, el sistema deberá
-        limpiar la cantidad de intentos fallidos. */
 
-        public bool ExisteUsuario(string usuario)
-        {
-            return ((int)new Query("SELECT COUNT(1) FROM JJRD.USUARIOS WHERE USERNAME ='" + usuario + "'").ObtenerUnicoCampo() == 1);
-        }
-
-        public bool puedeIngresarAlSistema(int idUsuario) //MOVER A FUNCIONES GENERALES
-        {
-            return ((int)new Query("SELECT count(1) FROM JJRD.USUARIOS WHERE ID_USUARIO ='" + idUsuario + "' AND HABILITADO = 1").ObtenerUnicoCampo() != 0);
-        }
-        //TODO- ARREGLAR CONTRASEÑAS CON ESPACIOS
         private void validar()
         {
-            int consValidar = (int)new Query("SELECT count(1) FROM JJRD.USUARIOS WHERE ID_USUARIO ='" + idUsuario + "' AND CONTRASEÑA ='" + txtBoxPasswd.Text + "'").ObtenerUnicoCampo();
+            int consValidar = (int)new Query("SELECT count(1) FROM JJRD.USUARIOS WHERE ID_USUARIO ='" + idUsuario + "' AND CONTRASENIA ='" + txtBoxPasswd.Text + "'").ObtenerUnicoCampo();
 
             if (consValidar == 1)
             {
@@ -103,12 +85,8 @@ namespace FrbaCommerce.Login
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
 
-                    case 1: //SETEO IDROL POR LAS DUDAS, VER SI SE NECESITA PARA DESPUES
-                            idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO  " +
-                                          " WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
-
-                            this.Visible = false;
-                            recibirUsuario(idUsuario);
+                    case 1: this.Visible = false;
+                            fn.recibirUsuario(idUsuario);
                            
 
                             break;
@@ -146,7 +124,7 @@ namespace FrbaCommerce.Login
         {
             if (failLogin == 3)
             {
-                inhabilitarUsuario(idUsuario);
+                fn.inhabilitarUsuario(idUsuario);
             }
             else
             {
@@ -154,13 +132,7 @@ namespace FrbaCommerce.Login
             }
         }
 
-        public void inhabilitarUsuario(int idUsuario) //MOVER A FUNCIONES GENERALES
-        { 
-            new Query("UPDATE JJRD.USUARIOS SET HABILITADO = '0' WHERE ID_USUARIO = " + idUsuario).Ejecutar();
-            //TODO - cuando se vuelve a habilitar el usuario se resetea el campo FAIL_LOGIN a 0
-            MessageBox.Show("Se ha inhabilitado el usuario.", "Advertencia",
-                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        
 
         private void seleccionarRol()
         {
@@ -188,24 +160,6 @@ namespace FrbaCommerce.Login
             return false;
         }
 
-        public void recibirUsuario(int idUsuario)
-        {
-
-            nombreUsuario = new Query("SELECT USERNAME FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
-
-            idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO  " +
-                          " WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
-
-            MessageBox.Show("Bienvenido a Commerce" + Environment.NewLine +
-            "Usted se ha registrado como usuario: " + nombreUsuario.ToUpper(), "Bienvenido!",
-            MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            frmPrincipal frmPrincipal = new frmPrincipal();
-            frmPrincipal.cargarFrmPrincipal(nombreUsuario, idRol, idUsuario);
-            frmPrincipal.ShowDialog();
-                           
-        }
-
         public void primerLogin()
         {
             if (primeraVezQueIngresaAlSistema())
@@ -219,7 +173,7 @@ namespace FrbaCommerce.Login
             }
         }
 
-        private bool primeraVezQueIngresaAlSistema() //MOVER A FUNCIONES GENERALES, REPITO CODIGO EN FRMPRIMERLOGIN
+        private bool primeraVezQueIngresaAlSistema() 
         {
             Query qr = new Query("SELECT TIPO_DE_USUARIO FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario);
             string tipo = qr.ObtenerUnicoCampo().ToString();

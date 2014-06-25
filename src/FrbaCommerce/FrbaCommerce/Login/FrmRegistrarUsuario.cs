@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaCommerce.FuncionesGenerales;
 
 namespace FrbaCommerce.Login
 {
@@ -16,14 +17,29 @@ namespace FrbaCommerce.Login
             InitializeComponent();
             btnSiguiente.Enabled = false;
 
-            comboBox.Items.Add("Cliente");
-            comboBox.Items.Add("Empresa");
-
-            
         }
 
-        FrmLogin funcionesLogin = new FrmLogin(); //para poder usar funciones ya definidas en FrmLogin
+        Funciones fn = new Funciones();
 
+
+        private void FrmRegistrarUsuario_Load(object sender, EventArgs e)
+        {
+            Query qr = new Query("SELECT ROL_NOMBRE FROM JJRD.ROLES");
+
+            foreach (DataRow dataRow in qr.ObtenerDataTable().AsEnumerable())
+            {
+                //EL USUARIO NO PUEDE REGISTRARSE COMO ADMINISTRADOR
+                if (dataRow[0].ToString() != "ADMINISTRADOR"){
+                comboBox.Items.Add(dataRow[0]);
+                }
+            }
+
+            comboBox.DisplayMember = "Key";
+            comboBox.ValueMember = "Value";
+            comboBox.Text = null;
+
+
+        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -38,7 +54,7 @@ namespace FrbaCommerce.Login
 
             if (!FaltanDatos())
             {
-                if (funcionesLogin.ExisteUsuario(txtBoxUsuario.Text))
+                if (fn.ExisteUsuario(txtBoxUsuario.Text))
                 {
                     MessageBox.Show("El usuario ingresado ya existe", "Validación al registrar usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtBoxUsuario.Focus();
@@ -48,24 +64,34 @@ namespace FrbaCommerce.Login
                 {
                     if (ContraseñasValidas())
                     {
-                        if (comboBox.SelectedItem.ToString() == "Cliente")
+                        if (comboBox.SelectedItem.ToString() == "CLIENTE")
                         {
-                            Query qr = new Query("INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('"+txtBoxUsuario.Text+ "', '" + txtBoxPasswd.Text + "' , 1, 0, 'C')");
+                            Query qr = new Query("INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASENIA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('"+txtBoxUsuario.Text+ "', '" + txtBoxPasswd.Text + "' , 1, 0, 'C')");
                             qr.Ejecutar();
 
                             int idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
+
+                            Query qr2 = new Query("INSERT INTO JJRD.ROL_USUARIO (ID_ROL, ID_USUARIO, HABILITADO ) VALUES (3, " + idUsuario + ", 1 )"); //VER PORQUE PUSIMOS EL CAMPO HABILITADO
+                            qr2.Ejecutar();
+
 
                             FrmbnCliente_Alta cliente = new FrmbnCliente_Alta(idUsuario);
                             this.Hide();
                             cliente.ShowDialog();
                             cliente = (FrmbnCliente_Alta)this.ActiveMdiChild;
                         }
-                        else
+                        else 
+                            //EMPRESA 
+                            //SUPONIENDO QUE SOLO EXISTEN DOS PERFILES, CLIENTE Y EMPRESA
                         {
-                            Query qr = new Query("INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtBoxUsuario.Text + "', '" + txtBoxPasswd.Text + "' , 1, 0, 'E')");
+                            Query qr = new Query("INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASENIA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtBoxUsuario.Text + "', '" + txtBoxPasswd.Text + "' , 1, 0, 'E')");
                             qr.Ejecutar();
 
                             int idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
+
+                            Query qr2 = new Query("INSERT INTO JJRD.ROL_USUARIO (ID_ROL, ID_USUARIO, HABILITADO ) VALUES (2, " + idUsuario + ", 1 )"); //VER PORQUE PUSIMOS EL CAMPO HABILITADO
+                            qr2.Ejecutar();
+
 
                             FrmEmpresa_Alta empresa = new FrmEmpresa_Alta(idUsuario);
                             this.Hide();
@@ -121,6 +147,8 @@ namespace FrbaCommerce.Login
             login.ShowDialog();
             login = (FrmLogin)this.ActiveMdiChild;
         }
+
+      
 
     }
 }

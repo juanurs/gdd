@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaCommerce.Login;
+using FrbaCommerce.Generar_Publicacion;
+using FrbaCommerce.Editar_Publicacion;
+using FrbaCommerce.Gestion_de_Preguntas;
 
 namespace FrbaCommerce
 {
     public partial class frmPrincipal : Form
     {
+
+        private int idUsuario;
         public frmPrincipal()
         {
             InitializeComponent();
@@ -19,6 +24,8 @@ namespace FrbaCommerce
 
             lblUsuarioLogueado.Visible = false;
             lblPerfil.Visible = false;
+            bnGenerarPublicacion.Visible = false;
+            bnEditarPublicacion.Visible = false;
           
            /* DESPUES TERMINO ESTA PARTE
             btnRoles.Visible = false;
@@ -51,9 +58,11 @@ namespace FrbaCommerce
             Application.Exit();
         }
 
-        public void cargarFrmPrincipal(string nombreUsuario, int idRol, int idUsuario)
+        public void cargarFrmPrincipal(string nombreUsuario, int idRol, int id_Usr)
         {
             //ACA ADENTRO CARGAR TODO PARA EL FRMPRINCIPAL
+            idUsuario = id_Usr;
+
 
             Query qr = new Query(" SELECT ROL_NOMBRE FROM JJRD.ROLES WHERE ID_ROL = " + idRol);
             qr.pTipoComando = CommandType.Text;
@@ -67,6 +76,8 @@ namespace FrbaCommerce
             lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
 
             btnLogin.Visible = false;
+            bnGenerarPublicacion.Visible = true;
+            bnEditarPublicacion.Visible = true;
 
         }
 
@@ -86,14 +97,42 @@ namespace FrbaCommerce
             cliente = (FrmEmpresa)this.ActiveMdiChild;
         }
 
+
+        private void bnGenerarPublicacion_Click(object sender, EventArgs e)
+        {
+            FrmTipoDePublicacion publicacion = new FrmTipoDePublicacion(idUsuario);
+            this.Hide();
+            publicacion.ShowDialog();
+            publicacion = (FrmTipoDePublicacion)this.ActiveMdiChild;
+
+        }
+
+        private void bnEditarPublicacion_Click(object sender, EventArgs e)
+        {
+            FrmEditarPublicacion editar = new FrmEditarPublicacion(idUsuario);
+            this.Hide();
+            editar.ShowDialog();
+            editar = (FrmEditarPublicacion)this.ActiveMdiChild;
+        }
+
+
         private void btnVisibilidad_Click(object sender, EventArgs e)
         {
             FrmVisibilidad visibilidad = new FrmVisibilidad();
             this.Hide();
             visibilidad.ShowDialog();
             visibilidad = (FrmVisibilidad)this.ActiveMdiChild;
+
         }
 
+        private void bnGestionarPreguntas_Click(object sender, EventArgs e)
+        {
+            FrmGestionPreguntas gestionPreguntas= new FrmGestionPreguntas(idUsuario);
+            this.Hide();
+            gestionPreguntas.ShowDialog();
+            gestionPreguntas = (FrmGestionPreguntas)this.ActiveMdiChild;
+
+        }
        
 
     }

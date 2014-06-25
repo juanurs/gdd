@@ -38,6 +38,9 @@
             this.btnEmpresa = new System.Windows.Forms.Button();
             this.btnRubro = new System.Windows.Forms.Button();
             this.btnVisibilidad = new System.Windows.Forms.Button();
+            this.bnGenerarPublicacion = new System.Windows.Forms.Button();
+            this.bnEditarPublicacion = new System.Windows.Forms.Button();
+            this.bnGestionarPreguntas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRoles
@@ -136,13 +139,47 @@
             this.btnVisibilidad.TabIndex = 9;
             this.btnVisibilidad.Text = "ABM Visibilidad";
             this.btnVisibilidad.UseVisualStyleBackColor = true;
+            this.btnVisibilidad.Click += new System.EventHandler(this.btnVisibilidad_Click);
+            // 
+            // bnGenerarPublicacion
+            // 
+            this.bnGenerarPublicacion.Location = new System.Drawing.Point(256, 132);
+            this.bnGenerarPublicacion.Name = "bnGenerarPublicacion";
+            this.bnGenerarPublicacion.Size = new System.Drawing.Size(118, 25);
+            this.bnGenerarPublicacion.TabIndex = 10;
+            this.bnGenerarPublicacion.Text = "Generar Publicacion";
+            this.bnGenerarPublicacion.UseVisualStyleBackColor = true;
+            this.bnGenerarPublicacion.Click += new System.EventHandler(this.bnGenerarPublicacion_Click);
+            // 
+            // bnEditarPublicacion
+            // 
+            this.bnEditarPublicacion.Location = new System.Drawing.Point(256, 163);
+            this.bnEditarPublicacion.Name = "bnEditarPublicacion";
+            this.bnEditarPublicacion.Size = new System.Drawing.Size(118, 25);
+            this.bnEditarPublicacion.TabIndex = 11;
+            this.bnEditarPublicacion.Text = "Editar Publicacion";
+            this.bnEditarPublicacion.UseVisualStyleBackColor = true;
+            this.bnEditarPublicacion.Click += new System.EventHandler(this.bnEditarPublicacion_Click);
+            // 
+            // bnGestionarPreguntas
+            // 
+            this.bnGestionarPreguntas.Location = new System.Drawing.Point(256, 194);
+            this.bnGestionarPreguntas.Name = "bnGestionarPreguntas";
+            this.bnGestionarPreguntas.Size = new System.Drawing.Size(118, 25);
+            this.bnGestionarPreguntas.TabIndex = 12;
+            this.bnGestionarPreguntas.Text = "Gestionar Preguntas";
+            this.bnGestionarPreguntas.UseVisualStyleBackColor = true;
+            this.bnGestionarPreguntas.Click += new System.EventHandler(this.bnGestionarPreguntas_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(346, 354);
+            this.ClientSize = new System.Drawing.Size(383, 354);
+            this.Controls.Add(this.bnGestionarPreguntas);
+            this.Controls.Add(this.bnEditarPublicacion);
+            this.Controls.Add(this.bnGenerarPublicacion);
             this.Controls.Add(this.btnVisibilidad);
             this.Controls.Add(this.btnRubro);
             this.Controls.Add(this.btnEmpresa);
@@ -173,6 +210,9 @@
         private System.Windows.Forms.Button btnEmpresa;
         private System.Windows.Forms.Button btnRubro;
         private System.Windows.Forms.Button btnVisibilidad;
+        private System.Windows.Forms.Button bnGenerarPublicacion;
+        private System.Windows.Forms.Button bnEditarPublicacion;
+        private System.Windows.Forms.Button bnGestionarPreguntas;
     }
 }
 

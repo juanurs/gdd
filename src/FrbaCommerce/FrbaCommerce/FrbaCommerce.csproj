@@ -132,11 +132,29 @@
     <Compile Include="Abm Rubro\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Visibilidad\Form1.cs">
+    <Compile Include="Abm Visibilidad\FrmVisibilidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Visibilidad\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Abm Visibilidad\FrmVisibilidad.Designer.cs">
+      <DependentUpon>FrmVisibilidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Visibilidad\FrmVisibilidad_Alta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Visibilidad\FrmVisibilidad_Alta.Designer.cs">
+      <DependentUpon>FrmVisibilidad_Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Visibilidad\FrmVisibilidad_Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Visibilidad\FrmVisibilidad_Baja.Designer.cs">
+      <DependentUpon>FrmVisibilidad_Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Visibilidad\FrmVisibilidad_Consulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Visibilidad\FrmVisibilidad_Consulta.Designer.cs">
+      <DependentUpon>FrmVisibilidad_Consulta.cs</DependentUpon>
     </Compile>
     <Compile Include="Calificar Vendedor\Form1.cs">
       <SubType>Form</SubType>
@@ -156,6 +174,12 @@
     <Compile Include="Editar Publicacion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editar Publicacion\FrmEditarPublicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\FrmEditarPublicacion.Designer.cs">
+      <DependentUpon>FrmEditarPublicacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturar Publicaciones\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,17 +192,42 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FuncionesGenerales\Funciones.cs" />
     <Compile Include="Generar Publicacion\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Generar Publicacion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gestion de Preguntas\Form1.cs">
+    <Compile Include="Generar Publicacion\FrmPublicacionCompraInmediata.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gestion de Preguntas\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Generar Publicacion\FrmPublicacionCompraInmediata.Designer.cs">
+      <DependentUpon>FrmPublicacionCompraInmediata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Publicacion\FrmPublicacionSubasta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicacion\FrmPublicacionSubasta.Designer.cs">
+      <DependentUpon>FrmPublicacionSubasta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Publicacion\FrmTipoDePublicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicacion\FrmTipoDePublicacion.Designer.cs">
+      <DependentUpon>FrmTipoDePublicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\FrmResponder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\FrmResponder.Designer.cs">
+      <DependentUpon>FrmResponder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\FrmGestionPreguntas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\FrmGestionPreguntas.Designer.cs">
+      <DependentUpon>FrmGestionPreguntas.cs</DependentUpon>
     </Compile>
     <Compile Include="Historial Cliente\Form1.cs">
       <SubType>Form</SubType>
@@ -257,8 +306,38 @@
     <EmbeddedResource Include="ABM Rol\FrmbnRoles_Mod.resx">
       <DependentUpon>FrmbnRoles_Mod.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Visibilidad\FrmVisibilidad.resx">
+      <DependentUpon>FrmVisibilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Visibilidad\FrmVisibilidad_Alta.resx">
+      <DependentUpon>FrmVisibilidad_Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Visibilidad\FrmVisibilidad_Baja.resx">
+      <DependentUpon>FrmVisibilidad_Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Visibilidad\FrmVisibilidad_Consulta.resx">
+      <DependentUpon>FrmVisibilidad_Consulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\FrmEditarPublicacion.resx">
+      <DependentUpon>FrmEditarPublicacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\FrmPublicacionCompraInmediata.resx">
+      <DependentUpon>FrmPublicacionCompraInmediata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\FrmPublicacionSubasta.resx">
+      <DependentUpon>FrmPublicacionSubasta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\FrmTipoDePublicacion.resx">
+      <DependentUpon>FrmTipoDePublicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\FrmGestionPreguntas.resx">
+      <DependentUpon>FrmGestionPreguntas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\FrmResponder.resx">
+      <DependentUpon>FrmResponder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\FrmPrimerLogin.resx">
       <DependentUpon>FrmPrimerLogin.cs</DependentUpon>

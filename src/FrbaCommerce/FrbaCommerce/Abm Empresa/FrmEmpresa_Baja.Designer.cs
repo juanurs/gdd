@@ -34,10 +34,10 @@
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.dataResultado = new System.Windows.Forms.DataGridView();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bnBuscar = new System.Windows.Forms.Button();
             this.bnVolver = new System.Windows.Forms.Button();
             this.txtCuit = new System.Windows.Forms.TextBox();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,14 +72,14 @@
             // 
             this.txtRazonSocial.Location = new System.Drawing.Point(119, 14);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(195, 20);
+            this.txtRazonSocial.Size = new System.Drawing.Size(283, 20);
             this.txtRazonSocial.TabIndex = 5;
             // 
             // txtMail
             // 
             this.txtMail.Location = new System.Drawing.Point(119, 88);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(195, 20);
+            this.txtMail.Size = new System.Drawing.Size(283, 20);
             this.txtMail.TabIndex = 9;
             // 
             // dataResultado
@@ -91,13 +91,20 @@
             this.dataResultado.Name = "dataResultado";
             this.dataResultado.RowTemplate.ReadOnly = true;
             this.dataResultado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataResultado.Size = new System.Drawing.Size(345, 150);
+            this.dataResultado.Size = new System.Drawing.Size(523, 155);
             this.dataResultado.TabIndex = 10;
             this.dataResultado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataResultado_CellContentClick);
             // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.HeaderText = "Seleccionar";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Text = "Dar de baja";
+            this.btnSeleccionar.UseColumnTextForButtonValue = true;
+            // 
             // bnBuscar
             // 
-            this.bnBuscar.Location = new System.Drawing.Point(308, 355);
+            this.bnBuscar.Location = new System.Drawing.Point(486, 355);
             this.bnBuscar.Name = "bnBuscar";
             this.bnBuscar.Size = new System.Drawing.Size(75, 23);
             this.bnBuscar.TabIndex = 12;
@@ -119,22 +126,15 @@
             // 
             this.txtCuit.Location = new System.Drawing.Point(119, 55);
             this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(195, 20);
+            this.txtCuit.Size = new System.Drawing.Size(283, 20);
             this.txtCuit.TabIndex = 14;
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "Seleccionar";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Text = "Dar de baja";
-            this.btnSeleccionar.UseColumnTextForButtonValue = true;
             // 
             // FrmEmpresa_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(408, 417);
+            this.ClientSize = new System.Drawing.Size(594, 407);
             this.Controls.Add(this.txtCuit);
             this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.bnBuscar);

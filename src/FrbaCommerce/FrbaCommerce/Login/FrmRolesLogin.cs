@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FrbaCommerce.Login;
+using FrbaCommerce.FuncionesGenerales;
 
 namespace FrbaCommerce
 {
@@ -32,19 +32,18 @@ namespace FrbaCommerce
 
         public void cargarRoles()
         {
-            //string sql = "select r.DETALLE rol, r.idrol idRol from PIER.ROLES r, PIER.USUARIOS_ROLES ur where ur.IDROL = r.IDROL and ur.IDUSUARIO = " + IdUsuario;
             string sql = "SELECT r.ROL_NOMBRE rol FROM JJRD.ROLES r, JJRD.ROL_USUARIO ur where ur.ID_ROL = r.ID_ROL and ur.ID_USUARIO = " + idUsuario;
 
 
             Query qry = new Query(sql);
-            //qry.Ejecutar();
+            
 
             foreach (DataRow dataRow in qry.ObtenerDataTable().AsEnumerable())
             {
                 comboBox.Items.Add(dataRow[0]);
             }
 
-            //comboBox.DataSource = datos;
+            
             comboBox.DisplayMember = "Key";
             comboBox.ValueMember = "Value";
             comboBox.Text = null;
@@ -69,8 +68,8 @@ namespace FrbaCommerce
             string nombreUsuario = qr.ObtenerUnicoCampo().ToString();
 
             this.Visible = false;
-            FrmLogin login = new FrmLogin();
-            login.recibirUsuario(idUsuario);
+            Funciones fn = new Funciones();
+            fn.recibirUsuario(idUsuario);
 
             
            
