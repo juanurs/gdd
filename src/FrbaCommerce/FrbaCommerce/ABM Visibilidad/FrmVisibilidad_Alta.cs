@@ -42,7 +42,8 @@ namespace FrbaCommerce
                 }
                 else
                 {
-                    string sql = "INSERT INTO JJRD.Visibilidad (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE, DURACION, HABILITADO) values (" + txtCodigo.Text + ", '" + txtDescripcion + "', " +  txtPrecio + ", " + txtPorcentaje + ", " + txtVigencia + ", 1)";
+                    string sql = "INSERT INTO JJRD.Visibilidad (COD_VISIBILIDAD, DESCRIPCION, PRECIO, PORCENTAJE_VENTA, DURACION, HABILITADO)" 
+                                +"values (" + txtCodigo.Text + ", '" + txtDescripcion.Text + "', " + txtPrecio.Text + ", " + txtPorcentaje.Text+ ", " + txtVigencia.Text + ", 1)";
                     qry.pComando = sql;
                     qry.Ejecutar();
 
@@ -64,5 +65,7 @@ namespace FrbaCommerce
             txtPorcentaje.Clear();
             txtVigencia.Clear();
         }
+
+
     }
 }

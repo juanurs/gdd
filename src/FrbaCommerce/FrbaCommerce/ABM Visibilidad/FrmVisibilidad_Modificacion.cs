@@ -10,14 +10,14 @@ using System.Data.SqlClient;
 
 namespace FrbaCommerce
 {
-    public partial class FrmVisibilidad_Consulta : Form
+    public partial class FrmVisibilidad_Modificacion : Form
     {
-        public FrmVisibilidad_Consulta()
+        public FrmVisibilidad_Modificacion()
         {
             InitializeComponent();
         }
 
-        private void FrmVisibilidad_Consulta_Load(object sender, EventArgs e)
+        private void FrmVisibilidad_Modificacion_Load(object sender, EventArgs e)
         {
             bnBuscar.Enabled = false;
             LlenarComboBox();
@@ -29,23 +29,6 @@ namespace FrbaCommerce
                                + " from JJRD.VISIBILIDAD"
                                + " where HABILITADO = 1"
                                + " and DESCRIPCION = '" + cmbVisibilidad.Text + "'";
-
-            gridDatos.DataSource = new Query(visibilidad).ObtenerDataTable();
-        }
-
-        private void bnLimpiar_click(object sender, EventArgs e)
-        {
-            cmbVisibilidad.SelectedItem = null;
-            gridDatos.DataSource = null;
-            bnBuscar.Enabled = false;
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbVisibilidad.Text.Trim() != "" || cmbVisibilidad.SelectedItem != null)
-            {
-                bnBuscar.Enabled = true;
-            }
         }
 
         public void LlenarComboBox()
@@ -60,6 +43,12 @@ namespace FrbaCommerce
             cmbVisibilidad.DataSource = ds.Tables[0].DefaultView;
             cmbVisibilidad.ValueMember = "DESCRIPCION";
             cmbVisibilidad.SelectedItem = null;
+        }
+
+        private void bnLimpiar_click(object sender, EventArgs e)
+        {
+            cmbVisibilidad.SelectedItem = null;
+            bnBuscar.Enabled = false;
         }
     }
 }

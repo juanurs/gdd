@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce
 {
@@ -21,9 +20,8 @@ namespace FrbaCommerce
         private void FrmVisibilidad_Baja_Load(object sender, EventArgs e)
         {
             LlenarComboBox();
-            cmbVisibilidad.Text = null;
-        }
-
+        }     
+        
         private void bnEliminar_Click(object sender, EventArgs e)
         {
             string unaVisibilidad = cmbVisibilidad.Text.ToString();
@@ -42,8 +40,8 @@ namespace FrbaCommerce
             conexion.ConnectionString = Settings.Default.CadenaDeConexion;
 
             DataSet ds = new DataSet();
-            SqlDataAdapter da = new SqlDataAdapter("select DESCRIPCION from JJRD.VISIBILIDAD where HABILITADO = 1", conexion);
-            da.Fill(ds, "JJRD.VISIBILIDAD");
+            SqlDataAdapter da = new SqlDataAdapter("select DESCRIPCION from JJRD.Visibilidad where HABILITADO = 1", conexion);
+            da.Fill(ds, "JJRD.Visibilidad");
 
             cmbVisibilidad.DataSource = ds.Tables[0].DefaultView;
             cmbVisibilidad.ValueMember = "DESCRIPCION";
