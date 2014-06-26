@@ -85,3 +85,42 @@ C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\Frba
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmResponder.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionTotal.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionActiva.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe.config
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.exe
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.pdb
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Alta.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Baja.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Modificar.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Alta.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Baja.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Baja_Confirmacion.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles_Alta.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles_Baja.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles_Consulta.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnRoles_Mod.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmVisibilidad.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnVisibilidad_Alta.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmVisibilidad_Baja.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmVisibilidad_Consulta.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmEditarPublicacion.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionActiva.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionTotal.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.frmPrincipal.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmPublicacionCompraInmediata.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Generar_Publicacion.FrmPublicacionSubasta.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Generar_Publicacion.FrmTipoDePublicacion.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmGestionPreguntas.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmResponder.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmPrimerLogin.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Login.FrmRegistrarUsuario.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmRolesLogin.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Login.FrmLogin.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Properties.Resources.resources
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.csproj.GenerateResource.Cache
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.pdb
+C:\Users\Rodrigo\Desktop\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmVisibilidad_Modificacion.resources

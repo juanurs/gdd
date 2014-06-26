@@ -20,26 +20,26 @@ namespace FrbaCommerce
 
         private void bnConsultaVisibilidad_Click(object sender, EventArgs e)
         {
-           /* this.Visible = false;
+            this.Visible = false;
             FrmVisibilidad_Consulta frm = new FrmVisibilidad_Consulta();
             frm.ShowDialog();
-            this.Visible = true;*/
+            this.Visible = true;
         }
 
         private void bnBajaVisibilidad_Click(object sender, EventArgs e)
         {
-           /* this.Visible = false;
-            FrmVisibilidad_Baja frm = new FrmbnVisibilidad_Baja();
+            this.Visible = false;
+            FrmVisibilidad_Baja frm = new FrmVisibilidad_Baja();
             frm.ShowDialog();
-            this.Visible = true;*/
+            this.Visible = true;
         }
 
         private void bnModVisibilidad_Click(object sender, EventArgs e)
         {
-           /* this.Visible = false;
-            FrmVisibilidad_Mod frm = new FrmbnVisibilidad_Mod();
+            this.Visible = false;
+            FrmVisibilidad_Modificacion frm = new FrmVisibilidad_Modificacion();
             frm.ShowDialog();
-            this.Visible = true; */
+            this.Visible = true;
         }
     }
 }
