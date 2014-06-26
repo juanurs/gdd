@@ -117,7 +117,7 @@
             this.Controls.Add(this.btnIngresar);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Bienvenido a Commerce";
             this.ResumeLayout(false);
             this.PerformLayout();
 

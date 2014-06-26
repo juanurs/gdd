@@ -35,7 +35,6 @@
             this.lblPerfil = new System.Windows.Forms.Label();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnEmpresa = new System.Windows.Forms.Button();
-            this.btnRubro = new System.Windows.Forms.Button();
             this.btnVisibilidad = new System.Windows.Forms.Button();
             this.bnGenerarPublicacion = new System.Windows.Forms.Button();
             this.bnEditarPublicacion = new System.Windows.Forms.Button();
@@ -111,18 +110,9 @@
             this.btnEmpresa.UseVisualStyleBackColor = true;
             this.btnEmpresa.Click += new System.EventHandler(this.btnEmpresa_Click);
             // 
-            // btnRubro
-            // 
-            this.btnRubro.Location = new System.Drawing.Point(12, 225);
-            this.btnRubro.Name = "btnRubro";
-            this.btnRubro.Size = new System.Drawing.Size(91, 23);
-            this.btnRubro.TabIndex = 8;
-            this.btnRubro.Text = "ABM Rubro";
-            this.btnRubro.UseVisualStyleBackColor = true;
-            // 
             // btnVisibilidad
             // 
-            this.btnVisibilidad.Location = new System.Drawing.Point(12, 254);
+            this.btnVisibilidad.Location = new System.Drawing.Point(12, 225);
             this.btnVisibilidad.Name = "btnVisibilidad";
             this.btnVisibilidad.Size = new System.Drawing.Size(91, 23);
             this.btnVisibilidad.TabIndex = 9;
@@ -170,7 +160,6 @@
             this.Controls.Add(this.bnEditarPublicacion);
             this.Controls.Add(this.bnGenerarPublicacion);
             this.Controls.Add(this.btnVisibilidad);
-            this.Controls.Add(this.btnRubro);
             this.Controls.Add(this.btnEmpresa);
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.lblPerfil);
@@ -196,7 +185,6 @@
         private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnEmpresa;
-        private System.Windows.Forms.Button btnRubro;
         private System.Windows.Forms.Button btnVisibilidad;
         private System.Windows.Forms.Button bnGenerarPublicacion;
         private System.Windows.Forms.Button bnEditarPublicacion;

@@ -112,6 +112,7 @@
             this.comboBoxTipoDoc.Name = "comboBoxTipoDoc";
             this.comboBoxTipoDoc.Size = new System.Drawing.Size(50, 21);
             this.comboBoxTipoDoc.TabIndex = 13;
+            this.comboBoxTipoDoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoDoc_SelectedIndexChanged);
             // 
             // labellll
             // 
@@ -188,6 +189,7 @@
             this.Name = "FrmbnCliente_Baja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja de Cliente";
+            this.Load += new System.EventHandler(this.FrmbnCliente_Baja_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

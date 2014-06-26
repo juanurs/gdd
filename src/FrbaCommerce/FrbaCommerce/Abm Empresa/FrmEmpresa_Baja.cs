@@ -22,7 +22,7 @@ namespace FrbaCommerce
 
         private void bnBuscar_Click(object sender, EventArgs e)
         {
-
+            //PARA QUE? BORRAR
             int idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.EMPRESA WHERE RAZON_SOCIAL LIKE '%" + txtRazonSocial.Text + "%'").ObtenerUnicoCampo();
 
             if (!CamposVacios())

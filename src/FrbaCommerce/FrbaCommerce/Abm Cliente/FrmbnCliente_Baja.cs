@@ -17,69 +17,63 @@ namespace FrbaCommerce
             InitializeComponent();
         }
 
-
+        private string qr;
+        private int IdTipoDni;
 
         private void bnBuscar_Click(object sender, EventArgs e)
         { 
             //CHEQUEA QUE TODOS LOS CAMPOS NO SEAN VACIOS
 
-            if ((txtNombre.Text.Trim() != "") ||
-                (txtApellido.Text.Trim() != "") ||
-                (comboBoxTipoDoc.Text.Trim() != "") ||
-                (txtNumeroDoc.Text.Trim() != "") ||
-                (txtEmail.Text.Trim() != ""))
+            if (!CamposVacios())
             {
-                //BUSCA POR NOMBRE
 
-                if (txtNombre.Text != "")
+                string sql = "SELECT Nombre, Apellido, Email, NUMERO_DOC as 'Documento' FROM JJRD.CLIENTE WHERE ";
+
+                if (txtNombre.Text != "" && txtApellido.Text == "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text == "" ||
+                    txtNombre.Text == "" && txtApellido.Text != "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text == "" ||
+                    txtNombre.Text == "" && txtApellido.Text == "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text != "" && txtEmail.Text == "" ||
+                    txtNombre.Text == "" && txtApellido.Text == "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text != "")
                 {
 
-                    //HACER JOIN DE TIPO DE DOCUMENTO
-
-
-                    Query qr = new Query("SELECT NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL FROM JJRD.CLIENTE WHERE NOMBRE LIKE  '%" + txtNombre.Text + "%'");
-                    dataResultado.DataSource = qr.ObtenerDataTable();
+                    //buscar por un campo
+                    qr = buscarPorUnCampo(sql);
 
                 }
                 else
                 {
-                    //BUSCA POR APELLIDO
+                    //BUSCAR POR DOS CAMPOS
 
-                    if (txtApellido.Text.Trim() != "")
+                    if (txtNombre.Text != "" && txtApellido.Text != "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text == "" ||
+                        txtNombre.Text != "" && txtApellido.Text == "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text != "" && txtEmail.Text == "" ||
+                        txtNombre.Text != "" && txtApellido.Text == "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text != "" ||
+                        txtNombre.Text == "" && txtApellido.Text != "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text != "" && txtEmail.Text == "" ||
+                        txtNombre.Text == "" && txtApellido.Text != "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text != "" ||
+                        txtNombre.Text == "" && txtApellido.Text == "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text != "" && txtEmail.Text != "" )
                     {
 
-                        Query qr = new Query("SELECT NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL FROM JJRD.CLIENTE WHERE APELLIDO LIKE  '%" + txtApellido.Text + "%'");
-                        dataResultado.DataSource = qr.ObtenerDataTable();
+                        qr = buscarPorDosCampos(sql);
                     }
                     else
                     {
-                        //BUSCA POR TIPO Y NUMERO DE DOCUMENTO
+                        //BUSCAR POR TRES CAMPOS
 
-                        if ((comboBoxTipoDoc.Text.Trim() != "") && (txtNumeroDoc.Text.Trim() != ""))
+                        if (txtNombre.Text != "" && txtApellido.Text != "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text != "" && txtEmail.Text == "" ||
+                            txtNombre.Text != "" && txtApellido.Text == "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text != "" && txtEmail.Text != "" ||
+                            txtNombre.Text != "" && txtApellido.Text != "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text != "" ||
+                            txtNombre.Text == "" && txtApellido.Text != "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text != "" && txtEmail.Text == "" )
                         {
 
-                            Query qr = new Query("SELECT NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL FROM JJRD.CLIENTE WHERE ID_TIPO_DOC LIKE  '%"+comboBoxTipoDoc.SelectedValue+"%' AND NUMERO_DOC LIKE '%+txtNumeroDoc+%'");
-                            dataResultado.DataSource = qr.ObtenerDataTable();
+                            qr = buscarPorTresCampos(sql);
                         }
-                        else
-                        { 
-                            //BUSCA POR EMAIL
-
-                            if (txtEmail.Text.Trim() != "")
+                            else
                             {
-                                Query qr = new Query("SELECT NOMBRE, APELLIDO, ID_TIPO_DOC, NUMERO_DOC, EMAIL FROM JJRD.CLIENTE WHERE EMAIL LIKE  '%" + txtEmail.Text + "%'");
-                                dataResultado.DataSource = qr.ObtenerDataTable();
+                                qr = buscarPorTodosLosCampos(sql);
+                                
                             }
-                        }
-
-
                     }
-
-
-
-
-
                 }
+
+                mostrarResultadoDataGrid(qr);
 
             }
             else
@@ -98,9 +92,142 @@ namespace FrbaCommerce
 
         }
 
-     
+
+        private bool CamposVacios()
+        {
+            return (txtNombre.Text.Trim() == "" && txtApellido.Text.Trim() == "" && comboBoxTipoDoc.Text == ""
+                    && txtNumeroDoc.Text.Trim() == "" && txtEmail.Text.Trim() == "");
+        }
+
+        private string buscarPorUnCampo(string sql)
+        {
+            if (txtNombre.Text.Trim() != "")
+            {
+                sql = sql + " NOMBRE LIKE '%" + txtNombre.Text + "%' ";
+            }
+
+            if (txtApellido.Text.Trim() != "")
+            {
+                sql = sql + " APELLIDO LIKE '%" + txtApellido.Text + "%' ";
+            }
+
+            if (txtEmail.Text.Trim() != "")
+            {
+                sql = sql + " EMAIL = '" + txtEmail.Text + "'";
+            }
+
+            if (txtNumeroDoc.Text.Trim() != "" && comboBoxTipoDoc.Text != "")
+            {
+                sql = sql + " NUMERO_DOC = '" + txtNumeroDoc.Text + "'";
+            }
+
+            return sql;
+        }
 
 
+        private string buscarPorDosCampos(string sql)
+        {
+            if (txtNombre.Text.Trim() != "" && txtApellido.Text.Trim() != "")
+            {
+                //NOMBRE Y APELLIDO
+                sql = sql + " NOMBRE LIKE '%" + txtNombre.Text + "%' AND APELLIDO LIKE '%" + txtApellido.Text + "%' ";
+            }
 
+            if (txtNombre.Text.Trim() != "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text.Trim() != "" )
+            {
+                //NOMBRE Y DOCUMENTO
+                sql = sql + " NOMBRE LIKE '%" + txtNombre.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' ";
+            }
+
+            if (txtNombre.Text.Trim() != "" && txtEmail.Text.Trim() != "")
+            {
+                //NOMBRE Y MAIL
+                sql = sql + " EMAIL = '" + txtEmail.Text + "' AND NOMBRE LIKE '%" + txtNombre.Text + "%' ";
+            }
+
+            if (txtApellido.Text.Trim() != "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text.Trim() != "")
+            {
+                //APELLIDO Y DNI
+                sql = sql + " APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' ";
+            }
+
+            if (txtApellido.Text.Trim() != "" && txtEmail.Text.Trim() != "")
+            {
+                //APELLIDO Y MAIL
+                sql = sql + " APELLIDO LIKE '%" + txtApellido.Text + "%' AND EMAIL = '" + txtEmail.Text + "'";
+            }
+
+            if (comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text.Trim() != "" && txtEmail.Text.Trim() != "")
+            {
+                //DNI Y MAIL
+                sql = sql + "ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' AND EMAIL = '" + txtEmail.Text + "'";
+            }
+
+            return sql;
+
+        }
+
+
+        private string buscarPorTresCampos(string sql)
+        {
+            if (txtEmail.Text.Trim() == "")
+            {
+                //BUSCA POR NOMBRE APELLIDO Y DNI
+                sql = sql + " NOMBRE LIKE '%" + txtNombre.Text + "%' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = "+ IdTipoDni +" AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%'";
+
+            }
+
+            if (txtNumeroDoc.Text.Trim() == "")
+            {
+                //BUSCA POR NOMBRE APELLIDO Y EMAIL
+                sql = sql + " NOMBRE LIKE '%" + txtNombre.Text + "%' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND EMAIL = '" + txtEmail.Text + "'";
+
+            }
+
+            if (txtNombre.Text.Trim() == "")
+            {
+                //BUSCA POR APELLIDO DNI Y EMAIL
+                sql = sql + " EMAIL = '" + txtEmail.Text + "' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%'";
+            }
+
+            return sql;
+        }
+
+        //REPITE CODIGO CON BAJA EMPRESA, MOVER A FUNCIONES GENERALES
+        private void mostrarResultadoDataGrid(string qr)
+        {
+            Query resultado = new Query(qr);
+            dataResultado.DataSource = resultado.ObtenerDataTable();
+            dataResultado.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+
+        private void FrmbnCliente_Baja_Load(object sender, EventArgs e)
+        {
+            //CARGAR COMBOBOX
+            string sql = "SELECT DESCRIPCION FROM JJRD.TIPO_DOCUMENTO";
+
+
+            Query qry = new Query(sql);
+
+
+            foreach (DataRow dataRow in qry.ObtenerDataTable().AsEnumerable())
+            {
+                comboBoxTipoDoc.Items.Add(dataRow[0]);
+            }
+        }
+
+        private void comboBoxTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Query qr = new Query("SELECT ID FROM JJRD.TIPO_DOCUMENTO WHERE DESCRIPCION = '" + comboBoxTipoDoc.Text + "'");
+            IdTipoDni = Convert.ToInt32(qr.ObtenerUnicoCampo());
+        }
+
+        private string buscarPorTodosLosCampos(string sql)
+        {
+            sql = sql + " EMAIL = '" + txtEmail.Text + "' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' AND NOMBRE LIKE '%" + txtNombre.Text + "%' ";
+            return sql;
+        }
+
+        
     }
 }
