@@ -20,12 +20,6 @@ namespace FrbaCommerce
 
             idUsuario = id_Usr;
         }
-
-        private void FrmbnCliente_Load(object sender, EventArgs e)
-        {
-
-        }
-
    
         private void bnModCliente_Click(object sender, EventArgs e)
         {
