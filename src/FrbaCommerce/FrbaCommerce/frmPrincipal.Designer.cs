@@ -39,6 +39,7 @@
             this.bnGenerarPublicacion = new System.Windows.Forms.Button();
             this.bnEditarPublicacion = new System.Windows.Forms.Button();
             this.bnGestionarPreguntas = new System.Windows.Forms.Button();
+            this.bnHistorialCliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRoles
@@ -150,12 +151,23 @@
             this.bnGestionarPreguntas.UseVisualStyleBackColor = true;
             this.bnGestionarPreguntas.Click += new System.EventHandler(this.bnGestionarPreguntas_Click);
             // 
+            // bnHistorialCliente
+            // 
+            this.bnHistorialCliente.Location = new System.Drawing.Point(256, 224);
+            this.bnHistorialCliente.Name = "bnHistorialCliente";
+            this.bnHistorialCliente.Size = new System.Drawing.Size(115, 23);
+            this.bnHistorialCliente.TabIndex = 13;
+            this.bnHistorialCliente.Text = "Historial Cliente";
+            this.bnHistorialCliente.UseVisualStyleBackColor = true;
+            this.bnHistorialCliente.Click += new System.EventHandler(this.bnHistorialCliente_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(383, 354);
+            this.Controls.Add(this.bnHistorialCliente);
             this.Controls.Add(this.bnGestionarPreguntas);
             this.Controls.Add(this.bnEditarPublicacion);
             this.Controls.Add(this.bnGenerarPublicacion);
@@ -189,6 +201,7 @@
         private System.Windows.Forms.Button bnGenerarPublicacion;
         private System.Windows.Forms.Button bnEditarPublicacion;
         private System.Windows.Forms.Button bnGestionarPreguntas;
+        private System.Windows.Forms.Button bnHistorialCliente;
     }
 }
 

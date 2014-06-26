@@ -241,11 +241,11 @@
     <Compile Include="Gestion de Preguntas\FrmVerRespuestas.Designer.cs">
       <DependentUpon>FrmVerRespuestas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.cs">
+    <Compile Include="Historial Cliente\FrmHistorialCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Historial Cliente\FrmHistorialCliente.Designer.cs">
+      <DependentUpon>FrmHistorialCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Listado Estadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -363,6 +363,9 @@
     <EmbeddedResource Include="Gestion de Preguntas\FrmVerRespuestas.resx">
       <DependentUpon>FrmVerRespuestas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Historial Cliente\FrmHistorialCliente.resx">
+      <DependentUpon>FrmHistorialCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\FrmPrimerLogin.resx">
       <DependentUpon>FrmPrimerLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -375,6 +378,54 @@
     <EmbeddedResource Include="Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Abm_Empresa.Form1.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Editar_Publicacion.FrmEditarPublicacion.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Editar_Publicacion.FrmEditarSubasta.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionActiva.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionTotal.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnCliente.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnCliente_Alta.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnCliente_Baja.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnCliente_Modificar.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnRoles.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnRoles_Alta.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnRoles_Baja.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnRoles_Consulta.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnRoles_Mod.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmbnVisibilidad_Alta.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmEmpresa.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmEmpresa_Alta.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmEmpresa_Baja.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmEmpresa_Baja_Confirmacion.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmPrimerLogin.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.frmPrincipal.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmPublicacionCompraInmediata.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmRolesLogin.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmVisibilidad.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmVisibilidad_Baja.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmVisibilidad_Consulta.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.FrmVisibilidad_Modificacion.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Generar_Publicacion.FrmPublicacionSubasta.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Generar_Publicacion.FrmTipoDePublicacion.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmGestionPreguntas.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmResponder.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmVerRespuestas.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Historial_Cliente.FrmHistorialCliente.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Login.FrmLogin.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Login.FrmRegistrarUsuario.resources" />
+    <EmbeddedResource Include="obj\Debug\FrbaCommerce.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnCliente.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnCliente_Alta.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnCliente_Baja.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnCliente_Consulta.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnCliente_Modificar.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnCliente_Selec.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnRoles.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnRoles_Alta.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnRoles_Baja.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnRoles_Consulta.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.FrmbnRoles_Mod.resources" />
+    <EmbeddedResource Include="obj\Release\FrbaCommerce.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -385,6 +436,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="app.config" />
+    <None Include="bin\Debug\FrbaCommerce.exe.config" />
+    <None Include="obj\Debug\FrbaCommerce.csproj.GenerateResource.Cache" />
+    <None Include="obj\Release\FrbaCommerce.csproj.GenerateResource.Cache" />
     <None Include="Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
@@ -403,7 +457,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\FrbaCommerce.exe" />
+    <Content Include="bin\Debug\FrbaCommerce.pdb" />
+    <Content Include="obj\Debug\FrbaCommerce.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\FrbaCommerce.exe" />
+    <Content Include="obj\Debug\FrbaCommerce.pdb" />
+    <Content Include="obj\Release\FrbaCommerce.csproj.FileListAbsolute.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Abm Rubro\" />
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\Refactor\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\Release\Refactor\" />
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
