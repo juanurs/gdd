@@ -128,3 +128,6 @@ C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\Fr
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionActiva.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionTotal.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmVerRespuestas.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmVisibilidad_Modificacion.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmVerRespuestas.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Historial_Cliente.FrmHistorialCliente.resources

@@ -10,6 +10,7 @@ using FrbaCommerce.Login;
 using FrbaCommerce.Generar_Publicacion;
 using FrbaCommerce.Editar_Publicacion;
 using FrbaCommerce.Gestion_de_Preguntas;
+using FrbaCommerce.Historial_Cliente;
 
 namespace FrbaCommerce
 {
@@ -137,6 +138,14 @@ namespace FrbaCommerce
            idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
 
            cargarFrmPrincipal();
+        }
+
+        private void bnHistorialCliente_Click(object sender, EventArgs e)
+        {
+            FrmHistorialCliente historial= new FrmHistorialCliente(idUsuario);
+            this.Hide();
+            historial.ShowDialog();
+            historial = (FrmHistorialCliente)this.ActiveMdiChild;
         }
        
 
