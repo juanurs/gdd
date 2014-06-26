@@ -28,6 +28,23 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             responder = (FrmResponder)this.ActiveMdiChild;
         }
 
+        private void bnVerRespuestas_Click(object sender, EventArgs e)
+        {
+            FrmVerRespuestas verRespuestas = new FrmVerRespuestas(idUsuario);
+            this.Hide();
+            verRespuestas.ShowDialog();
+            verRespuestas = (FrmVerRespuestas)this.ActiveMdiChild;
+        }
+
+        private void bnVolver_Click_1(object sender, EventArgs e)
+        {
+            frmPrincipal frmPrincipal = new frmPrincipal(idUsuario);
+            this.Hide();
+            frmPrincipal.ShowDialog();
+            frmPrincipal = (frmPrincipal)this.ActiveMdiChild;
+        }
+
+
 
         
     }

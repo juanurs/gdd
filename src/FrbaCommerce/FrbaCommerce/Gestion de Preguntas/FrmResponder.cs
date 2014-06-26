@@ -24,28 +24,26 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox.Text != null)
-            {
-                bnResponder.Enabled = true;
-            }
-
             //MUESTRA LA DESCRIPCION DE LA PUBLICACION SELECCIONADA
             Query qr = new Query("SELECT DESCRIPCION FROM JJRD.PUBLICACION WHERE COD_PUBLICACION = " + comboBox.Text);
-            this.lblDescripcionPublicacion.Text = qr.ObtenerUnicoCampo().ToString();
-            this.lblDescripcionPublicacion.Visible = true;
+            this.txtDescripcionPublicacion.Text = qr.ObtenerUnicoCampo().ToString();
+            
             
             MostrarResultadosDataGrid();
 
         }
 
+        
+
         private void FrmResponder_Load(object sender, EventArgs e)
         {
-            this.lblDescripcionPublicacion.Visible = false;
+            
             this.txtRespuesta.Enabled = false;
+            this.bnResponder.Enabled = false;
             
             //CARGAR COMBOBOX CON SOLO LAS PUBLICACIONES QUE TIENEN PREGUNTAS
 
-            Query qr = new Query("SELECT pu.COD_PUBLICACION FROM JJRD.PUBLICACION as pu " +
+            Query qr = new Query("SELECT DISTINCT pu.COD_PUBLICACION FROM JJRD.PUBLICACION as pu " +
 			                     "JOIN JJRD.PREGUNTAS as pr on pu.COD_PUBLICACION = pr.COD_PUBLICACION "+
 		                         "WHERE pu.ID_USUARIO = "+ idUsuario +" AND pu.PREGUNTAS = 'SI' AND pr.RESPUESTA_DESCRIPCION is null");
 
@@ -64,7 +62,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void MostrarResultadosDataGrid()
         {
-            Query qr = new Query("SELECT COD_PREGUNTA, PREGUNTA_DESCRIPCION as 'PREGUNTA' FROM JJRD.PREGUNTAS WHERE COD_PUBLICACION = " + comboBox.Text + " AND RESPUESTA_DESCRIPCION IS NULL");
+            Query qr = new Query("SELECT COD_PREGUNTA, PREGUNTA_DESCRIPCION as 'Pregunta' FROM JJRD.PREGUNTAS WHERE COD_PUBLICACION = " + comboBox.Text + " AND RESPUESTA_DESCRIPCION IS NULL");
             dataGridView.DataSource = qr.ObtenerDataTable();
             dataGridView.Columns[1].Visible= false;  //OCULTO LA COLUMNA COD_PREGUNTA
             dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -83,13 +81,42 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void bnResponder_Click(object sender, EventArgs e)
         {
-            Query qr = new Query("UPDATE JJRD.PREGUNTAS SET RESPUESTA_FECHA = '" + DateTime.Now + "', RESPUESTA_DESCRIPCION = '"+ txtRespuesta.Text +"' WHERE COD_PREGUNTA = " + codigoPregunta);
-            qr.Ejecutar();
+            if (txtRespuesta.Text != "")
+            {
 
-            //actualizar combobox
+                Query qr = new Query("UPDATE JJRD.PREGUNTAS SET RESPUESTA_FECHA = '" + DateTime.Now + "', RESPUESTA_DESCRIPCION = '" + txtRespuesta.Text + "' WHERE COD_PREGUNTA = " + codigoPregunta);
+                qr.Ejecutar();
 
-            //actualizar datagrid
+                //TODO - actualizar combobox
+                
+                //TODO - actualizar datagrid
 
+                MessageBox.Show("Respuesta enviada.",
+                                       "Commerce", MessageBoxButtons.OK, MessageBoxIcon.Information);   
+
+            }
+            else
+            {
+                MessageBox.Show("No ha ingresado ninguna respuesta.",
+                                       "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);   
+            }
+
+        }
+
+        private void txtRespuesta_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRespuesta.Text != "")
+            {
+                this.bnResponder.Enabled = true;
+            }
+        }
+
+        private void bnVolver_Click(object sender, EventArgs e)
+        {
+            FrmGestionPreguntas gestionPreguntas = new FrmGestionPreguntas(idUsuario);
+            this.Hide();
+            gestionPreguntas.ShowDialog();
+            gestionPreguntas = (FrmGestionPreguntas)this.ActiveMdiChild;
         }
 
 

@@ -128,7 +128,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void bnVolver_Click(object sender, EventArgs e)
         {
-            frmPrincipal publicacion = new frmPrincipal();
+            frmPrincipal publicacion = new frmPrincipal(idUsuario);
             this.Hide();
             publicacion.ShowDialog();
             publicacion = (frmPrincipal)this.ActiveMdiChild;

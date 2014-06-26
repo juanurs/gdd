@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnRoles = new System.Windows.Forms.Button();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUsuarioLogueado = new System.Windows.Forms.Label();
@@ -52,16 +51,6 @@
             this.btnRoles.Text = "ABM Rol";
             this.btnRoles.UseVisualStyleBackColor = true;
             this.btnRoles.Click += new System.EventHandler(this.btnRoles_Click);
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(133, 181);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(91, 22);
-            this.btnLogin.TabIndex = 1;
-            this.btnLogin.Text = "Iniciar Sesión";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnSalir
             // 
@@ -188,11 +177,11 @@
             this.Controls.Add(this.lblUsuarioLogueado);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnRoles);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Commerce";
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +190,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnRoles;
-        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblUsuarioLogueado;

@@ -30,7 +30,7 @@
         {
             this.bnResponderPreguntas = new System.Windows.Forms.Button();
             this.bnVerRespuestas = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.bnVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bnResponderPreguntas
@@ -51,22 +51,24 @@
             this.bnVerRespuestas.TabIndex = 1;
             this.bnVerRespuestas.Text = "Ver Respuestas";
             this.bnVerRespuestas.UseVisualStyleBackColor = true;
+            this.bnVerRespuestas.Click += new System.EventHandler(this.bnVerRespuestas_Click);
             // 
-            // button3
+            // bnVolver
             // 
-            this.button3.Location = new System.Drawing.Point(89, 110);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Volver";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bnVolver.Location = new System.Drawing.Point(89, 110);
+            this.bnVolver.Name = "bnVolver";
+            this.bnVolver.Size = new System.Drawing.Size(75, 23);
+            this.bnVolver.TabIndex = 2;
+            this.bnVolver.Text = "Volver";
+            this.bnVolver.UseVisualStyleBackColor = true;
+            this.bnVolver.Click += new System.EventHandler(this.bnVolver_Click_1);
             // 
             // FrmGestionPreguntas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 188);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.bnVerRespuestas);
             this.Controls.Add(this.bnResponderPreguntas);
             this.Name = "FrmGestionPreguntas";
@@ -79,6 +81,6 @@
 
         private System.Windows.Forms.Button bnResponderPreguntas;
         private System.Windows.Forms.Button bnVerRespuestas;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bnVolver;
     }
 }

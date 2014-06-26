@@ -11,9 +11,14 @@ namespace FrbaCommerce
 {
     public partial class FrmbnCliente : Form
     {
-        public FrmbnCliente()
+
+        private int idUsuario;
+
+        public FrmbnCliente(int id_Usr)
         {
             InitializeComponent();
+
+            idUsuario = id_Usr;
         }
 
         private void FrmbnCliente_Load(object sender, EventArgs e)
@@ -44,5 +49,15 @@ namespace FrbaCommerce
             frm.ShowDialog();
             this.Visible = true;
         }
+
+        private void bnVolver_Click(object sender, EventArgs e)
+        {
+            frmPrincipal frmPrincipal = new frmPrincipal(idUsuario);
+            this.Hide();
+            frmPrincipal.ShowDialog();
+            frmPrincipal = (frmPrincipal)this.ActiveMdiChild;
+        }
+
+        
     }
 }

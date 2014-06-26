@@ -35,9 +35,9 @@
             this.bnResponder = new System.Windows.Forms.Button();
             this.bnVolver = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblDescripcionPublicacion = new System.Windows.Forms.Label();
             this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDescripcionPublicacion = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,10 +62,12 @@
             // txtRespuesta
             // 
             this.txtRespuesta.Location = new System.Drawing.Point(58, 382);
+            this.txtRespuesta.MaxLength = 255;
             this.txtRespuesta.Multiline = true;
             this.txtRespuesta.Name = "txtRespuesta";
             this.txtRespuesta.Size = new System.Drawing.Size(319, 152);
             this.txtRespuesta.TabIndex = 3;
+            this.txtRespuesta.TextChanged += new System.EventHandler(this.txtRespuesta_TextChanged);
             // 
             // label2
             // 
@@ -94,9 +96,11 @@
             this.bnVolver.TabIndex = 6;
             this.bnVolver.Text = "Volver";
             this.bnVolver.UseVisualStyleBackColor = true;
+            this.bnVolver.Click += new System.EventHandler(this.bnVolver_Click);
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
@@ -105,6 +109,13 @@
             this.dataGridView.Size = new System.Drawing.Size(319, 150);
             this.dataGridView.TabIndex = 7;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.Text = "Responder";
+            this.Seleccionar.UseColumnTextForButtonValue = true;
             // 
             // label4
             // 
@@ -115,28 +126,23 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Descripción :";
             // 
-            // lblDescripcionPublicacion
+            // txtDescripcionPublicacion
             // 
-            this.lblDescripcionPublicacion.AutoSize = true;
-            this.lblDescripcionPublicacion.Location = new System.Drawing.Point(138, 44);
-            this.lblDescripcionPublicacion.Name = "lblDescripcionPublicacion";
-            this.lblDescripcionPublicacion.Size = new System.Drawing.Size(35, 13);
-            this.lblDescripcionPublicacion.TabIndex = 9;
-            this.lblDescripcionPublicacion.Text = "label3";
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.Text = "Responder";
-            this.Seleccionar.UseColumnTextForButtonValue = true;
+            this.txtDescripcionPublicacion.BackColor = System.Drawing.SystemColors.Control;
+            this.txtDescripcionPublicacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDescripcionPublicacion.Location = new System.Drawing.Point(130, 44);
+            this.txtDescripcionPublicacion.Multiline = true;
+            this.txtDescripcionPublicacion.Name = "txtDescripcionPublicacion";
+            this.txtDescripcionPublicacion.ReadOnly = true;
+            this.txtDescripcionPublicacion.Size = new System.Drawing.Size(247, 135);
+            this.txtDescripcionPublicacion.TabIndex = 9;
             // 
             // FrmResponder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 599);
-            this.Controls.Add(this.lblDescripcionPublicacion);
+            this.Controls.Add(this.txtDescripcionPublicacion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.bnVolver);
@@ -164,7 +170,7 @@
         private System.Windows.Forms.Button bnVolver;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblDescripcionPublicacion;
         private System.Windows.Forms.DataGridViewButtonColumn Seleccionar;
+        private System.Windows.Forms.TextBox txtDescripcionPublicacion;
     }
 }

@@ -76,10 +76,10 @@ namespace FrbaCommerce.Editar_Publicacion
 
             MessageBox.Show("Publicacion Editada Correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            frmPrincipal publicaciones = new frmPrincipal();
+           /* frmPrincipal publicaciones = new frmPrincipal(idUs);
             this.Hide();
             publicaciones.ShowDialog();
-            publicaciones = (frmPrincipal)this.ActiveMdiChild;
+            publicaciones = (frmPrincipal)this.ActiveMdiChild; */
 
             }else 
              { // No se pueden ingresar campos vacios
@@ -90,10 +90,10 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void bnVolver_Click(object sender, EventArgs e)
         {
-            frmPrincipal publicacion = new frmPrincipal();
+           /* frmPrincipal publicacion = new frmPrincipal(idUs);
             this.Hide();
             publicacion.ShowDialog();
-            publicacion = (frmPrincipal)this.ActiveMdiChild;
+            publicacion = (frmPrincipal)this.ActiveMdiChild; */
         }
     }
 }

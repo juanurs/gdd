@@ -235,6 +235,12 @@
     <Compile Include="Gestion de Preguntas\FrmGestionPreguntas.Designer.cs">
       <DependentUpon>FrmGestionPreguntas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gestion de Preguntas\FrmVerRespuestas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\FrmVerRespuestas.Designer.cs">
+      <DependentUpon>FrmVerRespuestas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Historial Cliente\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gestion de Preguntas\FrmResponder.resx">
       <DependentUpon>FrmResponder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\FrmVerRespuestas.resx">
+      <DependentUpon>FrmVerRespuestas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\FrmPrimerLogin.resx">
       <DependentUpon>FrmPrimerLogin.cs</DependentUpon>

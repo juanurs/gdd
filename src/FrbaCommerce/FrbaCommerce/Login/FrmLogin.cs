@@ -27,7 +27,7 @@ namespace FrbaCommerce.Login
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmPrincipal frmPrincipal = new frmPrincipal();
+            frmPrincipal frmPrincipal = new frmPrincipal(idUsuario);
             frmPrincipal.ShowDialog();
         }
 

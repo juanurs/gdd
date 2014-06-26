@@ -17,10 +17,14 @@ namespace FrbaCommerce
     {
 
         private int idUsuario;
-        public frmPrincipal()
+        private string nombreUsuario;
+        private int idRol;
+
+        public frmPrincipal(int id_Usr)
         {
             InitializeComponent();
 
+            idUsuario = id_Usr;
 
             lblUsuarioLogueado.Visible = false;
             lblPerfil.Visible = false;
@@ -45,23 +49,15 @@ namespace FrbaCommerce
             
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            FrmLogin login = new FrmLogin();
-            this.Hide();
-            login.ShowDialog();
-            login = (FrmLogin)this.ActiveMdiChild;
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        public void cargarFrmPrincipal(string nombreUsuario, int idRol, int id_Usr)
+        public void cargarFrmPrincipal()
         {
             //ACA ADENTRO CARGAR TODO PARA EL FRMPRINCIPAL
-            idUsuario = id_Usr;
+            //idUsuario = id_Usr;
 
 
             Query qr = new Query(" SELECT ROL_NOMBRE FROM JJRD.ROLES WHERE ID_ROL = " + idRol);
@@ -75,7 +71,7 @@ namespace FrbaCommerce
             lblUsuarioLogueado.ForeColor = System.Drawing.Color.Green;
             lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
 
-            btnLogin.Visible = false;
+            
             bnGenerarPublicacion.Visible = true;
             bnEditarPublicacion.Visible = true;
 
@@ -83,7 +79,7 @@ namespace FrbaCommerce
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            FrmbnCliente cliente = new FrmbnCliente();
+            FrmbnCliente cliente = new FrmbnCliente(idUsuario);
             this.Hide();
             cliente.ShowDialog();
             cliente = (FrmbnCliente)this.ActiveMdiChild;
@@ -132,6 +128,15 @@ namespace FrbaCommerce
             gestionPreguntas.ShowDialog();
             gestionPreguntas = (FrmGestionPreguntas)this.ActiveMdiChild;
 
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+           nombreUsuario = new Query("SELECT USERNAME FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
+
+           idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
+
+           cargarFrmPrincipal();
         }
        
 

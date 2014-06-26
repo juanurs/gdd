@@ -28,19 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bnConsCliente = new System.Windows.Forms.Button();
             this.bnModCliente = new System.Windows.Forms.Button();
             this.bnBajaCliente = new System.Windows.Forms.Button();
             this.bnAltaCliente = new System.Windows.Forms.Button();
+            this.bnVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-           
             // 
             // bnModCliente
             // 
-            this.bnModCliente.Location = new System.Drawing.Point(150, 87);
+            this.bnModCliente.Location = new System.Drawing.Point(89, 92);
             this.bnModCliente.Name = "bnModCliente";
-            this.bnModCliente.Size = new System.Drawing.Size(117, 56);
+            this.bnModCliente.Size = new System.Drawing.Size(106, 34);
             this.bnModCliente.TabIndex = 1;
             this.bnModCliente.Text = "Modificación";
             this.bnModCliente.UseVisualStyleBackColor = true;
@@ -48,9 +46,9 @@
             // 
             // bnBajaCliente
             // 
-            this.bnBajaCliente.Location = new System.Drawing.Point(12, 87);
+            this.bnBajaCliente.Location = new System.Drawing.Point(89, 52);
             this.bnBajaCliente.Name = "bnBajaCliente";
-            this.bnBajaCliente.Size = new System.Drawing.Size(115, 56);
+            this.bnBajaCliente.Size = new System.Drawing.Size(106, 34);
             this.bnBajaCliente.TabIndex = 2;
             this.bnBajaCliente.Text = "Baja";
             this.bnBajaCliente.UseVisualStyleBackColor = true;
@@ -58,24 +56,34 @@
             // 
             // bnAltaCliente
             // 
-            this.bnAltaCliente.Location = new System.Drawing.Point(150, 12);
+            this.bnAltaCliente.Location = new System.Drawing.Point(89, 12);
             this.bnAltaCliente.Name = "bnAltaCliente";
-            this.bnAltaCliente.Size = new System.Drawing.Size(117, 56);
+            this.bnAltaCliente.Size = new System.Drawing.Size(106, 34);
             this.bnAltaCliente.TabIndex = 3;
             this.bnAltaCliente.Text = "Alta";
             this.bnAltaCliente.UseVisualStyleBackColor = true;
             this.bnAltaCliente.Click += new System.EventHandler(this.bnAltaCliente_Click);
+            // 
+            // bnVolver
+            // 
+            this.bnVolver.Location = new System.Drawing.Point(105, 132);
+            this.bnVolver.Name = "bnVolver";
+            this.bnVolver.Size = new System.Drawing.Size(75, 28);
+            this.bnVolver.TabIndex = 4;
+            this.bnVolver.Text = "Volver";
+            this.bnVolver.UseVisualStyleBackColor = true;
+            this.bnVolver.Click += new System.EventHandler(this.bnVolver_Click);
             // 
             // FrmbnCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(277, 164);
+            this.ClientSize = new System.Drawing.Size(283, 181);
+            this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.bnAltaCliente);
             this.Controls.Add(this.bnBajaCliente);
             this.Controls.Add(this.bnModCliente);
-            this.Controls.Add(this.bnConsCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "FrmbnCliente";
@@ -88,9 +96,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button bnConsCliente;
         private System.Windows.Forms.Button bnModCliente;
         private System.Windows.Forms.Button bnBajaCliente;
         private System.Windows.Forms.Button bnAltaCliente;
+        private System.Windows.Forms.Button bnVolver;
     }
 }

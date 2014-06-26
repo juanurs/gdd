@@ -22,7 +22,7 @@ namespace FrbaCommerce.FuncionesGenerales
 
         public void recibirUsuario(int idUsuario)
         {
-
+            //VER
             string nombreUsuario = new Query("SELECT USERNAME FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
 
             int idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO  " +
@@ -32,8 +32,8 @@ namespace FrbaCommerce.FuncionesGenerales
             "Usted se ha registrado como usuario: " + nombreUsuario.ToUpper(), "Bienvenido!",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            frmPrincipal frmPrincipal = new frmPrincipal();
-            frmPrincipal.cargarFrmPrincipal(nombreUsuario, idRol, idUsuario);
+            frmPrincipal frmPrincipal = new frmPrincipal(idUsuario);
+          //  frmPrincipal.cargarFrmPrincipal(nombreUsuario, idRol, idUsuario);
             frmPrincipal.ShowDialog();
 
         }
@@ -51,6 +51,12 @@ namespace FrbaCommerce.FuncionesGenerales
             return ((int)new Query("SELECT count(1) FROM JJRD.USUARIOS WHERE ID_USUARIO ='" + idUsuario + "' AND HABILITADO = 1").ObtenerUnicoCampo() != 0);
         }
 
+        //VER SI LO USAMOS MAS ADELANTE
+        public int ObtenerIdCliente(int idUsuario)
+        {
+            Query qr = new Query("SELECT ID_CLIENTE FROM JJRD.CLIENTE WHERE ID_USUARIO = " +idUsuario);
+            return (int)qr.ObtenerUnicoCampo();
+        }
 
 
 

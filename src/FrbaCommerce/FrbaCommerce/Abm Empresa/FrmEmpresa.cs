@@ -31,10 +31,10 @@ namespace FrbaCommerce
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            frmPrincipal cliente = new frmPrincipal();
+         /*   frmPrincipal cliente = new frmPrincipal();
             this.Hide();
             cliente.ShowDialog();
-            cliente = (frmPrincipal)this.ActiveMdiChild;
+            cliente = (frmPrincipal)this.ActiveMdiChild;  */
         }
 
     }

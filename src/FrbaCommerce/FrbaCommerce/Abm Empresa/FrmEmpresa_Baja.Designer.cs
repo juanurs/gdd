@@ -34,10 +34,10 @@
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.dataResultado = new System.Windows.Forms.DataGridView();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bnBuscar = new System.Windows.Forms.Button();
             this.bnVolver = new System.Windows.Forms.Button();
             this.txtCuit = new System.Windows.Forms.TextBox();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +84,7 @@
             // 
             // dataResultado
             // 
+            this.dataResultado.AllowUserToAddRows = false;
             this.dataResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataResultado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar});
@@ -94,13 +95,6 @@
             this.dataResultado.Size = new System.Drawing.Size(523, 155);
             this.dataResultado.TabIndex = 10;
             this.dataResultado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataResultado_CellContentClick);
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "Seleccionar";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Text = "Dar de baja";
-            this.btnSeleccionar.UseColumnTextForButtonValue = true;
             // 
             // bnBuscar
             // 
@@ -128,6 +122,13 @@
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(283, 20);
             this.txtCuit.TabIndex = 14;
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.HeaderText = "Seleccionar";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Text = "Dar de baja";
+            this.btnSeleccionar.UseColumnTextForButtonValue = true;
             // 
             // FrmEmpresa_Baja
             // 
