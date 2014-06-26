@@ -89,7 +89,7 @@
             this.Name = "FrmbnCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Cliente";
-            this.Load += new System.EventHandler(this.FrmbnCliente_Load);
+            
             this.ResumeLayout(false);
 
         }
