@@ -16,9 +16,9 @@ namespace FrbaCommerce.Editar_Publicacion
       
         private string idUs;
         private string publicacion;
-        private string stockAnterior;
+        private int stockAnterior;
 
-        public FrmModificacionTotal(string usuario, string idPublicacion, string stock)
+        public FrmModificacionTotal(string usuario, string idPublicacion, int stock)
         {
             stockAnterior = stock;
             idUs = usuario;
@@ -56,11 +56,44 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void bnGuardar_Click(object sender, EventArgs e)
         {
+
+            if((comboBoxCodPublicacion.Text != "") &&
+                (comboBoxEstado.Text != "") &&
+                (comboBoxFechaVencimiento.Text != "") &&
+                (comboBoxPreguntas.Text != "") &&
+                (comboBoxVisibilidad.Text != "") &&
+                (txtDescripcion.Text != "") &&
+                (txtPrecio.Text != "") &&
+                (txtStock.Text != "") &&
+                (comboBoxTipo.Text != ""))
+                
+
+            {
+
             string actualizar = "UPDATE JJRD.PUBLICACION SET COD_PUBLICACION = "+publicacion+", ID_USUARIO = "+idUs+", COD_VISIBILIDAD = "+ comboBoxVisibilidad.Text +", DESCRIPCION = '"+txtDescripcion.Text+"', STOCK = "+txtStock.Text+", FECHA_VENCIMIENTO = '"+comboBoxFechaVencimiento.Text+"', FECHA_INICIO = '"+dateTimeFechaInicio.Value+"', PRECIO = "+txtPrecio.Text+", ESTADO = '"+comboBoxEstado.Text+"', TIPO = '"+comboBoxTipo.Text+"', PREGUNTAS = '"+comboBoxPreguntas.Text+"'  WHERE COD_PUBLICACION = " + publicacion+ "";
 
             new Query(actualizar).Ejecutar();
 
             MessageBox.Show("Publicacion Editada Correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            frmPrincipal publicaciones = new frmPrincipal();
+            this.Hide();
+            publicaciones.ShowDialog();
+            publicaciones = (frmPrincipal)this.ActiveMdiChild;
+
+            }else 
+             { // No se pueden ingresar campos vacios
+                 MessageBox.Show("No se pueden ingresar campos vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+             }
+        }
+
+        private void bnVolver_Click(object sender, EventArgs e)
+        {
+            frmPrincipal publicacion = new frmPrincipal();
+            this.Hide();
+            publicacion.ShowDialog();
+            publicacion = (frmPrincipal)this.ActiveMdiChild;
         }
     }
 }

@@ -63,15 +63,15 @@ namespace FrbaCommerce
             decimal idPublicacion = (decimal)qry.ObtenerUnicoCampo();
 
 
-            comboBoxUsuario.Items.Add(idUsuario);
+     
             comboBoxCodPublicacion.Items.Add(idPublicacion);
             comboBoxCodPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEstadoPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPreguntas.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTipoPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
+          
             comboBoxVisibilidad.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
+          
             this.txtFechaInicio.Enabled = false;
         }
 
@@ -90,7 +90,7 @@ namespace FrbaCommerce
                 (txtPrecio.Text.Trim() != "" ) &&
                 (txtDescripcion.Text.Trim() != "" ) &&
                 (comboBoxVisibilidad.Text != "" ) &&
-                (comboBoxUsuario.Text != "" ) &&
+               
                 (comboBoxEstadoPublicacion.Text != "") &&
                 (comboBoxTipoPublicacion.Text != "") &&
                 (comboBoxPreguntas.Text != ""))
@@ -113,87 +113,16 @@ namespace FrbaCommerce
                 decimal idPublicacion = (decimal)qry.ObtenerUnicoCampo();
 
                 
-                //Se guarda la consulta de id_Usuario
-                
-                string consulta = "SELECT ID_USUARIO FROM JJRD.USUARIO WHERE ID_USUARIO = '" + comboBoxUsuario.Text + "'"; 
-       
-
-       
-            
-                 switch (comboBoxVisibilidad.Text)
-                
+             
                  
-                 {
-
-
-
-                     case "Platino":  //POR PLATINO
                         
-                        string platino = "INSERT INTO JJRD.PUBLICACION (COD_PUBLICACION,ID_USUARIO,COD_VISIBILIDAD, DESCRIPCION, STOCK, PRECIO,FECHA_VENCIMIENTO,FECHA_INICIO, ESTADO, TIPO, PREGUNTAS) " +
-                                          "  values ("+idPublicacion+","+comboBoxUsuario.Text+","+idVisibilidad+",'"+txtDescripcion.Text+"',"+txtStock.Text+","+txtPrecio.Text+","+comboBoxFechaVencimiento.Text+",'"+txtFechaInicio.Value+"','"+comboBoxEstadoPublicacion.Text+"','"+comboBoxTipoPublicacion.Text+"','"+comboBoxPreguntas.Text+"')";
+                        string generar = "INSERT INTO JJRD.PUBLICACION (COD_PUBLICACION,ID_USUARIO,COD_VISIBILIDAD, DESCRIPCION, STOCK, PRECIO,FECHA_VENCIMIENTO,FECHA_INICIO, ESTADO, TIPO, PREGUNTAS) " +
+                                          "  values ("+idPublicacion+","+idUsuario+","+idVisibilidad+",'"+txtDescripcion.Text+"',"+txtStock.Text+","+txtPrecio.Text+","+comboBoxFechaVencimiento.Text+",'"+txtFechaInicio.Value+"','"+comboBoxEstadoPublicacion.Text+"','"+comboBoxTipoPublicacion.Text+"','"+comboBoxPreguntas.Text+"')";
 
-                         Query qry2 = new Query(platino);
+                         Query qry2 = new Query(generar);
                          qry2.Ejecutar();
                          
                   
-
-
-                            break;
-
-                    case "Oro": // POR ORO
-
-                            string oro = "INSERT INTO JJRD.PUBLICACION (COD_PUBLICACION,ID_USUARIO,COD_VISIBILIDAD, DESCRIPCION, STOCK, PRECIO,FECHA_VENCIMIENTO,FECHA_INICIO, ESTADO, TIPO, PREGUNTAS) " +
-                                          "  values (" + idPublicacion + "," + comboBoxUsuario.Text + "," + idVisibilidad + ",'" + txtDescripcion.Text + "'," + txtStock.Text + "," + txtPrecio.Text + "," + comboBoxFechaVencimiento.Text + ",'" + txtFechaInicio.Value + "','" + comboBoxEstadoPublicacion.Text + "','" + comboBoxTipoPublicacion.Text + "','" + comboBoxPreguntas.Text + "')";
-
-                            Query qry3 = new Query(oro);
-                            qry3.Ejecutar();
-                           
-
-                            break;
-
-                    
-                     case "Plata": //POR PLATA
-
-                            string plata = "INSERT INTO JJRD.PUBLICACION (COD_PUBLICACION,ID_USUARIO,COD_VISIBILIDAD, DESCRIPCION, STOCK, PRECIO,FECHA_VENCIMIENTO,FECHA_INICIO, ESTADO, TIPO, PREGUNTAS) " +
-                                          "  values (" + idPublicacion + "," + comboBoxUsuario.Text + "," + idVisibilidad + ",'" + txtDescripcion.Text + "'," + txtStock.Text + "," + txtPrecio.Text + "," + comboBoxFechaVencimiento.Text + ",'" + txtFechaInicio.Value + "','" + comboBoxEstadoPublicacion.Text + "','" + comboBoxTipoPublicacion.Text + "','" + comboBoxPreguntas.Text + "')";
-
-                            Query qry4 = new Query(plata);
-                            qry4.Ejecutar();
-
-
-
-
-
-                         break;
-
-
-
-                     case "Bronce": //POR BRONCE
-
-                         string bronce = "INSERT INTO JJRD.PUBLICACION (COD_PUBLICACION,ID_USUARIO,COD_VISIBILIDAD, DESCRIPCION, STOCK, PRECIO,FECHA_VENCIMIENTO,FECHA_INICIO, ESTADO, TIPO, PREGUNTAS) " +
-                                          "  values (" + idPublicacion + "," + comboBoxUsuario.Text + "," + idVisibilidad + ",'" + txtDescripcion.Text + "'," + txtStock.Text + "," + txtPrecio.Text + "," + comboBoxFechaVencimiento.Text + ",'" + txtFechaInicio.Value + "','" + comboBoxEstadoPublicacion.Text + "','" + comboBoxTipoPublicacion.Text + "','" + comboBoxPreguntas.Text + "')";
-
-                         Query qry5 = new Query(bronce);
-                         qry5.Ejecutar();
-
-
-                         break;
-
-
-
-                   default: // POR GRATIS
-
-                         string gratis = "INSERT INTO JJRD.PUBLICACION (COD_PUBLICACION,ID_USUARIO,COD_VISIBILIDAD, DESCRIPCION, STOCK, PRECIO,FECHA_VENCIMIENTO,FECHA_INICIO, ESTADO, TIPO, PREGUNTAS) " +
-                                          "  values (" + idPublicacion + "," + comboBoxUsuario.Text + "," + idVisibilidad + ",'" + txtDescripcion.Text + "'," + txtStock.Text + "," + txtPrecio.Text + "," + comboBoxFechaVencimiento.Text + ",'" + txtFechaInicio.Value + "','" + comboBoxEstadoPublicacion.Text + "','" + comboBoxTipoPublicacion.Text + "','" + comboBoxPreguntas.Text + "')";
-
-                         Query qry6 = new Query(gratis);
-                         qry6.Ejecutar();
-                           
-                         
-                         break; 
-                    
-                        
-                }
 
 
                          MessageBox.Show("Publicacion Realizada Correctamente" , "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -239,7 +168,7 @@ namespace FrbaCommerce
             txtPrecio.Text = "";
             txtDescripcion.Text = "";
             comboBoxVisibilidad.Text = "";
-            comboBoxUsuario.Text = "";
+         
             comboBoxEstadoPublicacion.Text = "";
             comboBoxTipoPublicacion.Text = "";
             comboBoxPreguntas.Text = "";

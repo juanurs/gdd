@@ -72,6 +72,7 @@
             this.bnVolver.TabIndex = 1;
             this.bnVolver.Text = "Volver";
             this.bnVolver.UseVisualStyleBackColor = true;
+            this.bnVolver.Click += new System.EventHandler(this.bnVolver_Click);
             // 
             // label1
             // 

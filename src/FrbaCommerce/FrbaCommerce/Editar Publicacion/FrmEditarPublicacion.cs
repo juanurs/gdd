@@ -62,14 +62,13 @@ namespace FrbaCommerce.Editar_Publicacion
            string tipoDePublicacion;
            string usuario;
            string idPublicacion;
-           string stock;
+           int stock;
           
            estadoPublicacion = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[8].Value.ToString());
            tipoDePublicacion = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[9].Value.ToString());
            usuario = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[3].Value.ToString());
            idPublicacion = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[1].Value.ToString());
-           stock = Convert.ToString(dataResultado.Rows[e.RowIndex].Cells[4].Value.ToString());
-            
+           stock = Convert.ToInt32(dataResultado.Rows[e.RowIndex].Cells[4].Value.ToString());
             
 
 
@@ -85,11 +84,18 @@ namespace FrbaCommerce.Editar_Publicacion
 
                  case "Publicada":  //solo permite incrementar el stock y descripcion de producto
 
-                         this.Hide();
-                         FrmModificacionActiva frmModificacionActiva = new FrmModificacionActiva(usuario, idPublicacion, stock,estadoPublicacion,tipoDePublicacion);
-                         frmModificacionActiva.ShowDialog();
+                         if (tipoDePublicacion == "Subasta")
+                         {
+                             MessageBox.Show("No se puede modificar una Publicacion de Tipo Subasta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                         }
+                         else
+                         {
 
+                             this.Hide();
+                             FrmModificacionActiva frmModificacionActiva = new FrmModificacionActiva(usuario, idPublicacion, stock, estadoPublicacion, tipoDePublicacion);
+                             frmModificacionActiva.ShowDialog();
 
+                         }
 
                      break;
 
@@ -118,6 +124,14 @@ namespace FrbaCommerce.Editar_Publicacion
              }
            
 
+        }
+
+        private void bnVolver_Click(object sender, EventArgs e)
+        {
+            frmPrincipal publicacion = new frmPrincipal();
+            this.Hide();
+            publicacion.ShowDialog();
+            publicacion = (frmPrincipal)this.ActiveMdiChild;
         }
     }
 }

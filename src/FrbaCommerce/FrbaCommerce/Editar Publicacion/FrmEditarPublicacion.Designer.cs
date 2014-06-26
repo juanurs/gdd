@@ -31,8 +31,8 @@
             this.dataResultado = new System.Windows.Forms.DataGridView();
             this.bnBuscar = new System.Windows.Forms.Button();
             this.bnVolver = new System.Windows.Forms.Button();
-            this.bnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.bnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,12 +65,7 @@
             this.bnVolver.TabIndex = 6;
             this.bnVolver.Text = "Volver";
             this.bnVolver.UseVisualStyleBackColor = true;
-            // 
-            // bnEditar
-            // 
-            this.bnEditar.HeaderText = "Editar";
-            this.bnEditar.Name = "bnEditar";
-            this.bnEditar.Text = "Editar Publicacion";
+            this.bnVolver.Click += new System.EventHandler(this.bnVolver_Click);
             // 
             // label1
             // 
@@ -80,6 +75,13 @@
             this.label1.Size = new System.Drawing.Size(232, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Seleccione Buscar para Editar una Publicacion ";
+            // 
+            // bnEditar
+            // 
+            this.bnEditar.HeaderText = "Editar";
+            this.bnEditar.Name = "bnEditar";
+            this.bnEditar.Text = "Editar Publicacion";
+            this.bnEditar.UseColumnTextForButtonValue = true;
             // 
             // FrmEditarPublicacion
             // 
@@ -105,7 +107,7 @@
         private System.Windows.Forms.DataGridView dataResultado;
         private System.Windows.Forms.Button bnBuscar;
         private System.Windows.Forms.Button bnVolver;
-        private System.Windows.Forms.DataGridViewButtonColumn bnEditar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewButtonColumn bnEditar;
     }
 }

@@ -15,14 +15,14 @@ namespace FrbaCommerce.Editar_Publicacion
     {
         private string idUs;
         private string publicacion;
-        private string stockAnterior;
+        private int stockAnterior;
         private string estado;
         private string tipoPublicacion;
 
            SqlConnection conexion = new SqlConnection();
       
     
-        public FrmModificacionActiva(string usuario, string idPublicacion, string stock, string estadoPublicacion, string tipoDePublicacion)
+        public FrmModificacionActiva(string usuario, string idPublicacion, int stock, string estadoPublicacion, string tipoDePublicacion)
         {
 
            stockAnterior = stock;
@@ -46,44 +46,59 @@ namespace FrbaCommerce.Editar_Publicacion
 
            private void Actualizar_Click_1(object sender, EventArgs e)
            {
-               if (tipoPublicacion == "Subasta")
-               { //Mensaje de error, no se puede modificar
-
-                   MessageBox.Show("No se puede modificar una Publicacion con estado Subasta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-               }
-               else
+               if ((comboBoxEstado.Text != "") && (txtStock.Text != ""))
                {
-                   if ((tipoPublicacion == "Compra Inmediata") /*&& (txtStock.Text > stockAnterior)*/)
-                   {
-                       
-                       // FALTA controlar stock incremental
-                     
-                       // UPDATE de datos
 
-                       string actualizar = "UPDATE JJRD.PUBLICACION SET  STOCK = " + txtStock.Text + ", ESTADO = '" + comboBoxEstado.Text + "' WHERE COD_PUBLICACION = " + publicacion + "";
+                   if (tipoPublicacion == "Subasta")
+                   { //Mensaje de error, no se puede modificar
 
-                       new Query(actualizar).Ejecutar();
-
-                       MessageBox.Show("Publicacion Editada Correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                       this.Visible = false;
+                       MessageBox.Show("No se puede modificar una Publicacion con estado Subasta", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                    }
                    else
                    {
-                       MessageBox.Show("No se puede decrementar el Stock Publicacion", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       if ((tipoPublicacion == "Compra Inmediata") /*&& ((txtStock.Text) > stockAnterior)*/)
+                       {
 
 
+                           // UPDATE de datos
+
+                           string actualizar = "UPDATE JJRD.PUBLICACION SET  STOCK = " + txtStock.Text + ", ESTADO = '" + comboBoxEstado.Text + "' WHERE COD_PUBLICACION = " + publicacion + "";
+
+                           new Query(actualizar).Ejecutar();
+
+                           MessageBox.Show("Publicacion Editada Correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                           frmPrincipal publicaciones = new frmPrincipal();
+                           this.Hide();
+                           publicaciones.ShowDialog();
+                           publicaciones = (frmPrincipal)this.ActiveMdiChild;
+
+                       }
+                       else
+                       {
+                           MessageBox.Show("No se puede decrementar el Stock de la Publicacion", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                       }
                    }
                }
-                
+               else 
+                { // Error de campos vacios 
+                    MessageBox.Show("No se pueden ingresar campos vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
            }
 
            private void bnVolver_Click(object sender, EventArgs e)
            {
-               
+               frmPrincipal publicacion = new frmPrincipal();
+               this.Hide();
+               publicacion.ShowDialog();
+               publicacion = (frmPrincipal)this.ActiveMdiChild;
            }
+
+        
     }
 }
 

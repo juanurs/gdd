@@ -54,7 +54,7 @@
             // 
             // Actualizar
             // 
-            this.Actualizar.Location = new System.Drawing.Point(139, 121);
+            this.Actualizar.Location = new System.Drawing.Point(165, 121);
             this.Actualizar.Name = "Actualizar";
             this.Actualizar.Size = new System.Drawing.Size(75, 23);
             this.Actualizar.TabIndex = 4;
@@ -66,9 +66,9 @@
             // 
             this.bnVolver.Location = new System.Drawing.Point(29, 121);
             this.bnVolver.Name = "bnVolver";
-            this.bnVolver.Size = new System.Drawing.Size(75, 23);
+            this.bnVolver.Size = new System.Drawing.Size(78, 23);
             this.bnVolver.TabIndex = 5;
-            this.bnVolver.Text = "Volver";
+            this.bnVolver.Text = "Volver ";
             this.bnVolver.UseVisualStyleBackColor = true;
             this.bnVolver.Click += new System.EventHandler(this.bnVolver_Click);
             // 
