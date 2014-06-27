@@ -25,7 +25,7 @@ namespace FrbaCommerce
 
         private void bnBuscar_Click(object sender, EventArgs e)
         {
-            string visibilidad = " select PRECIO, PORCENTAJE_VENTA, DURACION"
+            string visibilidad = " select CODIGO_VISIBILIDAD, PRECIO, PORCENTAJE_VENTA, DURACION"
                                + " from JJRD.VISIBILIDAD"
                                + " where HABILITADO = 1"
                                + " and DESCRIPCION = '" + cmbVisibilidad.Text + "'";

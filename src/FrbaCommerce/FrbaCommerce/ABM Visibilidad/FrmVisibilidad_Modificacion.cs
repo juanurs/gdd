@@ -17,23 +17,39 @@ namespace FrbaCommerce
             InitializeComponent();
         }
 
+        SqlConnection conexion = new SqlConnection();
+
         private void FrmVisibilidad_Modificacion_Load(object sender, EventArgs e)
         {
-            bnBuscar.Enabled = false;
             LlenarComboBox();
         }
 
         private void bnBuscar_Click(object sender, EventArgs e)
         {
-            string visibilidad = " select PRECIO, PORCENTAJE_VENTA, DURACION"
+            string visibilidad = " select COD_VISIBILIDAD, PRECIO, PORCENTAJE_VENTA, DURACION"
                                + " from JJRD.VISIBILIDAD"
                                + " where HABILITADO = 1"
                                + " and DESCRIPCION = '" + cmbVisibilidad.Text + "'";
+
+            txtDescripcion.Text = cmbVisibilidad.Text;
+            conexion.Open();
+
+            SqlCommand command = new SqlCommand(visibilidad, conexion);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                IDataRecord resultado = (IDataRecord)reader;
+                txtCodigo.Text = resultado[0].ToString();
+                txtPrecio.Text = resultado[1].ToString();
+                txtPorcentaje.Text = resultado[2].ToString();
+                txtDuracion.Text = resultado[3].ToString();
+            }
+            conexion.Close();
         }
 
         public void LlenarComboBox()
         {
-            SqlConnection conexion = new SqlConnection();
             conexion.ConnectionString = Settings.Default.CadenaDeConexion;
 
             DataSet ds = new DataSet();
@@ -48,7 +64,25 @@ namespace FrbaCommerce
         private void bnLimpiar_click(object sender, EventArgs e)
         {
             cmbVisibilidad.SelectedItem = null;
-            bnBuscar.Enabled = false;
+            txtCodigo.Text = null;
+            txtDescripcion.Text = null;
+            txtPrecio.Text = null;
+            txtPorcentaje.Text = null;
+            txtDuracion.Text = null;
+        }
+
+        private void bnGuardar_Click(object sender, EventArgs e)
+        {
+            string updateVisibilidad = "update JJRD.VISIBILIDAD "
+                                     + "set DESCRIPCION = '" + txtDescripcion.Text + "'"
+                                     + " ,	PRECIO = " + txtPrecio.Text.Replace(",", ".")
+                                     + " ,	PORCENTAJE_VENTA = " + txtPorcentaje.Text.Replace(",", ".")
+                                     + " ,	DURACION = " + txtDuracion.Text
+                                     + " where COD_VISIBILIDAD = " + txtCodigo.Text;
+            
+            new Query(updateVisibilidad).Ejecutar();
+            MessageBox.Show("Modificación realizada con éxito!");
+            this.Visible = false;
         }
     }
 }
