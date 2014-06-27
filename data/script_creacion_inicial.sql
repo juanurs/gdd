@@ -422,7 +422,7 @@ BEGIN
 	select distinct M.Calificacion_Codigo, M.Calificacion_Cant_Estrellas, M.Calificacion_Descripcion
 	from gd_esquema.Maestra as M
 	where Calificacion_Codigo is not null
-
+	and Calificacion_Codigo is not null
 		
 	--============================================================
 	--TABLA COMPRAS
@@ -546,7 +546,7 @@ SELECT @vwSQL = @vwSQL + 'DROP VIEW JJRD.' + QUOTENAME(name)
 FROM sys.views
 WHERE is_ms_shipped = 0
 
--- Claves foráneas
+-- Claves forï¿½neas
 SELECT @fkSQL = @fkSQL + 'ALTER TABLE JJRD.' + QUOTENAME(OBJECT_NAME(parent_object_id)) + ' DROP CONSTRAINT ' + QUOTENAME(name)
 FROM sys.foreign_keys
 WHERE is_ms_shipped = 0
