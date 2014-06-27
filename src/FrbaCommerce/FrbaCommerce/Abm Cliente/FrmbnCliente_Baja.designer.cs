@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bnEliminar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,20 +39,11 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.dataResultado = new System.Windows.Forms.DataGridView();
             this.bnBuscar = new System.Windows.Forms.Button();
-            this.bnMenuPrincipal = new System.Windows.Forms.Button();
+            this.bnVolver = new System.Windows.Forms.Button();
             this.txtNumeroDoc = new System.Windows.Forms.TextBox();
+            this.bnDarDeBaja = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bnEliminar
-            // 
-            this.bnEliminar.Location = new System.Drawing.Point(331, 348);
-            this.bnEliminar.Name = "bnEliminar";
-            this.bnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.bnEliminar.TabIndex = 3;
-            this.bnEliminar.TabStop = false;
-            this.bnEliminar.Text = "Eliminar";
-            this.bnEliminar.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -135,12 +125,14 @@
             this.dataResultado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataResultado.Location = new System.Drawing.Point(12, 133);
             this.dataResultado.Name = "dataResultado";
+            this.dataResultado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataResultado.Size = new System.Drawing.Size(543, 150);
             this.dataResultado.TabIndex = 18;
+            this.dataResultado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataResultado_CellContentClick);
             // 
             // bnBuscar
             // 
-            this.bnBuscar.Location = new System.Drawing.Point(228, 348);
+            this.bnBuscar.Location = new System.Drawing.Point(480, 348);
             this.bnBuscar.Name = "bnBuscar";
             this.bnBuscar.Size = new System.Drawing.Size(75, 23);
             this.bnBuscar.TabIndex = 19;
@@ -148,14 +140,14 @@
             this.bnBuscar.UseVisualStyleBackColor = true;
             this.bnBuscar.Click += new System.EventHandler(this.bnBuscar_Click);
             // 
-            // bnMenuPrincipal
+            // bnVolver
             // 
-            this.bnMenuPrincipal.Location = new System.Drawing.Point(109, 348);
-            this.bnMenuPrincipal.Name = "bnMenuPrincipal";
-            this.bnMenuPrincipal.Size = new System.Drawing.Size(88, 23);
-            this.bnMenuPrincipal.TabIndex = 20;
-            this.bnMenuPrincipal.Text = "Menu Principal";
-            this.bnMenuPrincipal.UseVisualStyleBackColor = true;
+            this.bnVolver.Location = new System.Drawing.Point(12, 348);
+            this.bnVolver.Name = "bnVolver";
+            this.bnVolver.Size = new System.Drawing.Size(88, 23);
+            this.bnVolver.TabIndex = 20;
+            this.bnVolver.Text = "Volver";
+            this.bnVolver.UseVisualStyleBackColor = true;
             // 
             // txtNumeroDoc
             // 
@@ -164,13 +156,24 @@
             this.txtNumeroDoc.Size = new System.Drawing.Size(189, 20);
             this.txtNumeroDoc.TabIndex = 14;
             // 
+            // bnDarDeBaja
+            // 
+            this.bnDarDeBaja.Location = new System.Drawing.Point(247, 348);
+            this.bnDarDeBaja.Name = "bnDarDeBaja";
+            this.bnDarDeBaja.Size = new System.Drawing.Size(75, 23);
+            this.bnDarDeBaja.TabIndex = 21;
+            this.bnDarDeBaja.Text = "Dar de baja";
+            this.bnDarDeBaja.UseVisualStyleBackColor = true;
+            this.bnDarDeBaja.Click += new System.EventHandler(this.bnDarDeBaja_Click);
+            // 
             // FrmbnCliente_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(568, 423);
-            this.Controls.Add(this.bnMenuPrincipal);
+            this.Controls.Add(this.bnDarDeBaja);
+            this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.bnBuscar);
             this.Controls.Add(this.dataResultado);
             this.Controls.Add(this.txtEmail);
@@ -183,7 +186,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.bnEliminar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "FrmbnCliente_Baja";
@@ -198,7 +200,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button bnEliminar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -210,7 +211,8 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.DataGridView dataResultado;
         private System.Windows.Forms.Button bnBuscar;
-        private System.Windows.Forms.Button bnMenuPrincipal;
+        private System.Windows.Forms.Button bnVolver;
         private System.Windows.Forms.TextBox txtNumeroDoc;
+        private System.Windows.Forms.Button bnDarDeBaja;
     }
 }

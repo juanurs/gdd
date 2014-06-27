@@ -88,7 +88,7 @@ namespace FrbaCommerce
 
         private void btnEmpresa_Click(object sender, EventArgs e)
         {
-            FrmEmpresa cliente = new FrmEmpresa();
+            FrmEmpresa cliente = new FrmEmpresa(idUsuario);
             this.Hide();
             cliente.ShowDialog();
             cliente = (FrmEmpresa)this.ActiveMdiChild;

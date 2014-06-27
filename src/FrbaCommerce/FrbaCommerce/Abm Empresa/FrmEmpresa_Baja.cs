@@ -6,29 +6,29 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-//using FrbaCommerce.Login; //ELIMINAR DESPUES DE MOVER A FUNC GENERALES
+using FrbaCommerce.FuncionesGenerales;
 
 namespace FrbaCommerce
 {
     public partial class FrmEmpresa_Baja : Form
     {
-        public FrmEmpresa_Baja()
+        public FrmEmpresa_Baja(int id_Usr)
         {
             InitializeComponent();
+            idUsuario = id_Usr;
         }
 
         private string qr;
-
+        Funciones fn = new Funciones();
+        private int idUsuario; //ID USUARIO LOGUEADO
 
         private void bnBuscar_Click(object sender, EventArgs e)
         {
-            //PARA QUE? BORRAR
-            int idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.EMPRESA WHERE RAZON_SOCIAL LIKE '%" + txtRazonSocial.Text + "%'").ObtenerUnicoCampo();
 
             if (!CamposVacios())
             {
 
-                string sql = "SELECT RAZON_SOCIAL, CUIT, EMAIL FROM JJRD.EMPRESA WHERE ";
+                string sql = "SELECT id_usuario, RAZON_SOCIAL as 'Razon social', Cuit, Email FROM JJRD.EMPRESA WHERE ";
 
                 if (txtRazonSocial.Text == "" && txtCuit.Text == "" && txtMail.Text != "" || txtRazonSocial.Text == "" && txtMail.Text == "" && txtCuit.Text != "" || txtMail.Text == "" && txtCuit.Text == "" && txtRazonSocial.Text != "")
                 {
@@ -121,24 +121,47 @@ namespace FrbaCommerce
         {
             Query resultado = new Query(qr);
             dataResultado.DataSource = resultado.ObtenerDataTable();
+            dataResultado.Columns["id_usuario"].Visible = false;  //OCULTO LA COLUMNA
             dataResultado.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private void dataResultado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            FrmEmpresa_Baja_Confirmacion frm = new FrmEmpresa_Baja_Confirmacion(dataResultado.Rows[e.RowIndex].Cells["Razon_Social"].Value.ToString(),
-               dataResultado.Rows[e.RowIndex].Cells["Cuit"].Value.ToString(),
-               dataResultado.Rows[e.RowIndex].Cells["Email"].Value.ToString());
-            frm.ShowDialog();
-            this.Visible = false;
+            this.bnDarDeBaja.Enabled = true;
         }
 
         private void bnVolver_Click(object sender, EventArgs e)
         {
-            FrmEmpresa cliente = new FrmEmpresa();
+            FrmEmpresa cliente = new FrmEmpresa(idUsuario);
             this.Hide();
             cliente.ShowDialog();
             cliente = (FrmEmpresa)this.ActiveMdiChild;
+        }
+
+        private void bnDarDeBaja_Click(object sender, EventArgs e)
+        {
+
+            DataGridViewRow fila = dataResultado.SelectedRows[0];
+
+            //IDUSUARIO A DESHABILITAR
+            int id_Usr = Convert.ToInt32(fila.Cells["id_usuario"].Value.ToString());
+
+
+            if (fn.puedeIngresarAlSistema(id_Usr))
+            {
+                fn.inhabilitarUsuario(id_Usr);
+            }
+            else
+            {
+                MessageBox.Show("No se pudo realizar la operacion." + Environment.NewLine + "El usuario ya se encuentra inhabilitado", "Advertencia",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void FrmEmpresa_Baja_Load(object sender, EventArgs e)
+        {
+            this.bnDarDeBaja.Enabled = false;
         }
 
 

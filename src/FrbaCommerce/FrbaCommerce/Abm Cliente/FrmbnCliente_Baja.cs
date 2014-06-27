@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using FrbaCommerce.FuncionesGenerales;
 
 namespace FrbaCommerce
 {
@@ -19,6 +20,8 @@ namespace FrbaCommerce
 
         private string qr;
         private int IdTipoDni;
+        Funciones fn = new Funciones();
+
 
         private void bnBuscar_Click(object sender, EventArgs e)
         { 
@@ -27,7 +30,7 @@ namespace FrbaCommerce
             if (!CamposVacios())
             {
 
-                string sql = "SELECT Nombre, Apellido, Email, NUMERO_DOC as 'Documento' FROM JJRD.CLIENTE WHERE ";
+                string sql = "SELECT id_usuario, Nombre, Apellido, Email, NUMERO_DOC as 'Documento' FROM JJRD.CLIENTE WHERE ";
 
                 if (txtNombre.Text != "" && txtApellido.Text == "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text == "" ||
                     txtNombre.Text == "" && txtApellido.Text != "" && comboBoxTipoDoc.Text == "" && txtNumeroDoc.Text == "" && txtEmail.Text == "" ||
@@ -198,11 +201,14 @@ namespace FrbaCommerce
         {
             Query resultado = new Query(qr);
             dataResultado.DataSource = resultado.ObtenerDataTable();
+            dataResultado.Columns["id_usuario"].Visible = false;  //OCULTO LA COLUMNA
             dataResultado.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private void FrmbnCliente_Baja_Load(object sender, EventArgs e)
         {
+            this.bnDarDeBaja.Enabled = false;
+            
             //CARGAR COMBOBOX
             string sql = "SELECT DESCRIPCION FROM JJRD.TIPO_DOCUMENTO";
 
@@ -226,6 +232,34 @@ namespace FrbaCommerce
         {
             sql = sql + " EMAIL = '" + txtEmail.Text + "' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' AND NOMBRE LIKE '%" + txtNombre.Text + "%' ";
             return sql;
+        }
+
+        private void bnDarDeBaja_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow fila = dataResultado.SelectedRows[0];
+            
+            //IDUSUARIO A DESHABILITAR
+            int id_Usr = Convert.ToInt32(fila.Cells["id_usuario"].Value.ToString());
+
+
+            if (fn.puedeIngresarAlSistema(id_Usr))
+            {
+                fn.inhabilitarUsuario(id_Usr);
+            }
+            else
+            {
+                MessageBox.Show("No se pudo realizar la operacion." + Environment.NewLine + "El usuario ya se encuentra inhabilitado", "Advertencia",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            
+            
+            
+        }
+
+        private void dataResultado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.bnDarDeBaja.Enabled = true;
         }
 
         

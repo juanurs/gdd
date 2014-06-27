@@ -61,6 +61,7 @@
             this.bnAlta.TabIndex = 5;
             this.bnAlta.Text = "Alta";
             this.bnAlta.UseVisualStyleBackColor = true;
+            this.bnAlta.Click += new System.EventHandler(this.bnAlta_Click);
             // 
             // bnBaja
             // 
@@ -93,6 +94,7 @@
             this.Controls.Add(this.bnListado);
             this.Controls.Add(this.bnModificar);
             this.Name = "FrmEmpresa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Empresa";
             this.ResumeLayout(false);
 

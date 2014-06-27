@@ -56,7 +56,6 @@ C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\Frba
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Baja.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Alta.resources
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Baja_Confirmacion.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Alta.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmEmpresa_Baja.resources

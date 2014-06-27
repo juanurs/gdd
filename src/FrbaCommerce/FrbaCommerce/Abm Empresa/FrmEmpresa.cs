@@ -13,15 +13,19 @@ namespace FrbaCommerce
 {
     public partial class FrmEmpresa : Form
     {
-        public FrmEmpresa()
+        private int idUsuario;
+
+        public FrmEmpresa(int id_Usr)
         {
             InitializeComponent();
+
+            idUsuario = id_Usr;
         }
 
         private void bnBaja_Click(object sender, EventArgs e)
         {
             
-            FrmEmpresa_Baja EmpresaBaja = new FrmEmpresa_Baja();
+            FrmEmpresa_Baja EmpresaBaja = new FrmEmpresa_Baja(idUsuario);
             this.Hide();
             EmpresaBaja.ShowDialog();
             
@@ -31,10 +35,15 @@ namespace FrbaCommerce
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-         /*   frmPrincipal cliente = new frmPrincipal();
+            frmPrincipal cliente = new frmPrincipal(idUsuario);
             this.Hide();
             cliente.ShowDialog();
-            cliente = (frmPrincipal)this.ActiveMdiChild;  */
+            cliente = (frmPrincipal)this.ActiveMdiChild;
+        }
+
+        private void bnAlta_Click(object sender, EventArgs e)
+        {
+            
         }
 
     }
