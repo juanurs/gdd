@@ -32,7 +32,6 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUsuarioLogueado = new System.Windows.Forms.Label();
-            this.lblPerfil = new System.Windows.Forms.Label();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnEmpresa = new System.Windows.Forms.Button();
             this.btnVisibilidad = new System.Windows.Forms.Button();
@@ -40,13 +39,17 @@
             this.bnEditarPublicacion = new System.Windows.Forms.Button();
             this.bnGestionarPreguntas = new System.Windows.Forms.Button();
             this.bnHistorialCliente = new System.Windows.Forms.Button();
+            this.bnComprarOfertar = new System.Windows.Forms.Button();
+            this.bnListadoEstadistico = new System.Windows.Forms.Button();
+            this.bnCalificarVendedor = new System.Windows.Forms.Button();
+            this.bnFacturar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRoles
             // 
-            this.btnRoles.Location = new System.Drawing.Point(12, 194);
+            this.btnRoles.Location = new System.Drawing.Point(259, 163);
             this.btnRoles.Name = "btnRoles";
-            this.btnRoles.Size = new System.Drawing.Size(91, 25);
+            this.btnRoles.Size = new System.Drawing.Size(118, 25);
             this.btnRoles.TabIndex = 0;
             this.btnRoles.Text = "ABM Rol";
             this.btnRoles.UseVisualStyleBackColor = true;
@@ -82,20 +85,11 @@
             this.lblUsuarioLogueado.TabIndex = 4;
             this.lblUsuarioLogueado.Text = "Usuario Logueado :";
             // 
-            // lblPerfil
-            // 
-            this.lblPerfil.AutoSize = true;
-            this.lblPerfil.Location = new System.Drawing.Point(21, 87);
-            this.lblPerfil.Name = "lblPerfil";
-            this.lblPerfil.Size = new System.Drawing.Size(36, 13);
-            this.lblPerfil.TabIndex = 5;
-            this.lblPerfil.Text = "Perfil :";
-            // 
             // btnClientes
             // 
-            this.btnClientes.Location = new System.Drawing.Point(12, 132);
+            this.btnClientes.Location = new System.Drawing.Point(12, 163);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(91, 25);
+            this.btnClientes.Size = new System.Drawing.Size(118, 25);
             this.btnClientes.TabIndex = 6;
             this.btnClientes.Text = "ABM Clientes";
             this.btnClientes.UseVisualStyleBackColor = true;
@@ -103,7 +97,7 @@
             // 
             // btnEmpresa
             // 
-            this.btnEmpresa.Location = new System.Drawing.Point(12, 163);
+            this.btnEmpresa.Location = new System.Drawing.Point(145, 163);
             this.btnEmpresa.Name = "btnEmpresa";
             this.btnEmpresa.Size = new System.Drawing.Size(91, 25);
             this.btnEmpresa.TabIndex = 7;
@@ -115,7 +109,7 @@
             // 
             this.btnVisibilidad.Location = new System.Drawing.Point(12, 225);
             this.btnVisibilidad.Name = "btnVisibilidad";
-            this.btnVisibilidad.Size = new System.Drawing.Size(91, 23);
+            this.btnVisibilidad.Size = new System.Drawing.Size(118, 23);
             this.btnVisibilidad.TabIndex = 9;
             this.btnVisibilidad.Text = "ABM Visibilidad";
             this.btnVisibilidad.UseVisualStyleBackColor = true;
@@ -123,7 +117,7 @@
             // 
             // bnGenerarPublicacion
             // 
-            this.bnGenerarPublicacion.Location = new System.Drawing.Point(256, 132);
+            this.bnGenerarPublicacion.Location = new System.Drawing.Point(12, 132);
             this.bnGenerarPublicacion.Name = "bnGenerarPublicacion";
             this.bnGenerarPublicacion.Size = new System.Drawing.Size(118, 25);
             this.bnGenerarPublicacion.TabIndex = 10;
@@ -133,7 +127,7 @@
             // 
             // bnEditarPublicacion
             // 
-            this.bnEditarPublicacion.Location = new System.Drawing.Point(256, 163);
+            this.bnEditarPublicacion.Location = new System.Drawing.Point(12, 194);
             this.bnEditarPublicacion.Name = "bnEditarPublicacion";
             this.bnEditarPublicacion.Size = new System.Drawing.Size(118, 25);
             this.bnEditarPublicacion.TabIndex = 11;
@@ -143,7 +137,7 @@
             // 
             // bnGestionarPreguntas
             // 
-            this.bnGestionarPreguntas.Location = new System.Drawing.Point(256, 194);
+            this.bnGestionarPreguntas.Location = new System.Drawing.Point(259, 132);
             this.bnGestionarPreguntas.Name = "bnGestionarPreguntas";
             this.bnGestionarPreguntas.Size = new System.Drawing.Size(118, 25);
             this.bnGestionarPreguntas.TabIndex = 12;
@@ -153,13 +147,49 @@
             // 
             // bnHistorialCliente
             // 
-            this.bnHistorialCliente.Location = new System.Drawing.Point(256, 224);
+            this.bnHistorialCliente.Location = new System.Drawing.Point(259, 194);
             this.bnHistorialCliente.Name = "bnHistorialCliente";
-            this.bnHistorialCliente.Size = new System.Drawing.Size(115, 23);
+            this.bnHistorialCliente.Size = new System.Drawing.Size(118, 23);
             this.bnHistorialCliente.TabIndex = 13;
             this.bnHistorialCliente.Text = "Historial Cliente";
             this.bnHistorialCliente.UseVisualStyleBackColor = true;
             this.bnHistorialCliente.Click += new System.EventHandler(this.bnHistorialCliente_Click);
+            // 
+            // bnComprarOfertar
+            // 
+            this.bnComprarOfertar.Location = new System.Drawing.Point(138, 194);
+            this.bnComprarOfertar.Name = "bnComprarOfertar";
+            this.bnComprarOfertar.Size = new System.Drawing.Size(115, 25);
+            this.bnComprarOfertar.TabIndex = 14;
+            this.bnComprarOfertar.Text = "Comprar/Ofertar";
+            this.bnComprarOfertar.UseVisualStyleBackColor = true;
+            // 
+            // bnListadoEstadistico
+            // 
+            this.bnListadoEstadistico.Location = new System.Drawing.Point(133, 225);
+            this.bnListadoEstadistico.Name = "bnListadoEstadistico";
+            this.bnListadoEstadistico.Size = new System.Drawing.Size(115, 23);
+            this.bnListadoEstadistico.TabIndex = 15;
+            this.bnListadoEstadistico.Text = "Listado Estadístico";
+            this.bnListadoEstadistico.UseVisualStyleBackColor = true;
+            // 
+            // bnCalificarVendedor
+            // 
+            this.bnCalificarVendedor.Location = new System.Drawing.Point(12, 251);
+            this.bnCalificarVendedor.Name = "bnCalificarVendedor";
+            this.bnCalificarVendedor.Size = new System.Drawing.Size(118, 25);
+            this.bnCalificarVendedor.TabIndex = 16;
+            this.bnCalificarVendedor.Text = "Calificar Vendedor";
+            this.bnCalificarVendedor.UseVisualStyleBackColor = true;
+            // 
+            // bnFacturar
+            // 
+            this.bnFacturar.Location = new System.Drawing.Point(259, 251);
+            this.bnFacturar.Name = "bnFacturar";
+            this.bnFacturar.Size = new System.Drawing.Size(115, 25);
+            this.bnFacturar.TabIndex = 17;
+            this.bnFacturar.Text = "Facturar";
+            this.bnFacturar.UseVisualStyleBackColor = true;
             // 
             // frmPrincipal
             // 
@@ -167,6 +197,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(383, 354);
+            this.Controls.Add(this.bnFacturar);
+            this.Controls.Add(this.bnCalificarVendedor);
+            this.Controls.Add(this.bnListadoEstadistico);
+            this.Controls.Add(this.bnComprarOfertar);
             this.Controls.Add(this.bnHistorialCliente);
             this.Controls.Add(this.bnGestionarPreguntas);
             this.Controls.Add(this.bnEditarPublicacion);
@@ -174,7 +208,6 @@
             this.Controls.Add(this.btnVisibilidad);
             this.Controls.Add(this.btnEmpresa);
             this.Controls.Add(this.btnClientes);
-            this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.lblUsuarioLogueado);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSalir);
@@ -194,7 +227,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblUsuarioLogueado;
-        private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnEmpresa;
         private System.Windows.Forms.Button btnVisibilidad;
@@ -202,6 +234,10 @@
         private System.Windows.Forms.Button bnEditarPublicacion;
         private System.Windows.Forms.Button bnGestionarPreguntas;
         private System.Windows.Forms.Button bnHistorialCliente;
+        private System.Windows.Forms.Button bnComprarOfertar;
+        private System.Windows.Forms.Button bnListadoEstadistico;
+        private System.Windows.Forms.Button bnCalificarVendedor;
+        private System.Windows.Forms.Button bnFacturar;
     }
 }
 

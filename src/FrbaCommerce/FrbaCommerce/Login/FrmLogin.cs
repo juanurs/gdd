@@ -24,12 +24,7 @@ namespace FrbaCommerce.Login
         public string nombreUsuario;
         Funciones fn = new Funciones();
 
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmPrincipal frmPrincipal = new frmPrincipal(idUsuario);
-            frmPrincipal.ShowDialog();
-        }
+   
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -139,7 +134,7 @@ namespace FrbaCommerce.Login
             this.Visible = false;
             FrmRolesLogin frm = new FrmRolesLogin(idUsuario);
             frm.ShowDialog();
-            this.Visible = true;
+            
 
         }
 
@@ -178,15 +173,18 @@ namespace FrbaCommerce.Login
             Query qr = new Query("SELECT TIPO_DE_USUARIO FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario);
             string tipo = qr.ObtenerUnicoCampo().ToString();
 
-            if (tipo == "C")
+            switch (tipo)
             {
-                Query email = new Query("SELECT EMAIL FROM JJRD.CLIENTE WHERE ID_USUARIO = " + idUsuario);
-                return (email.ObtenerUnicoCampo().ToString().ToUpper() == txtBoxUsuario.Text.ToUpper());
-            }
-            else
-            {   //TIPO ES "E"
-                Query email = new Query("SELECT EMAIL FROM JJRD.EMPRESA WHERE ID_USUARIO = " + idUsuario);
-                return (email.ObtenerUnicoCampo().ToString().ToUpper() == txtBoxUsuario.Text.ToUpper());
+                case "C":  Query emailCl = new Query("SELECT EMAIL FROM JJRD.CLIENTE WHERE ID_USUARIO = " + idUsuario);
+                                return (emailCl.ObtenerUnicoCampo().ToString().ToUpper() == txtBoxUsuario.Text.ToUpper());
+                                break;
+
+                case "E":  Query emailEmp = new Query("SELECT EMAIL FROM JJRD.EMPRESA WHERE ID_USUARIO = " + idUsuario);
+                                return (emailEmp.ObtenerUnicoCampo().ToString().ToUpper() == txtBoxUsuario.Text.ToUpper());
+                                break;
+                //"A"
+                default: return false;
+                                break;
             }
 
         }
@@ -198,5 +196,12 @@ namespace FrbaCommerce.Login
             registrarUsr.ShowDialog();
             registrarUsr = (FrmRegistrarUsuario)this.ActiveMdiChild;
         }
+
+        private void Salir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
     }
 }

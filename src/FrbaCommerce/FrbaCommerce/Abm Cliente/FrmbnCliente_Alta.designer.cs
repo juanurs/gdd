@@ -58,6 +58,7 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFecha = new System.Windows.Forms.DateTimePicker();
+            this.bnVolver = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,7 +166,7 @@
             // 
             // bnLimpiar
             // 
-            this.bnLimpiar.Location = new System.Drawing.Point(12, 263);
+            this.bnLimpiar.Location = new System.Drawing.Point(184, 263);
             this.bnLimpiar.Name = "bnLimpiar";
             this.bnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.bnLimpiar.TabIndex = 42;
@@ -326,12 +327,23 @@
             this.txtFecha.TabIndex = 37;
             this.txtFecha.Value = new System.DateTime(2014, 6, 16, 16, 49, 9, 0);
             // 
+            // bnVolver
+            // 
+            this.bnVolver.Location = new System.Drawing.Point(12, 263);
+            this.bnVolver.Name = "bnVolver";
+            this.bnVolver.Size = new System.Drawing.Size(75, 23);
+            this.bnVolver.TabIndex = 44;
+            this.bnVolver.Text = "Volver";
+            this.bnVolver.UseVisualStyleBackColor = true;
+            this.bnVolver.Click += new System.EventHandler(this.bnVolver_Click);
+            // 
             // FrmbnCliente_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(441, 302);
+            this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bnLimpiar);
             this.Controls.Add(this.bnGuardar);
@@ -378,5 +390,6 @@
         private System.Windows.Forms.TextBox txtCod_Postal;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker txtFecha;
+        private System.Windows.Forms.Button bnVolver;
     }
 }

@@ -22,7 +22,7 @@ namespace FrbaCommerce.FuncionesGenerales
 
         public void recibirUsuario(int idUsuario)
         {
-            //VER
+              //VER
             string nombreUsuario = new Query("SELECT USERNAME FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
 
             int idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO  " +

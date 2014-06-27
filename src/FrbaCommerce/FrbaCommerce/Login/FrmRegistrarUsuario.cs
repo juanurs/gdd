@@ -89,7 +89,7 @@ namespace FrbaCommerce.Login
 
                             int idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
 
-                            Query qr2 = new Query("INSERT INTO JJRD.ROL_USUARIO (ID_ROL, ID_USUARIO, HABILITADO ) VALUES (2, " + idUsuario + ", 1 )"); //VER PORQUE PUSIMOS EL CAMPO HABILITADO
+                            Query qr2 = new Query("INSERT INTO JJRD.ROL_USUARIO (ID_ROL, ID_USUARIO, HABILITADO ) VALUES (2, " + idUsuario + ", 1 )");
                             qr2.Ejecutar();
 
 

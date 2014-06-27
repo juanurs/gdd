@@ -27,18 +27,20 @@ namespace FrbaCommerce
 
             idUsuario = id_Usr;
 
-            lblUsuarioLogueado.Visible = false;
-            lblPerfil.Visible = false;
-            bnGenerarPublicacion.Visible = false;
-            bnEditarPublicacion.Visible = false;
-          
-           /* DESPUES TERMINO ESTA PARTE
-            btnRoles.Visible = false;
-            btnClientes.Visible = false;
-            btnEmpresa.Visible = false;
-            btnRubro.Visible = false;
-            btnVisibilidad.Visible = false;
-           */
+            this.btnRoles.Visible = false;
+            this.btnClientes.Visible = false;
+            this.btnEmpresa.Visible = false;
+            this.btnVisibilidad.Visible = false;
+            this.bnGenerarPublicacion.Visible = false;
+            this.bnEditarPublicacion.Visible = false;
+            this.bnGestionarPreguntas.Visible = false;
+            this.bnComprarOfertar.Visible = false;
+            this.bnHistorialCliente.Visible = false;
+            this.bnCalificarVendedor.Visible = false;
+            this.bnFacturar.Visible = false;
+            this.bnListadoEstadistico.Visible = false;
+                             
+
 
         }
 
@@ -61,20 +63,75 @@ namespace FrbaCommerce
             //idUsuario = id_Usr;
 
 
-            Query qr = new Query(" SELECT ROL_NOMBRE FROM JJRD.ROLES WHERE ID_ROL = " + idRol);
+           /* Query qr = new Query(" SELECT ROL_NOMBRE FROM JJRD.ROLES WHERE ID_ROL = " + idRol);
             qr.pTipoComando = CommandType.Text;
-            string nombreRol = qr.ObtenerUnicoCampo().ToString();
+            string nombreRol = qr.ObtenerUnicoCampo().ToString(); */
 
-            
-            lblPerfil.Visible = true;
+            //MUESTRA EL NOMBRE Y PERFIL DEL USUARIO LOGUEADO
+            //lblPerfil.Visible = true;
             lblUsuarioLogueado.Text = " Usuario Conectado : " + nombreUsuario.ToUpper();
             lblUsuarioLogueado.Visible = true;
             lblUsuarioLogueado.ForeColor = System.Drawing.Color.Green;
-            lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
+            //lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
 
-            
-            bnGenerarPublicacion.Visible = true;
-            bnEditarPublicacion.Visible = true;
+            //MUESTRA SOLO LAS FUNCIONALIDADES PERMITIDAS PARA EL ROL LOGUEADO
+            Query funcionalidades = new Query("SELECT ID_FUNCIONALIDAD FROM JJRD.ROL_FUNCIONALIDAD WHERE ID_ROL = " + idRol);
+
+            foreach (DataRow dataRow in funcionalidades.ObtenerDataTable().AsEnumerable())
+            {
+                switch (Convert.ToInt32(dataRow[0]))
+                {
+                    //ABM ROL
+                    case 1: this.btnRoles.Visible = true;
+                            break;
+
+                    //ABM CLIENTE
+                    case 2: this.btnClientes.Visible = true;
+                            break;
+
+                    //ABM EMPRESA
+                    case 3: this.btnEmpresa.Visible = true;
+                            break;
+
+                    //ABM VISIBILIDAD
+                    case 4: this.btnVisibilidad.Visible = true;
+                            break;
+
+                    //GENERAR PUBLICACION
+                    case 5: this.bnGenerarPublicacion.Visible = true;
+                            break;
+
+                    //EDITAR PUBLICACION
+                    case 6: this.bnEditarPublicacion.Visible = true;
+                            break;
+
+                    //GESTIONAR PREGUNTAS
+                    case 7: this.bnGestionarPreguntas.Visible = true;
+                            break;
+
+                    //COMPRAR/OFERTAR
+                    case 8: this.bnComprarOfertar.Visible = true;
+                            break;
+
+                    //HISTORIAL CLIENTE
+                    case 9: this.bnHistorialCliente.Visible = true;
+                            break;
+
+                    //CALIFICAR AL VENDEDOR
+                    case 10: this.bnCalificarVendedor.Visible = true;
+                             break;
+
+                    //FACTURAR
+                    case 11: this.bnFacturar.Visible = true;
+                             break;
+
+                    //LISTADO ESTADISTICO
+                    case 12: this.bnListadoEstadistico.Visible = true;
+                             break;
+
+                    
+                }
+            }
 
         }
 
@@ -134,8 +191,10 @@ namespace FrbaCommerce
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
            nombreUsuario = new Query("SELECT USERNAME FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
-
+            
            idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
+         
+                   
 
            cargarFrmPrincipal();
         }

@@ -35,15 +35,18 @@ namespace FrbaCommerce
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            frmPrincipal cliente = new frmPrincipal(idUsuario);
+            frmPrincipal frmPrincipal= new frmPrincipal(idUsuario);
             this.Hide();
-            cliente.ShowDialog();
-            cliente = (frmPrincipal)this.ActiveMdiChild;
+            frmPrincipal.ShowDialog();
+            frmPrincipal = (frmPrincipal)this.ActiveMdiChild;
         }
 
         private void bnAlta_Click(object sender, EventArgs e)
         {
-            
+            FrmEmpresa_Alta alta = new FrmEmpresa_Alta(idUsuario);
+            this.Hide();
+            alta.ShowDialog();
+            alta = (FrmEmpresa_Alta)this.ActiveMdiChild;
         }
 
     }

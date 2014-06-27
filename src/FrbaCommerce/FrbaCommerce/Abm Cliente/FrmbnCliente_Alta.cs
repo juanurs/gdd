@@ -17,8 +17,8 @@ namespace FrbaCommerce
         private int idUsuario;
         
         
-        public FrmbnCliente_Alta(int id_Usr) // si el cliente se esta registrando, se pasa por parametro el idUsuario,
-                                             // si el administrador esta dando de alta un cliente, el parametro idUsuario es 0.
+        public FrmbnCliente_Alta(int id_Usr)
+                                             
         {
             InitializeComponent();
 
@@ -95,7 +95,9 @@ namespace FrbaCommerce
                         {
                             /* primero dar de alta usuario */
 
-                            if (idUsuario == 0) // si es igual a 0, se crea el username y la contraseña por default.
+                            //SI EL ADMINISTRADOR ESTA DANDO DE ALTA, SE SETEA USUARIO Y CONTRASEÑA POR DEFAULT
+                            string tipo_usuario = new Query("select tipo_de_usuario from JJRD.USUARIOS where ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
+                            if (tipo_usuario == "A")
                             {
                                 string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtMail.Text + "', '" + txtDocumento.Text + "' , 1, 0, 'C' )";
                                 qry.pComando = sql;
@@ -196,6 +198,14 @@ namespace FrbaCommerce
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space);
+        }
+
+        private void bnVolver_Click(object sender, EventArgs e)
+        {
+            FrmEmpresa volver = new FrmEmpresa(idUsuario);
+            this.Hide();
+            volver.ShowDialog();
+            volver = (FrmEmpresa)this.ActiveMdiChild;
         }
     }
 }
