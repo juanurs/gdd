@@ -97,7 +97,7 @@ namespace FrbaCommerce
 
                             if (idUsuario == 0) // si es igual a 0, se crea el username y la contraseña por default.
                             {
-                                string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtMail.Text + "', '" + txtDocumento.Text + "' , 1, 0, 'C' )";
+                                string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASENIA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtMail.Text + "', '" + txtDocumento.Text + "' , 1, 0, 'C' )";
                                 qry.pComando = sql;
                                 qry.Ejecutar();
 

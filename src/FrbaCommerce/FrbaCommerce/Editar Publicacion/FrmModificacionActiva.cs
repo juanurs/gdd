@@ -57,7 +57,7 @@ namespace FrbaCommerce.Editar_Publicacion
                    }
                    else
                    {
-                       if ((tipoPublicacion == "Compra Inmediata") /*&& ((txtStock.Text) > stockAnterior)*/)
+                       if ((tipoPublicacion == "Compra Inmediata") && (Convert.ToInt32(txtStock.Text) > stockAnterior))
                        {
 
 

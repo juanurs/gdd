@@ -75,7 +75,7 @@ namespace FrbaCommerce
                                 {
 
 
-                                    string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASEÑA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtEmail.Text + "', '" + txtCuit.Text + "', 1, 0, 'E' )";
+                                    string sql = "INSERT INTO JJRD.USUARIOS (USERNAME, CONTRASENIA, HABILITADO, LOGIN_FALLIDOS, TIPO_DE_USUARIO) values ('" + txtEmail.Text + "', '" + txtCuit.Text + "', 1, 0, 'E' )";
                                     qry.pComando = sql;
                                     qry.Ejecutar();
 

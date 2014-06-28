@@ -27,11 +27,7 @@ namespace FrbaCommerce.Generar_Publicacion
 
             comboBoxPreguntas.Items.Add("SI");
             comboBoxPreguntas.Items.Add("NO");
-            comboBoxVisibilidad.Items.Add("Platino");
-            comboBoxVisibilidad.Items.Add("Oro");
-            comboBoxVisibilidad.Items.Add("Plata");
-            comboBoxVisibilidad.Items.Add("Bronce");
-            comboBoxVisibilidad.Items.Add("Gratis");
+           
             comboBoxTipoPublicacion.Items.Add("Subasta");
             comboBoxEstadoPublicacion.Items.Add("Pausada");
             comboBoxEstadoPublicacion.Items.Add("Activa");
@@ -56,6 +52,20 @@ namespace FrbaCommerce.Generar_Publicacion
             decimal idPublicacion1 = (decimal)qry11.ObtenerUnicoCampo();
 
             comboBoxCodPublicacion.Items.Add(idPublicacion1);
+            
+            
+            //Llenar comboBox visibilidad
+
+            SqlConnection conexion = new SqlConnection();
+            conexion.ConnectionString = Settings.Default.CadenaDeConexion;
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter("select DESCRIPCION from JJRD.Visibilidad where HABILITADO = 1", conexion);
+            da.Fill(ds, "JJRD.Visibilidad");
+
+            comboBoxVisibilidad.DataSource = ds.Tables[0].DefaultView;
+            comboBoxVisibilidad.ValueMember = "DESCRIPCION";
+            comboBoxVisibilidad.SelectedItem = null;
 
 
 

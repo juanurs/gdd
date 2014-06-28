@@ -33,14 +33,22 @@ namespace FrbaCommerce.Editar_Publicacion
             comboBoxPreguntas.Items.Add("SI");
             comboBoxPreguntas.Items.Add("NO");
             comboBoxCodPublicacion.Items.Add(publicacion);
-            comboBoxEstado.Items.Add("Activa");
-            comboBoxEstado.Items.Add("Pausada");
-            comboBoxEstado.Items.Add("Borrador");
-            comboBoxEstado.Items.Add("Finalizada");
+           
             comboBoxTipo.Items.Add("Compra Inmediata");
             comboBoxTipo.Items.Add("Subasta");
             comboBoxVisibilidad.Items.Add("Insertar");
 
+
+            SqlConnection conexion = new SqlConnection();
+            conexion.ConnectionString = Settings.Default.CadenaDeConexion;
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter("select DESCRIPCION from JJRD.Visibilidad where HABILITADO = 1", conexion);
+            da.Fill(ds, "JJRD.Visibilidad");
+
+            comboBoxVisibilidad.DataSource = ds.Tables[0].DefaultView;
+            comboBoxVisibilidad.ValueMember = "DESCRIPCION";
+            comboBoxVisibilidad.SelectedItem = null;
 
             comboBoxPreguntas.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCodPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
