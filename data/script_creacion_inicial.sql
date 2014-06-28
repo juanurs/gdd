@@ -290,48 +290,91 @@ CREATE PROCEDURE JJRD.PUBLICACIONES
 AS
 BEGIN
 
---============================================================
---TABLA PUBLICACIONES
---============================================================ 
-
+	===============================
+	--TABLA TIPO PUBLICACION
+	--============================================================ 
+	
+	create table JJRD.TIPO_PUBLICACION(
+		ID int identity(1,1) primary key,
+		DESCRIPCION nvarchar(255) NOT NULL
+	)
+	
+	PRINT 'SE CREO TABLA TIPO PUBLICACION CORRECTAMENTE'
+	
+	insert into JJRD.TIPO_PUBLICACION (DESCRIPCION)
+	select distinct Publicacion_Tipo
+	from gd_esquema.Maestra
+	
+	--============================================================
+	--TABLA ESTADO PUBLICACION
+	--============================================================ 
+	
+	create table JJRD.ESTADO_PUBLICACION(
+		ID int identity(1,1) primary key,
+		DESCRIPCION nvarchar(255) NOT NULL
+	)
+	
+	PRINT 'SE CREO TABLA TIPO PUBLICACION CORRECTAMENTE'
+	
+	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Borrador')
+	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Activa')
+	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Pausada')
+	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Finalizada')
+	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Publicada')
+	
+	--============================================================
+	--TABLA PUBLICACIONES
+	--============================================================ 
+	
 	CREATE TABLE JJRD.PUBLICACION(
-		COD_PUBLICACION NUMERIC(18,0) PRIMARY KEY, --CORREGIDO : IDENTITY(1,1), MAL, EL COD_PUBLICACION VIENE DADO POR LA TABLA MAESTRA
+		COD_PUBLICACION NUMERIC(18,0) PRIMARY KEY,
 		ID_USUARIO INT FOREIGN KEY REFERENCES JJRD.USUARIOS (ID_USUARIO),
 		COD_VISIBILIDAD NUMERIC(18,0) NOT NULL FOREIGN KEY REFERENCES JJRD.VISIBILIDAD (COD_VISIBILIDAD), 
 		DESCRIPCION NVARCHAR(255) NOT NULL,
 		STOCK NUMERIC(18,0) NOT NULL,
-		FECHA_VENCIMIENTO DATETIME, -- CORREGIDO: NUMERIC (18,0), MAL, ES DATETIME
+		FECHA_VENCIMIENTO DATETIME,
 		FECHA_INICIO DATETIME,
 		PRECIO NUMERIC(18,2) NOT NULL,
-		ESTADO NVARCHAR(255) NOT NULL,
-		TIPO NVARCHAR(255) NOT NULL,
+		ID_ESTADO_PUBLICACION INT FOREIGN KEY REFERENCES JJRD.ESTADO_PUBLICACION (ID),
+		ID_TIPO_PUBLICACION INT FOREIGN KEY REFERENCES JJRD.TIPO_PUBLICACION (ID),
 		PREGUNTAS CHAR (2) NOT NULL --VER: PODRIAMOS HABER USADO BIT COMO EN EL CAMPO HABILITADO DE LA TABLA USUARIOS
-		);
+	)
+	
 	PRINT 'SE CREO TABLA PUBLICACION CORRECTAMENTE'
 	
 	
 	/* MIGRACION TABLA PUBLICACIONES */
---Publicaciones hechas por empresas
-insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DESCRIPCION, STOCK, FECHA_VENCIMIENTO,
-								FECHA_INICIO, PRECIO, ESTADO, TIPO, PREGUNTAS)
+	--Publicaciones hechas por empresas
+	insert into JJRD.PUBLICACION (COD_PUBLICACION, ID_USUARIO, COD_VISIBILIDAD
+								, DESCRIPCION, STOCK, FECHA_VENCIMIENTO, FECHA_INICIO
+								, PRECIO, ESTADO, TIPO, PREGUNTAS)
+	--Publicaciones hechas por empresas
 	select distinct Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
-					Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, Publicacion_Estado, Publicacion_Tipo, 'SI' as PREGUNTAS
-	from gd_esquema.Maestra as M
-		join JJRD.USUARIOS as U on U.USERNAME= M.Publ_Empresa_Razon_Social
-		join jjrd.VISIBILIDAD as V on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
+				Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, epub.ID estado_pub, etip.ID tipo_pub, 'SI' PREGUNTAS
+	from gd_esquema.Maestra M
+	join JJRD.USUARIOS U 
+	on U.USERNAME= M.Publ_Empresa_Razon_Social
+	join jjrd.VISIBILIDAD V 
+	on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
+	join JJRD.ESTADO_PUBLICACION epub
+	on epub.DESCRIPCION = M.Publicacion_Estado
+	join JJRD.TIPO_PUBLICACION etip
+	on etip.DESCRIPCION = M.Publicacion_Tipo
 	where M.Publ_Empresa_Razon_Social is not null
-	
-	
-	--Publicaciones hechas por clientes.
-insert into JJRD.PUBLICACION (COD_PUBLICACION, U.ID_USUARIO, COD_VISIBILIDAD, DESCRIPCION, STOCK, FECHA_VENCIMIENTO,
-								FECHA_INICIO, PRECIO, ESTADO, TIPO, PREGUNTAS)
+	union
+	--Publicaciones hechas por clientes
 	select distinct Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
-					Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, Publicacion_Estado, Publicacion_Tipo, 'SI' as PREGUNTAS
-	from gd_esquema.Maestra as M
-		join JJRD.USUARIOS as U on U.USERNAME= M.Publ_Cli_Mail
-		join jjrd.VISIBILIDAD as V on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
-	where M.Publ_Cli_Dni is not null 
-	
+				Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, epub.ID estado_pub, etip.ID tipo_pub, 'SI' PREGUNTAS
+	from gd_esquema.Maestra M
+	join JJRD.USUARIOS U
+	on U.USERNAME= M.Publ_Cli_Mail
+	join jjrd.VISIBILIDAD V
+	on V.COD_VISIBILIDAD = M.Publicacion_Visibilidad_Cod
+	join JJRD.ESTADO_PUBLICACION epub
+	on epub.DESCRIPCION = M.Publicacion_Estado
+	join JJRD.TIPO_PUBLICACION etip
+	on etip.DESCRIPCION = M.Publicacion_Tipo
+	where M.Publ_Cli_Dni is not null 	
 	
 	
 END 
@@ -352,16 +395,23 @@ BEGIN
 	
 	PRINT 'SE CREO TABLA RUBRO CORRECTAMENTE'
 	
+	
+	insert into JJRD.RUBRO (DESCRIPCION)
+	select distinct Publicacion_Rubro_Descripcion
+	from gd_esquema.Maestra
+	
 --============================================================
 --TABLA PUBLICACION_RUBRO
 --============================================================		
 	
 	CREATE TABLE JJRD.PUBLICACION_RUBRO(
 	COD_RUBRO INT FOREIGN KEY REFERENCES JJRD.RUBRO(COD_RUBRO),
-	COD_PUBLICACION NUMERIC (18,0) IDENTITY(1,1) FOREIGN KEY REFERENCES JJRD.PUBLICACION(COD_PUBLICACION)
+	COD_PUBLICACION NUMERIC (18,0) FOREIGN KEY REFERENCES JJRD.PUBLICACION(COD_PUBLICACION)
 	);
 	
 	PRINT 'SE CREO TABLA PUBLICACION_RUBRO CORRECTAMENTE'
+	
+	
 	
 END
 GO

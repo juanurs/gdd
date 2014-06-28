@@ -15,10 +15,12 @@ namespace FrbaCommerce
 
 
         public int idUsuario;
+        
 
         public FrmRolesLogin(int idUsr)
         {
             InitializeComponent();
+
             idUsuario = idUsr;
            
             btnIngresar.Enabled = false;
@@ -59,10 +61,13 @@ namespace FrbaCommerce
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+
             //SETEO IDROL POR LAS DUDAS, VER SI SE NECESITA PARA DESPUES
             int idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROLES  " +
                                    " WHERE ROL_NOMBRE = '" + comboBox.SelectedItem.ToString() + "'").ObtenerUnicoCampo();
-            Query qr = new Query("SELECT distinct(Nombre) from JJRD.USUARIOS U WHERE ID_USUARIO = " + idUsuario);
+            
+
+            Query qr = new Query("SELECT distinct(USERNAME) from JJRD.USUARIOS U WHERE ID_USUARIO = " + idUsuario);
 
             qr.pTipoComando = CommandType.Text;
             string nombreUsuario = qr.ObtenerUnicoCampo().ToString();
@@ -76,7 +81,6 @@ namespace FrbaCommerce
 
         }
 
-      
 
      
     }

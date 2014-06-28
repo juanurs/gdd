@@ -70,8 +70,9 @@ namespace FrbaCommerce
                             else
                             {
                             /* Primero da alta a Usuario */
-
-                                if (idUsuario == 0)
+                                //SI EL ADMINISTRADOR ESTA DANDO DE ALTA, SE SETEA USUARIO Y CONTRASEÑA POR DEFAULT
+                                string tipo_usuario = new Query("select tipo_de_usuario from JJRD.USUARIOS where ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
+                                if (tipo_usuario == "A")
                                 {
 
 

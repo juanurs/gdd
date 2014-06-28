@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.btnVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxUsuario = new System.Windows.Forms.TextBox();
             this.txtBoxPasswd = new System.Windows.Forms.TextBox();
             this.lnkRegistrarse = new System.Windows.Forms.LinkLabel();
+            this.Salir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnIngresar
@@ -46,16 +46,6 @@
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.Location = new System.Drawing.Point(23, 129);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 1;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // label1
             // 
@@ -101,6 +91,16 @@
             this.lnkRegistrarse.Text = "Registrarse";
             this.lnkRegistrarse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRegistrarse_LinkClicked);
             // 
+            // Salir
+            // 
+            this.Salir.Location = new System.Drawing.Point(23, 128);
+            this.Salir.Name = "Salir";
+            this.Salir.Size = new System.Drawing.Size(75, 23);
+            this.Salir.TabIndex = 7;
+            this.Salir.Text = "Salir";
+            this.Salir.UseVisualStyleBackColor = true;
+            this.Salir.Click += new System.EventHandler(this.Salir_Click);
+            // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnIngresar;
@@ -108,12 +108,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(282, 174);
+            this.Controls.Add(this.Salir);
             this.Controls.Add(this.lnkRegistrarse);
             this.Controls.Add(this.txtBoxPasswd);
             this.Controls.Add(this.txtBoxUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnIngresar);
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -126,11 +126,11 @@
         #endregion
 
         private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxUsuario;
         private System.Windows.Forms.TextBox txtBoxPasswd;
         private System.Windows.Forms.LinkLabel lnkRegistrarse;
+        private System.Windows.Forms.Button Salir;
     }
 }
