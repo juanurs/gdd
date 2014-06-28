@@ -2,8 +2,9 @@ USE [GD1C2014]
 GO
 
 --CREACION DEL ESQUEMA CON EL NOMBRE DEL GRUPO--
-CREATE SCHEMA [JJRD] AUTHORIZATION [GD]
+/*CREATE SCHEMA [JJRD] AUTHORIZATION [GD]
 GO
+*/
 
 --============================================================
 --                EMPEZAMOS A CREAR LAS TABLAS
@@ -136,8 +137,7 @@ BEGIN
 	from JJRD.ROLES r
 	cross join JJRD.FUNCIONALIDAD f
 	where r.ROL_NOMBRE = 'EMPRESA'
-	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Historial de Cliente','Facurar Publicaciones')
-PRINT 'LLEGO'
+	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Historial de Cliente','Facturar')
 	
 	/* funcionalidades de cliente*/
 	insert into JJRD.ROL_FUNCIONALIDAD (ID_ROL, ID_FUNCIONALIDAD, HABILITADO)
@@ -145,7 +145,7 @@ PRINT 'LLEGO'
 	from JJRD.ROLES r
 	cross join JJRD.FUNCIONALIDAD f
 	where r.ROL_NOMBRE = 'CLIENTE'
-	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Calificar al Vendedor')
+	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Calificar al Vendedor', 'Comprar/Ofertar', 'Calificar al vendedor')
 	
 	PRINT 'SE CREO TABLA ROL_FUNCIONALIDAD CORRECTAMENTE'
 END
@@ -165,7 +165,7 @@ BEGIN
 		ID_USUARIO INT FOREIGN KEY REFERENCES JJRD.USUARIOS(ID_USUARIO),
 		CUIT NVARCHAR(50) UNIQUE NOT NULL,
 		RAZON_SOCIAL NVARCHAR(255) UNIQUE NOT NULL,
-		CIUDAD VARCHAR(60), --NOT NULL, SAQUE EL NOT NULL PORQUE EN LA TABLA MAESTRA NO EXISTE ESTE CAMPO Y NO PODIA MIGRAR
+		CIUDAD VARCHAR(60), 
 		NOMBRE_CONTACTO VARCHAR(255),
 		EMAIL NVARCHAR(50) NOT NULL UNIQUE,
 		CALLE NVARCHAR(255) NOT NULL,
@@ -176,9 +176,7 @@ BEGIN
 		COD_POSTAL NVARCHAR(50),
 		FECHA_CREACION DATETIME,
 		TELEFONO NUMERIC (18,0)
-		
 	)
-
 	
 	PRINT 'SE CREO TABLA EMPRESA CORRECTAMENTE'	
 	
@@ -190,7 +188,6 @@ INSERT INTO JJRD.EMPRESA (ID_USUARIO, CUIT, RAZON_SOCIAL, EMAIL, CALLE, NUM_CALL
 		on U.USERNAME = M.Publ_Empresa_Razon_Social
 	WHERE Publ_Empresa_Razon_Social is not null
 		
-	
 END
 GO
 
@@ -290,7 +287,7 @@ CREATE PROCEDURE JJRD.PUBLICACIONES
 AS
 BEGIN
 
-	===============================
+	--===============================
 	--TABLA TIPO PUBLICACION
 	--============================================================ 
 	
@@ -347,7 +344,7 @@ BEGIN
 	--Publicaciones hechas por empresas
 	insert into JJRD.PUBLICACION (COD_PUBLICACION, ID_USUARIO, COD_VISIBILIDAD
 								, DESCRIPCION, STOCK, FECHA_VENCIMIENTO, FECHA_INICIO
-								, PRECIO, ESTADO, TIPO, PREGUNTAS)
+								, PRECIO, ID_ESTADO_PUBLICACION, ID_TIPO_PUBLICACION, PREGUNTAS)
 	--Publicaciones hechas por empresas
 	select distinct Publicacion_Cod , U.ID_USUARIO, V.COD_VISIBILIDAD, Publicacion_Descripcion, Publicacion_Stock, 
 				Publicacion_Fecha_Venc, Publicacion_Fecha, Publicacion_Precio, epub.ID estado_pub, etip.ID tipo_pub, 'SI' PREGUNTAS
@@ -410,9 +407,7 @@ BEGIN
 	);
 	
 	PRINT 'SE CREO TABLA PUBLICACION_RUBRO CORRECTAMENTE'
-	
-	
-	
+
 END
 GO
 
@@ -497,6 +492,7 @@ BEGIN
 		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
 		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
 	where Compra_Fecha is not null
+	and Calificacion_Cant_Estrellas is not null
 	
 END
 GO
@@ -530,7 +526,7 @@ BEGIN
 --============================================================	
 
 	CREATE TABLE JJRD.FACTURAS(
-	ID_FACTURA NUMERIC(18,0) PRIMARY KEY,--SACAMOS IDENTITY, ID_FACTURA VIENE DADO POR NUM_FACTURA DE TABLA MAESTRA
+	ID_FACTURA NUMERIC(18,0) PRIMARY KEY,
 	FECHA DATETIME,
 	FORMA_DE_PAGO NVARCHAR(255),
 	TOTAL NUMERIC (18,2)
@@ -561,7 +557,7 @@ exec JJRD.OFERTASPUBLICACIONES
 exec JJRD.PREGUNTASPUBLICACION
 GO
 
-
+/*
 
 					
 drop schema JJRD
@@ -596,7 +592,7 @@ SELECT @vwSQL = @vwSQL + 'DROP VIEW JJRD.' + QUOTENAME(name)
 FROM sys.views
 WHERE is_ms_shipped = 0
 
--- Claves for�neas
+-- Claves forAneas
 SELECT @fkSQL = @fkSQL + 'ALTER TABLE JJRD.' + QUOTENAME(OBJECT_NAME(parent_object_id)) + ' DROP CONSTRAINT ' + QUOTENAME(name)
 FROM sys.foreign_keys
 WHERE is_ms_shipped = 0
@@ -612,3 +608,5 @@ EXEC (@fnSQL)
 EXEC (@vwSQL)
 EXEC (@fkSQL)
 EXEC (@tblSQL)
+
+*/
