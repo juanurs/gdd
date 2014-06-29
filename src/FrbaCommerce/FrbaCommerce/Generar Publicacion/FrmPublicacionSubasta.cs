@@ -141,7 +141,7 @@ namespace FrbaCommerce.Generar_Publicacion
                 //Ir al menu principal
 
 
-                        frmPrincipal publicacion = new frmPrincipal(idUsuario);
+                        frmPrincipal publicacion = new frmPrincipal();
                          this.Hide();
                          publicacion.ShowDialog();
                          publicacion = (frmPrincipal)this.ActiveMdiChild;
@@ -157,7 +157,7 @@ namespace FrbaCommerce.Generar_Publicacion
 
         private void bnVolver_Click(object sender, EventArgs e)
         {
-            frmPrincipal cliente = new frmPrincipal(idUsuario);
+            frmPrincipal cliente = new frmPrincipal();
             this.Hide();
             cliente.ShowDialog();
             cliente = (frmPrincipal)this.ActiveMdiChild;

@@ -13,11 +13,11 @@ namespace FrbaCommerce.Gestion_de_Preguntas
     {
         private int idUsuario;
 
-        public FrmGestionPreguntas(int id_Usr)
+        public FrmGestionPreguntas()
         {
             InitializeComponent();
 
-            idUsuario = id_Usr;
+            idUsuario = Globales.idUsuarioLogueado;
         }
 
         private void bnResponderPreguntas_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void bnVolver_Click_1(object sender, EventArgs e)
         {
-            frmPrincipal frmPrincipal = new frmPrincipal(idUsuario);
+            frmPrincipal frmPrincipal = new frmPrincipal();
             this.Hide();
             frmPrincipal.ShowDialog();
             frmPrincipal = (frmPrincipal)this.ActiveMdiChild;

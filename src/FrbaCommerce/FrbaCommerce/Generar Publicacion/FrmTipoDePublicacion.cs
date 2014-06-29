@@ -13,9 +13,9 @@ namespace FrbaCommerce.Generar_Publicacion
     {
         private int idUsuario;
 
-        public FrmTipoDePublicacion(int id_Usr)
+        public FrmTipoDePublicacion()
         {
-            idUsuario = id_Usr;
+            idUsuario = Globales.idUsuarioLogueado;
             InitializeComponent();
         }
 

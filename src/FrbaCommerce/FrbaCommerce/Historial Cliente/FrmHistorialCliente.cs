@@ -11,11 +11,11 @@ namespace FrbaCommerce.Historial_Cliente
 {
     public partial class FrmHistorialCliente : Form
     {
-        private int id_usuario;
+        private int idUsuario;
 
-        public FrmHistorialCliente(int idUsuario)
+        public FrmHistorialCliente()
         {
-            id_usuario = idUsuario;
+            idUsuario = Globales.idUsuarioLogueado;
 
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace FrbaCommerce.Historial_Cliente
         {
             //compras realizadas por el usuario
 
-            Query qr = new Query("SELECT DISTINCT ID_COMPRA, COD_PUBLICACION, ID_CLIENTE,COD_CALIFICACION,FECHA,CANTIDAD FROM JJRD.COMPRAS  WHERE ID_CLIENTE = '" + id_usuario + "'");
+            Query qr = new Query("SELECT DISTINCT ID_COMPRA, COD_PUBLICACION, ID_CLIENTE,COD_CALIFICACION,FECHA,CANTIDAD FROM JJRD.COMPRAS  WHERE ID_CLIENTE = '" + idUsuario + "'");
             dataResultado.DataSource = qr.ObtenerDataTable();
             dataResultado.Columns[2].Visible = false;
             dataResultado.Columns[0].Visible = false;
@@ -40,7 +40,7 @@ namespace FrbaCommerce.Historial_Cliente
         {
           //calificaciones otorgadas por el usuario (se fija en las compras que hizo el cliente y que esten calificadas)
 
-            Query qry = new Query("SELECT DISTINCT ID_CLIENTE, CO.COD_PUBLICACION, CO.COD_CALIFICACION,CA.CANTIDAD_ESTRELLAS, CA.DESCRIPCION from jjrd.COMPRAS as CO, jjrd.CALIFICACIONES as CA where ID_CLIENTE =  '" + id_usuario + "' AND CO.COD_CALIFICACION = CA.COD_CALIFICACION AND CO.COD_CALIFICACION IS NOT NULL");
+            Query qry = new Query("SELECT DISTINCT ID_CLIENTE, CO.COD_PUBLICACION, CO.COD_CALIFICACION,CA.CANTIDAD_ESTRELLAS, CA.DESCRIPCION from jjrd.COMPRAS as CO, jjrd.CALIFICACIONES as CA where ID_CLIENTE =  '" + idUsuario + "' AND CO.COD_CALIFICACION = CA.COD_CALIFICACION AND CO.COD_CALIFICACION IS NOT NULL");
             dataResultado.DataSource = qry.ObtenerDataTable();
             dataResultado.Columns[0].Visible = false;
             dataResultado.Columns[2].Visible = false;
@@ -53,7 +53,7 @@ namespace FrbaCommerce.Historial_Cliente
 
             //calificaciones recibidas (se fija en las publicaciones que hizo el cliente y que esten calificadas)
 
-            Query qry1 = new Query("SELECT DISTINCT P.COD_PUBLICACION, P.ID_USUARIO, COM.COD_CALIFICACION, CAL.CANTIDAD_ESTRELLAS, CAL.DESCRIPCION FROM JJRD.PUBLICACION AS P, JJRD.COMPRAS AS COM, JJRD.CALIFICACIONES AS CAL WHERE ( P.ID_USUARIO =  '" + id_usuario + "' )AND (P.COD_PUBLICACION = COM.COD_PUBLICACION) AND (COM.COD_CALIFICACION = CAL.COD_CALIFICACION)");
+            Query qry1 = new Query("SELECT DISTINCT P.COD_PUBLICACION, P.ID_USUARIO, COM.COD_CALIFICACION, CAL.CANTIDAD_ESTRELLAS, CAL.DESCRIPCION FROM JJRD.PUBLICACION AS P, JJRD.COMPRAS AS COM, JJRD.CALIFICACIONES AS CAL WHERE ( P.ID_USUARIO =  '" + idUsuario + "' )AND (P.COD_PUBLICACION = COM.COD_PUBLICACION) AND (COM.COD_CALIFICACION = CAL.COD_CALIFICACION)");
             dataResultado.DataSource = qry1.ObtenerDataTable(); 
             dataResultado.Columns[1].Visible = false;
             dataResultado.Columns[2].Visible = false;
@@ -67,17 +67,17 @@ namespace FrbaCommerce.Historial_Cliente
             //ofertas realizadas (se fija en las ofertas y si fue comprada falta termirar si gano la subasta q no se como hacerlo 
              // o sea si fue comprada, la gano, por ende creo que estas serian las ganadas)
 
-            Query qry2 = new Query("select DISTINCT O.COD_PUBLICACION,O.ID_CLIENTE, MONTO, O.FECHA from jjrd.OFERTAS AS O, JJRD.PUBLICACION AS P, JJRD.COMPRAS AS C WHERE O.COD_PUBLICACION = P.COD_PUBLICACION AND O.ID_CLIENTE = '" + id_usuario + "' AND C.COD_PUBLICACION = O.COD_PUBLICACION");
+            Query qry2 = new Query("select DISTINCT O.COD_PUBLICACION,O.ID_CLIENTE, MONTO, O.FECHA from jjrd.OFERTAS AS O, JJRD.PUBLICACION AS P, JJRD.COMPRAS AS C WHERE O.COD_PUBLICACION = P.COD_PUBLICACION AND O.ID_CLIENTE = '" + idUsuario + "' AND C.COD_PUBLICACION = O.COD_PUBLICACION");
             dataResultado.DataSource = qry2.ObtenerDataTable(); 
             dataResultado.Columns[1].Visible = false;
         }
 
         private void bnVolver_Click(object sender, EventArgs e)
         {
-           /* frmPrincipal publicacion = new frmPrincipal();
+            frmPrincipal publicacion = new frmPrincipal();
             this.Hide();
             publicacion.ShowDialog();
-            publicacion = (frmPrincipal)this.ActiveMdiChild; */
+            publicacion = (frmPrincipal)this.ActiveMdiChild;
         }
 
        
