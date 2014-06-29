@@ -36,7 +36,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtStock = new System.Windows.Forms.TextBox();
@@ -45,7 +44,6 @@
             this.comboBoxFechaVencimiento = new System.Windows.Forms.ComboBox();
             this.comboBoxVisibilidad = new System.Windows.Forms.ComboBox();
             this.comboBoxEstadoPublicacion = new System.Windows.Forms.ComboBox();
-            this.comboBoxTipoPublicacion = new System.Windows.Forms.ComboBox();
             this.comboBoxPreguntas = new System.Windows.Forms.ComboBox();
             this.bnVolver = new System.Windows.Forms.Button();
             this.bnGuardar = new System.Windows.Forms.Button();
@@ -127,19 +125,10 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "Estado";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(339, 96);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(101, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Tipo de Publicacion";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(339, 137);
+            this.label11.Location = new System.Drawing.Point(339, 99);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 13);
             this.label11.TabIndex = 10;
@@ -199,18 +188,10 @@
             this.comboBoxEstadoPublicacion.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEstadoPublicacion.TabIndex = 20;
             // 
-            // comboBoxTipoPublicacion
-            // 
-            this.comboBoxTipoPublicacion.FormattingEnabled = true;
-            this.comboBoxTipoPublicacion.Location = new System.Drawing.Point(441, 96);
-            this.comboBoxTipoPublicacion.Name = "comboBoxTipoPublicacion";
-            this.comboBoxTipoPublicacion.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxTipoPublicacion.TabIndex = 21;
-            // 
             // comboBoxPreguntas
             // 
             this.comboBoxPreguntas.FormattingEnabled = true;
-            this.comboBoxPreguntas.Location = new System.Drawing.Point(441, 128);
+            this.comboBoxPreguntas.Location = new System.Drawing.Point(441, 99);
             this.comboBoxPreguntas.Name = "comboBoxPreguntas";
             this.comboBoxPreguntas.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPreguntas.TabIndex = 22;
@@ -282,7 +263,6 @@
             this.Controls.Add(this.bnGuardar);
             this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.comboBoxPreguntas);
-            this.Controls.Add(this.comboBoxTipoPublicacion);
             this.Controls.Add(this.comboBoxEstadoPublicacion);
             this.Controls.Add(this.comboBoxVisibilidad);
             this.Controls.Add(this.comboBoxFechaVencimiento);
@@ -291,7 +271,6 @@
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -320,7 +299,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtStock;
@@ -329,7 +307,6 @@
         private System.Windows.Forms.ComboBox comboBoxFechaVencimiento;
         private System.Windows.Forms.ComboBox comboBoxVisibilidad;
         private System.Windows.Forms.ComboBox comboBoxEstadoPublicacion;
-        private System.Windows.Forms.ComboBox comboBoxTipoPublicacion;
         private System.Windows.Forms.ComboBox comboBoxPreguntas;
         private System.Windows.Forms.Button bnVolver;
         private System.Windows.Forms.Button bnGuardar;

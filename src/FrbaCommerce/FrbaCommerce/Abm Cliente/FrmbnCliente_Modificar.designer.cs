@@ -286,6 +286,7 @@
             this.bnVolver.TabIndex = 12;
             this.bnVolver.Text = "Volver";
             this.bnVolver.UseVisualStyleBackColor = true;
+            this.bnVolver.Click += new System.EventHandler(this.bnVolver_Click);
             // 
             // bnHabilitar
             // 

@@ -157,6 +157,12 @@
     <Compile Include="Abm Visibilidad\FrmVisibilidad_Modificacion.Designer.cs">
       <DependentUpon>FrmVisibilidad_Modificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Calificar Vendedor\FrmCalificarVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calificar Vendedor\FrmCalificarVendedor.Designer.cs">
+      <DependentUpon>FrmCalificarVendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,7 @@
     <Compile Include="Gestion de Preguntas\FrmVerRespuestas.Designer.cs">
       <DependentUpon>FrmVerRespuestas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Globales.cs" />
     <Compile Include="Historial Cliente\FrmHistorialCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +329,9 @@
     <EmbeddedResource Include="Abm Visibilidad\FrmVisibilidad_Modificacion.resx">
       <DependentUpon>FrmVisibilidad_Modificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Calificar Vendedor\FrmCalificarVendedor.resx">
+      <DependentUpon>FrmCalificarVendedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\FrmEditarPublicacion.resx">
       <DependentUpon>FrmEditarPublicacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -402,7 +412,6 @@
   <ItemGroup>
     <Folder Include="Abm Rubro\" />
     <Folder Include="bin\Release\" />
-    <Folder Include="Calificar Vendedor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

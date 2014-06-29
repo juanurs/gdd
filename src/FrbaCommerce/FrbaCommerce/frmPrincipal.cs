@@ -11,6 +11,7 @@ using FrbaCommerce.Generar_Publicacion;
 using FrbaCommerce.Editar_Publicacion;
 using FrbaCommerce.Gestion_de_Preguntas;
 using FrbaCommerce.Historial_Cliente;
+using FrbaCommerce.Calificar_Vendedor;
 
 
 namespace FrbaCommerce

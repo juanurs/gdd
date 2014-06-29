@@ -36,7 +36,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -46,7 +45,6 @@
             this.listaRubros = new System.Windows.Forms.ListBox();
             this.comboBoxVisibilidad = new System.Windows.Forms.ComboBox();
             this.comboBoxEstadoPublicacion = new System.Windows.Forms.ComboBox();
-            this.comboBoxTipoPublicacion = new System.Windows.Forms.ComboBox();
             this.comboBoxPreguntas = new System.Windows.Forms.ComboBox();
             this.bnVolver = new System.Windows.Forms.Button();
             this.bnGuardar = new System.Windows.Forms.Button();
@@ -127,15 +125,6 @@
             this.label8.TabIndex = 7;
             this.label8.Text = "Visibilidad";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(370, 109);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(101, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Tipo de Publicacion";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -148,7 +137,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(370, 146);
+            this.label12.Location = new System.Drawing.Point(370, 113);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(92, 13);
             this.label12.TabIndex = 11;
@@ -207,18 +196,10 @@
             this.comboBoxEstadoPublicacion.Size = new System.Drawing.Size(121, 21);
             this.comboBoxEstadoPublicacion.TabIndex = 40;
             // 
-            // comboBoxTipoPublicacion
-            // 
-            this.comboBoxTipoPublicacion.FormattingEnabled = true;
-            this.comboBoxTipoPublicacion.Location = new System.Drawing.Point(477, 105);
-            this.comboBoxTipoPublicacion.Name = "comboBoxTipoPublicacion";
-            this.comboBoxTipoPublicacion.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxTipoPublicacion.TabIndex = 41;
-            // 
             // comboBoxPreguntas
             // 
             this.comboBoxPreguntas.FormattingEnabled = true;
-            this.comboBoxPreguntas.Location = new System.Drawing.Point(477, 149);
+            this.comboBoxPreguntas.Location = new System.Drawing.Point(477, 113);
             this.comboBoxPreguntas.Name = "comboBoxPreguntas";
             this.comboBoxPreguntas.Size = new System.Drawing.Size(121, 21);
             this.comboBoxPreguntas.TabIndex = 42;
@@ -281,7 +262,6 @@
             this.Controls.Add(this.bnGuardar);
             this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.comboBoxPreguntas);
-            this.Controls.Add(this.comboBoxTipoPublicacion);
             this.Controls.Add(this.comboBoxEstadoPublicacion);
             this.Controls.Add(this.comboBoxVisibilidad);
             this.Controls.Add(this.listaRubros);
@@ -291,7 +271,6 @@
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -318,7 +297,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtDescripcion;
@@ -328,7 +306,6 @@
         private System.Windows.Forms.ListBox listaRubros;
         private System.Windows.Forms.ComboBox comboBoxVisibilidad;
         private System.Windows.Forms.ComboBox comboBoxEstadoPublicacion;
-        private System.Windows.Forms.ComboBox comboBoxTipoPublicacion;
         private System.Windows.Forms.ComboBox comboBoxPreguntas;
         private System.Windows.Forms.Button bnVolver;
         private System.Windows.Forms.Button bnGuardar;

@@ -295,5 +295,10 @@ namespace FrbaCommerce
             modificar = (FrmModificarDatos)this.ActiveMdiChild;
         }
 
+        private void bnVolver_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
