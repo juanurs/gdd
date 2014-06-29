@@ -2,9 +2,9 @@ USE [GD1C2014]
 GO
 
 --CREACION DEL ESQUEMA CON EL NOMBRE DEL GRUPO--
-/*CREATE SCHEMA [JJRD] AUTHORIZATION [GD]
+CREATE SCHEMA [JJRD] AUTHORIZATION [GD]
 GO
-*/
+
 
 --============================================================
 --                EMPEZAMOS A CREAR LAS TABLAS
@@ -492,7 +492,7 @@ BEGIN
 		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
 		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
 	where Compra_Fecha is not null
-	and Calificacion_Cant_Estrellas is not null
+	and Codigo_Calificacion is not null
 	
 END
 GO
@@ -610,3 +610,31 @@ EXEC (@fkSQL)
 EXEC (@tblSQL)
 
 */
+
+
+select * from jjrd.USUARIOS
+
+insert into jjrd.USUARIOS values ('diego','diego',1,0,'A',NULL,NULL,NULL)
+
+
+select * from jjrd.EMPRESA
+
+update jjrd.EMPRESA SET CALLE = 'Parana' where ID_EMPRESA = 1
+
+
+insert into JJRD.USUARIOS(USERNAME,CONTRASENIA,HABILITADO, LOGIN_FALLIDOS,TIPO_DE_USUARIO) values ('admin', 'w23e',1, 0, 'A')
+
+select id_usuario from JJRD.USUARIOS where USERNAME = 'admin'
+
+select * from JJRD.ROLES
+--1 ADMIN
+select * from JJRD.ROL_USUARIO
+
+insert into JJRD.ROL_USUARIO (ID_ROL, ID_USUARIO, HABILITADO) values (1,95,1)
+
+select * from jjrd.USUARIOS
+where ID_USUARIO=21
+
+update jjrd.USUARIOS SET HABILITADO = 0 where ID_USUARIO= 21
+
+select * from jjrd.CLIENTE

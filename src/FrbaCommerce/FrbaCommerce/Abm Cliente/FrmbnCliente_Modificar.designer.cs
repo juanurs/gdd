@@ -47,15 +47,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.bnGuardar = new System.Windows.Forms.Button();
             this.dataResultado = new System.Windows.Forms.DataGridView();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.comboBoxTipoDoc = new System.Windows.Forms.ComboBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtNumeroDoc = new System.Windows.Forms.TextBox();
             this.bnVolver = new System.Windows.Forms.Button();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bnHabilitar = new System.Windows.Forms.Button();
             this.bnDeshabilitar = new System.Windows.Forms.Button();
+            this.bnModificarDatos = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataResultado)).BeginInit();
@@ -213,7 +214,7 @@
             // 
             // bnGuardar
             // 
-            this.bnGuardar.Location = new System.Drawing.Point(357, 345);
+            this.bnGuardar.Location = new System.Drawing.Point(312, 344);
             this.bnGuardar.Name = "bnGuardar";
             this.bnGuardar.Size = new System.Drawing.Size(75, 23);
             this.bnGuardar.TabIndex = 5;
@@ -231,6 +232,15 @@
             this.dataResultado.Size = new System.Drawing.Size(480, 150);
             this.dataResultado.TabIndex = 6;
             this.dataResultado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataResultado_CellContentClick);
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Seleccionar.Text = "Editar";
+            this.Seleccionar.UseColumnTextForButtonValue = true;
             // 
             // comboBoxTipoDoc
             // 
@@ -270,25 +280,16 @@
             // 
             // bnVolver
             // 
-            this.bnVolver.Location = new System.Drawing.Point(48, 345);
+            this.bnVolver.Location = new System.Drawing.Point(12, 344);
             this.bnVolver.Name = "bnVolver";
             this.bnVolver.Size = new System.Drawing.Size(75, 23);
             this.bnVolver.TabIndex = 12;
             this.bnVolver.Text = "Volver";
             this.bnVolver.UseVisualStyleBackColor = true;
             // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Seleccionar.Text = "Editar";
-            this.Seleccionar.UseColumnTextForButtonValue = true;
-            // 
             // bnHabilitar
             // 
-            this.bnHabilitar.Location = new System.Drawing.Point(159, 345);
+            this.bnHabilitar.Location = new System.Drawing.Point(114, 344);
             this.bnHabilitar.Name = "bnHabilitar";
             this.bnHabilitar.Size = new System.Drawing.Size(75, 23);
             this.bnHabilitar.TabIndex = 13;
@@ -298,17 +299,29 @@
             // 
             // bnDeshabilitar
             // 
-            this.bnDeshabilitar.Location = new System.Drawing.Point(259, 345);
+            this.bnDeshabilitar.Location = new System.Drawing.Point(214, 344);
             this.bnDeshabilitar.Name = "bnDeshabilitar";
             this.bnDeshabilitar.Size = new System.Drawing.Size(75, 23);
             this.bnDeshabilitar.TabIndex = 14;
             this.bnDeshabilitar.Text = "Deshabilitar";
             this.bnDeshabilitar.UseVisualStyleBackColor = true;
+            this.bnDeshabilitar.Click += new System.EventHandler(this.bnDeshabilitar_Click);
+            // 
+            // bnModificarDatos
+            // 
+            this.bnModificarDatos.Location = new System.Drawing.Point(403, 343);
+            this.bnModificarDatos.Name = "bnModificarDatos";
+            this.bnModificarDatos.Size = new System.Drawing.Size(101, 23);
+            this.bnModificarDatos.TabIndex = 15;
+            this.bnModificarDatos.Text = "Modificar Datos";
+            this.bnModificarDatos.UseVisualStyleBackColor = true;
+            this.bnModificarDatos.Click += new System.EventHandler(this.bnModificarDatos_Click);
             // 
             // FrmbnCliente_Modificar
             // 
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(536, 401);
+            this.ClientSize = new System.Drawing.Size(549, 401);
+            this.Controls.Add(this.bnModificarDatos);
             this.Controls.Add(this.bnDeshabilitar);
             this.Controls.Add(this.bnHabilitar);
             this.Controls.Add(this.bnVolver);
@@ -365,5 +378,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Seleccionar;
         private System.Windows.Forms.Button bnHabilitar;
         private System.Windows.Forms.Button bnDeshabilitar;
+        private System.Windows.Forms.Button bnModificarDatos;
     }
 }

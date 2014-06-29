@@ -181,6 +181,7 @@
             this.comboBoxFechaVencimiento.Name = "comboBoxFechaVencimiento";
             this.comboBoxFechaVencimiento.Size = new System.Drawing.Size(171, 21);
             this.comboBoxFechaVencimiento.TabIndex = 17;
+            this.comboBoxFechaVencimiento.SelectedIndexChanged += new System.EventHandler(this.comboBoxFechaVencimiento_SelectedIndexChanged);
             // 
             // comboBoxVisibilidad
             // 

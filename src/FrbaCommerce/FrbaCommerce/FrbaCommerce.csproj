@@ -73,6 +73,12 @@
     <Compile Include="Abm Cliente\FrmbnCliente_Modificar.designer.cs">
       <DependentUpon>FrmbnCliente_Modificar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Cliente\FrmModificarDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\FrmModificarDatos.Designer.cs">
+      <DependentUpon>FrmModificarDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Empresa\FrmEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Cliente\FrmbnCliente_Modificar.resx">
       <DependentUpon>FrmbnCliente_Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\FrmModificarDatos.resx">
+      <DependentUpon>FrmModificarDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa\FrmEmpresa.resx">
       <DependentUpon>FrmEmpresa.cs</DependentUpon>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using FrbaCommerce.FuncionesGenerales;
+using FrbaCommerce.Abm_Cliente;
 
 namespace FrbaCommerce
 {
@@ -40,7 +41,7 @@ namespace FrbaCommerce
 
                     //buscar por un campo
                     qr = buscarPorUnCampo(sql);
-                    
+
                 }
                 else
                 {
@@ -238,37 +239,59 @@ namespace FrbaCommerce
             dataResultado.Rows[e.RowIndex].Cells["id_usuario"].Value.ToString();
             id = Convert.ToInt32(dataResultado.Rows[e.RowIndex].Cells[1].Value.ToString());
 
-          bnHabilitar.Enabled = true;
-          bnDeshabilitar.Enabled = true;
+            bnHabilitar.Enabled = true;
+            bnDeshabilitar.Enabled = true;
 
-            
+
+        }
+
+        public bool puedeIngresarAlSistema(int idUsuario) //MOVER A FUNCIONES GENERALES
+        {
+            return ((int)new Query("SELECT count(1) FROM JJRD.USUARIOS WHERE ID_USUARIO ='" + idUsuario + "' AND HABILITADO = 1").ObtenerUnicoCampo() != 0);
         }
 
         private void bnHabilitar_Click(object sender, EventArgs e)
         {
-          string consulta = "SELECT HABILITADO FROM JJRD.USUARIOS WHERE ID_USUARIO =  " + id + "";
+          
 
-            Query qr = new Query(consulta);
-
-
-
-        
-            if (consulta == 0)
+            if (!puedeIngresarAlSistema(id))
             {
-
-
-                string actualizar = "UPDATE JJRD.USUARIOS SET HABILITADO = " + 1 + " WHERE ID_USUARIO " + id + "";
-
-                new Query(actualizar).Ejecutar();
+                new Query("UPDATE JJRD.USUARIOS SET HABILITADO = '1' WHERE ID_USUARIO = " +id).Ejecutar();
 
                 MessageBox.Show("Usuario Habilitado Correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }else {
+               
+                MessageBox.Show("El Usuario ya se encuentra Habilitado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+
+        }
+
+        private void bnDeshabilitar_Click(object sender, EventArgs e)
+        {
+
+            if (puedeIngresarAlSistema(id))
+            {
+                new Query("UPDATE JJRD.USUARIOS SET HABILITADO = '0' WHERE ID_USUARIO = " + id).Ejecutar();
+
+                MessageBox.Show("Usuario Deshabilitado Correctamente", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             else
             {
-                MessageBox.Show("El Usuario ya se encuentra Habilitado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    }
+                MessageBox.Show("El Usuario ya se encuentra Deshabilitado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void bnModificarDatos_Click(object sender, EventArgs e)
+        {
+            FrmModificarDatos modificar = new FrmModificarDatos(id);
+            this.Hide();
+            modificar.ShowDialog();
+            modificar = (FrmModificarDatos)this.ActiveMdiChild;
         }
 
     }

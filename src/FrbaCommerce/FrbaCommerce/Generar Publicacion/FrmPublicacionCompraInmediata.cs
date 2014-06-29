@@ -182,6 +182,11 @@ namespace FrbaCommerce
             txtFechaInicio = null;
         }
 
+        private void comboBoxFechaVencimiento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         
 
        
