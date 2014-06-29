@@ -157,12 +157,6 @@
     <Compile Include="Abm Visibilidad\FrmVisibilidad_Modificacion.Designer.cs">
       <DependentUpon>FrmVisibilidad_Modificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calificar Vendedor\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Calificar Vendedor\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Comprar-Ofertar\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -408,6 +402,7 @@
   <ItemGroup>
     <Folder Include="Abm Rubro\" />
     <Folder Include="bin\Release\" />
+    <Folder Include="Calificar Vendedor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

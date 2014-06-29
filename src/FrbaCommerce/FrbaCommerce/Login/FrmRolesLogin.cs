@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaCommerce.FuncionesGenerales;
+using FrbaCommerce;
 
 namespace FrbaCommerce
 {
@@ -15,6 +16,7 @@ namespace FrbaCommerce
 
 
         public int idUsuario;
+       // private int IdRolElegido;
         
 
         public FrmRolesLogin(int idUsr)
@@ -65,7 +67,15 @@ namespace FrbaCommerce
             //SETEO IDROL POR LAS DUDAS, VER SI SE NECESITA PARA DESPUES
             int idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROLES  " +
                                    " WHERE ROL_NOMBRE = '" + comboBox.SelectedItem.ToString() + "'").ObtenerUnicoCampo();
+
+
+            //IdRolElegido = idRol;
+            Globales.idRolElegido = idRol;
             
+
+            
+            
+
 
             Query qr = new Query("SELECT distinct(USERNAME) from JJRD.USUARIOS U WHERE ID_USUARIO = " + idUsuario);
 
@@ -80,7 +90,6 @@ namespace FrbaCommerce
            
 
         }
-
 
      
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,13 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaCommerce.Calificar_Vendedor
+
+
+namespace FrbaCommerce
 {
-    public partial class Form1 : Form
+    static class Globales
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+
+
+
+        public static int idRolElegido;
+        public static int idUsuarioLogueado;
+
+
     }
+
+
+  
 }
+        

@@ -12,6 +12,7 @@ using FrbaCommerce.Editar_Publicacion;
 using FrbaCommerce.Gestion_de_Preguntas;
 using FrbaCommerce.Historial_Cliente;
 
+
 namespace FrbaCommerce
 {
     public partial class frmPrincipal : Form
@@ -39,8 +40,8 @@ namespace FrbaCommerce
             this.bnCalificarVendedor.Visible = false;
             this.bnFacturar.Visible = false;
             this.bnListadoEstadistico.Visible = false;
-                             
 
+            
 
         }
 
@@ -63,16 +64,16 @@ namespace FrbaCommerce
             //idUsuario = id_Usr;
 
 
-           /* Query qr = new Query(" SELECT ROL_NOMBRE FROM JJRD.ROLES WHERE ID_ROL = " + idRol);
+            Query qr = new Query(" SELECT ROL_NOMBRE FROM JJRD.ROLES WHERE ID_ROL = " + idRol);
             qr.pTipoComando = CommandType.Text;
-            string nombreRol = qr.ObtenerUnicoCampo().ToString(); */
+            string nombreRol = qr.ObtenerUnicoCampo().ToString();
 
             //MUESTRA EL NOMBRE Y PERFIL DEL USUARIO LOGUEADO
-            //lblPerfil.Visible = true;
+            lblPerfil.Visible = true;
             lblUsuarioLogueado.Text = " Usuario Conectado : " + nombreUsuario.ToUpper();
             lblUsuarioLogueado.Visible = true;
             lblUsuarioLogueado.ForeColor = System.Drawing.Color.Green;
-            //lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
+            lblPerfil.Text = " Perfil : " + nombreRol.ToUpper();
 
             //MUESTRA SOLO LAS FUNCIONALIDADES PERMITIDAS PARA EL ROL LOGUEADO
             Query funcionalidades = new Query("SELECT ID_FUNCIONALIDAD FROM JJRD.ROL_FUNCIONALIDAD WHERE ID_ROL = " + idRol);
@@ -191,10 +192,23 @@ namespace FrbaCommerce
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
            nombreUsuario = new Query("SELECT USERNAME FROM JJRD.USUARIOS WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo().ToString();
-            
-           idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
+
+
+           int IdRolCant = (int)new Query("SELECT count(*) FROM JJRD.ROL_USUARIO  " +
+                                           " WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
+
+           if (IdRolCant == 1)
+           {
+               idRol = (int)new Query("SELECT ID_ROL FROM JJRD.ROL_USUARIO WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
+           }
+           else
+           {
+               idRol = Globales.idRolElegido;
+           }
+
+           
          
-                   
+                
 
            cargarFrmPrincipal();
         }
@@ -205,6 +219,14 @@ namespace FrbaCommerce
             this.Hide();
             historial.ShowDialog();
             historial = (FrmHistorialCliente)this.ActiveMdiChild;
+        }
+
+        private void bnCalificarVendedor_Click(object sender, EventArgs e)
+        {
+            FrmCalificarVendedor calificar = new FrmCalificarVendedor();
+            this.Hide();
+            calificar.ShowDialog();
+            calificar = (FrmCalificarVendedor)this.ActiveMdiChild;
         }
        
 
