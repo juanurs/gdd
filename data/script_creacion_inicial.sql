@@ -549,6 +549,19 @@ BEGIN
 END
 GO
 
+--============================================================
+--DAMOS DE ALTA ADMINISTRADOR
+--============================================================	
+
+
+
+insert into jjrd.USUARIOS (USERNAME, CONTRASENIA, HABILITADO, LOGIN_FALLIDOS,TIPO_DE_USUARIO)
+	VALUES ('admin','w23e',1,0,'A')
+	
+
+INSERT INTO JJRD.ROL_USUARIO VALUES (1,93,1)	
+
+
 exec JJRD.CREAR_ROLES
 exec JJRD.CREAR_USUARIOS
 exec JJRD.CLIENTES
