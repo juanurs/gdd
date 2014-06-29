@@ -113,7 +113,7 @@ namespace FrbaCommerce
 
             if (txtEmail.Text.Trim() != "")
             {
-                sql = sql + " EMAIL = '" + txtEmail.Text + "'";
+                sql = sql + " EMAIL LIKE '%" + txtEmail.Text + "%'";
             }
 
             if (txtNumeroDoc.Text.Trim() != "" && comboBoxTipoDoc.Text != "")
@@ -142,7 +142,7 @@ namespace FrbaCommerce
             if (txtNombre.Text.Trim() != "" && txtEmail.Text.Trim() != "")
             {
                 //NOMBRE Y MAIL
-                sql = sql + " EMAIL = '" + txtEmail.Text + "' AND NOMBRE LIKE '%" + txtNombre.Text + "%' ";
+                sql = sql + " EMAIL LIKE '%" + txtEmail.Text + "%' AND NOMBRE LIKE '%" + txtNombre.Text + "%' ";
             }
 
             if (txtApellido.Text.Trim() != "" && comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text.Trim() != "")
@@ -154,13 +154,13 @@ namespace FrbaCommerce
             if (txtApellido.Text.Trim() != "" && txtEmail.Text.Trim() != "")
             {
                 //APELLIDO Y MAIL
-                sql = sql + " APELLIDO LIKE '%" + txtApellido.Text + "%' AND EMAIL = '" + txtEmail.Text + "'";
+                sql = sql + " APELLIDO LIKE '%" + txtApellido.Text + "%' AND EMAIL LIKE '%" + txtEmail.Text + "%'";
             }
 
             if (comboBoxTipoDoc.Text != "" && txtNumeroDoc.Text.Trim() != "" && txtEmail.Text.Trim() != "")
             {
                 //DNI Y MAIL
-                sql = sql + "ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' AND EMAIL = '" + txtEmail.Text + "'";
+                sql = sql + "ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' AND EMAIL LIKE '%" + txtEmail.Text + "%'";
             }
 
             return sql;
@@ -179,14 +179,14 @@ namespace FrbaCommerce
             if (txtNumeroDoc.Text.Trim() == "")
             {
                 //BUSCA POR NOMBRE APELLIDO Y EMAIL
-                sql = sql + " NOMBRE LIKE '%" + txtNombre.Text + "%' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND EMAIL = '" + txtEmail.Text + "'";
+                sql = sql + " NOMBRE LIKE '%" + txtNombre.Text + "%' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND EMAIL LIKE '%" + txtEmail.Text + "%'";
 
             }
 
             if (txtNombre.Text.Trim() == "")
             {
                 //BUSCA POR APELLIDO DNI Y EMAIL
-                sql = sql + " EMAIL = '" + txtEmail.Text + "' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%'";
+                sql = sql + " EMAIL LIKE '%" + txtEmail.Text + "%' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%'";
             }
 
             return sql;
@@ -228,7 +228,7 @@ namespace FrbaCommerce
 
         private string buscarPorTodosLosCampos(string sql)
         {
-            sql = sql + " EMAIL = '" + txtEmail.Text + "' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' AND NOMBRE LIKE '%" + txtNombre.Text + "%' ";
+            sql = sql + " EMAIL LIKE '%" + txtEmail.Text + "%' AND APELLIDO LIKE '%" + txtApellido.Text + "%' AND ID_TIPO_DOC = " + IdTipoDni + " AND NUMERO_DOC LIKE '%" + txtNumeroDoc.Text + "%' AND NOMBRE LIKE '%" + txtNombre.Text + "%' ";
             return sql;
         }
 
@@ -253,7 +253,7 @@ namespace FrbaCommerce
 
 
         
-            if (consulta == 0)
+            if (consulta == "0")
             {
 
 

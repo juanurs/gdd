@@ -43,6 +43,7 @@
             this.bnListadoEstadistico = new System.Windows.Forms.Button();
             this.bnCalificarVendedor = new System.Windows.Forms.Button();
             this.bnFacturar = new System.Windows.Forms.Button();
+            this.lblPerfil = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRoles
@@ -181,6 +182,7 @@
             this.bnCalificarVendedor.TabIndex = 16;
             this.bnCalificarVendedor.Text = "Calificar Vendedor";
             this.bnCalificarVendedor.UseVisualStyleBackColor = true;
+            this.bnCalificarVendedor.Click += new System.EventHandler(this.bnCalificarVendedor_Click);
             // 
             // bnFacturar
             // 
@@ -191,12 +193,22 @@
             this.bnFacturar.Text = "Facturar";
             this.bnFacturar.UseVisualStyleBackColor = true;
             // 
+            // lblPerfil
+            // 
+            this.lblPerfil.AutoSize = true;
+            this.lblPerfil.Location = new System.Drawing.Point(21, 87);
+            this.lblPerfil.Name = "lblPerfil";
+            this.lblPerfil.Size = new System.Drawing.Size(35, 13);
+            this.lblPerfil.TabIndex = 18;
+            this.lblPerfil.Text = "label2";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(383, 354);
+            this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.bnFacturar);
             this.Controls.Add(this.bnCalificarVendedor);
             this.Controls.Add(this.bnListadoEstadistico);
@@ -238,6 +250,7 @@
         private System.Windows.Forms.Button bnListadoEstadistico;
         private System.Windows.Forms.Button bnCalificarVendedor;
         private System.Windows.Forms.Button bnFacturar;
+        private System.Windows.Forms.Label lblPerfil;
     }
 }
 

@@ -72,6 +72,9 @@ namespace FrbaCommerce.Login
                 int IdRolCant = (int)new Query("SELECT count(*) FROM JJRD.ROL_USUARIO  " +
                                            " WHERE ID_USUARIO = " + idUsuario).ObtenerUnicoCampo();
 
+                Globales.idUsuarioLogueado = idUsuario;
+
+
                 primerLogin();
 
                 switch (IdRolCant)

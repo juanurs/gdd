@@ -69,12 +69,12 @@ namespace FrbaCommerce
 
                 if (txtCuit.Text.Trim() != "")
                 {
-                    sql = sql + " CUIT LIKE '%" + txtCuit.Text + "%' ";
+                    sql = sql + " CUIT = '" + txtCuit.Text + "' ";
                 }
 
                 if (txtMail.Text.Trim() != "")
                 {
-                    sql = sql + " EMAIL = '" + txtMail.Text + "'";
+                    sql = sql + " EMAIL LIKE '%" + txtMail.Text + "%'";
                 }
 
                 return sql;
@@ -92,19 +92,19 @@ namespace FrbaCommerce
             if (txtMail.Text.Trim() == "")
             {
                 //RAZON SOCIAL Y CUIT
-                sql = sql + " RAZON_SOCIAL LIKE '%" + txtRazonSocial.Text + "%' AND CUIT LIKE '%" + txtCuit.Text + "%' ";
+                sql = sql + " RAZON_SOCIAL LIKE '%" + txtRazonSocial.Text + "%' AND CUIT = '" + txtCuit.Text + "' ";
             }
 
             if (txtCuit.Text.Trim() == "")
             {
                 //RAZON SOCIAL Y MAIL
-                sql = sql + " RAZON_SOCIAL LIKE '%" + txtRazonSocial.Text + "%' AND EMAIL = '" + txtMail.Text + "'";
+                sql = sql + " RAZON_SOCIAL LIKE '%" + txtRazonSocial.Text + "%' AND EMAIL LIKE '%" + txtMail.Text + "%'";
             }
 
             if (txtRazonSocial.Text.Trim() == "")
             {
                 //MAIL Y CUIT
-                sql = sql + " EMAIL = '" + txtMail.Text + "' AND CUIT LIKE '%" + txtCuit.Text + "%' ";
+                sql = sql + " EMAIL LIKE '%" + txtMail.Text + "%' AND CUIT = '" + txtCuit.Text + "' ";
             }
 
             return sql;
@@ -113,7 +113,7 @@ namespace FrbaCommerce
 
         private string buscarPorTresCampos(string sql)
         {
-            sql = sql + " RAZON_SOCIAL LIKE '%" + txtRazonSocial.Text + "%' AND CUIT LIKE '%" + txtCuit.Text + "%' AND EMAIL = '" + txtMail.Text + "'";
+            sql = sql + " RAZON_SOCIAL LIKE '%" + txtRazonSocial.Text + "%' AND CUIT = '" + txtCuit.Text + "' AND EMAIL LIKE '%" + txtMail.Text + "%'";
             return sql;
         }
 
