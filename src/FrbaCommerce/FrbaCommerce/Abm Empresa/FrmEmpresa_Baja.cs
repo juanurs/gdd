@@ -132,7 +132,7 @@ namespace FrbaCommerce
 
         private void bnVolver_Click(object sender, EventArgs e)
         {
-            FrmEmpresa volver = new FrmEmpresa(idUsuario);
+            FrmEmpresa volver = new FrmEmpresa();
             this.Hide();
             volver.ShowDialog();
             volver = (FrmEmpresa)this.ActiveMdiChild;

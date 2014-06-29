@@ -36,7 +36,8 @@ namespace FrbaCommerce.Login
 
                 if (fn.ExisteUsuario(txtBoxUsuario.Text))
                 {
-                    idUsuario = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
+                    Globales.idUsuarioLogueado = (int)new Query("SELECT ID_USUARIO FROM JJRD.USUARIOS WHERE USERNAME='" + txtBoxUsuario.Text + "'").ObtenerUnicoCampo();
+                    idUsuario = Globales.idUsuarioLogueado;
                     Query qr = new Query("SELECT LOGIN_FALLIDOS FROM JJRD.USUARIOS WHERE ID_USUARIO=" + idUsuario);
                     failLogin = Convert.ToInt32(qr.ObtenerUnicoCampo()); //MOVER DE ACA
 

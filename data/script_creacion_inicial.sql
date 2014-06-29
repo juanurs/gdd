@@ -145,7 +145,7 @@ BEGIN
 	from JJRD.ROLES r
 	cross join JJRD.FUNCIONALIDAD f
 	where r.ROL_NOMBRE = 'CLIENTE'
-	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Calificar al Vendedor', 'Comprar/Ofertar', 'Calificar al vendedor')
+	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Calificar al Vendedor', 'Comprar/Ofertar',  'Facturar', 'Historial de Cliente')
 	
 	PRINT 'SE CREO TABLA ROL_FUNCIONALIDAD CORRECTAMENTE'
 END
@@ -388,14 +388,13 @@ BEGIN
 	CREATE TABLE JJRD.RUBRO(
 	COD_RUBRO INT IDENTITY(1,1) PRIMARY KEY,
 	DESCRIPCION NVARCHAR(255) NOT NULL
-	);
-	
-	PRINT 'SE CREO TABLA RUBRO CORRECTAMENTE'
-	
+	)
 	
 	insert into JJRD.RUBRO (DESCRIPCION)
 	select distinct Publicacion_Rubro_Descripcion
 	from gd_esquema.Maestra
+	
+	PRINT 'SE CREO TABLA RUBRO CORRECTAMENTE'
 	
 --============================================================
 --TABLA PUBLICACION_RUBRO
@@ -404,7 +403,14 @@ BEGIN
 	CREATE TABLE JJRD.PUBLICACION_RUBRO(
 	COD_RUBRO INT FOREIGN KEY REFERENCES JJRD.RUBRO(COD_RUBRO),
 	COD_PUBLICACION NUMERIC (18,0) FOREIGN KEY REFERENCES JJRD.PUBLICACION(COD_PUBLICACION)
-	);
+	)
+
+	insert into JJRD.PUBLICACION_RUBRO (COD_PUBLICACION, COD_RUBRO)
+	select distinct  mae.Publicacion_Cod, rub.COD_RUBRO
+	from gd_esquema.Maestra mae
+	join JJRD.RUBRO rub
+	on rub.DESCRIPCION = mae.Publicacion_Rubro_Descripcion 
+	where mae.Publicacion_Cod is not null
 	
 	PRINT 'SE CREO TABLA PUBLICACION_RUBRO CORRECTAMENTE'
 

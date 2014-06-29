@@ -13,9 +13,9 @@ namespace FrbaCommerce.Editar_Publicacion
     {
 
         private int idUsuario;
-        public FrmEditarPublicacion(int id_Usr)
+        public FrmEditarPublicacion()
         {
-            idUsuario = id_Usr;
+            idUsuario = Globales.idUsuarioLogueado;
             InitializeComponent();
 
         }
@@ -128,7 +128,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void bnVolver_Click(object sender, EventArgs e)
         {
-            frmPrincipal publicacion = new frmPrincipal(idUsuario);
+            frmPrincipal publicacion = new frmPrincipal();
             this.Hide();
             publicacion.ShowDialog();
             publicacion = (frmPrincipal)this.ActiveMdiChild;

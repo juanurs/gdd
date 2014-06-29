@@ -23,11 +23,11 @@ namespace FrbaCommerce
         private string nombreUsuario;
         private int idRol;
 
-        public frmPrincipal(int id_Usr)
+        public frmPrincipal()
         {
             InitializeComponent();
 
-            idUsuario = id_Usr;
+            idUsuario = Globales.idUsuarioLogueado;
 
             this.btnRoles.Visible = false;
             this.btnClientes.Visible = false;
@@ -139,7 +139,7 @@ namespace FrbaCommerce
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            FrmbnCliente cliente = new FrmbnCliente(idUsuario);
+            FrmbnCliente cliente = new FrmbnCliente();
             this.Hide();
             cliente.ShowDialog();
             cliente = (FrmbnCliente)this.ActiveMdiChild;
@@ -147,7 +147,7 @@ namespace FrbaCommerce
 
         private void btnEmpresa_Click(object sender, EventArgs e)
         {
-            FrmEmpresa cliente = new FrmEmpresa(idUsuario);
+            FrmEmpresa cliente = new FrmEmpresa();
             this.Hide();
             cliente.ShowDialog();
             cliente = (FrmEmpresa)this.ActiveMdiChild;
@@ -156,7 +156,7 @@ namespace FrbaCommerce
 
         private void bnGenerarPublicacion_Click(object sender, EventArgs e)
         {
-            FrmTipoDePublicacion publicacion = new FrmTipoDePublicacion(idUsuario);
+            FrmTipoDePublicacion publicacion = new FrmTipoDePublicacion();
             this.Hide();
             publicacion.ShowDialog();
             publicacion = (FrmTipoDePublicacion)this.ActiveMdiChild;
@@ -165,7 +165,7 @@ namespace FrbaCommerce
 
         private void bnEditarPublicacion_Click(object sender, EventArgs e)
         {
-            FrmEditarPublicacion editar = new FrmEditarPublicacion(idUsuario);
+            FrmEditarPublicacion editar = new FrmEditarPublicacion();
             this.Hide();
             editar.ShowDialog();
             editar = (FrmEditarPublicacion)this.ActiveMdiChild;
@@ -183,7 +183,7 @@ namespace FrbaCommerce
 
         private void bnGestionarPreguntas_Click(object sender, EventArgs e)
         {
-            FrmGestionPreguntas gestionPreguntas= new FrmGestionPreguntas(idUsuario);
+            FrmGestionPreguntas gestionPreguntas= new FrmGestionPreguntas();
             this.Hide();
             gestionPreguntas.ShowDialog();
             gestionPreguntas = (FrmGestionPreguntas)this.ActiveMdiChild;
@@ -216,7 +216,7 @@ namespace FrbaCommerce
 
         private void bnHistorialCliente_Click(object sender, EventArgs e)
         {
-            FrmHistorialCliente historial= new FrmHistorialCliente(idUsuario);
+            FrmHistorialCliente historial= new FrmHistorialCliente();
             this.Hide();
             historial.ShowDialog();
             historial = (FrmHistorialCliente)this.ActiveMdiChild;

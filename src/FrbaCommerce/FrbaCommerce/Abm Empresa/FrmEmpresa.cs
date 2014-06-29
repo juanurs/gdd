@@ -15,11 +15,11 @@ namespace FrbaCommerce
     {
         private int idUsuario;
 
-        public FrmEmpresa(int id_Usr)
+        public FrmEmpresa()
         {
             InitializeComponent();
 
-            idUsuario = id_Usr;
+            idUsuario = Globales.idUsuarioLogueado;
         }
 
         private void bnBaja_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace FrbaCommerce
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            frmPrincipal frmPrincipal= new frmPrincipal(idUsuario);
+            frmPrincipal frmPrincipal= new frmPrincipal();
             this.Hide();
             frmPrincipal.ShowDialog();
             frmPrincipal = (frmPrincipal)this.ActiveMdiChild;

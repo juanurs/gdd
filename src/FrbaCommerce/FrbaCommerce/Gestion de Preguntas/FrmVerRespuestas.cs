@@ -62,7 +62,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 
         private void bnVolver_Click(object sender, EventArgs e)
         {
-            FrmGestionPreguntas gestionPreguntas = new FrmGestionPreguntas(idUsuario);
+            FrmGestionPreguntas gestionPreguntas = new FrmGestionPreguntas();
             this.Hide();
             gestionPreguntas.ShowDialog();
             gestionPreguntas = (FrmGestionPreguntas)this.ActiveMdiChild;

@@ -32,7 +32,7 @@ namespace FrbaCommerce.FuncionesGenerales
             "Usted se ha registrado como usuario: " + nombreUsuario.ToUpper(), "Bienvenido!",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            frmPrincipal frmPrincipal = new frmPrincipal(idUsuario);
+            frmPrincipal frmPrincipal = new frmPrincipal();
           //  frmPrincipal.cargarFrmPrincipal(nombreUsuario, idRol, idUsuario);
             frmPrincipal.ShowDialog();
 
