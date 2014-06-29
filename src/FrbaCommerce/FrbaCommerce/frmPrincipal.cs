@@ -12,6 +12,7 @@ using FrbaCommerce.Editar_Publicacion;
 using FrbaCommerce.Gestion_de_Preguntas;
 using FrbaCommerce.Historial_Cliente;
 using FrbaCommerce.Calificar_Vendedor;
+using FrbaCommerce.Listado_Estadistico;
 
 
 namespace FrbaCommerce
@@ -228,6 +229,14 @@ namespace FrbaCommerce
             this.Hide();
             calificar.ShowDialog();
             calificar = (FrmCalificarVendedor)this.ActiveMdiChild;
+        }
+
+        private void bnListadoEstadistico_Click(object sender, EventArgs e)
+        {
+            FrmListadoEstadistico listado = new FrmListadoEstadistico();
+            this.Hide();
+            listado.ShowDialog();
+            listado = (FrmListadoEstadistico)this.ActiveMdiChild;
         }
        
 

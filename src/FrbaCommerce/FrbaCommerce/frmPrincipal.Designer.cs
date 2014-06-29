@@ -173,6 +173,7 @@
             this.bnListadoEstadistico.TabIndex = 15;
             this.bnListadoEstadistico.Text = "Listado Estadístico";
             this.bnListadoEstadistico.UseVisualStyleBackColor = true;
+            this.bnListadoEstadistico.Click += new System.EventHandler(this.bnListadoEstadistico_Click);
             // 
             // bnCalificarVendedor
             // 

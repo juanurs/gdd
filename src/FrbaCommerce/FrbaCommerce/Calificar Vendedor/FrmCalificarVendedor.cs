@@ -56,19 +56,9 @@ namespace FrbaCommerce.Calificar_Vendedor
             //IDUSUARIO A DESHABILITAR
             idCompra = Convert.ToInt32(fila.Cells["ID_COMPRA"].Value.ToString());
 
-            
-            
-            
-            
-            
-            
-            
             txtEstrellas.Focus();
 
-
-
-
-        }
+       }
 
         private void dataResultado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -92,7 +82,7 @@ namespace FrbaCommerce.Calificar_Vendedor
                 int ultimoCodCalificacion = Convert.ToInt32(qr.ObtenerUnicoCampo());
                 ultimoCodCalificacion++;
 
-                //TRIGGER PARA INSERT EN CALIFICACIONES
+                //TODO - TRIGGER PARA INSERT EN CALIFICACIONES
 
                 Query qr2 = new Query("INSERT INTO JJRD.CALIFICACIONES (COD_CALIFICACION, CANTIDAD_ESTRELLAS, DESCRIPCION) "+
                                         " VALUES ("+ ultimoCodCalificacion +", " + Convert.ToInt32(txtEstrellas.Text) + ", '" + txtDetalle.Text + "' )");
