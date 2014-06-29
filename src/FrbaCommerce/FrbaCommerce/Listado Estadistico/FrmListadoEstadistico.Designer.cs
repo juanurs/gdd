@@ -76,6 +76,7 @@
             // txtAnio
             // 
             this.txtAnio.Location = new System.Drawing.Point(129, 9);
+            this.txtAnio.MaxLength = 4;
             this.txtAnio.Name = "txtAnio";
             this.txtAnio.Size = new System.Drawing.Size(83, 20);
             this.txtAnio.TabIndex = 3;

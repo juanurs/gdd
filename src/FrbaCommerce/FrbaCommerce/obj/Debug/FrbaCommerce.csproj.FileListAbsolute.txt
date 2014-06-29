@@ -34,9 +34,15 @@ C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\Frba
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Login.FrmLogin.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Properties.Resources.resources
 C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.csproj.GenerateResource.Cache
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe.config
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Calificar_Vendedor.FrmCalificarVendedor.resources
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.pdb
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.exe
+C:\Users\Diego\Documents\Facultad\Gestion de Datos\gdd\gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.pdb
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe.config
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.exe
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.pdb
+C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe
+C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.pdb
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmbnCliente_Alta.resources
@@ -56,6 +62,7 @@ C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\Fr
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmVisibilidad_Baja.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmVisibilidad_Consulta.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmVisibilidad_Modificacion.resources
+C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Calificar_Vendedor.FrmCalificarVendedor.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmEditarPublicacion.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionActiva.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Editar_Publicacion.FrmModificacionTotal.resources
@@ -67,13 +74,12 @@ C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\Fr
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmResponder.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Gestion_de_Preguntas.FrmVerRespuestas.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Historial_Cliente.FrmHistorialCliente.resources
+C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Listado_Estadistico.FrmListadoEstadistico.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmPrimerLogin.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Login.FrmRegistrarUsuario.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.FrmRolesLogin.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Login.FrmLogin.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Properties.Resources.resources
 C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.csproj.GenerateResource.Cache
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.exe
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\bin\Debug\FrbaCommerce.pdb
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Calificar_Vendedor.FrmCalificarVendedor.resources
-C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.Listado_Estadistico.FrmListadoEstadistico.resources
+C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.exe
+C:\Users\Jns\Documents\tp-gdd\git-gdd\src\FrbaCommerce\FrbaCommerce\obj\Debug\FrbaCommerce.pdb

@@ -145,7 +145,7 @@ BEGIN
 	from JJRD.ROLES r
 	cross join JJRD.FUNCIONALIDAD f
 	where r.ROL_NOMBRE = 'CLIENTE'
-	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Calificar al Vendedor', 'Comprar/Ofertar', 'Calificar al vendedor')
+	and f.DESCRIPCION in ('Generar Publicacion','Editar Publicacion','Calificar al Vendedor', 'Comprar/Ofertar',  'Facturar', 'Historial de Cliente')
 	
 	PRINT 'SE CREO TABLA ROL_FUNCIONALIDAD CORRECTAMENTE'
 END
@@ -314,7 +314,7 @@ BEGIN
 	PRINT 'SE CREO TABLA TIPO PUBLICACION CORRECTAMENTE'
 	
 	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Borrador')
-	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Activa')
+	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Gratis')
 	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Pausada')
 	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Finalizada')
 	insert into JJRD.ESTADO_PUBLICACION (DESCRIPCION) values ('Publicada')
@@ -388,14 +388,13 @@ BEGIN
 	CREATE TABLE JJRD.RUBRO(
 	COD_RUBRO INT IDENTITY(1,1) PRIMARY KEY,
 	DESCRIPCION NVARCHAR(255) NOT NULL
-	);
-	
-	PRINT 'SE CREO TABLA RUBRO CORRECTAMENTE'
-	
+	)
 	
 	insert into JJRD.RUBRO (DESCRIPCION)
 	select distinct Publicacion_Rubro_Descripcion
 	from gd_esquema.Maestra
+	
+	PRINT 'SE CREO TABLA RUBRO CORRECTAMENTE'
 	
 --============================================================
 --TABLA PUBLICACION_RUBRO
@@ -404,7 +403,14 @@ BEGIN
 	CREATE TABLE JJRD.PUBLICACION_RUBRO(
 	COD_RUBRO INT FOREIGN KEY REFERENCES JJRD.RUBRO(COD_RUBRO),
 	COD_PUBLICACION NUMERIC (18,0) FOREIGN KEY REFERENCES JJRD.PUBLICACION(COD_PUBLICACION)
-	);
+	)
+
+	insert into JJRD.PUBLICACION_RUBRO (COD_PUBLICACION, COD_RUBRO)
+	select distinct  mae.Publicacion_Cod, rub.COD_RUBRO
+	from gd_esquema.Maestra mae
+	join JJRD.RUBRO rub
+	on rub.DESCRIPCION = mae.Publicacion_Rubro_Descripcion 
+	where mae.Publicacion_Cod is not null
 	
 	PRINT 'SE CREO TABLA PUBLICACION_RUBRO CORRECTAMENTE'
 
@@ -492,7 +498,7 @@ BEGIN
 		join JJRD.PUBLICACION as P on M.Publicacion_Cod = P.COD_PUBLICACION
 		join JJRD.CLIENTE as C on M.Cli_Mail = C.EMAIL
 	where Compra_Fecha is not null
-	and Codigo_Calificacion is not null
+	and Calificacion_Codigo is not null
 	
 END
 GO
@@ -610,31 +616,3 @@ EXEC (@fkSQL)
 EXEC (@tblSQL)
 
 */
-
-
-select * from jjrd.USUARIOS
-
-insert into jjrd.USUARIOS values ('diego','diego',1,0,'A',NULL,NULL,NULL)
-
-
-select * from jjrd.EMPRESA
-
-update jjrd.EMPRESA SET CALLE = 'Parana' where ID_EMPRESA = 1
-
-
-insert into JJRD.USUARIOS(USERNAME,CONTRASENIA,HABILITADO, LOGIN_FALLIDOS,TIPO_DE_USUARIO) values ('admin', 'w23e',1, 0, 'A')
-
-select id_usuario from JJRD.USUARIOS where USERNAME = 'admin'
-
-select * from JJRD.ROLES
---1 ADMIN
-select * from JJRD.ROL_USUARIO
-
-insert into JJRD.ROL_USUARIO (ID_ROL, ID_USUARIO, HABILITADO) values (1,95,1)
-
-select * from jjrd.USUARIOS
-where ID_USUARIO=21
-
-update jjrd.USUARIOS SET HABILITADO = 0 where ID_USUARIO= 21
-
-select * from jjrd.CLIENTE

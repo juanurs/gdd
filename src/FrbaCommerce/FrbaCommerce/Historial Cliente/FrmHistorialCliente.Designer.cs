@@ -71,7 +71,7 @@
             this.bnOfertas.Name = "bnOfertas";
             this.bnOfertas.Size = new System.Drawing.Size(133, 23);
             this.bnOfertas.TabIndex = 3;
-            this.bnOfertas.Text = "Historial Ofertas";
+            this.bnOfertas.Text = "Historial Ofertas Ganadas";
             this.bnOfertas.UseVisualStyleBackColor = true;
             this.bnOfertas.Click += new System.EventHandler(this.bnOfertas_Click);
             // 
@@ -110,7 +110,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(391, 412);
+            this.ClientSize = new System.Drawing.Size(528, 465);
             this.Controls.Add(this.bnVolver);
             this.Controls.Add(this.bnCalificacionesRecibidas);
             this.Controls.Add(this.bnCalificacionesOtorgadas);

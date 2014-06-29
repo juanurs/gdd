@@ -23,27 +23,11 @@ namespace FrbaCommerce
              {
 
                  idUsuario = id_Usr;
-                 
-            
-
+        
             InitializeComponent();
             comboBoxPreguntas.Items.Add("SI");
             comboBoxPreguntas.Items.Add("NO");
-            
-            comboBoxTipoPublicacion.Items.Add("Compra Inmediata");
-            comboBoxEstadoPublicacion.Items.Add("Borrador");
-            comboBoxEstadoPublicacion.Items.Add("Activa");
-            comboBoxEstadoPublicacion.Items.Add("Pausada");
-            comboBoxEstadoPublicacion.Items.Add("Finalizada");
-
-
-            
-
-            conexion.ConnectionString = Settings.Default.CadenaDeConexion;
-
-            
-            
-       
+    
         }
 
           
@@ -62,6 +46,10 @@ namespace FrbaCommerce
             SqlConnection conexion = new SqlConnection();
             conexion.ConnectionString = Settings.Default.CadenaDeConexion;
 
+
+
+            //Llenar comboBoxVisibilidad
+
             DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter("select DESCRIPCION from JJRD.Visibilidad where HABILITADO = 1", conexion);
             da.Fill(ds, "JJRD.Visibilidad");
@@ -70,12 +58,27 @@ namespace FrbaCommerce
             comboBoxVisibilidad.ValueMember = "DESCRIPCION";
             comboBoxVisibilidad.SelectedItem = null;
 
+
+            //Llenar comboBoxEstado
+
+            string sql = "SELECT DESCRIPCION FROM JJRD.ESTADO_PUBLICACION";
+
+
+            Query estado = new Query(sql);
+
+
+            foreach (DataRow dataRow in estado.ObtenerDataTable().AsEnumerable())
+            {
+                comboBoxEstadoPublicacion.Items.Add(dataRow[0]);
+            }
+
+
      
             comboBoxCodPublicacion.Items.Add(idPublicacion);
             comboBoxCodPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEstadoPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPreguntas.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTipoPublicacion.DropDownStyle = ComboBoxStyle.DropDownList;
+          
           
             comboBoxVisibilidad.DropDownStyle = ComboBoxStyle.DropDownList;
           
@@ -99,7 +102,7 @@ namespace FrbaCommerce
                 (comboBoxVisibilidad.Text != "" ) &&
                
                 (comboBoxEstadoPublicacion.Text != "") &&
-                (comboBoxTipoPublicacion.Text != "") &&
+               
                 (comboBoxPreguntas.Text != ""))
 
  
@@ -121,10 +124,18 @@ namespace FrbaCommerce
 
                 
              
-                 
-                        
-                        string generar = "INSERT INTO JJRD.PUBLICACION (COD_PUBLICACION,ID_USUARIO,COD_VISIBILIDAD, DESCRIPCION, STOCK, PRECIO,FECHA_VENCIMIENTO,FECHA_INICIO, ESTADO, TIPO, PREGUNTAS) " +
-                                          "  values ("+idPublicacion+","+idUsuario+","+idVisibilidad+",'"+txtDescripcion.Text+"',"+txtStock.Text+","+txtPrecio.Text+","+comboBoxFechaVencimiento.Text+",'"+txtFechaInicio.Value+"','"+comboBoxEstadoPublicacion.Text+"','"+comboBoxTipoPublicacion.Text+"','"+comboBoxPreguntas.Text+"')";
+                 //Busca codigo de estado y se lo guarda
+
+                string consultaEstado = "SELECT ID FROM JJRD.ESTADO_PUBLICACION WHERE DESCRIPCION = '" + comboBoxEstadoPublicacion.Text + "'";
+
+                Query qry3 = new Query(consultaEstado);
+
+
+                int idEstado = (int)qry3.ObtenerUnicoCampo();
+
+
+                        string generar = "INSERT INTO JJRD.PUBLICACION (COD_PUBLICACION,ID_USUARIO,COD_VISIBILIDAD, DESCRIPCION, STOCK, PRECIO,FECHA_VENCIMIENTO,FECHA_INICIO, ID_ESTADO_PUBLICACION, ID_TIPO_PUBLICACION, PREGUNTAS) " +
+                                          "  values ("+idPublicacion+","+idUsuario+","+idVisibilidad+",'"+txtDescripcion.Text+"',"+txtStock.Text+","+txtPrecio.Text+","+comboBoxFechaVencimiento.Text+",'"+txtFechaInicio.Value+"',"+idEstado+",'"+1+"','"+comboBoxPreguntas.Text+"')";
 
                          Query qry2 = new Query(generar);
                          qry2.Ejecutar();
@@ -177,7 +188,7 @@ namespace FrbaCommerce
             comboBoxVisibilidad.Text = "";
          
             comboBoxEstadoPublicacion.Text = "";
-            comboBoxTipoPublicacion.Text = "";
+           
             comboBoxPreguntas.Text = "";
             txtFechaInicio = null;
         }

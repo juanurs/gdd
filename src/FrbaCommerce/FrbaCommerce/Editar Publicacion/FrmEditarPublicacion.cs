@@ -30,10 +30,10 @@ namespace FrbaCommerce.Editar_Publicacion
         {
             
 
-                Query qr = new Query( "SELECT COD_PUBLICACION, DESCRIPCION,ID_USUARIO, STOCK,FECHA_VENCIMIENTO,FECHA_INICIO,PRECIO,ESTADO,TIPO,PREGUNTAS FROM JJRD.PUBLICACION  WHERE ID_USUARIO = '"+idUsuario+"'");
+                Query qr = new Query( "SELECT COD_PUBLICACION, DESCRIPCION,ID_USUARIO, STOCK,FECHA_VENCIMIENTO,FECHA_INICIO,PRECIO,ID_ESTADO_PUBLICACION,ID_TIPO_PUBLICACION,PREGUNTAS FROM JJRD.PUBLICACION  WHERE ID_USUARIO = '"+idUsuario+"'");
                 dataResultado.DataSource = qr.ObtenerDataTable();
                 dataResultado.Columns[3].Visible = false;
-              //  dataResultado.Columns[1].Visible = false; 
+            
 
            
 
@@ -51,8 +51,8 @@ namespace FrbaCommerce.Editar_Publicacion
            dataResultado.Rows[e.RowIndex].Cells["Fecha_Vencimiento"].Value.ToString();
            dataResultado.Rows[e.RowIndex].Cells["Fecha_Inicio"].Value.ToString();
            dataResultado.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
-           dataResultado.Rows[e.RowIndex].Cells["Estado"].Value.ToString();
-           dataResultado.Rows[e.RowIndex].Cells["Tipo"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Id_Estado_Publicacion"].Value.ToString();
+           dataResultado.Rows[e.RowIndex].Cells["Id_Tipo_Publicacion"].Value.ToString();
            dataResultado.Rows[e.RowIndex].Cells["Fecha_Vencimiento"].Value.ToString();
 
 

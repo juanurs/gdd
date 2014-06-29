@@ -66,9 +66,9 @@
             // 
             // bnVolver
             // 
-            this.bnVolver.Location = new System.Drawing.Point(105, 132);
+            this.bnVolver.Location = new System.Drawing.Point(89, 132);
             this.bnVolver.Name = "bnVolver";
-            this.bnVolver.Size = new System.Drawing.Size(75, 28);
+            this.bnVolver.Size = new System.Drawing.Size(106, 37);
             this.bnVolver.TabIndex = 4;
             this.bnVolver.Text = "Volver";
             this.bnVolver.UseVisualStyleBackColor = true;
@@ -89,7 +89,6 @@
             this.Name = "FrmbnCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ABM Cliente";
-            
             this.ResumeLayout(false);
 
         }
